@@ -116,3 +116,4 @@ yarn-error.log
 *.MF
 *.classpath
 *.project
+/build/
