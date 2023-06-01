@@ -666,3 +666,6 @@ $RECYCLE.BIN/
 #JDT-specific .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,java,eclipse,vs,vue,vuejs,node
+src/main/webapp/META-INF/MANIFEST.MF
+.classpath
+.project
