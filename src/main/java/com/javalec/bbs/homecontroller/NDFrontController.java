@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.bbs.command.NDCommand;
 import com.javalec.bbs.command.NDOrdersCheckCommand_OKH;
+import com.javalec.bbs.command.NDOrdersGraphCommand_OKH;
 import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
 import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
-
-
 
 /**
  * Servlet implementation class NDFrontController
@@ -22,19 +21,20 @@ import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
 @WebServlet("*.do")
 public class NDFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public NDFrontController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	public NDFrontController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("doGet");
@@ -42,14 +42,16 @@ public class NDFrontController extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("doPost");
 		actionDo(request, response);
 	}
-	
+
 	private void actionDo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("actionDo");
@@ -102,6 +104,15 @@ public class NDFrontController extends HttpServlet {
 			command = new NDOrdersCheckCommand_OKH();
 			command.execute(request, response);
 			viewPage = "admin_searchorders.do";
+			break;
+		
+		//	admin graph 그릴 자료 넘기기	
+		case "/admin_graphorders.do":
+			command = new NDOrdersGraphCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_orders_graph.jsp";
+			break;
+			
 			
 		}
 
@@ -109,6 +120,5 @@ public class NDFrontController extends HttpServlet {
 		dispatcher.forward(request, response);
 
 	}
-		
 
-}//END
+}// END
