@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.bbs.command.NDCommand;
+import com.javalec.bbs.command.NDOrdersCheckCommand_OKH;
 import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
+import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
 
 
 
@@ -83,13 +85,24 @@ public class NDFrontController extends HttpServlet {
 
 		//	admin 주문관리
 		case "/admin_searchorders.do":
-			System.out.println("여기까지는 왔니?");
 			command = new NDOrdersSearchCommand_OKH();
 			command.execute(request, response);
 			viewPage = "admin_orders.jsp";
 			break;
+		
+		//	admin 주문 확인 및 데이터 가져오기
+		case "/admin_updateorders.do":
+			command = new NDOrdersUpdateCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_orders_update.jsp";
+			break;
 			
-	
+		//	admin 환불 확인 및 배송 확인
+		case "/admin_updateorders_checked.do":
+			command = new NDOrdersCheckCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_searchorders.do";
+			
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

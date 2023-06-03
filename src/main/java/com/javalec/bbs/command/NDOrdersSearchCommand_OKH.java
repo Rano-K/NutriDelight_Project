@@ -51,8 +51,6 @@ public class NDOrdersSearchCommand_OKH implements NDCommand {
 		}
 
 		request.setAttribute("dataSet", dataSet);
-
-		System.out.println(dataSet);
 	}
 
 }
