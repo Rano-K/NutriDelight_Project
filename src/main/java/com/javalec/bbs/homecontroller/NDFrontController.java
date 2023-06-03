@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.bbs.command.NDCommand;
+import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
+
 
 
 /**
@@ -63,6 +65,30 @@ public class NDFrontController extends HttpServlet {
 		case "/index.html":
 			viewPage = "main.do";
 			break;
+			
+			
+		/*
+		 * Admin 구역
+		 */
+		
+		//	admin login시,
+		case "/admin_login.do":
+			viewPage = "admin_main.do";
+			break;
+			
+		//	admin main	
+		case "/admin_main.do":
+			viewPage = "admin_main.jsp";
+			break;
+
+		//	admin 주문관리
+		case "/admin_searchorders.do":
+			System.out.println("여기까지는 왔니?");
+			command = new NDOrdersSearchCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_orders.jsp";
+			break;
+			
 	
 		}
 

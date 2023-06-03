@@ -41,7 +41,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">상세 메뉴:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <a class="collapse-item" href="admin_searchorders.do">주문목록보기</a>
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
@@ -238,3 +238,25 @@
 
                 </nav>
                 <!-- End of Topbar -->
+                <!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">로그아웃을 누르시면, 로그아웃이 진행됩니다.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">취소</button>
+					<a class="btn btn-primary" href="index.jsp">로그아웃 후, 메인페이지로
+						돌아갑니다.</a>
+				</div>
+			</div>
+		</div>
+	</div>
