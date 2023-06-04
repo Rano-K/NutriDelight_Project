@@ -8,7 +8,7 @@ public class NDUserDto_OKH {
 	String userpw;
 	String name;
 	String gender;
-	int age;
+	Timestamp birthdate;
 	String telno;
 	String address;
 	String email;
@@ -23,14 +23,14 @@ public class NDUserDto_OKH {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NDUserDto_OKH(String userid, String userpw, String name, String gender, int age, String telno, String address, String email,
+	public NDUserDto_OKH(String userid, String userpw, String name, String gender, Timestamp birthdate, String telno, String address, String email,
 			int totalbuying, String allergy, Timestamp insertdate, int invalidate ) {
 		super();
 		this.userid = userid;
 		this.userpw = userpw;
 		this.name = name;
 		this.gender = gender;
-		this.age = age;
+		this.birthdate = birthdate;
 		this.telno = telno;
 		this.address = address;
 		this.email = email;
@@ -75,12 +75,12 @@ public class NDUserDto_OKH {
 		this.gender = gender;
 	}
 
-	public int getAge() {
-		return age;
+	public Timestamp getBirthdate() {
+		return birthdate;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setBirthdate(Timestamp birthdate) {
+		this.birthdate = birthdate;
 	}
 
 	public String getTelno() {

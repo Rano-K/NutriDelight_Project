@@ -8,7 +8,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin_main.jsp">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin_main.do">
             	<img alt="로고" src="admin/img/main_logo.png" width ="70">
 	
             </a>
@@ -18,7 +18,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="admin_main.jsp">
+                <a class="nav-link" href="admin_main.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>메인으로</span></a>
             </li>
@@ -78,7 +78,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">상세 메뉴:</h6>
                         <a class="collapse-item" href="admin_searchusers.do">유저 목록</a>
-                        <a class="collapse-item" href="register.html">유저 성향 그래프</a>
+                        <a class="collapse-item" href="admin_graphusers.do">유저 성향 그래프</a>
                     </div>
                 </div> 
             </li>

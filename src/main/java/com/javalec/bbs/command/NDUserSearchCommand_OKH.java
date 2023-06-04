@@ -1,6 +1,9 @@
 package com.javalec.bbs.command;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +22,8 @@ public class NDUserSearchCommand_OKH implements NDCommand {
 		// TODO Auto-generated method stub
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
+		LocalDateTime now =LocalDateTime.now();
+		
 		// DAO
 		NDUserDao_OKH userDao = new NDUserDao_OKH();
 		
@@ -31,7 +36,9 @@ public class NDUserSearchCommand_OKH implements NDCommand {
 			row.add("'"+userDto.getUserid()+"'");
 			row.add("'"+userDto.getName()+"'");
 			row.add("'"+userDto.getGender()+"'");
-			row.add("'"+Integer.toString(userDto.getAge())+"세'");
+//			수정 필요
+			row.add("'"+Integer.toString(Period.between(userDto.getBirthdate().toLocalDateTime().toLocalDate(), now.toLocalDate()).getYears())+"세'");
+//			
 			row.add("'"+userDto.getTelno()+"'");
 			row.add("'"+userDto.getAddress()+"'");
 			row.add("'"+userDto.getEmail()+"'");
@@ -42,7 +49,7 @@ public class NDUserSearchCommand_OKH implements NDCommand {
 				row.add("'"+userDto.getAllergy()+"'");
 			}
 			row.add("'"+dateFormat.format(userDto.getInsertdate())+"'");
-			if (userDto.getInvalidate() == 0) {
+			if (userDto.getInvalidate() == 1) {
 				row.add("'회원'");
 			} else {
 				row.add("'회원 탈퇴 중'"); 

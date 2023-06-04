@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.bbs.command.NDCommand;
+import com.javalec.bbs.command.NDMainAdminCommand_OKH;
 import com.javalec.bbs.command.NDOrdersCheckCommand_OKH;
 import com.javalec.bbs.command.NDOrdersGraphCommand_OKH;
 import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
 import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
+import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 
 /**
@@ -81,8 +83,10 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "admin_main.do";
 			break;
 			
-		//	admin main	
+		//	admin main으로 갈때
 		case "/admin_main.do":
+			command = new NDMainAdminCommand_OKH();
+			command.execute(request, response);
 			viewPage = "admin_main.jsp";
 			break;
 
@@ -123,6 +127,13 @@ public class NDFrontController extends HttpServlet {
 			command = new NDUserSearchCommand_OKH();
 			command.execute(request, response);
 			viewPage = "admin_user.jsp";
+			break;
+			
+		//	user graph 그릴 자료 넘기기	
+		case "/admin_graphusers.do":
+			command = new NDUserGraphCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_user_graph.jsp";
 			break;
 		
 			

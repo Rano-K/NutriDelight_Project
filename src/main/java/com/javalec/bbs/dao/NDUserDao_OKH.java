@@ -10,7 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.javalec.bbs.dto.NDManageDto_OKH;
 import com.javalec.bbs.dto.NDUserDto_OKH;
 
 public class NDUserDao_OKH {
@@ -50,7 +49,7 @@ public class NDUserDao_OKH {
 				String userpw = resultSet.getString("userpw");
 				String name = resultSet.getString("name");
 				String gender = resultSet.getString("gender");
-				int age = resultSet.getInt("age");
+				Timestamp birthdate = resultSet.getTimestamp("birthdate");
 				String telno = resultSet.getString("telno");
 				String address = resultSet.getString("address");
 				String email = resultSet.getString("email");
@@ -58,7 +57,7 @@ public class NDUserDao_OKH {
 				Timestamp insertdate = resultSet.getTimestamp("insertdate");
 				int invalidate = resultSet.getInt("invalidate");
 				int totalbuying = resultSet.getInt("totalbuying");
-				NDUserDto_OKH dto = new NDUserDto_OKH(userid, userpw, name, gender, age, telno, address, email, totalbuying, allergy, insertdate, invalidate);
+				NDUserDto_OKH dto = new NDUserDto_OKH(userid, userpw, name, gender, birthdate, telno, address, email, totalbuying, allergy, insertdate, invalidate);
 				dtos.add(dto);
 
 			}
