@@ -3,7 +3,7 @@ package com.javalec.bbs.dto;
 import java.sql.Timestamp;
 
 public class NDOrdersDto_OKH {
-	//	Fields
+	// Fields
 	int ordercode;
 	String userid;
 	String pcode;
@@ -12,15 +12,11 @@ public class NDOrdersDto_OKH {
 	Timestamp orderdate;
 	Timestamp refunddate;
 	Timestamp deliverydate;
-	
-	//	Constructor
+
+	// Constructor
 	public NDOrdersDto_OKH() {
 		// TODO Auto-generated constructor stub
 	}
-	
-
-	
-
 
 	public NDOrdersDto_OKH(int ordercode, String userid, String pcode, String address, int count, Timestamp orderdate,
 			Timestamp refunddate, Timestamp deliverydate) {
@@ -35,12 +31,14 @@ public class NDOrdersDto_OKH {
 		this.deliverydate = deliverydate;
 	}
 
+	public NDOrdersDto_OKH(Timestamp orderdate, int count) {
+		super();
+		this.orderdate = orderdate;
+		this.count = count;
+	}
 
+	// Method G/S
 
-
-
-	//	Method G/S
-	
 	public int getOrdercode() {
 		return ordercode;
 	}
@@ -97,15 +95,12 @@ public class NDOrdersDto_OKH {
 		this.deliverydate = deliverydate;
 	}
 
-
 	public String getAddress() {
 		return address;
 	}
 
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
+
 }

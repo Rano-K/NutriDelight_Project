@@ -15,6 +15,8 @@ public class NDOrdersSearchCommand_OKH implements NDCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
 		// DAO
 		NDOrdersDao_OKH ordersDao = new NDOrdersDao_OKH();
 		NDManageDao_OKH manageDao = new NDManageDao_OKH();
@@ -23,7 +25,6 @@ public class NDOrdersSearchCommand_OKH implements NDCommand {
 		ArrayList<NDOrdersDto_OKH> dtoOrders = ordersDao.searchOrders();
 		ArrayList<NDManageDto_OKH> dtoManage = manageDao.searchOrders();
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		ArrayList<ArrayList<String>> dataSet = new ArrayList<ArrayList<String>>();
 		for (int i = 0; i < dtoOrders.size(); i++) {

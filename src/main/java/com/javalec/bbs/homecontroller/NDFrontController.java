@@ -14,6 +14,7 @@ import com.javalec.bbs.command.NDOrdersCheckCommand_OKH;
 import com.javalec.bbs.command.NDOrdersGraphCommand_OKH;
 import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
 import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
+import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 
 /**
  * Servlet implementation class NDFrontController
@@ -85,6 +86,8 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "admin_main.jsp";
 			break;
 
+		//	주문 관리
+		
 		//	admin 주문관리
 		case "/admin_searchorders.do":
 			command = new NDOrdersSearchCommand_OKH();
@@ -112,6 +115,16 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "admin_orders_graph.jsp";
 			break;
+			
+		//	유저 관리
+			
+		//	user 확인
+		case "/admin_searchusers.do":
+			command = new NDUserSearchCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_user.jsp";
+			break;
+		
 			
 			
 		}

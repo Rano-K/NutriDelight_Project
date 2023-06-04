@@ -20,7 +20,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="admin_main.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>메인으로</span></a>
             </li>
 
             <!-- Divider -->
@@ -41,8 +41,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">상세 메뉴:</h6>
-                        <a class="collapse-item" href="admin_searchorders.do">주문목록보기</a>
-                        <a class="collapse-item" href="admin_graphorders.do">주문 현황 그래프 확인</a>
+                        <a class="collapse-item" href="admin_searchorders.do">주문 목록</a>
+                        <a class="collapse-item" href="admin_graphorders.do">주문 현황 그래프</a>
                     </div>
                 </div>
             </li>
@@ -74,18 +74,13 @@
                     <i class="fa fa-user"></i>
                     <span>유저관리</span>
                 </a>
-                <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <h6 class="collapse-header">상세 메뉴:</h6>
+                        <a class="collapse-item" href="admin_searchusers.do">유저 목록</a>
+                        <a class="collapse-item" href="register.html">유저 성향 그래프</a>
                     </div>
-                </div> -->
+                </div> 
             </li>
             
                <!-- Nav Item - Tables -->

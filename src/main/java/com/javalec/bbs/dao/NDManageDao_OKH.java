@@ -14,7 +14,7 @@ import com.javalec.bbs.dto.NDManageDto_OKH;
 import com.javalec.bbs.dto.NDOrdersDto_OKH;
 
 public class NDManageDao_OKH {
-	// Field
+		// Field
 		DataSource dataSource;
 
 		// Constructor
@@ -88,7 +88,6 @@ public class NDManageDao_OKH {
 
 						while (resultSet.next()) {
 							int stock = resultSet.getInt("stock");
-							System.out.println(stock);
 							
 							NDManageDto_OKH dto = new NDManageDto_OKH(stock);
 							dtos.add(dto);
