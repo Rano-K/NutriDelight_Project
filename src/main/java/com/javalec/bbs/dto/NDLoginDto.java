@@ -11,6 +11,7 @@ public class NDLoginDto {
 	int age;
 	String telno;
 	String email;
+	String address;
 	String allergy;
 	Timestamp insertdate;
 	int invalidate;
@@ -22,7 +23,7 @@ public class NDLoginDto {
 	}
 
 
-	public NDLoginDto(String userid, String userpw, String name, String gender, int age, String telno, String email,
+	public NDLoginDto(String userid, String userpw, String name, String gender, int age, String telno, String email, String address,
 			String allergy) {
 		super();
 		this.userid = userid;
@@ -32,8 +33,10 @@ public class NDLoginDto {
 		this.age = age;
 		this.telno = telno;
 		this.email = email;
+		this.address = address;
 		this.allergy = allergy;
 	}
+
 
 	
 	// Method
@@ -104,6 +107,16 @@ public class NDLoginDto {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 
