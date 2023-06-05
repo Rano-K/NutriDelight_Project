@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javalec.bbs.command.NDCartCommand_KMS;
 import com.javalec.bbs.command.NDCommand;
 import com.javalec.bbs.command.NDMainAdminCommand_OKH;
+import com.javalec.bbs.command.NDMainCommand_KMS;
 import com.javalec.bbs.command.NDOrdersCheckCommand_OKH;
 import com.javalec.bbs.command.NDOrdersGraphCommand_OKH;
 import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
 import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
+import com.javalec.bbs.command.NDProductListCommand_KMS;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 
@@ -69,10 +72,43 @@ public class NDFrontController extends HttpServlet {
 
 		switch (com) {
 
-		case "/index.html":
-			viewPage = "main.do";
+		/*
+		 * Main 구역
+		 */
+		//Home button 클릭시
+		case "/main.do":
+			command = new NDMainCommand_KMS();
+			command.execute(request, response);
+			viewPage = "index.jsp";
 			break;
+		//구독상품 버튼 클릭시
+		case "/subscribe.do":
+			viewPage = "subscribe.jsp";
+			break;
+		//일반상품구매 버튼 클릭시 ->product 목록 페이지로 이동
+		case "productList.do":
+			command = new NDProductListCommand_KMS();
+			command.execute(request, response);
+			viewPage = "productList.jsp";
+			break;
+		//찜버튼 클릭시
+		case "heart.do":
+			viewPage = "heart.jsp";
+		case "cart.do":
+			viewPage = "cart.jsp";
 			
+		//고객센터 버튼 클릭시 ---------------------------민재야 만들어줘
+			
+		//header-top : 로그인했을 때 : id_session값이 있을 때
+		case "/logout.do":
+			viewPage = "main.do";
+		case "/mypage.do":
+			viewPage = "myPage.jsp";
+		//header-top : 로그인안했을 때 : id_session값이 없을 때
+		case "/login.do":
+			viewPage = "Login.jsp";
+		case "/register.do":
+			viewPage = "register.jsp";
 			
 		/*
 		 * Admin 구역
