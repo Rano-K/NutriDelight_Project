@@ -18,8 +18,9 @@ import com.javalec.bbs.command.NDOrdersGraphCommand_OKH;
 import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
 import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
 import com.javalec.bbs.command.NDProductListCommand_KMS;
-import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
+import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
+import com.javalec.bbs.command.NDUserLoginCommand;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 
 /**
@@ -95,11 +96,8 @@ public class NDFrontController extends HttpServlet {
 		//찜버튼 클릭시
 		case "heart.do":
 			viewPage = "heart.jsp";
-		case"/Cart.do":
-			command = new NDUserCartListCommand_LYJ();
-			command.execute(request, response);
-			viewPage = "shoping-cart.jsp";
-			break;
+		case "cart.do":
+			viewPage = "cart.jsp";
 			
 		//고객센터 버튼 클릭시 ---------------------------민재야 만들어줘
 			
@@ -111,6 +109,11 @@ public class NDFrontController extends HttpServlet {
 		//header-top : 로그인안했을 때 : id_session값이 없을 때
 		case "/login.do":
 			viewPage = "Login.jsp";
+			break;
+		case "/loginCheck.do":
+			command = new NDUserLoginCommand();
+			command.execute(request, response);
+			viewPage = "loginController.do";
 		case "/register.do":
 			viewPage = "register.jsp";
 			
@@ -176,7 +179,14 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "admin_user_graph.jsp";
 			break;
 		
+//		게시판 및 상품정보
 			
+		//  리뷰 불러오기
+		case "/board.do":
+			command = new NDSearchReviewCommand_KMJ();
+			command.execute(request, response);
+			viewPage = "shop-board.jsp";
+			break;	
 			
 		}
 

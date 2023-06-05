@@ -145,7 +145,7 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./main.do">Home</a></li>
+                            <li class="active"><a href="/main.do">Home</a></li>
                             <!-- <li><a href="./shop-grid.html">체험단</a></li> -->
                             <li><a href="#">상품구매</a>
                                 <ul class="header__menu__dropdown">

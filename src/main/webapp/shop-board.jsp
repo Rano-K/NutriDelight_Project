@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -30,7 +31,7 @@
 <body>
 	<%@ include file="header.jsp"%>
 
-
+	<input type="hidden" name="pcode" value="1">
 	<!-- Hero Section Begin -->
 	<section class="hero">
 		<div class="container">
@@ -109,22 +110,24 @@
 
 								</thead>
 								<tbody>
+								<c:forEach items="${RList}" var="dto" varStatus="status">
+									
 									<tr>
-										<th scope="row">1</th>
+										<th scope="row">${status.count}</th>
 										<td colspan="2">
 											<table class="table">
 												<tr>
 													<td>
-														<p>작성한 고객 아이디 : Mark</p>
-														<p>작성일자 : 23.06.04</p>
-														<p>클릭한 음식 이름</p>
-														<p>음식사진 위치</p>
-														<p>리뷰내용</p>
+														<p>${dto.userid}</p>
+														<p>${dto.date}</p>
+														<p>${PList}</p>
+														<p>${dto.image}</p>
+														<p>${dto.contexts}</p>
 
 													</td>
 													<td align="right"><a href="#" class="primary-btn">어우
 															좋아요</a>
-														<p>좋아요 수 : 0</p> <a href="#" class="primary-btn">댓글 작성</a>
+														<p>좋아요 수 : ${dto.likes}</p> <a href="#" class="primary-btn">댓글 작성</a>
 
 													</td>
 
@@ -150,90 +153,9 @@
 										</td>
 
 									</tr>
-
-									<tr>
-										<th scope="row">1</th>
-										<td colspan="2">
-											<table class="table">
-												<tr>
-													<td>
-														<p>작성한 고객 아이디 : Burk</p>
-														<p>작성일자 : 23.06.04</p>
-														<p>클릭한 음식 이름</p>
-														<p>음식사진 위치</p>
-														<p>리뷰내용</p>
-
-													</td>
-													<td align="right"><a href="#" class="primary-btn">어우
-															좋아요</a>
-														<p>좋아요 수 : 0</p> <a href="#" class="primary-btn">댓글 작성</a>
-
-													</td>
-
-												</tr>
-
-												<tr align="right">
-													<td align="left">
-														<table>
-															<tr>
-																<td>
-																	<p>댓글 쓴 사람 아이디</p>
-																	<p>댓글 내용</p>
-																	<p>
-																		좋아요 수 : 0 <a href="#" class="primary-btn">어우 좋아요</a>
-																	</p>
-																</td>
-															<tr>
-														</table>
-													</td>
-													<td>작성일자 : 23.06.05</td>
-												</tr>
-											</table>
-										</td>
-
-									</tr>
-
-									<tr>
-										<th scope="row">1</th>
-										<td colspan="2">
-											<table class="table">
-												<tr>
-													<td>
-														<p>작성한 고객 아이디 : Shiot</p>
-														<p>작성일자 : 23.06.04</p>
-														<p>클릭한 음식 이름</p>
-														<p>음식사진 위치</p>
-														<p>리뷰내용</p>
-
-													</td>
-													<td align="right"><a href="#" class="primary-btn">어우
-															좋아요</a>
-														<p>좋아요 수 : 0</p> <a href="#" class="primary-btn">댓글 작성</a>
-
-													</td>
-
-												</tr>
-
-												<tr align="right">
-													<td align="left">
-														<table>
-															<tr>
-																<td>
-																	<p>댓글 쓴 사람 아이디</p>
-																	<p>댓글 내용</p>
-																	<p>
-																		좋아요 수 : 0 <a href="#" class="primary-btn">어우 좋아요</a>
-																	</p>
-																</td>
-															<tr>
-														</table>
-													</td>
-													<td>작성일자 : 23.06.05</td>
-												</tr>
-											</table>
-										</td>
-
-									</tr>
+									
+									</c:forEach>
+									
 									<tr align="right">
 										<td colspan="3"><a href="#" class="primary-btn">글쓰기</a></td>
 									</tr>
