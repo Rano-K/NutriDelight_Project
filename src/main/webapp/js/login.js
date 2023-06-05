@@ -116,3 +116,23 @@ function doKakaoLogin() {
 		'&response_type=code&' +
 		'scope=account_email birthday gender profile_nickname profile_image'
 }
+
+function doLoginController(){
+	var getResult = sessionStorage.getItem("login");
+	var getId = sessionStorage.getItem("ID");
+	
+	const user = 'user'
+	const admin = 'admin'
+	
+	if(getResult === user){
+		alert('환영합니다. ${getId}')
+		window.location.href = "main.do"
+	} else if(getResult === admin){
+		alert('안녕하세요, 관리자님')
+		window.location.href = "admin_main.do"
+	} else{
+		alert('아이디 혹은 비밀번호가 틀렸습니다. 다시 시도해 주세요.')
+		window.location.href = "login.do"
+	}
+	
+}
