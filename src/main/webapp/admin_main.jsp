@@ -25,7 +25,9 @@
 
 <body id="page-top">
 	<%@ include file="admin_toolbar.jsp"%>
-
+	<%
+	int [] yearordersdata = (int [])request.getAttribute("yearordersData");
+	%>
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
 
@@ -83,7 +85,7 @@
 							<div class="col mr-2">
 								<div
 									class="text-xs font-weight-bold text-info text-uppercase mb-1">남은
-									메시지 응답 비율</div>
+									주문 처리 비율</div>
 								<div class="row no-gutters align-items-center">
 									<div class="col-auto">
 										<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
@@ -240,7 +242,7 @@
 	<script src="admin/vendor/chart.js/Chart.min.js"></script>
 
 	<!-- Page level custom scripts -->
-	<script src="admin/js/demo/chart-area-demo.js"></script>
+	<script src="admin/js/admin_main.js"></script>
 	<script src="admin/js/demo/chart-pie-demo.js"></script>
 
 </body>

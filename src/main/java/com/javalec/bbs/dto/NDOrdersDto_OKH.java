@@ -12,6 +12,9 @@ public class NDOrdersDto_OKH {
 	Timestamp orderdate;
 	Timestamp refunddate;
 	Timestamp deliverydate;
+	
+	int totalsales;
+	String month;
 
 	// Constructor
 	public NDOrdersDto_OKH() {
@@ -37,7 +40,15 @@ public class NDOrdersDto_OKH {
 		this.count = count;
 	}
 
+	
+	public NDOrdersDto_OKH(String month, int totalsales) {
+		super();
+		this.totalsales = totalsales;
+		this.month = month;
+	}
+	
 	// Method G/S
+
 
 	public int getOrdercode() {
 		return ordercode;
@@ -102,5 +113,24 @@ public class NDOrdersDto_OKH {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	public int getTotalsales() {
+		return totalsales;
+	}
+
+	public void setTotalsales(int totalsales) {
+		this.totalsales = totalsales;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	
+	
+	 
 
 }
