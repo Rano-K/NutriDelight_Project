@@ -1,6 +1,5 @@
 package com.javalec.bbs.command;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -9,10 +8,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.javalec.bbs.dao.NDOrdersDao_OKH;
 import com.javalec.bbs.dao.NDUserDao_OKH;
-import com.javalec.bbs.dto.NDManageDto_OKH;
-import com.javalec.bbs.dto.NDOrdersDto_OKH;
 import com.javalec.bbs.dto.NDUserDto_OKH;
 
 public class NDUserSearchCommand_OKH implements NDCommand {
@@ -21,13 +17,14 @@ public class NDUserSearchCommand_OKH implements NDCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		
 		LocalDateTime now =LocalDateTime.now();
 		
 		// DAO
 		NDUserDao_OKH userDao = new NDUserDao_OKH();
 		
 		//	DTO
+		
+		
 		ArrayList<NDUserDto_OKH> dtoUser = userDao.searchUser();
 		ArrayList<ArrayList<String>> dataSet = new ArrayList<ArrayList<String>>();
 		for (int i = 0; i < dtoUser.size(); i++) {
@@ -36,9 +33,7 @@ public class NDUserSearchCommand_OKH implements NDCommand {
 			row.add("'"+userDto.getUserid()+"'");
 			row.add("'"+userDto.getName()+"'");
 			row.add("'"+userDto.getGender()+"'");
-//			수정 필요
 			row.add("'"+Integer.toString(Period.between(userDto.getBirthdate().toLocalDateTime().toLocalDate(), now.toLocalDate()).getYears())+"세'");
-//			
 			row.add("'"+userDto.getTelno()+"'");
 			row.add("'"+userDto.getAddress()+"'");
 			row.add("'"+userDto.getEmail()+"'");
@@ -61,3 +56,14 @@ public class NDUserSearchCommand_OKH implements NDCommand {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
