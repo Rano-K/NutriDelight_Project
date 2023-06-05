@@ -40,8 +40,8 @@
                             <span>제품목록</span>
                         </div>
                         <ul>
-                            <li><a href="#">한끼대용상품</a></li>
-                            <li><a href="#">구독상품</a></li>
+                            <li><a href="productList.do">한끼대용상품</a></li>
+                            <li><a href="subscribe.do">구독상품</a></li>
                             <!-- <li><a href="#">Fruit & Nut Gifts</a></li>
                             <li><a href="#">Fresh Berries</a></li>
                             <li><a href="#">Ocean Foods</a></li>
