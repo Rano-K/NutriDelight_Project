@@ -149,13 +149,11 @@
                             <!-- <li><a href="./shop-grid.html">체험단</a></li> -->
                             <li><a href="#">상품구매</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">구독상품구매</a></li>
-                                    <li><a href="./shoping-cart.html">일반상품구매</a></li>
-                                    <li><a href="./checkout.html"></a></li>
-                                    <li><a href="./blog-details.html"></a></li>
+                                    <li><a href="/subscribe.do">구독상품구매</a></li>
+                                    <li><a href="/productList.do">일반상품구매</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">고객센터</a></li>
+                            <li><a href="/board.do">고객센터</a></li>
                             <!-- <li><a href="./contact.html">Contact</a></li> -->
                         </ul>
                     </nav>
@@ -163,16 +161,16 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="heart.do"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="cart.do"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
                         <div class="header__cart__price">총금액 <span>32,000</span></div>
                     </div>
                 </div>
             </div>
-            <div class="humberger__open">
+            <!-- <div class="humberger__open">
                 <i class="fa fa-bars"></i>
-            </div>
+            </div> -->
         </div>
     </header>
     <!-- Header Section End -->

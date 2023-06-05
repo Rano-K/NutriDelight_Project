@@ -60,7 +60,6 @@
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    
                                     <span class="arrow_carrot-down"></span>
                                 </div>
                                 <input type="text" placeholder="What do yo u need?">
@@ -136,7 +135,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Featured Product</h2>
+                        <h2>한끼 식사</h2>
                     </div>
                     <div class="featured__controls">
                         <ul>
@@ -154,8 +153,8 @@
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
                             <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href="heart.do"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="cart.do"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="featured__item__text">
