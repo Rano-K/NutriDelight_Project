@@ -20,6 +20,7 @@ import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
 import com.javalec.bbs.command.NDProductListCommand_KMS;
 import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
+import com.javalec.bbs.command.NDUserLoginCommand;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 
 /**
@@ -108,6 +109,11 @@ public class NDFrontController extends HttpServlet {
 		//header-top : 로그인안했을 때 : id_session값이 없을 때
 		case "/login.do":
 			viewPage = "Login.jsp";
+			break;
+		case "/loginCheck.do":
+			command = new NDUserLoginCommand();
+			command.execute(request, response);
+			viewPage = "loginController.do";
 		case "/register.do":
 			viewPage = "register.jsp";
 			

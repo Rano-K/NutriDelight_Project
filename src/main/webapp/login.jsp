@@ -47,26 +47,25 @@
                                     </div>
                                     <form class="user">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                            <input type="text" class="form-control form-control-user"
+                                                name="uid" id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter ID">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                name="upw" id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <a href="/loginCheck.do" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a>
                                         <hr>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                        <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ef894ee905a0643b7844daf7341d7569&redirect_uri=http://localhost:8080/Season2_Team4_Main/" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Kakao
                                         </a>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
