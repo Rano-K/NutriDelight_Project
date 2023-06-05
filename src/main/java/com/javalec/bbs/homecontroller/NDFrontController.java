@@ -176,12 +176,11 @@ public class NDFrontController extends HttpServlet {
 //		게시판 및 상품정보
 			
 		//  리뷰 불러오기
-			case "/board.do":
-				command = new NDSearchReviewCommand_KMJ();
-				command.execute(request, response);
-				viewPage = "shop-board.jsp";
-				break;
-			}	
+		case "/board.do":
+			command = new NDSearchReviewCommand_KMJ();
+			command.execute(request, response);
+			viewPage = "shop-board.jsp";
+			break;	
 			
 		}
 
