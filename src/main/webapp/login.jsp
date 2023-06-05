@@ -21,12 +21,19 @@
 
     <!-- Custom styles for this template-->
     <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
-
+	<script src="js/login.js"></script>
 </head>
 
 <body class="bg-gradient-primary">
 	<!-- header 파일 지정 -->
 	<%@ include file="header_login.jsp"%>
+	<c:if test="${not empty sessionScope.ID}">
+		<script>
+			var getResult = '${sessionScope.login}'
+			var getId = '${sessionScope.ID}'
+			checkUser(getResult, getId);
+		</script>
+	</c:if>
 
     <div class="container">
 
@@ -61,7 +68,7 @@
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                        <a href="/loginCheck.do" class="btn btn-primary btn-user btn-block">
+                                        <a href="#" class="btn btn-primary btn-user btn-block" onclick="setIdpw()">
                                             Login
                                         </a>
                                         <hr>

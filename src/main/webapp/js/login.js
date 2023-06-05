@@ -117,22 +117,44 @@ function doKakaoLogin() {
 		'scope=account_email birthday gender profile_nickname profile_image'
 }
 
-function doLoginController(){
-	var getResult = sessionStorage.getItem("login");
-	var getId = sessionStorage.getItem("ID");
+function setIdpw(){
+	var form = document.createElement('form');
+	var objs;
+	objs = document.createElement('input');
+	objs.setAttribute('type', 'text');
+	
+	var uid = document.getElementById("exampleInputEmail");
+	var upw = document.getElementById("exampleInputPassword");
+	
+	objs.setAttribute('name', 'exampleInputEmail');
+	objs.setAttribute('value', $('#uid').val());
+	form.appendChild(objs);
+	objs.setAttribute('type', 'text');
+	objs.setAttribute('name', 'exampleInputPassword');
+	objs.setAttribute('value', $('#upw').val());
+	form.appendChild(objs);
+	form.setAttribute('method', 'post');
+	form.setAttribute('action', 'loginCheck.do')
+	document.body.appendChild(form)
+	form.submit();
+	
+	window.location.href = "loginCheck.do?userid="+ uid.value + "&userpw=" + upw.value;
+}
+
+function checkUser(getResult, getId){
 	
 	const user = 'user'
 	const admin = 'admin'
-	
+
 	if(getResult === user){
-		alert('환영합니다. ${getId}')
+		alert('환영합니다. ' + getId)
 		window.location.href = "main.do"
 	} else if(getResult === admin){
 		alert('안녕하세요, 관리자님')
 		window.location.href = "admin_main.do"
 	} else{
+		sessionStorage.removeItem("ID");
 		alert('아이디 혹은 비밀번호가 틀렸습니다. 다시 시도해 주세요.')
 		window.location.href = "login.do"
 	}
-	
 }

@@ -117,9 +117,6 @@ public class NDFrontController extends HttpServlet {
 		case "/loginCheck.do":
 			command = new NDUserLoginCommand();
 			command.execute(request, response);
-			viewPage = "loginController.do";
-			break;
-		case "/loginController.do":
 			viewPage = "login.do";
 			break;
 		case "/register.do":

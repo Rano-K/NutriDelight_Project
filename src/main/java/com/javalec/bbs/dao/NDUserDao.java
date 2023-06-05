@@ -89,8 +89,6 @@ public class NDUserDao {
 				pwCheck = upassword.equals(resultSet.getString(2)) ? "success" : "fail";
 				if(isWho.equals("user")) {
 					invali = resultSet.getString(3).equals("0") ? "fail" : "success";
-					System.out.println(resultSet.getString(3));
-					System.out.println(invali);
 				}
 			}
 			
