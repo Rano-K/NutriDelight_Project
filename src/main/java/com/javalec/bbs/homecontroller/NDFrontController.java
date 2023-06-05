@@ -112,12 +112,16 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "myPage.jsp";
 		//header-top : 로그인안했을 때 : id_session값이 없을 때
 		case "/login.do":
-			viewPage = "Login.jsp";
+			viewPage = "login.jsp";
 			break;
 		case "/loginCheck.do":
 			command = new NDUserLoginCommand();
 			command.execute(request, response);
 			viewPage = "loginController.do";
+			break;
+		case "/loginController.do":
+			viewPage = "login.do";
+			break;
 		case "/register.do":
 			viewPage = "register.jsp";
 			
