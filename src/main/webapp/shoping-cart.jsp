@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -201,7 +206,7 @@
                                     <span class="arrow_carrot-down"></span>
                                 </div>
                                 <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <button type="submit" class="site-btn">검색</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -247,80 +252,30 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="shoping__product">Products</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
+                               		<th>상품사진</th>
+                                    <th >상품명</th>
+                                    <th>가격</th>
+                                    <th>수량</th>
+                                    <th>총가격</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
+                              <c:forEach items="${list}" var="dto">
+                   				<input type="hidden" name="userid" value="${dto.userid}">
+                   				<input type="hidden" name="seq" value="${dto.seq}">
+                      			<input type="hidden" name="pcode" value="${dto.pcode}">
                                 <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $55.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $110.00
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
+                                <td ><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
+                        		<td ><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
+                        		<td ><input type="hidden" name="count" value="${dto.count}">${dto.count}</td>
+                        		<td ><input type="hidden" name="price" value="${dto.price}">${dto.price}</td>
+                        		<td ><input type="hidden" name="count" value="${dto.count}">${dto.count * dto.price}</td>
+                        		
+                                <td class="shoping__cart__item__close"><span class="icon_close"></span></td>
                                 </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-2.jpg" alt="">
-                                        <h5>Fresh Garden Vegetable</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $39.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $39.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-3.jpg" alt="">
-                                        <h5>Organic Bananas</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $69.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $69.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
+                                
+                               </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -329,30 +284,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            Upadate Cart</a>
+                        <a href="#" class="primary-btn cart-btn cart-btn-right">메인페이지</a>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="shoping__continue">
-                        <div class="shoping__discount">
-                            <h5>Discount Codes</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">APPLY COUPON</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
+          
+                <div class="col-lg-12">
                     <div class="shoping__checkout">
-                        <h5>Cart Total</h5>
+                        <h5>카트 총 상품가격</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li>총 상품가격 <span>$454.98</span></li>
+                            <li>총 주문가격 <span>$454.98</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="#" class="primary-btn">결제하기</a>
                     </div>
                 </div>
             </div>
@@ -397,28 +340,13 @@
                         </ul> -->
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="footer__widget">
-                        <h6>저희 제품을 구독해보세요</h6>
-                        <p>Email등록시 최신제품과 할인정보를 만나보실 수 있습니다.</p>
-                        <form action="#">
-                            <input type="text" placeholder="ex)minsoo0704@naver.com">
-                            <button type="submit" class="site-btn">Subscribe</button>
-                        </form>
-                       <!--  <div class="footer__widget__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div> -->
-                    </div>
-                </div>
+          
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved<!-- <i class="fa fa-heart" aria-hidden="true"></i> --><!--  by <a href="https://colorlib.com" target="_blank">Colorlib --></a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved<!-- <i class="fa fa-heart" aria-hidden="true"></i> --><!--  by <a href="https://colorlib.com" target="_blank">Colorlib --><!-- /a -->
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
                        <!--  <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div> -->
                     </div>

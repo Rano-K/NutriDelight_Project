@@ -18,6 +18,7 @@ import com.javalec.bbs.command.NDOrdersGraphCommand_OKH;
 import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
 import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
 import com.javalec.bbs.command.NDProductListCommand_KMS;
+import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 
@@ -94,8 +95,11 @@ public class NDFrontController extends HttpServlet {
 		//찜버튼 클릭시
 		case "heart.do":
 			viewPage = "heart.jsp";
-		case "cart.do":
-			viewPage = "cart.jsp";
+		case"/Cart.do":
+			command = new NDUserCartListCommand_LYJ();
+			command.execute(request, response);
+			viewPage = "shoping-cart.jsp";
+			break;
 			
 		//고객센터 버튼 클릭시 ---------------------------민재야 만들어줘
 			
