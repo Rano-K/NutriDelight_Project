@@ -18,6 +18,7 @@ import com.javalec.bbs.command.NDOrdersGraphCommand_OKH;
 import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
 import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
 import com.javalec.bbs.command.NDProductListCommand_KMS;
+import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 
@@ -172,7 +173,15 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "admin_user_graph.jsp";
 			break;
 		
+//		게시판 및 상품정보
 			
+		//  리뷰 불러오기
+			case "/board.do":
+				command = new NDSearchReviewCommand_KMJ();
+				command.execute(request, response);
+				viewPage = "shop-board.jsp";
+				break;
+			}	
 			
 		}
 
