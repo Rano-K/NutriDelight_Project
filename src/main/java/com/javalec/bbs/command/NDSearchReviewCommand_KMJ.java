@@ -14,7 +14,7 @@ public class NDSearchReviewCommand_KMJ implements NDCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		//int pcode = Integer.parseInt(request.getParameter("pcode"));
-		int pcode = 1;
+		int pcode = 9;
 		NDReviewDao_KMJ dao = new NDReviewDao_KMJ();
 		ArrayList<NDReviewDto_KMJ> dtos = dao.reviewList(pcode);
 		String name = dao.productList(pcode);

@@ -33,7 +33,7 @@ public class NDReviewDao_KMJ {
 		
 		try {
 			conn_mysql = dataSource.getConnection(); //context.xml에 미리 정의해놓은 값을 가져온다
-			String query = "SELECT rw.userid, rw.likes, rw.contexts, rw.updatedate, rw.image " +
+			String query = "SELECT DISTINCT r.userid, rw.likes, rw.contexts, rw.updatedate, rw.image, r.layer, r.adminid, r.parent " +
                     		"FROM rwrite rw, review r "+
                     		"WHERE rw.userid = r.userid and r.pcode = ?";
                     		
@@ -48,8 +48,11 @@ public class NDReviewDao_KMJ {
 				String contexts = rs.getString(3);
 				String date = rs.getString(4);
 				String image = rs.getString(5);
+				int layer = rs.getInt(5);
+				String adminid = rs.getString(6);
+				int parent = rs.getInt(7);
 				
-				NDReviewDto_KMJ dto = new NDReviewDto_KMJ(userid, likes, contexts, date, image);
+				NDReviewDto_KMJ dto = new NDReviewDto_KMJ(userid, likes, contexts, date, image, layer, adminid,parent);
 				dtos.add(dto);
 			}
 			

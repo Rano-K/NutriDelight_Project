@@ -6,6 +6,9 @@ public class NDReviewDto_KMJ {
 	String userid;
 	String contexts;
 	String date;
+	int layer;
+	String adminid;
+	int parent;
 	
 	String name;
 	String image;
@@ -17,16 +20,17 @@ public class NDReviewDto_KMJ {
 	
 	
 	
-	public NDReviewDto_KMJ(String userid, int likes, String contexts, String date, String image) {
+	public NDReviewDto_KMJ(String userid, int likes, String contexts, String date, String image, int layer, String adminid, int parent) {
 		super();
 		this.userid = userid;
 		this.likes = likes;
 		this.contexts = contexts;
 		this.date = date;
 		this.image = image;
+		this.layer = layer;
+		this.adminid = adminid;
+		this.parent = parent;
 	}
-
-
 	
 
 	public NDReviewDto_KMJ(String name, String image) {
@@ -34,6 +38,49 @@ public class NDReviewDto_KMJ {
 		this.name = name;
 		this.image = image;
 	}
+
+
+	
+	
+	public int getLayer() {
+		return layer;
+	}
+
+
+
+
+	public void setLayer(int layer) {
+		this.layer = layer;
+	}
+
+
+
+
+	public String getAdminid() {
+		return adminid;
+	}
+
+
+
+
+	public void setAdminid(String adminid) {
+		this.adminid = adminid;
+	}
+
+
+
+
+	public int getParent() {
+		return parent;
+	}
+
+
+
+
+	public void setParent(int parent) {
+		this.parent = parent;
+	}
+
 
 
 
