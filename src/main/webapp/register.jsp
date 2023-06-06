@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Register</title>
 
     <!-- Custom fonts for this template-->
     <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +26,7 @@
 </head>
 
 <body class="bg-gradient-primary">
-
+	<%@ include file="header_login.jsp"%>
     <div class="container">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
@@ -37,39 +40,45 @@
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
                             <form class="user">
-                                <div class="form-group row">
+                                <div class="form-group">
+                                   	<input type="text" class="form-control form-control-user" id="userid"
+										placeholder="ID">
+                               	</div>
+                               	<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                        <input type="password" class="form-control form-control-user" id="password1"
+                                            placeholder="Password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                        <input type="password" class="form-control form-control-user" id="password2"
+                                            placeholder="Repeat Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <input type="text" class="form-control form-control-user" id="telno" placeholder="Phone Number (ex 010-0000-0000)">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="email" placeholder="Email">
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+                                <div class="input-group-text">
+                                    <input type="radio" style="margin-left: 20%" id="gender" value="male" checked="checked"> 남자
+                                    <input type="radio" style="margin-left: 30%" value="female"> 여자
+                                </div>
+                                <div class="input-group-text">
+                                	<!-- DB 내 알러지 개수 체크 -->
+                                	<c:forEach items="DB allergy count" varStatus="cnt">
+										<input type="checkbox" class="form-control form-control-user" id="allergy" value="${allergy}"> ${allergy}
+									</c:forEach>
+                                </div>
+                                
+                                <!-- 회원가입 눌렀을 때  -->
+                                <a href="register.do" class="btn btn-primary btn-user btn-block"> Register Account </a>
                                 <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                <a href="index.html" class="btn btn-kakao btn-user btn-block">
+                                    <i class="fab fa-kakao-f fa-fw"></i> Register with Kakao
                                 </a>
                             </form>
                             <hr>

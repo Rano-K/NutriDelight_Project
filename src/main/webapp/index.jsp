@@ -87,15 +87,15 @@
                             </form>
 							                            
                         </div>
-                        <div class="hero__search__phoneht">
+                        <!--<div class="hero__search__phoneht">
                             <!-- <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
                                 <h5>+65 11.188.888</h5>
                                 <span>support 24/7 time</span>
-                            </div> -->
-                        </div>
+                            </div>
+                        </div>-->
                     </div>
                     <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
                         <div class="hero__text">
