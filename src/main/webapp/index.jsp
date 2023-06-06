@@ -24,7 +24,21 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-
+														<style>
+														    .dropdown-menu {
+														        display: none;
+														        /* 드랍다운 메뉴를 기본적으로 숨깁니다 */
+														        position: absolute;
+														        background-color: white;
+														        padding: 10px;
+														        /* 드랍다운 메뉴의 스타일을 설정합니다 */
+														    }
+														
+														    .hero__search__categories:hover .dropdown-menu {
+														        display: block;
+														        /* 마우스를 올리면 드랍다운 메뉴를 보여줍니다 */
+														    }
+														</style>
 <body>
     <%@ include file="header.jsp"%>
    
@@ -61,10 +75,17 @@
                                 <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
+                                   	 <ul class="dropdown-menu">
+							            <li>알러지 제품목록</li>
+							            <li>칼로리순 제품목록</li>
+							            <li>가격순 제품목록</li>
+							        </ul>
                                 </div>
+                                
                                 <input type="text" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
+							                            
                         </div>
                         <div class="hero__search__phoneht">
                             <!-- <div class="hero__search__phone__icon">
@@ -141,8 +162,8 @@
                         <ul>
                             <li class="active" data-filter="*">All</li>
                             <li data-filter=".oranges">일반상품</li>
-                            <li data-filter=".fresh-meat">가장 많이 찜한 상품</li>
-                            <li data-filter=".vegetables">인기 구독 상품</li>
+                            <li data-filter=".fresh-meat">가장 많이 찜한상품</li>
+                            <li data-filter=".vegetables">md추천상품</li>
                             <!-- <li data-filter=".fastfood">Fastfood</li> -->
                         </ul>
                     </div>
