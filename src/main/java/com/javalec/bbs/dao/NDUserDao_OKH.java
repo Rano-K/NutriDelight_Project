@@ -25,8 +25,10 @@ public class NDUserDao_OKH {
 			e.printStackTrace();
 		}
 	}
-
-	// 오더관련 모든 정보 불러오기 : searchOrders.do
+	
+	//	USER 
+	
+	// 유저관련 모든 정보 불러오기 : admin_searchusers.do
 	public ArrayList<NDUserDto_OKH> searchUser() {
 		ArrayList<NDUserDto_OKH> dtos = new ArrayList<NDUserDto_OKH>();
 		Connection connection = null;
@@ -77,4 +79,9 @@ public class NDUserDao_OKH {
 		}
 		return dtos;
 	}
+	
+	//	USER GRAPH
+	
+	//	남녀 성비 정보 불러오기 : admin_graphusers.do
+	pu
 }

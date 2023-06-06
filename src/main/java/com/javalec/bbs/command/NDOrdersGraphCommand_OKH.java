@@ -50,7 +50,7 @@ public class NDOrdersGraphCommand_OKH implements NDCommand {
 		ArrayList<ArrayList<String>> dataSetbelow = new ArrayList<ArrayList<String>>();
 		ArrayList<String> headerRowbelow = new ArrayList<String>();
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd,E요일");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM.dd (E)");
 		
 		headerRowbelow.add("'날짜'");
 		headerRowbelow.add("'주문 개수'");

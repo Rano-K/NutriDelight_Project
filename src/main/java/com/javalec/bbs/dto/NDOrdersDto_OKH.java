@@ -2,6 +2,7 @@ package com.javalec.bbs.dto;
 
 import java.sql.Timestamp;
 
+
 public class NDOrdersDto_OKH {
 	// Fields
 	int ordercode;
@@ -12,7 +13,6 @@ public class NDOrdersDto_OKH {
 	Timestamp orderdate;
 	Timestamp refunddate;
 	Timestamp deliverydate;
-	
 	int totalsales;
 	String month;
 

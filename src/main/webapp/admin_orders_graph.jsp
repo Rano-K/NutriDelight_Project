@@ -1,4 +1,3 @@
-<%@page import="com.google.gson.Gson"%>
 <%@page import="com.javalec.bbs.dto.NDOrdersDto_OKH"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -58,24 +57,29 @@ ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) reque
 
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
-
-		<!-- Page Heading -->
 		<h1 class="h3 mb-2 text-gray-800">주문 그래프 확인</h1>
-		<!-- DataTales Example -->
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">상품별 주문 그래프</h6>
+		<div class="row">
+			<div class="col-lg-6">
+				<!-- Page Heading -->
+				<!-- DataTales Example -->
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">상품별 주문 그래프</h6>
+					</div>
+					<div class="card-body">
+						<div id="piechart" style="width: 100%; height :500px"></div>
+					</div>
+				</div>
 			</div>
-			<div class="card-body">
-				<div id="piechart" style="height: 700px;"></div>
-			</div>
-		</div>
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">주간 주문 그래프</h6>
-			</div>
-			<div class="card-body">
-				<div id="chart_div" style="height: 700px;"></div>
+			<div class="col-lg-6">
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">주간 주문 그래프</h6>
+					</div>
+					<div class="card-body">
+						<div id="barchart_order" style="width: 100%; height :500px"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

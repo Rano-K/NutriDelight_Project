@@ -31,14 +31,15 @@
 
 <!--Google chart  -->
 <script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="admin/js/user_graph.js"></script>
 
 <!-- sweetalret2 https://wooncloud.com/12 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!--get attribute from java  -->
-	<%
-	ArrayList<ArrayList<String>> dataSetup = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetup");
-	ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetbelow");	
-	%>
+<%
+ArrayList<ArrayList<String>> dataSetup = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetup");
+ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetbelow");
+%>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var dataSetup =
@@ -53,77 +54,48 @@
 <body id="page-top">
 	<%@ include file="admin_toolbar.jsp"%>
 
-	<script type="text/javascript">
-		google.charts.load('current', {
-			'packages' : [ 'corechart' ]
-		});
-		google.charts.setOnLoadCallback(drawChart);
-
-		function drawChart() {
-
-			var data = google.visualization.arrayToDataTable(
-	<%=dataSetup%>
-		);
-
-			var options = {
-					is3D: true
-					
-			};
-
-			var chart = new google.visualization.PieChart(document
-					.getElementById('piechart'));
-
-			chart.draw(data, options);
-		}
-		
-		google.charts.load('current', {packages: ['corechart', 'bar']});
-		google.charts.setOnLoadCallback(drawBasic);
-
-		function drawBasic() {
-
-			var data = google.visualization.arrayToDataTable(
-					<%=dataSetbelow%>
-						);
-
-		      var options = {
-		        chartArea: {width: '50%'},
-		        hAxis: {
-		          title: '주문량',
-		          minValue: 0
-		        },
-		        vAxis: {
-		          title: '날짜'
-		        }
-		      };
-
-		      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-		      chart.draw(data, options);
-		    }
-	</script>
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
-
 		<!-- Page Heading -->
-		<h1 class="h3 mb-2 text-gray-800">주문 그래프 확인</h1>
-		<!-- DataTales Example -->
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">상품별 주문 그래프</h6>
+		<h1 class="h3 mb-2 text-gray-800">유저 성향 그래프 확인</h1>
+		<!-- 1열 -->
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">남녀 성비</h6>
+					</div>
+					<div class="card-body">
+						<div id="piechart1" style="height: 400px;"></div>
+					</div>
+				</div>
 			</div>
-			<div class="card-body">
-				<div id="piechart" style="height: 700px;"></div>
+			<div class="col-lg-6">
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">연령대 별 가입자</h6>
+					</div>
+					<div class="card-body">
+						<div id="piechart2" style="height: 400px;"></div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">주간 주문 그래프</h6>
-			</div>
-			<div class="card-body">
-					<div id="chart_div" style="height: 700px;"></div>
+		<!-- 2열 -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">가입자 추이</h6>
+					</div>
+					<div class="card-body">
+						<div id="chart_div" style="height: 700px;"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+
 	<!-- /.container-fluid -->
 
 	<!-- Scroll to Top Button-->
