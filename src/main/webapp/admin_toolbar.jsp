@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="javax.servlet.http.HttpSession" %>
+	
 <!DOCTYPE html>
 <!-- Page Wrapper -->
+<% HttpSession sessions = request.getSession(); %>
+<% String ID = (String) sessions.getAttribute("ID"); %>
 <div id="wrapper">
 	<!-- Sidebar -->
 	<ul
@@ -152,8 +156,7 @@
 						class="nav-link dropdown-toggle" href="#" id="userDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> <span
-							class="mr-2 d-none d-lg-inline text-gray-600 small">admin
-								id님, 안녕하세요.</span> <i class="fa fa-user"></i>
+							class="mr-2 d-none d-lg-inline text-gray-600 small"><%=ID %>님, 안녕하세요.</span> <i class="fa fa-user"></i>
 					</a> <!-- Dropdown - User Information -->
 						<div
 							class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

@@ -17,11 +17,9 @@ public class NDOrdersGraphCommand_OKH implements NDCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
-		/*
-		 * 상품별 주문 그래프
-		 */
 		// DAO
 		NDProductDao_OKH ndProductDao_OKH = new NDProductDao_OKH();
+		NDOrdersDao_OKH ndOrdersDao_OKH = new NDOrdersDao_OKH();
 
 		// DTO
 		ArrayList<NDProductDto_OKH> dtoProduct = ndProductDao_OKH.searchOrders();
@@ -37,15 +35,7 @@ public class NDOrdersGraphCommand_OKH implements NDCommand {
 			row.add(Integer.toString(productDto.getTotalorders()));
 			dataSetup.add(row);
 		}
-		request.setAttribute("dataSetup", dataSetup);
 		
-		/*
-		 * 주간 주문 그래프
-		 */
-		//	DAO
-		NDOrdersDao_OKH ndOrdersDao_OKH = new NDOrdersDao_OKH();
-		
-		//	DTO
 		ArrayList<NDOrdersDto_OKH> dtoOrder = ndOrdersDao_OKH.searchWeekorders();
 		ArrayList<ArrayList<String>> dataSetbelow = new ArrayList<ArrayList<String>>();
 		ArrayList<String> headerRowbelow = new ArrayList<String>();
@@ -62,6 +52,9 @@ public class NDOrdersGraphCommand_OKH implements NDCommand {
 			row.add(Integer.toString(ordersDto.getCount()));
 			dataSetbelow.add(row);
 		}
+		
+		//	SetParam
+		request.setAttribute("dataSetup", dataSetup);
 		request.setAttribute("dataSetbelow", dataSetbelow);
 	}
 

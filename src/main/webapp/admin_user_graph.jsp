@@ -37,18 +37,22 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!--get attribute from java  -->
 <%
-ArrayList<ArrayList<String>> dataSetup = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetup");
-ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetbelow");
+ArrayList<ArrayList<String>> dataSetGender = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetGender");
+ArrayList<ArrayList<String>> dataSetAge = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetAge");
+ArrayList<ArrayList<String>> dataSetInsert = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetInsert");
 %>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var dataSetup =
-<%=dataSetup%>
+		var dataSetGender =
+<%=dataSetGender %>
 	;
-		var dataSetbelow =
-<%=dataSetbelow%>
+		var dataSetAge =
+<%=dataSetAge %>
 	;
-		dataConnect(dataSetup, dataSetbelow);
+		var dataSetInsert =
+<%=dataSetInsert %>
+	;
+		dataConnect(dataSetGender, dataSetAge, dataSetInsert);
 	});
 </script>
 <body id="page-top">
@@ -66,7 +70,7 @@ ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) reque
 						<h6 class="m-0 font-weight-bold text-primary">남녀 성비</h6>
 					</div>
 					<div class="card-body">
-						<div id="piechart1" style="height: 400px;"></div>
+						<div id="pieGender" style="width : 100%; height: 400px;"></div>
 					</div>
 				</div>
 			</div>
@@ -76,7 +80,7 @@ ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) reque
 						<h6 class="m-0 font-weight-bold text-primary">연령대 별 가입자</h6>
 					</div>
 					<div class="card-body">
-						<div id="piechart2" style="height: 400px;"></div>
+						<div id="pieAge" style="width : 100%; height: 400px;"></div>
 					</div>
 				</div>
 			</div>
@@ -89,7 +93,7 @@ ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) reque
 						<h6 class="m-0 font-weight-bold text-primary">가입자 추이</h6>
 					</div>
 					<div class="card-body">
-						<div id="chart_div" style="height: 700px;"></div>
+						<div id="barInsert" style="width : 100%;"></div>
 					</div>
 				</div>
 			</div>

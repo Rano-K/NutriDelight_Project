@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.javalec.bbs.command.NDCartCommand_KMS;
 import com.javalec.bbs.command.NDCommand;
 import com.javalec.bbs.command.NDLogoutCommand;
 import com.javalec.bbs.command.NDMainAdminCommand_OKH;

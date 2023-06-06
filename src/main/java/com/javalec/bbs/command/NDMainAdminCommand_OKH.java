@@ -28,7 +28,7 @@ public class NDMainAdminCommand_OKH implements NDCommand {
 		//	남은 주문 처리 비율 가져오기
 		int count = orderDao.searchordersHowmany();
 		int toDo = orderDao.searchtodo();
-		String percenttodo = formatter.format(((double)toDo/count)*100);
+		String percenttodo = formatter.format((100-((double)toDo/count)*100));
 		//	이번달 구독갯수
 		String subscribeSales = formatter.format(subscribeDao.searchsubscribeSalessolo());
 

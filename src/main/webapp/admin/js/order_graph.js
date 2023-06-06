@@ -5,7 +5,7 @@
 function dataConnect(datas, datasb) {
 	let dataSetup = datas;
 	let dataSetbelow = datasb;
-	
+
 
 	google.charts.load('current', {
 		'packages': ['corechart']
@@ -35,9 +35,11 @@ function dataConnect(datas, datasb) {
 		var data = google.visualization.arrayToDataTable(dataSetbelow);
 
 		var options = {
+			vAxis: {
+				format: 0
+			}
 		};
-
-		var chart = new google.visualization.BarChart(document.getElementById('barchart_order'));
+		var chart = new google.visualization.LineChart(document.getElementById('barchart_order'));
 
 		chart.draw(data, options);
 	}
