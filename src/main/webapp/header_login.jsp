@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.cㅐㅍss" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -38,7 +38,7 @@
 					<div class="header__top__right">
 						<div class="header__top__right__auth">
 							<c:if test="${empty sessionScope.ID}">
-								<a href="userRegister.do"><i class="fa fa-user"></i> Login</a>
+								<a href="login.do"><i class="fa fa-user"></i> Login</a>
 							</c:if>
                          		<h2><a href="./main.do">Home</a></h2>
 							</div>

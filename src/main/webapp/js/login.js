@@ -11,14 +11,13 @@
 	const regExpEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
 //	const regExpAdmin = /^[admin|root|insert|update|revoke|submit|select|delete|create|drop]+*$/
 	
-	const form = document.member
-	const id = form.uid.value
-	const name = form.uname.value
-	const passwd1 = form.upassword1.value
-	const passwd2 = form.upassword2.value
-	const phone = form.fphone.value + "-" + form.mphone.value + "-" + form.lphone.value
-	const address = form.uaddress.value
-	const email = form.uemail.value
+	const id = form.getElementById("userid").value
+	const name = form.getElementById("name").value
+	const passwd1 = form.getElementById("password1").value
+	const passwd2 = form.getElementById("password2").value
+	const phone = form.getElementById("telno").value
+	const address = form.getElementById("address").value
+	const email = form.getElementById("email").value
 	
 	if(!regExpId.test(id)){
 		alert("아이디는 문자로 시작해 주세요.")
@@ -83,13 +82,15 @@
 }
 	
 function checkPassword(){
-	var password1 = document.member.upassword1.value
-	var password2 = document.member.upassword2.value
+	var password1 = document.getElementById("password1").value
+	var password2 = document.getElementById("password2").value
 	
 	if(password1 === password2){
-		document.member.passwordStatus.value = "비밀번호 일치"
+		document.getElementById("passwordStatus").value = "비밀번호 일치";
+		document.getElementById("passwordStatus").style.color = "BLUE";
 	} else{
-		document.member.passwordStatus.value = "비밀번호 불일치"
+		document.getElementById("passwordStatus").style.color = "RED";
+		document.getElementById("passwordStatus").value = "비밀번호 불일치";
 	}
 }
 
@@ -157,4 +158,26 @@ function checkUser(getResult, getId){
 		alert('아이디 혹은 비밀번호가 틀렸습니다. 다시 시도해 주세요.')
 		window.location.href = "login.do"
 	}
+}
+
+function checkid(){
+	
+	
+}
+
+function setStatusVar(varStat){
+	var strvarStat = '"' + varStat + '"';
+	
+	if(strvarStat === "allergyCheck"){
+		document.getElementById("allergyCheck").value = '1';
+	}else{
+		document.getElementById("allergyCheck").value = '0';
+	}
+	if(strvarStat === "idCheck"){
+		document.getElementById("idCheck").value = '1';
+	}else{
+		document.getElementById("idCheck").value = '0';
+	}
+	
+	$("#allergyModal").modal("hide");
 }

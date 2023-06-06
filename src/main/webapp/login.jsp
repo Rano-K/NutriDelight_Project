@@ -72,11 +72,11 @@
                                             Login
                                         </a>
                                         <hr>
-                                        <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ef894ee905a0643b7844daf7341d7569&redirect_uri=http://localhost:8080/Season2_Team4_Main/" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Kakao
+                                        <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ef894ee905a0643b7844daf7341d7569&redirect_uri=http://localhost:8080/Season2_Team4_Main/" class="btn btn-kakao btn-user btn-block">
+                                            <i class="fas fa-comment-dots fa-flip-horizontal"></i> Login with Kakao
                                         </a>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Google
+                                            <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
                                     </form>
                                     <hr>
