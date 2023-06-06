@@ -47,7 +47,7 @@ public class NDUserSearchCommand_OKH implements NDCommand {
 			if (userDto.getInvalidate() == 1) {
 				row.add("'회원'");
 			} else {
-				row.add("'회원 탈퇴 중'"); 
+				row.add("'탈퇴한 회원'"); 
 			}
 			dataSet.add(row);
 		}
