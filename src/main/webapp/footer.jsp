@@ -8,7 +8,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/featured/로고.png" alt=""></a>
+                            <a href="./index.jsp"><img src="http://okrie.kro.kr:25567/images/logo_long.png" alt=""></a>
                         </div>
                         <ul>
                             <li>서울특별시 강남구 역삼동 831-3 한국빌딩-4층</li>

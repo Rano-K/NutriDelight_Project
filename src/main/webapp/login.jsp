@@ -1,15 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="로그인 화면">
+    <meta name="author" content="Okrie">
 
-    <title>SB Admin 2 - Login</title>
+    <title>NutriDelights 로그인</title>
 
     <!-- Custom fonts for this template-->
     <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,10 +21,19 @@
 
     <!-- Custom styles for this template-->
     <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
-
+	<script src="js/login.js"></script>
 </head>
 
 <body class="bg-gradient-primary">
+	<!-- header 파일 지정 -->
+	<%@ include file="header_login.jsp"%>
+	<c:if test="${not empty sessionScope.ID}">
+		<script>
+			var getResult = '${sessionScope.login}'
+			var getId = '${sessionScope.ID}'
+			checkUser(getResult, getId);
+		</script>
+	</c:if>
 
     <div class="container">
 
@@ -39,34 +50,33 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">로그인</h1>
                                     </div>
                                     <form class="user">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                            <input type="text" class="form-control form-control-user"
+                                                name="uid" id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Enter ID">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                name="upw" id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <a href="#" class="btn btn-primary btn-user btn-block" onclick="setIdpw()">
                                             Login
                                         </a>
                                         <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                        <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ef894ee905a0643b7844daf7341d7569&redirect_uri=http://localhost:8080/Season2_Team4_Main/" class="btn btn-facebook btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Login with Kakao
                                         </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Google
                                         </a>
                                     </form>
                                     <hr>
@@ -87,7 +97,9 @@
         </div>
 
     </div>
-
+	
+	<!-- footer 파일 지정 -->
+	<%-- <%@ include file="footer.jsp"%> --%>
     <!-- Bootstrap core JavaScript-->
     <script src="admin/vendor/jquery/jquery.min.js"></script>
     <script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -97,7 +109,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="admin/js/sb-admin-2.min.js"></script>
-
+	
 </body>
 
 </html>
