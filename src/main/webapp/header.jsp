@@ -4,7 +4,7 @@
 <!-- Dont Touch!!!!!!!!!!!!! -->
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Neutri Delights">
+    <meta name="description" content="Nutri Delights">
     <meta name="keywords" content="html, delight, neutri">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -162,7 +162,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="heart.do"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="cart.do"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="Cart.do"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
                         <div class="header__cart__price">총금액 <span>32,000</span></div>
                     </div>
