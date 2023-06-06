@@ -23,6 +23,7 @@ import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserLoginCommand;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
+import com.javalec.bbs.command.SUserCheckCommand;
 
 /**
  * Servlet implementation class NDFrontController
@@ -108,8 +109,10 @@ public class NDFrontController extends HttpServlet {
 		//header-top : 로그인했을 때 : id_session값이 있을 때
 		case "/logout.do":
 			viewPage = "main.do";
+			break;
 		case "/mypage.do":
 			viewPage = "myPage.jsp";
+			break;
 		//header-top : 로그인안했을 때 : id_session값이 없을 때
 		case "/login.do":
 			viewPage = "login.jsp";
@@ -119,9 +122,17 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "login.do";
 			break;
+		case "/registerPage.do":
+			// db에서 알러지 정보 불러와야 함
+			viewPage = "register.jsp";
+			break;
 		case "/register.do":
 			viewPage = "register.jsp";
-			
+			break;
+		case "/duplicate.do":
+			// id 찾아서 중복 체크 해야함
+			viewPage = "idDupleCheck.jsp";
+			break;
 		/*
 		 * Admin 구역
 		 */
