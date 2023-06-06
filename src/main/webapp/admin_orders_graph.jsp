@@ -1,3 +1,4 @@
+<%@page import="com.google.gson.Gson"%>
 <%@page import="com.javalec.bbs.dto.NDOrdersDto_OKH"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,63 +20,42 @@
 <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 <!-- sweetalret2 https://wooncloud.com/12 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="admin/vendor/jquery/jquery.min.js"></script>
+<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.min.js"></script>
+
+<!--Google chart  -->
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="admin/js/order_graph.js"></script>
+
+<!--get attribute from java  -->
+<%
+ArrayList<ArrayList<String>> dataSetup = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetup");
+ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetbelow");
+%>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var dataSetup =
+<%=dataSetup%>
+	;
+		var dataSetbelow =
+<%=dataSetbelow%>
+	;
+		dataConnect(dataSetup, dataSetbelow);
+	});
+</script>
+</head>
+
 <body id="page-top">
 	<%@ include file="admin_toolbar.jsp"%>
-	<%
-	ArrayList<ArrayList<String>> dataSetup = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetup");
-	ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetbelow");	
-	%>
 
-	<script type="text/javascript"
-		src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-		google.charts.load('current', {
-			'packages' : [ 'corechart' ]
-		});
-		google.charts.setOnLoadCallback(drawChart);
-
-		function drawChart() {
-
-			var data = google.visualization.arrayToDataTable(
-	<%=dataSetup%>
-		);
-
-			var options = {
-					is3D: true
-					
-			};
-
-			var chart = new google.visualization.PieChart(document
-					.getElementById('piechart'));
-
-			chart.draw(data, options);
-		}
-		
-		google.charts.load('current', {packages: ['corechart', 'bar']});
-		google.charts.setOnLoadCallback(drawBasic);
-
-		function drawBasic() {
-
-			var data = google.visualization.arrayToDataTable(
-					<%=dataSetbelow%>
-						);
-
-		      var options = {
-		        chartArea: {width: '50%'},
-		        hAxis: {
-		          title: '주문량',
-		          minValue: 0
-		        },
-		        vAxis: {
-		          title: '날짜'
-		        }
-		      };
-
-		      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-
-		      chart.draw(data, options);
-		    }
-	</script>
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
 
@@ -95,7 +75,7 @@
 				<h6 class="m-0 font-weight-bold text-primary">주간 주문 그래프</h6>
 			</div>
 			<div class="card-body">
-					<div id="chart_div" style="height: 700px;"></div>
+				<div id="chart_div" style="height: 700px;"></div>
 			</div>
 		</div>
 	</div>
@@ -105,14 +85,5 @@
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
 
-	<!-- Bootstrap core JavaScript-->
-	<script src="admin/vendor/jquery/jquery.min.js"></script>
-	<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="admin/js/sb-admin-2.min.js"></script>
 </body>
 </html>

@@ -3,14 +3,11 @@
 <!DOCTYPE html>
  <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin_main.do">
-            	<img alt="로고" src="admin/img/main_logo.png" width ="70">
-	
+            	<img alt="로고" src="http://okrie.kro.kr:25567/images/logo.png" width = "60">
             </a>
 
             <!-- Divider -->
@@ -163,12 +160,9 @@
                                         <span class="font-weight-bold">A new monthly report is ready to download!</span>
                                     </div>
                                 </a>
-                         
-                
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
                         </li>
-
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">

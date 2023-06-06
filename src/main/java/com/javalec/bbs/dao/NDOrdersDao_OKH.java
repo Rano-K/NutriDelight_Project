@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -29,8 +31,8 @@ public class NDOrdersDao_OKH {
 
 	// Method
 	//	매출액그래프 가져오기  admin_main.do
-	public int[] searchyearorders() {
-		int[] data = new int[12];
+	public ArrayList<NDOrdersDto_OKH> searchyearorders() {
+		ArrayList<NDOrdersDto_OKH> dtos = new ArrayList<NDOrdersDto_OKH>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -38,20 +40,24 @@ public class NDOrdersDao_OKH {
 		try {
 			connection = dataSource.getConnection();
 			String query = "SELECT DATE_FORMAT(DATE_ADD(CONCAT(YEAR(CURDATE()), '-01-01'), INTERVAL dates.date - 1 MONTH), '%c월') AS month, "
-					+ "       COALESCE(SUM(IFNULL(o.count * m.price, 0)), 0) AS totalsales"
-					+ " FROM ( SELECT 1 AS date UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4"
-					+ "    UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8"
-					+ "    UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL SELECT 11 UNION ALL SELECT 12 ) dates"
-					+ " LEFT JOIN orders o ON MONTH(o.orderdate) = dates.date AND o.refunddate IS NULL"
-					+ " LEFT JOIN manage m ON o.pcode = m.pcode\n"
-					+ " GROUP BY dates.date"
-					+ " ORDER BY dates.date";
+					+ " COALESCE(SUM(IFNULL(o.count * m.price, 0)), 0) AS totalsales"
+			        + " FROM ( SELECT 1 AS date UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4"
+			        + "    UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8"
+			        + "    UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL SELECT 11 UNION ALL SELECT 12 ) dates"
+			        + " LEFT JOIN orders o ON MONTH(o.orderdate) = dates.date AND o.refunddate IS NULL"
+			        + " LEFT JOIN manage m ON o.pcode = m.pcode\n"
+			        + " GROUP BY dates.date"
+			        + " ORDER BY dates.date";
+
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
-
+			
 			while (resultSet.next()) {
+				String month = resultSet.getString("month");
 				int totalsales = resultSet.getInt("totalsales");
-				data[resultSet.getInt("month") - 1] = totalsales;
+				NDOrdersDto_OKH dto = new NDOrdersDto_OKH(month, totalsales);
+				dtos.add(dto);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +73,8 @@ public class NDOrdersDao_OKH {
 				e2.printStackTrace();
 			}
 		}
-		return data;
+		
+		return dtos;
 	}
 	
 	/*

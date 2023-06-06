@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>주문 그래프</title>
+<title>유저 그래프</title>
 <!-- Custom fonts for this template -->
 <link href="admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
@@ -19,15 +19,40 @@
 <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 <!-- sweetalret2 https://wooncloud.com/12 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<body id="page-top">
-	<%@ include file="admin_toolbar.jsp"%>
+<!-- Bootstrap core JavaScript-->
+<script src="admin/vendor/jquery/jquery.min.js"></script>
+<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.min.js"></script>
+
+<!--Google chart  -->
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- sweetalret2 https://wooncloud.com/12 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!--get attribute from java  -->
 	<%
 	ArrayList<ArrayList<String>> dataSetup = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetup");
 	ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetbelow");	
 	%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var dataSetup =
+<%=dataSetup%>
+	;
+		var dataSetbelow =
+<%=dataSetbelow%>
+	;
+		dataConnect(dataSetup, dataSetbelow);
+	});
+</script>
+<body id="page-top">
+	<%@ include file="admin_toolbar.jsp"%>
 
-	<script type="text/javascript"
-		src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
 		google.charts.load('current', {
 			'packages' : [ 'corechart' ]
@@ -105,14 +130,5 @@
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
 
-	<!-- Bootstrap core JavaScript-->
-	<script src="admin/vendor/jquery/jquery.min.js"></script>
-	<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="admin/js/sb-admin-2.min.js"></script>
 </body>
 </html>

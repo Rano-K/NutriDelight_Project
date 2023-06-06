@@ -19,7 +19,6 @@
 <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 <!-- sweetalret2 https://wooncloud.com/12 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
 <body id="page-top">
 	<%@ include file="admin_toolbar.jsp"%>
 	<!-- Begin Page Content -->
@@ -34,50 +33,66 @@
 				<h6 class="m-0 font-weight-bold text-primary">주문 목록 업데이트</h6>
 			</div>
 			<div class="card-body">
-				<form action="admin_updateorders_checked.do" class="user" method="get">
+				<form action="admin_updateorders_checked.do" class="user"
+					method="get">
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">주문 코드</h6>
+							<h6 class="m-3 font-weight-bold text-primary order-code-label">주문
+								코드</h6>
 						</div>
 						<div class="col-sm-6">
-							<input style="text-align: left" type="password" class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${dtoOrders[0].ordercode}" disabled="disabled">
+							<input style="text-align: left" type="password"
+								class="form-control form-control-user"
+								id="exampleRepeatPassword"
+								placeholder="${dtoOrders[0].ordercode}" disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">유저 아이디</h6>
+							<h6 class="m-3 font-weight-bold text-primary order-code-label">유저
+								아이디</h6>
 						</div>
 						<div class="col-sm-6">
-							<input style="text-align: left" type="password" class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${dtoOrders[0].userid}" disabled="disabled">
+							<input style="text-align: left" type="password"
+								class="form-control form-control-user"
+								id="exampleRepeatPassword" placeholder="${dtoOrders[0].userid}"
+								disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">제품 코드</h6>
+							<h6 class="m-3 font-weight-bold text-primary order-code-label">제품
+								코드</h6>
 						</div>
 						<div class="col-sm-6">
-							<input style="text-align: left" type="password" class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${dtoOrders[0].pcode}" disabled="disabled">
+							<input style="text-align: left" type="password"
+								class="form-control form-control-user"
+								id="exampleRepeatPassword" placeholder="${dtoOrders[0].pcode}"
+								disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">배송 주소</h6>
+							<h6 class="m-3 font-weight-bold text-primary order-code-label">배송
+								주소</h6>
 						</div>
 						<div class="col-sm-6">
-							<input style="text-align: left" type="password" class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${dtoOrders[0].address}" disabled="disabled">
+							<input style="text-align: left" type="password"
+								class="form-control form-control-user"
+								id="exampleRepeatPassword" placeholder="${dtoOrders[0].address}"
+								disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">주문 수량</h6>
+							<h6 class="m-3 font-weight-bold text-primary order-code-label">주문
+								수량</h6>
 						</div>
 						<div class="col-sm-6">
-							<input style="text-align: left" type="password" class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${dtoOrders[0].count}" disabled="disabled">
+							<input style="text-align: left" type="password"
+								class="form-control form-control-user"
+								id="exampleRepeatPassword" placeholder="${dtoOrders[0].count}"
+								disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -85,48 +100,59 @@
 							<h6 class="m-3 font-weight-bold text-primary order-code-label">재고량</h6>
 						</div>
 						<div class="col-sm-6">
-							<input style="text-align: left" type="password" class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${Stock}" disabled="disabled">
+							<input style="text-align: left" type="password"
+								class="form-control form-control-user"
+								id="exampleRepeatPassword" placeholder="${Stock}"
+								disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">주문 날짜</h6>
+							<h6 class="m-3 font-weight-bold text-primary order-code-label">주문
+								날짜</h6>
 						</div>
 						<div class="col-sm-6">
-							<input style="text-align: left" type="password" class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${dtoOrders[0].orderdate}" disabled="disabled">
+							<input style="text-align: left" type="password"
+								class="form-control form-control-user"
+								id="exampleRepeatPassword"
+								placeholder="${dtoOrders[0].orderdate}" disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">환불 날짜</h6>
+							<h6 class="m-3 font-weight-bold text-primary order-code-label">환불
+								날짜</h6>
 						</div>
 						<div class="col-sm-6">
-							<input style="text-align: left" type="password" class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${Refunddate}" disabled="disabled">
+							<input style="text-align: left" type="password"
+								class="form-control form-control-user"
+								id="exampleRepeatPassword" placeholder="${Refunddate}"
+								disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">배송 날짜</h6>
+							<h6 class="m-3 font-weight-bold text-primary order-code-label">배송
+								날짜</h6>
 						</div>
 						<div class="col-sm-6">
-							<input style="text-align: left" type="password" class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${Deliverydate}" disabled="disabled">
+							<input style="text-align: left" type="password"
+								class="form-control form-control-user"
+								id="exampleRepeatPassword" placeholder="${Deliverydate}"
+								disabled="disabled">
 						</div>
 					</div>
 					<hr>
-						<div class="form-group row">
+					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
-					<a href="admin_updateorders_checked.do?ordercode=${dtoOrders[0].ordercode}&insertmode=1" id="confirmRefund" class="btn btn-google btn-user btn-block">
-						 환불 확인</a> 
+							<a id="confirmRefund" class="btn btn-google btn-user btn-block">
+								환불 확인</a>
 						</div>
 						<div class="col-sm-6">
-					<a href="admin_updateorders_checked.do?ordercode=${dtoOrders[0].ordercode}&insertmode=2" id="confirmDelivery" class="btn btn-facebook btn-user btn-block">
-						배송 확인</a>
+							<a id="confirmDelivery"
+								class="btn btn-facebook btn-user btn-block"> 배송 확인</a>
 						</div>
-					
+
 					</div>
 				</form>
 			</div>
@@ -148,8 +174,8 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="admin/js/sb-admin-2.min.js"></script>
-	
-	
+
+
 	<!-- modal  -->
 	<script>
         $("#confirmRefund").click(function () {
@@ -168,6 +194,7 @@
                         '환불 처리되었습니다.',
                         'success'
                     )
+                      window.location.href= "admin_updateorders_checked.do?ordercode=${dtoOrders[0].ordercode}&insertmode=1";
                 }
             })
         });
@@ -185,9 +212,10 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire(
-                        '배송이 완료처리되었습니다.',
-                        'success'
+                     '배송이 완료처리되었습니다.',
+                    'success'
                     )
+                    window.location.href="admin_updateorders_checked.do?ordercode=${dtoOrders[0].ordercode}&insertmode=2";
                 }
             })
         });

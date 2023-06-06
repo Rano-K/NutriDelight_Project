@@ -1,3 +1,4 @@
+<%@page import="java.util.Arrays"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,23 +12,41 @@
 
 <title>관리자 메인페이지</title>
 
-<!-- Custom fonts for this template-->
+<!-- Custom fonts for this template -->
 <link href="admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
-
-<!-- Custom styles for this template-->
+<!-- Custom styles for this template -->
 <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
+<!-- sweetalret2 https://wooncloud.com/12 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="admin/vendor/jquery/jquery.min.js"></script>
+<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.min.js"></script>
+
+<!--Google chart  -->
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- sweetalret2 https://wooncloud.com/12 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<!--get attribute from java  -->
+
 
 </head>
 
 <body id="page-top">
 	<%@ include file="admin_toolbar.jsp"%>
-	<%
-	int [] yearordersdata = (int [])request.getAttribute("yearordersData");
-	%>
+
+
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
 
@@ -192,59 +211,26 @@
 					<!-- Card Body -->
 					<div class="card-body">
 						<div class="chart-pie pt-4 pb-2">
-							<canvas id="myPieChart"></canvas>
+							<!-- 구글 차트 -->
 						</div>
 						<div class="mt-4 text-center small">
-							<span class="mr-2"> <i class="fas fa-circle text-primary"></i>
-								구독자수
-							</span> <span class="mr-2"> <i class="fas fa-circle text-success"></i>
-								단일품목 판매
-							</span>
+							<!-- 구글 차트 -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
 		<!-- Content Row -->
 		<div class="row">
-
 			<!-- Content Column -->
 			<div class="col-lg-6 mb-4"></div>
 		</div>
 	</div>
 	<!-- /.container-fluid -->
-
-	</div>
-	<!-- End of Main Content -->
-
-	</div>
-	<!-- End of Content Wrapper -->
-
-	</div>
-	<!-- End of Page Wrapper -->
-
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
 	</a>
-	<!-- Bootstrap core JavaScript-->
-	<script src="admin/vendor/jquery/jquery.min.js"></script>
-	<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="admin/js/sb-admin-2.min.js"></script>
-
-	<!-- Page level plugins -->
-	<script src="admin/vendor/chart.js/Chart.min.js"></script>
-
-	<!-- Page level custom scripts -->
-	<script src="admin/js/admin_main.js"></script>
-	<script src="admin/js/demo/chart-pie-demo.js"></script>
-
 </body>
 
 </html>

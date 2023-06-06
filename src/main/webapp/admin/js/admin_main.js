@@ -1,9 +1,7 @@
 /**
  * 
  */
-// Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#858796';
+
 
 function number_format(number, decimals, dec_point, thousands_sep) {
 	// *     example: number_format(1234.56, 2, ',', ' ');
@@ -30,8 +28,17 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 	return s.join(dec);
 }
 
+
+// Set new default font family and font color to mimic Bootstrap's default styling
+console.log(typeof getParam);
+typeof getParam;
+
+
+Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
+
 var myLineChart = new Chart(ctx, {
 	type: 'line',
 	data: {
@@ -49,7 +56,8 @@ var myLineChart = new Chart(ctx, {
 			pointHoverBorderColor: "rgba(78, 115, 223, 1)",
 			pointHitRadius: 10,
 			pointBorderWidth: 2,
-			data: <%=yearordersdata%>
+			data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10000]
+
 		}],
 	},
 	options: {
