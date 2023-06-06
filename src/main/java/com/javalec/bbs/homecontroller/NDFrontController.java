@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.bbs.command.NDCartCommand_KMS;
 import com.javalec.bbs.command.NDCommand;
+import com.javalec.bbs.command.NDLogoutCommand;
 import com.javalec.bbs.command.NDMainAdminCommand_OKH;
 import com.javalec.bbs.command.NDMainCommand_KMS;
 import com.javalec.bbs.command.NDOrdersCheckCommand_OKH;
@@ -107,6 +108,8 @@ public class NDFrontController extends HttpServlet {
 			
 		//header-top : 로그인했을 때 : id_session값이 있을 때
 		case "/logout.do":
+			command = new NDLogoutCommand();
+			command.execute(request, response);
 			viewPage = "main.do";
 			break;
 		case "/mypage.do":
@@ -126,6 +129,7 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "register.jsp";
 			break;
 		case "/register.do":
+			
 			viewPage = "register.jsp";
 			break;
 		case "/duplicate.do":
