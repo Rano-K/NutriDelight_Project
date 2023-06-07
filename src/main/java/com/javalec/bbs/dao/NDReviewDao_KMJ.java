@@ -48,11 +48,11 @@ public class NDReviewDao_KMJ {
 				String contexts = rs.getString(3);
 				String date = rs.getString(4);
 				String image = rs.getString(5);
-				int layer = rs.getInt(5);
-				String adminid = rs.getString(6);
-				int parent = rs.getInt(7);
+				int layer = rs.getInt(6);
+				String adminid = rs.getString(7);
+				int parent = rs.getInt(8);
 				
-				NDReviewDto_KMJ dto = new NDReviewDto_KMJ(userid, likes, contexts, date, image, layer, adminid,parent);
+				NDReviewDto_KMJ dto = new NDReviewDto_KMJ(userid, likes, contexts, date, image, layer, adminid, parent);
 				dtos.add(dto);
 			}
 			

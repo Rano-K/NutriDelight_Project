@@ -121,9 +121,10 @@
 
 								</thead>
 								<tbody>
-								<c:forEach items="${RList}" var="dto" varStatus="status">
 								
-								<%-- <c:if test="${dto.layer eq 1}"> --%>
+								<c:forEach items="${RList}" var="dto" varStatus="status">
+									<p>${dto.layer}</p>
+									<c:if test="${dto.layer == 1}">
 									<tr>
 										<th scope="row">${status.count}</th>
 										<td colspan="2">
@@ -132,9 +133,9 @@
 													<td>
 														<p>
 															${dto.userid}
-															<%-- <c:if test="${dto.userid eq null}">
+															<c:if test="${dto.userid == null}">
 																	${dto.adminid}
-															</c:if> --%>
+															</c:if>
 														</p>
 														<p>${dto.date}</p>
 														<p>${PList}</p>
@@ -151,13 +152,18 @@
 													<td>
 														<input value="더보기" onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '숨기기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '더보기';}" type="button" />
 														<div style="display:none;">
-<%-- 														<c:if test="${dto.layer!=1}"> --%>
-<%-- 															<c:if test="${param.parent eq dto.parent}"> --%>
+														<c:if test="${dto.layer!=1}">
+															<c:if test="${param.parent == dto.parent}">
 																<table>
 																		<tr>
 																			<td>
-																				<p>댓글 쓴 사람 아이디</p>
-																				<p>댓글 내용</p>
+																				<p>
+																				${dto.userid}
+																				<c:if test="${dto.userid == null}">
+																				${dto.adminid}
+																				</c:if>
+																				</p>
+																				<p>${dto.context }</p>
 																				<p>
 																					좋아요 수 : 0 <a href="#" class="primary-btn">어우 좋아요</a>
 																				</p>
@@ -165,8 +171,8 @@
 																			<td>작성일자 : 23.06.05</td>
 																		<tr>
 																</table>
-<%-- 															</c:if> --%>
-<%-- 														</c:if> --%>
+															</c:if>
+														</c:if>
 															
 														</div>
 														
@@ -178,7 +184,10 @@
 										</td>
 
 									</tr>
-								<%-- </c:if> --%>
+									</c:if>							
+
+									
+
 									
 									
 									</c:forEach>
