@@ -12,11 +12,13 @@ public class NDUserDto_OKH {
 	String telno;
 	String address;
 	String email;
+	String age_group;
 	String allergy;
 	Timestamp insertdate;
 	int invalidate;
 	
 	int totalbuying;
+	int count;
 	
 	//	Constructor
 	public NDUserDto_OKH() {
@@ -41,7 +43,42 @@ public class NDUserDto_OKH {
 	}
 	
 	
+	public NDUserDto_OKH(String gender, int count) {
+		super();
+		this.gender = gender;
+		this.count = count;
+	}
+	
+	public NDUserDto_OKH(Timestamp insertdate, int count) {
+		super();
+		this.insertdate = insertdate;
+		this.count = count;
+	}
+
+	public NDUserDto_OKH(int count,String age_group) {
+		super();
+		this.age_group = age_group;
+		this.count = count;
+	}
+	
 	//	Method G/S
+
+
+	public String getAge_group() {
+		return age_group;
+	}
+
+	public void setAge_group(String age_group) {
+		this.age_group = age_group;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 
 	public String getUserid() {
 		return userid;

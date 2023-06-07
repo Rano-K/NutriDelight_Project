@@ -12,7 +12,6 @@ public class NDOrdersCheckCommand_OKH implements NDCommand {
 		// TODO Auto-generated method stub
 		int ordercode = Integer.parseInt(request.getParameter("ordercode"));
 		int insertmode = Integer.parseInt(request.getParameter("insertmode"));
-		System.out.println(insertmode);
 		
 		//	DAO
 		NDOrdersDao_OKH ordersDao_OKH = new NDOrdersDao_OKH();

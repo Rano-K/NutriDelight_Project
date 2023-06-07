@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -17,7 +18,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.cㅐㅍss" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -25,42 +26,28 @@
 
 <body>
 <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__left">
-                            <a href="./index.jsp"><img src="http://okrie.kro.kr:25567/images/logo_long.png" alt="" height="50"></a>
-                        </div>
-                    </div>
-                     <div class="col-lg-6 col-md-6">
-                        <div class="header__top__right">
-                           <!--  <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div> -->
-                            <!-- <div class="header__top__right__language">
-                                <img src="img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div> -->
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> 로그인안했을 때: 회원가입,로그인했을 때:myPage</a>
-                                 
-                           		<h2><a href="./index.html">Home</a></h2>
-                       		    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
+	<div class="header__top">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<div class="header__top__left">
+						<a href="./index.jsp"><img src="http://okrie.kro.kr:25567/images/logo_long.png" alt="" height="50"></a>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="header__top__right">
+						<div class="header__top__right__auth">
+							<c:if test="${empty sessionScope.ID}">
+								<a href="login.do"><i class="fa fa-user"></i> Login</a>
+							</c:if>
+                         		<h2><a href="./main.do">Home</a></h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+<!-- Header Section End -->
+</body>
 </html>

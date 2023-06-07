@@ -4,7 +4,7 @@
 <!-- Dont Touch!!!!!!!!!!!!! -->
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Neutri Delights">
+    <meta name="description" content="Nutri Delights">
     <meta name="keywords" content="html, delight, neutri">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -118,12 +118,12 @@
                                 </ul>
                             </div> -->
                             <div class="header__top__right__auth">
-                            	<c:if test="${not empty session}">
+                            	<c:if test="${not empty sessionScope.ID}">
                             		<a href="Logout.do"><i class="fa fa-user">Logout</i></a>
 									<a href="mypage.do"><i class="fa fa-user">MyPage</i></a>
 								    <!-- id session이 있는  처리할 내용 -->
 								</c:if>
-								<c:if test="${empty session}">
+								<c:if test="${empty sessionScope.ID}">
 									<a href="login.do"><i class="fa fa-user">Login</i></a>
 									<a href="register.do"><i class="fa fa-user">Register</i></a>
 								    <!-- id session이 없는 경우 처리할 내용 -->
@@ -162,9 +162,9 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="heart.do"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="cart.do"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="Cart.do"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
-                        <div class="header__cart__price">총금액 <span>32,000</span></div>
+                        <div class="header__cart__price">총금액 <span>금액해야돼</span></div>
                     </div>
                 </div>
             </div>
