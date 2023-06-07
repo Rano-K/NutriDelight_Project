@@ -78,4 +78,37 @@ public ArrayList<NDUserCartDto_LYJ> list(String userid) {
 	
 	return ndUserCartDto_LYJs;
 }
+
+
+public void delete(String seq) {
+	
+	
+	
+	Connection connection = null;						
+	PreparedStatement preparedStatement = null;			
+	
+	try {
+		connection = dataSource.getConnection();			
+		String query = "DELETE FROM cart WHERE seq = ?";		
+		preparedStatement = connection.prepareStatement(query);	
+	    preparedStatement.setString(1, seq);
+	    preparedStatement.executeUpdate();	
+		
+	} catch (Exception e) {		
+		e.printStackTrace();	
+	
+		
+	}finally {  
+
+		try {
+			
+			if(preparedStatement != null) preparedStatement.close();	
+			if(connection != null) connection.close();					
+		}catch (Exception e) {			
+			e.printStackTrace();		
+		}
+	}
+	
+
+}
 }

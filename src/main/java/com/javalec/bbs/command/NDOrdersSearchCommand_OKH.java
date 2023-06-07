@@ -26,7 +26,7 @@ public class NDOrdersSearchCommand_OKH implements NDCommand {
 		ArrayList<NDManageDto_OKH> dtoManage = manageDao.searchOrders();
 
 
-		ArrayList<ArrayList<String>> dataSet = new ArrayList<ArrayList<String>>();
+		ArrayList<ArrayList<String>> dataSetOrders = new ArrayList<ArrayList<String>>();
 		for (int i = 0; i < dtoOrders.size(); i++) {
 			NDOrdersDto_OKH orderDto = dtoOrders.get(i);
 			NDManageDto_OKH manageDto = dtoManage.get(i);
@@ -48,10 +48,10 @@ public class NDOrdersSearchCommand_OKH implements NDCommand {
 			} else {
 				row.add("'배송되지 않았습니다.'"); // null인 경우 빈 문자열로 처리하거나 다른 기본값으로 대체할 수 있습니다.
 			}
-			dataSet.add(row);
+			dataSetOrders.add(row);
 		}
 
-		request.setAttribute("dataSet", dataSet);
+		request.setAttribute("dataSetOrders", dataSetOrders);
 	}
 
 }

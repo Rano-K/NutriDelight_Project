@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="javax.servlet.http.HttpSession" %>
-	
+<%@ page import="javax.servlet.http.HttpSession"%>
+
 <!DOCTYPE html>
 <!-- Page Wrapper -->
-<% HttpSession sessions = request.getSession(); %>
-<% String ID = (String) sessions.getAttribute("ID"); %>
+<%
+HttpSession sessions = request.getSession();
+%>
+<%
+String ID = (String) sessions.getAttribute("ID");
+%>
 <div id="wrapper">
 	<!-- Sidebar -->
 	<ul
@@ -57,21 +61,19 @@
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
-					<a class="collapse-item" href="utilities-color.html">Colors</a> <a
-						class="collapse-item" href="utilities-border.html">Borders</a> <a
-						class="collapse-item" href="utilities-animation.html">Animations</a>
-					<a class="collapse-item" href="utilities-other.html">Other</a>
+					<a class="collapse-item" href="utilities-color.html">구독 목록</a> <a
+						class="collapse-item" href="utilities-other.html">구독 일정</a>
 				</div>
 			</div></li>
 
 
 		<!-- Nav Item - Pages Collapse Menu -->
 		<li class="nav-item"><a class="nav-link collapsed" href="#"
-			data-toggle="collapse" data-target="#collapsePages"
-			aria-expanded="true" aria-controls="collapsePages"> <i
+			data-toggle="collapse" data-target="#collapseUser"
+			aria-expanded="true" aria-controls="collapseUser"> <i
 				class="fa fa-user"></i> <span>유저관리</span>
 		</a>
-			<div id="collapsePages" class="collapse"
+			<div id="collapseUser" class="collapse"
 				aria-labelledby="headingPages" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
@@ -80,16 +82,39 @@
 				</div>
 			</div></li>
 
-		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link" href="tables.html">
-				<i class="fa fa-shopping-basket"></i> <span>상품 관리</span>
-		</a></li>
-
 
 		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link" href="tables.html">
-				<i class="fas fa-fw fa-table"></i> <span>게시판 관리</span>
-		</a></li>
+		<li class="nav-item"><a class="nav-link collapsed" href="#"
+			data-toggle="collapse" data-target="#collapseProduct"
+			aria-expanded="true" aria-controls="collapseProduct"> <i
+				class="fa fa-shopping-basket"></i> <span>상품 관리</span>
+		</a>
+			<div id="collapseProduct" class="collapse"
+				aria-labelledby="headingPages" data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header">상세 메뉴:</h6>
+					<a class="collapse-item" href="admin_searchproduct.do">상품 목록</a> <a
+						class="collapse-item" href="admin_product_insert.jsp">상품 등록</a>
+				</div>
+			</div></li>
+
+
+			
+		<!-- Nav Item - Tables -->
+		<!-- Nav Item - Tables -->
+		<li class="nav-item"><a class="nav-link collapsed" href="#"
+			data-toggle="collapse" data-target="#collapseBoard"
+			aria-expanded="true" aria-controls="collapseBoard">
+					<i class="fas fa-fw fa-table"></i> <span>게시판 관리</span>
+		</a>
+			<div id="collapseBoard" class="collapse"
+				aria-labelledby="headingPages" data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header">상세 메뉴:</h6>
+					<a class="collapse-item" href="admin_searchproduct.do">게시글 목록</a> <a
+						class="collapse-item" href="admin_product_insert.jsp">게시글 등록</a>
+				</div>
+			</div></li>
 
 
 
@@ -156,7 +181,8 @@
 						class="nav-link dropdown-toggle" href="#" id="userDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> <span
-							class="mr-2 d-none d-lg-inline text-gray-600 small"><%=ID %>님, 안녕하세요.</span> <i class="fa fa-user"></i>
+							class="mr-2 d-none d-lg-inline text-gray-600 small"><%=ID%>님,
+								안녕하세요.</span> <i class="fa fa-user"></i>
 					</a> <!-- Dropdown - User Information -->
 						<div
 							class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

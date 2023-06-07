@@ -8,8 +8,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Neutri Delights">
-    <meta name="keywords" content="html, delight, neutri">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>하루를 신선하게</title>
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.cㅐㅍss" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -248,6 +248,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                 <form id="deleteForm" action="cartdelete.do" method="get">
                     <div class="shoping__cart__table">
                         <table>
                             <thead>
@@ -261,6 +262,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            
+                            <c:set var="totalPrice" value="0" />
+                            
                               <c:forEach items="${list}" var="dto">
                    				<input type="hidden" name="userid" value="${dto.userid}">
                    				<input type="hidden" name="seq" value="${dto.seq}">
@@ -268,17 +272,22 @@
                                 <tr>
                                 <td ><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
                         		<td ><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
-                        		<td ><input type="hidden" name="count" value="${dto.count}">${dto.count}</td>
+                        		<td ><input type="hidden" name="count" value="${dto.count}">${dto.count}&#8361;</td>
                         		<td ><input type="hidden" name="price" value="${dto.price}">${dto.price}</td>
-                        		<td ><input type="hidden" name="count" value="${dto.count}">${dto.count * dto.price}</td>
+                        		<td ><input type="hidden" name="count" value="${dto.count}">${dto.count * dto.price}&#8361;</td>
                         		
-                                <td class="shoping__cart__item__close"><span class="icon_close"></span></td>
+                                <td class="shoping__cart__item__close"><span class="icon_close" onclick="location.href='cartdelete.do?seq=${dto.seq}'">
+                                </span></td>
+                                
                                 </tr>
+                                 
+                                 <c:set var="totalPrice" value="${totalPrice + (dto.count * dto.price)}" />
                                 
                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
+                    </form> 
                 </div>
             </div>
             <div class="row">
@@ -292,8 +301,8 @@
                     <div class="shoping__checkout">
                         <h5>카트 총 상품가격</h5>
                         <ul>
-                            <li>총 상품가격 <span>$454.98</span></li>
-                            <li>총 주문가격 <span>$454.98</span></li>
+                            <li>총 상품가격 <span>${totalPrice}&#8361;</span></li>
+                            <li>총 주문가격 <span>${totalPrice}&#8361;</span></li>
                         </ul>
                         <a href="#" class="primary-btn">결제하기</a>
                     </div>
@@ -302,6 +311,7 @@
         </div>
     </section>
     <!-- Shoping Cart Section End -->
+
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
