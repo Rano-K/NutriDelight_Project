@@ -23,6 +23,7 @@ import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserLoginCommand;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
+import com.javalec.bbs.command.NDuserCartDeleteCommand;
 
 /**
  * Servlet implementation class NDFrontController
@@ -97,11 +98,21 @@ public class NDFrontController extends HttpServlet {
 		//찜버튼 클릭시
 		case "heart.do":
 			viewPage = "heart.jsp";
+		// 카트
 		case"/Cart.do":
 			command = new NDUserCartListCommand_LYJ();
 			command.execute(request, response);
 			viewPage = "shoping-cart.jsp";
 			break;
+		// 삭제
+		case"/CartDelete.do":
+			command = new NDuserCartDeleteCommand();
+			command.execute(request, response);
+			viewPage = "shoping-cart.jsp";
+			break;	
+			
+	
+			
 			
 		//고객센터 버튼 클릭시 ---------------------------민재야 만들어줘
 			
