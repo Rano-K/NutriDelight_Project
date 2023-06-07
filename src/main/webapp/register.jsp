@@ -24,7 +24,6 @@
     <!-- Custom styles for this template-->
     <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
     <script src="js/login.js"></script>
-
 </head>
 
 <body class="bg-gradient-primary">
@@ -43,23 +42,12 @@
                             <form class="user">
                                 <div class="form-group row">
                                 	<div class="col-sm-9 mb-3 mb-sm-0">
-                                   		<input type="text" class="form-control form-control-user" id="userid" placeholder="ID">
+                                   		<input type="text" class="form-control form-control-user" id="userid" placeholder="ID" disabled="disabled">
                                    	</div>
                                    	<div class="col-sm-3">
 	                                   	<!-- 사용 가능 확인 터치하여 나왔을 떄 비활성화 처리 해야 함 -->
 	                                   	<input type="hidden" id="idCheck" value="0">
-	                                   	<script type="text/javascript">
-	                                   		var idCheckValue = document.getElementById("idCheck").value;
-	                                   		console.log(idCheckValue)
-	                                   	</script>
-	                                   	<c:choose>
-		                                   	<c:when test="${idCheckValue eq '0'}">
-		                                   		<a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#idduplicateModal">ID 중복체크</a>
-		                                   	</c:when>
-		                                   	<c:otherwise>
-		                                   		<a href="#" class="btn btn-secondary btn-user btn-block" onclick="return false;"> ID 중복체크</a>
-		                                   	</c:otherwise>
-	                                   	</c:choose>
+                                   		<a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#idduplicateModal">ID 중복체크</a>
 									</div>
                                	</div>
                                	<div class="form-group row">
@@ -139,8 +127,8 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<input type="text" placeholder="사용할 ID를 입력 해주세요.">
-					<button type="button" onclick="checkid()" name="dbCheckId">중복체크</button>
+					<input type="text" class="col-sm-10" placeholder="사용할 ID를 입력 해주세요." id="inputID" name="inputID">
+					<button type="button" onclick="checkDuplicate()" name="dbCheckId">중복체크</button>
 				</div>
 				<div class="modal-footer">
 					<!-- 여기서 위에 찾은 값이 사용 가능 할 때 확인 버튼 활성화 및 변수 저장하여 위에서 account 버튼 활성화때 이용 -->
@@ -184,6 +172,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="admin/js/sb-admin-2.min.js"></script>
+    <script src="admin/vendor/jquery/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>
 
