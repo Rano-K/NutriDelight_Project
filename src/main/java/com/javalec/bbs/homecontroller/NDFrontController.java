@@ -152,7 +152,7 @@ public class NDFrontController extends HttpServlet {
 		case "/productList.do":
 			command = new NDProductListCommand_KMS();
 			command.execute(request, response);
-			viewPage = "productList.do";
+			viewPage = "productList.jsp";
 			break;
 		// 게시판 및 상품정보
 
