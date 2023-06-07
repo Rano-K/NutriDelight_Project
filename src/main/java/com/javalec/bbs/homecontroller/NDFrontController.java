@@ -17,6 +17,7 @@ import com.javalec.bbs.command.NDOrdersCheckCommand_OKH;
 import com.javalec.bbs.command.NDOrdersGraphCommand_OKH;
 import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
 import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
+import com.javalec.bbs.command.NDProductDeleteCommand_OKH;
 import com.javalec.bbs.command.NDProductInsertCommand_OKH;
 import com.javalec.bbs.command.NDProductListCommand_KMS;
 import com.javalec.bbs.command.NDProductSearchCommand_OKH;
@@ -166,7 +167,7 @@ public class NDFrontController extends HttpServlet {
 		/*
 		 * Admin 구역
 		 */
-		//	메인
+		// 메인
 
 		// admin login시,
 		case "/admin_login.do":
@@ -209,10 +210,9 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "admin_orders_graph.jsp";
 			break;
-		
+
 		// 구독 관리
 
-			
 		// 유저 관리
 
 		// user 확인
@@ -238,7 +238,7 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "admin_product.jsp";
 			break;
 
-		// 상품 입력 및 수정
+		// 상품 입력 및 수정에 데이터 표기
 		case "/admin_updateproduct.do":
 			command = new NDProductSearchCommand_OKH();
 			command.execute(request, response);
@@ -251,8 +251,15 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "admin_product.jsp";
 			break;
-			
-		//	게시판 관리
+
+		// 상품 입력 및 수정
+		case "/admin_deleteproduct.do":
+			command = new NDProductDeleteCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_product.jsp";
+			break;
+
+		// 게시판 관리
 
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
