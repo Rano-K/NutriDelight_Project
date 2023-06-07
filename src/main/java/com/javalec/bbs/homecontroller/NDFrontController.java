@@ -146,6 +146,14 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "idDupleCheck.jsp";
 			break;
 
+		/*
+		 * productList구역
+		 */
+		case "/productList.do":
+			command = new NDProductListCommand_KMS();
+			command.execute(request, response);
+			viewPage = "productList.do";
+			break;
 		// 게시판 및 상품정보
 
 		// 리뷰 불러오기
