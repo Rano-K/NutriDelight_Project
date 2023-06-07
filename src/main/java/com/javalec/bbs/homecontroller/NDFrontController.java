@@ -18,9 +18,11 @@ import com.javalec.bbs.command.NDOrdersGraphCommand_OKH;
 import com.javalec.bbs.command.NDOrdersSearchCommand_OKH;
 import com.javalec.bbs.command.NDOrdersUpdateCommand_OKH;
 import com.javalec.bbs.command.NDProductDeleteCommand_OKH;
+import com.javalec.bbs.command.NDProductFindCommand_OKH;
 import com.javalec.bbs.command.NDProductInsertCommand_OKH;
 import com.javalec.bbs.command.NDProductListCommand_KMS;
 import com.javalec.bbs.command.NDProductSearchCommand_OKH;
+import com.javalec.bbs.command.NDProductUpdateCommand_OKH;
 import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
 import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
@@ -239,15 +241,22 @@ public class NDFrontController extends HttpServlet {
 			break;
 
 		// 상품 입력 및 수정에 데이터 표기
-		case "/admin_updateproduct.do":
-			command = new NDProductSearchCommand_OKH();
+		case "/admin_findproduct.do":
+			command = new NDProductFindCommand_OKH();
 			command.execute(request, response);
 			viewPage = "admin_product_insert.jsp";
 			break;
 
-		// 상품 입력 및 수정
+		// 상품 입력
 		case "/admin_insertproduct.do":
 			command = new NDProductInsertCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_product.jsp";
+			break;
+			
+		// 상품 수정
+		case "/admin_updateproduct.do":
+			command = new NDProductUpdateCommand_OKH();
 			command.execute(request, response);
 			viewPage = "admin_product.jsp";
 			break;
