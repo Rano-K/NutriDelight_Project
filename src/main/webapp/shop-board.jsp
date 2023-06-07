@@ -105,7 +105,7 @@ function checkOrder(event) {
 									<td><img src="admin/img/admin_img.png" alt="Product 3"></td>
 									<td><span>Product Info</span>
 										<p>
-										<h6>내가 클릭한 음식 이름</h6>
+										<h6>${PList}</h6>
 										</p>
 										<p>
 										<h4>가격 : 받아올 가격</h4>
