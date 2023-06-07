@@ -99,16 +99,16 @@ public class NDFrontController extends HttpServlet {
 		case "heart.do":
 			viewPage = "heart.jsp";
 		// 카트
-		case"/Cart.do":
+		case"/cart.do":
 			command = new NDUserCartListCommand_LYJ();
 			command.execute(request, response);
 			viewPage = "shoping-cart.jsp";
 			break;
 		// 삭제
-		case"/CartDelete.do":
+		case"/cartdelete.do":
 			command = new NDuserCartDeleteCommand();
 			command.execute(request, response);
-			viewPage = "shoping-cart.jsp";
+			viewPage = "cart.do";
 			break;	
 			
 	
