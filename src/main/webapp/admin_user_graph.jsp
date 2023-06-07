@@ -55,6 +55,7 @@ ArrayList<ArrayList<String>> dataSetInsert = (ArrayList<ArrayList<String>>) requ
 		dataConnect(dataSetGender, dataSetAge, dataSetInsert);
 	});
 </script>
+</head>
 <body id="page-top">
 	<%@ include file="admin_toolbar.jsp"%>
 

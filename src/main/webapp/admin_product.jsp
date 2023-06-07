@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>주문목록</title>
+<title>상품 목록</title>
 <!-- Custom fonts for this template -->
 <link href="admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
@@ -36,20 +36,23 @@
 <!-- DataTables library -->
 <script
 	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="admin/js/orders_table.js"></script>
+<script src="admin/js/product_table.js"></script>
+
 <!--get attribute from java  -->
 <%
-ArrayList<ArrayList<String>> dataSetOrders = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetOrders");
+ArrayList<ArrayList<String>> dataSetProduct = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetProduct");
 %>
+
 <script type="text/javascript">
 	$(document).ready(function() {
-		var dataSetOrders =
-<%=dataSetOrders%>
+		var dataSetProduct =
+<%=dataSetProduct%>
 	;
 
-		dataConnect(dataSetOrders);
+		dataConnect(dataSetProduct);
 	});
 </script>
+
 </head>
 
 <body id="page-top">
@@ -59,8 +62,8 @@ ArrayList<ArrayList<String>> dataSetOrders = (ArrayList<ArrayList<String>>) requ
 	<div class="container-fluid">
 
 		<!-- Page Heading -->
-		<h1 class="h3 mb-2 text-gray-800">주문목록</h1>
-		<p class="mb-4">주문목록을 확인해주세요.</p>
+		<h1 class="h3 mb-2 text-gray-800">구매목록</h1>
+		<p class="mb-4">구매목록을 확인해주세요.</p>
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
@@ -68,7 +71,7 @@ ArrayList<ArrayList<String>> dataSetOrders = (ArrayList<ArrayList<String>>) requ
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="orders" class="display" width="100%">
+					<table id="product" class="display" width="100%">
 					</table>
 				</div>
 			</div>
