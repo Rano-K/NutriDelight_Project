@@ -3,6 +3,7 @@ package com.javalec.bbs.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -154,6 +155,99 @@ public class NDReviewDao_KMJ {
 		}
 		
 		return dtos;
+	}// list
+	public int getOrdercode(String userid, int pcode) {
+		int ocode=0;
+		Connection conn_mysql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn_mysql = dataSource.getConnection(); //context.xml에 미리 정의해놓은 값을 가져온다
+			String query = "SELECT ordercode FROM orders WHERE userid = ? and pcode = ?";
+                    		
+			ps = conn_mysql.prepareStatement(query);
+			ps.setString(1, userid);
+			ps.setInt(2, pcode);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				/*select * from as count*/
+				ocode = rs.getInt(1); //번호대신 이렇게 받을 수도 있다.
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {//finally는 다시 말하지만 에러가 나든 안나든 무조건 실행되는 구문이다. 이를 통해 연결들을 해제한다.
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(conn_mysql != null) conn_mysql.close();
+			}catch (Exception e) {
+				e.printStackTrace();		// TODO: handle exception
+			}
+		}
+		
+		return ocode;
+	}
+	
+	public void insertReview(String ID, int pcode, int ordercode, String contexts, String image){
+		Connection conn_mysql = null;
+		PreparedStatement ps = null;
+		PreparedStatement ps1 = null;
+		Statement stmt=null;
+		ResultSet rs = null;
+		int seq=0;
+		try {
+			conn_mysql = dataSource.getConnection(); //context.xml에 미리 정의해놓은 값을 가져온다
+			
+			String query = "INSERT INTO rwrite (seq, userid, ordercode, pcode, likes, contexts, image, updatedate) "+
+					"VALUES (?,?,?,?,0,?,?,now())";
+			
+			String query2 = "INSERT INTO review (parent, layer, userid, pcode, insertdate, invalidate) "+
+					"VALUES (?,1,?,?,now(),1)";
+			
+			String query1 = "SELECT MAX(seq) from review";
+            stmt = conn_mysql.createStatement();
+			
+			rs = stmt.executeQuery(query1);
+			
+			if(rs.next()) {
+				/*select * from as count*/
+				seq = rs.getInt(1);
+			}
+			
+			System.out.println("Dao 값 확인 : " + seq);
+			
+			ps1 = conn_mysql.prepareStatement(query2); 
+			ps1.setInt(1, seq+1);
+			ps1.setString(2, ID);
+			ps1.setInt(3, pcode);
+			
+			ps = conn_mysql.prepareStatement(query); 
+			ps.setInt(1, seq+1);
+			ps.setString(2, ID);
+			ps.setInt(3, ordercode);
+			ps.setInt(4, pcode);
+			ps.setString(5, contexts);
+			ps.setString(6, image);
+			
+			ps1.executeUpdate();
+			ps.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {//finally는 다시 말하지만 에러가 나든 안나든 무조건 실행되는 구문이다. 이를 통해 연결들을 해제한다.
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(ps != null) ps1.close();
+				if(conn_mysql != null) conn_mysql.close();
+			}catch (Exception e) {
+				e.printStackTrace();		// TODO: handle exception
+			}
+		}
+		
 	}// list
 	
 }

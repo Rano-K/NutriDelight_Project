@@ -43,12 +43,22 @@ function printName()  {
   const parent = document.getElementById('parent').value;
 }
 
+function checkOrder(event) {
+	var ocodeInput = document.getElementById("ocode");
+    var ocode = parseInt(ocodeInput.value);
+    
+	if (ocode === 0){
+    	alert("구매 후 리뷰작성이 가능합니다");
+    	event.preventDefault(); // 폼 제출 이벤트 중지
+    }
+}
 </script>
 <body>
 	<%@ include file="header.jsp"%>
-
-	<input type="hidden" name="pcode" value="9">
-	<input type="hidden" name="ID" value="dawn7778">
+	
+	<%-- <%String userid = (String) session.getAttribute("ID"); %> --%>
+	
+	
 	<!-- Hero Section Begin -->
 	<section class="hero">
 		<div class="container">
@@ -130,10 +140,12 @@ function printName()  {
 
 									<c:forEach items="${RList}" var="dto" varStatus="status">
 										
+										<c:set var="parentInput" value="${dto.parent}" />
 
 										<c:if test="${dto.layer == 1}">
+										<c:set var="count" value="${count + 1}" />
 											<tr>
-												<th scope="row">${status.count}</th>
+												<th scope="row">${count}</th>
 												<td colspan="2">
 													<table class="table">
 														<tr>
@@ -150,7 +162,7 @@ function printName()  {
 																<p>${dto.contexts}</p> <input type="hidden"
 																name="parent" value="${dto.parent}">
 															</td>
-															<td align="right"><a href="#" class="primary-btn">어우
+															<td align="right"><a href="#" class="primary-btn">
 																	좋아요</a>
 																<p>좋아요 수 : ${dto.likes}</p> <a href="#"
 																class="primary-btn">댓글 작성</a></td>
@@ -158,7 +170,9 @@ function printName()  {
 														
 														<c:forEach items="${RList}" var="dto" varStatus="status">
 															<c:if test="${dto.layer != 1}">
-																<tr>
+																
+																<c:if test="${dto.parent == parentInput}">
+																	<tr>
 																	<td><input value="더보기"
 																		onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '숨기기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '더보기';}"
 																		type="button" />
@@ -175,7 +189,7 @@ function printName()  {
 																						</p>
 																						<p>${dto.contexts}</p>
 																						<p>
-																							좋아요 수 : 0 <a href="#" class="primary-btn">어우
+																							좋아요 수 : 0 <a href="#" class="primary-btn">
 																								좋아요</a>
 																						</p>
 																					</td>
@@ -183,11 +197,11 @@ function printName()  {
 																				<tr>
 																			</table>
 
-
-
 																		</div></td>
 
-																</tr>
+																	</tr>
+																</c:if>
+																
 															</c:if>
 														</c:forEach>
 														
@@ -199,12 +213,16 @@ function printName()  {
 										</c:if>
 									</c:forEach>
 
-
-
-
-
 									<tr align="right">
-										<td colspan="3"><a href="write_review.do" class="primary-btn">글쓰기</a></td>
+										<td colspan="3">
+											<form action="write_review.do" method="post">
+												<input type="hidden" name="pname" value="${PList}">
+												<input type="hidden" name="pcode" value="9">
+												<input type="hidden" name="ID" value="dawn7778">
+												<input type="hidden" name="ocode" value="${ocode}">
+												<input type="submit" value="글쓰기" class="primary-btn" onclick="checkOrder(event)">
+											</form>
+										</td>
 									</tr>
 								</tbody>
 							</table>

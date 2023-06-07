@@ -14,15 +14,19 @@ public class NDSearchReviewCommand_KMJ implements NDCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		//int pcode = Integer.parseInt(request.getParameter("pcode"));
+		//String userid = request.getParameter("ID");
+		String userid = "dawn7778";
 		int pcode = 9;
 		NDReviewDao_KMJ dao = new NDReviewDao_KMJ();
 		ArrayList<NDReviewDto_KMJ> dtos = dao.reviewList(pcode);
+		int ocode = dao.getOrdercode(userid, pcode);
 		
 		System.out.println("dtos 크기"+dtos.size());
 		
 		String name = dao.productList(pcode);
 		request.setAttribute("RList", dtos);
 		request.setAttribute("PList", name);
+		request.setAttribute("ocode", ocode);
 	}
 
 }

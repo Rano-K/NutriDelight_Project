@@ -93,14 +93,23 @@ function printName()  {
 								<tr>
 										<td>
 										<span>리뷰 작성</span>
-											<p>작성자 : 가져오기</p>
-											<p>리뷰 품목 : 가져오기</p>
-											<p>사진첨부 : 사진첨부 기능 추가</p>
-											<p>리뷰내용 : <textarea rows="5" cols="80" name="content" style="resize: none;"></textarea></p>
-											<div align="right">
-												<a href="write_review_confirm.do"class="primary-btn">작성</a>
-											</div>
-											
+											<form action="write_review_confirm.do" method="post">
+												<p>작성자 : ${ID}</p>
+												<p>리뷰 품목 : ${pname}</p>
+												<p>사진첨부 : 사진첨부 기능 추가</p>
+												<p>리뷰내용 : <textarea rows="5" cols="80" name="content" style="resize: none;"></textarea></p>
+												
+												<input type="hidden" name="ID" value="${ID}">
+												<input type="hidden" name="pname" value="${pname}">
+												<input type="hidden" name="pcode" value="${pcode}">
+												<input type="hidden" name="ocode" value="${ocode}">
+												<input type="hidden" name="image" value="사진 경로">
+												
+												
+												<div align="right">
+													<input type="submit" value="작성" class="primary-btn">
+												</div>
+											</form>
 										</td>
 								</tr>
 							</table>
