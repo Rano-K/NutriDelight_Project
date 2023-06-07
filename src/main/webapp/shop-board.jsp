@@ -38,11 +38,17 @@
 //         }
 //     });
 // });
+
+function printName()  {
+  const parent = document.getElementById('parent').value;
+}
+
 </script>
 <body>
 	<%@ include file="header.jsp"%>
-	
-	<input type="hidden" name="pcode" value="1">
+
+	<input type="hidden" name="pcode" value="9">
+	<input type="hidden" name="ID" value="dawn7778">
 	<!-- Hero Section Begin -->
 	<section class="hero">
 		<div class="container">
@@ -121,79 +127,84 @@
 
 								</thead>
 								<tbody>
-								
-								<c:forEach items="${RList}" var="dto" varStatus="status">
-									<p>${dto.layer}</p>
-									<c:if test="${dto.layer == 1}">
-									<tr>
-										<th scope="row">${status.count}</th>
-										<td colspan="2">
-											<table class="table">
-												<tr>
-													<td>
-														<p>
-															${dto.userid}
-															<c:if test="${dto.userid == null}">
+
+									<c:forEach items="${RList}" var="dto" varStatus="status">
+										
+
+										<c:if test="${dto.layer == 1}">
+											<tr>
+												<th scope="row">${status.count}</th>
+												<td colspan="2">
+													<table class="table">
+														<tr>
+															<td>
+																<p>
+																	${dto.userid}
+																	<c:if test="${dto.userid == null}">
 																	${dto.adminid}
 															</c:if>
-														</p>
-														<p>${dto.date}</p>
-														<p>${PList}</p>
-														<p>${dto.image}</p>
-														<p>${dto.contexts}</p>
-														<input type="hidden" name="parent" value="${dto.parent}">
-													</td>
-													<td align="right"><a href="#" class="primary-btn">어우
-															좋아요</a>
-														<p>좋아요 수 : ${dto.likes}</p> <a href="#" class="primary-btn">댓글 작성</a>
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<input value="더보기" onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '숨기기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '더보기';}" type="button" />
-														<div style="display:none;">
-														<c:if test="${dto.layer!=1}">
-															<c:if test="${param.parent == dto.parent}">
-																<table>
-																		<tr>
-																			<td>
-																				<p>
-																				${dto.userid}
-																				<c:if test="${dto.userid == null}">
-																				${dto.adminid}
-																				</c:if>
-																				</p>
-																				<p>${dto.context }</p>
-																				<p>
-																					좋아요 수 : 0 <a href="#" class="primary-btn">어우 좋아요</a>
-																				</p>
-																			</td>
-																			<td>작성일자 : 23.06.05</td>
-																		<tr>
-																</table>
-															</c:if>
-														</c:if>
-															
-														</div>
+																</p>
+																<p>${dto.insertdate}</p>
+																<p>${PList}</p>
+																<p>${dto.image}</p>
+																<p>${dto.contexts}</p> <input type="hidden"
+																name="parent" value="${dto.parent}">
+															</td>
+															<td align="right"><a href="#" class="primary-btn">어우
+																	좋아요</a>
+																<p>좋아요 수 : ${dto.likes}</p> <a href="#"
+																class="primary-btn">댓글 작성</a></td>
+														</tr>
 														
-													</td>
-												</tr>
-												
-											</table>
-											
-										</td>
+														<c:forEach items="${RList}" var="dto" varStatus="status">
+															<c:if test="${dto.layer != 1}">
+																<tr>
+																	<td><input value="더보기"
+																		onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '숨기기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '더보기';}"
+																		type="button" />
+																		<div style="display: none;">
 
-									</tr>
-									</c:if>							
+																			<table>
+																				<tr>
+																					<td>
+																						<p>
+																							${dto.userid}
+																							<c:if test="${dto.userid == null}">
+																								${dto.adminid}
+																							</c:if>
+																						</p>
+																						<p>${dto.contexts}</p>
+																						<p>
+																							좋아요 수 : 0 <a href="#" class="primary-btn">어우
+																								좋아요</a>
+																						</p>
+																					</td>
+																					<td>작성일자 : 23.06.05</td>
+																				<tr>
+																			</table>
 
-									
 
-									
-									
+
+																		</div></td>
+
+																</tr>
+															</c:if>
+														</c:forEach>
+														
+													</table>
+
+												</td>
+
+											</tr>
+										</c:if>
 									</c:forEach>
-									
+
+
+
+
+
 									<tr align="right">
-										<td colspan="3"><a href="#" class="primary-btn">글쓰기</a></td>
+										<td colspan="3"><a href="write_review.do" class="primary-btn">글쓰기</a></td>
 									</tr>
 								</tbody>
 							</table>
@@ -209,10 +220,10 @@
 							<table class="table">
 								<thead>
 									<tr>
-<!-- 										<th scope="col">#</th> -->
-<!-- 										<th scope="col">First</th> -->
-<!-- 										<th scope="col">Last</th> -->
-<!-- 										<th scope="col">Handle</th> -->
+										<!-- 										<th scope="col">#</th> -->
+										<!-- 										<th scope="col">First</th> -->
+										<!-- 										<th scope="col">Last</th> -->
+										<!-- 										<th scope="col">Handle</th> -->
 									</tr>
 								</thead>
 								<tbody>
@@ -229,8 +240,8 @@
 
 													</td>
 													<td align="right">
-														<p>작성일자 : 23.06.05</p>
-														<a href="#" class="primary-btn">답변 작성</a>
+														<p>작성일자 : 23.06.05</p> <a href="#" class="primary-btn">답변
+															작성</a>
 													</td>
 
 												</tr>
@@ -243,65 +254,6 @@
 												</tr>
 											</table>
 										</td>
-
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td colspan="2">
-											<table class="table">
-												<tr>
-													<td>
-														<p>작성한 고객 아이디 : Yass</p>
-														<p>클릭한 음식 이름</p>
-														<p>음식사진 위치</p>
-														<p>문의내용</p>
-
-													</td>
-													<td align="right">
-														<p>작성일자 : 23.06.05</p>
-														<a href="#" class="primary-btn">답변 작성</a>
-													</td>
-
-												</tr>
-
-												<tr align="right">
-													<td align="left">
-														<p>댓글 쓴 사람 아이디 : 댓글 내용</p>
-													</td>
-													<td>작성일자 : 23.06.05</td>
-												</tr>
-											</table>
-										</td>
-
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td colspan="2">
-											<table class="table">
-												<tr>
-													<td>
-														<p>작성한 고객 아이디 : What</p>
-														<p>클릭한 음식 이름</p>
-														<p>음식사진 위치</p>
-														<p>문의내용</p>
-
-													</td>
-													<td align="right">
-														<p>작성일자 : 23.06.05</p>
-														<a href="#" class="primary-btn">답변 작성</a>
-													</td>
-
-												</tr>
-
-												<tr align="right">
-													<td align="left">
-														<p>댓글 쓴 사람 아이디 : 댓글 내용</p>
-													</td>
-													<td>작성일자 : 23.06.05</td>
-												</tr>
-											</table>
-										</td>
-
 									</tr>
 									<tr align="right">
 										<td colspan="3"><a href="#" class="primary-btn">문의하기</a></td>

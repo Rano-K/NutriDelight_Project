@@ -19,6 +19,7 @@ public class NDSearchReviewCommand_KMJ implements NDCommand {
 		ArrayList<NDReviewDto_KMJ> dtos = dao.reviewList(pcode);
 		
 		System.out.println("dtos 크기"+dtos.size());
+		
 		String name = dao.productList(pcode);
 		request.setAttribute("RList", dtos);
 		request.setAttribute("PList", name);
