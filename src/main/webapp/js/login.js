@@ -154,9 +154,8 @@ function checkUser(getResult, getId){
 		alert('안녕하세요, 관리자님')
 		window.location.href = "admin_main.do"
 	} else{
-		sessionStorage.removeItem("ID");
 		alert('아이디 혹은 비밀번호가 틀렸습니다. 다시 시도해 주세요.')
-		window.location.href = "login.do"
+		window.location.href = "logout.do"
 	}
 }
 
@@ -169,15 +168,40 @@ function setStatusVar(varStat){
 	var strvarStat = '"' + varStat + '"';
 	
 	if(strvarStat === "allergyCheck"){
-		document.getElementById("allergyCheck").value = '1';
+		$("input[type=hidden][name=allergyCheck]").val("1");
 	}else{
 		document.getElementById("allergyCheck").value = '0';
 	}
 	if(strvarStat === "idCheck"){
-		document.getElementById("idCheck").value = '1';
+		$("input[type=hidden][name=idCheck]").val("1");
 	}else{
 		document.getElementById("idCheck").value = '0';
 	}
+}
+
+function checkDuplicate() {
+	var id = $("#inputID").val();
 	
-	$("#allergyModal").modal("hide");
+	if(id == ""){
+		alert("ID를 입력해주세요.")
+		return;
+	}else{
+		$.ajax({
+		    type: "GET",
+		    url: "duplicateid.jsp", // URL
+		    data: { id : id },
+		    success: function(result) {
+				if (result === 0) {
+					alert("사용 가능한 아이디 입니다.");
+				} else if(result === 1){
+					alert("이미 존재하는 아이디 입니다.");
+				} else{
+					alert("사용 불가능한 아이디 입니다.");
+				}
+			},
+			error: function(xhr, status, error) {
+			    console.log("에러 발생: " + error); // 오류 메시지 출력
+			}
+		});
+	}
 }
