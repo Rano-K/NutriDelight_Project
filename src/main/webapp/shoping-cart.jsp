@@ -29,69 +29,11 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <!-- <div id="preloder">
-        <div class="loader"></div>
-    </div>
 
-    Humberger Begin
-    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>우리팀 로고 이미지 등록
-        </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-            </ul>
-            <div class="header__cart__price">현재고른 상품액수: <span>$150.00</span></div>
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="img/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>  헤더부분에 국가 정하는 것
-            <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">체험단</a></li>
-                <li><a href="#">상품구매</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">한끼식사</a></li>
-                        <li><a href="./shoping-cart.html">매일아침 구독상품</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">고객센터</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div> 상단에 공유 관련정보 표기
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> 로그인한 id정보 표시</li>
-                <li>구독상품 며칠 남았는지</li>
-            </ul>
-        </div>
-    </div> -->
-    <!-- Humberger End -->
-
-    <!-- Header Section Begin -->
+	<%@ include file="header.jsp"%>
+	
+		<!-- Hero Section Begin -->
+  
     <header class="header">
         <div class="header__top">
             <div class="container">
@@ -314,56 +256,9 @@
 
 
     <!-- Footer Section Begin -->
-    <footer class="footer spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/featured/로고.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li>서울특별시 강남구 역삼동 831-3 한국빌딩-4층</li>
-                            <li>Phone: 010-8274-2496</li>
-                            <li>Email: minsoo0704@naver.com</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                    <div class="footer__widget">
-                       <!--  <h6>Useful Links</h6>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                        </ul> -->
-                    </div>
-                </div>
-          
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved<!-- <i class="fa fa-heart" aria-hidden="true"></i> --><!--  by <a href="https://colorlib.com" target="_blank">Colorlib --><!-- /a -->
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                       <!--  <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+   
+   	<%@ include file="footer.jsp"%>
+   
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
