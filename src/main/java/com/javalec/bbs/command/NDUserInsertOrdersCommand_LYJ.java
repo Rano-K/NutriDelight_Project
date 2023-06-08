@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.bbs.dao.NDUserOrdersDao_LYJ;
 
-public class NDUserInsertordersCommand_LYJ implements NDCommand {
+public class NDUserInsertOrdersCommand_LYJ implements NDCommand {
 
 	@Override
 		public void execute(HttpServletRequest request, HttpServletResponse response) {
