@@ -130,6 +130,10 @@
 					<button type="button" onclick="checkDuplicate()" name="dbCheckId">중복체크</button>
 					* 중복 체크를 해야 확인 버튼이 노출 됩니다. *
 				</div>
+				<div class="modal-body">
+					<button type="button" onclick="checkTest()" >TEST</button>
+					* 중복 체크를 해야 확인 버튼이 노출 됩니다. *
+				</div>
 				<div class="modal-footer">
 					<!-- 여기서 위에 찾은 값이 사용 가능 할 때 확인 버튼 활성화 및 변수 저장하여 위에서 account 버튼 활성화때 이용 -->
 					<button class="btn btn-primary" id="modalCheck" style="display: none" type="button" onclick="setStatusVar('idCheck')" data-dismiss="modal">확인</button>
@@ -173,6 +177,33 @@
     <script src="admin/js/sb-admin-2.min.js"></script>
     <script src="admin/vendor/jquery/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    	function checkTest() {
+    		const param =  {
+    			id: "test234"
+    		}
+    	
+    		console.log(typeof param);
+    		console.log(param);
+    		let jsonObj = JSON.stringify(param);
+    		console.log(typeof jsonObj);
+    		console.log(jsonObj);
+    		
+    		$.ajax({
+			    type: "POST",
+			    url: "test.login", // URL 세이브 좆ㄱ타
+			    // contentType:"application/json",
+			    dataType:"json",
+			    data: jsonObj,
+			    success: function(result) {
+					console.log(result)
+				},
+				error: function(xhr, status, error) {
+				    console.log("에러 발생: " + error); // 오류 메시지 출력
+				}
+			});
+    	}
+    </script>
 
 </body>
 
