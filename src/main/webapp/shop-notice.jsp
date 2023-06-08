@@ -43,22 +43,11 @@ function printName()  {
   const parent = document.getElementById('parent').value;
 }
 
-function checkOrder(event) {
-	var ocodeInput = document.getElementById("ocode");
-    var ocode = parseInt(ocodeInput.value);
-    
-	if (ocode === 0){
-    	alert("구매 후 리뷰작성이 가능합니다");
-    	event.preventDefault(); // 폼 제출 이벤트 중지
-    }
-}
 </script>
 <body>
 	<%@ include file="header.jsp"%>
-	
-	<%-- <%String userid = (String) session.getAttribute("ID"); %> --%>
-	
-	
+
+	<input type="hidden" name="pcode" value="1">
 	<!-- Hero Section Begin -->
 	<section class="hero">
 		<div class="container">
@@ -96,152 +85,14 @@ function checkOrder(event) {
                             </div> -->
 						</div>
 					</div>
-
-
-					<div align="center">
-						<div class="hero__text">
-							<table>
-								<tr>
-									<td><img src="admin/img/admin_img.png" alt="Product 3"></td>
-									<td><span>Product Info</span>
-										<p>
-										<h6>${PList}</h6>
-										</p>
-										<p>
-										<h4>가격 : 받아올 가격</h4>
-										</p>
-										<p>칼로리 : 받아올 칼로리</p>
-										<p>알러지 정보</p>
-
-										<div class="quantity">
-											수량 : 
-											<div class="pro-qty">
-												<input type="text" name="qty" value="1">
-											</div>
-											<a href="#" class="primary-btn">Buy Now</a> <a href="#"
-												class="primary-btn">Add Cart</a>
-										</div></td>
-								</tr>
-							</table>
-							<br />
-						</div>
-					</div>
-
-					<div class="container">
-						<div class="row">
-							<p>
-							<h3>상품리뷰</h3>
-							</p>
-							<table class="table">
-								<thead>
-
-								</thead>
-								<tbody>
-
-									<c:forEach items="${RList}" var="dto" varStatus="status">
-										
-										<c:set var="parentInput" value="${dto.parent}" />
-
-										<c:if test="${dto.layer == 1}">
-										<c:set var="count" value="${count + 1}" />
-											<tr>
-												<th scope="row">${count}</th>
-												<td colspan="2">
-													<table class="table">
-														<tr>
-															<td>
-																<p>
-																	${dto.userid}
-																	<c:if test="${dto.userid == null}">
-																	${dto.adminid}
-															</c:if>
-																</p>
-																<p>${dto.insertdate}</p>
-																<p>${PList}</p>
-																<p>${dto.image}</p>
-																<p>${dto.contexts}</p> <input type="hidden"
-																name="parent" value="${dto.parent}">
-															</td>
-															<td align="right"><a href="#" class="primary-btn">
-																	좋아요</a>
-																<p>좋아요 수 : ${dto.likes}</p> <a href="#"
-																class="primary-btn">댓글 작성</a></td>
-														</tr>
-														
-														<c:forEach items="${RList}" var="dto" varStatus="status">
-															<c:if test="${dto.layer != 1}">
-																
-																<c:if test="${dto.parent == parentInput}">
-																	<tr>
-																	<td><input value="더보기"
-																		onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '숨기기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '더보기';}"
-																		type="button" />
-																		<div style="display: none;">
-
-																			<table>
-																				<tr>
-																					<td>
-																						<p>
-																							${dto.userid}
-																							<c:if test="${dto.userid == null}">
-																								${dto.adminid}
-																							</c:if>
-																						</p>
-																						<p>${dto.contexts}</p>
-																						<p>
-																							좋아요 수 : 0 <a href="#" class="primary-btn">
-																								좋아요</a>
-																						</p>
-																					</td>
-																					<td>작성일자 : 23.06.05</td>
-																				<tr>
-																			</table>
-
-																		</div></td>
-
-																	</tr>
-																</c:if>
-																
-															</c:if>
-														</c:forEach>
-														
-													</table>
-
-												</td>
-
-											</tr>
-										</c:if>
-									</c:forEach>
-
-									<tr align="right">
-										<td colspan="3">
-											<form action="write_review.do" method="post">
-												<input type="hidden" name="pname" value="${PList}">
-												<input type="hidden" name="pcode" value="9">
-												<input type="hidden" name="ID" value="dawn7778">
-												<input type="hidden" name="ocode" value="${ocode}">
-												<input type="submit" value="글쓰기" class="primary-btn" onclick="checkOrder(event)">
-											</form>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
-						</div>
-					</div>
-
-					<div class="container">
-						<div class="row" style="border: 2px solid">
-							<p>
-							<h3>상품문의</h3>
-							</p>
-							<table class="table">
+					
+					<table class="table">
 								<thead>
 									<tr>
-										<!-- 										<th scope="col">#</th> -->
-										<!-- 										<th scope="col">First</th> -->
-										<!-- 										<th scope="col">Last</th> -->
-										<!-- 										<th scope="col">Handle</th> -->
+										<th scope="col">#</th>
+										<th scope="col">First</th>
+										<th scope="col">Last</th>
+										<th scope="col">Handle</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -287,21 +138,22 @@ function checkOrder(event) {
 								</c:forEach>
 									
 									<tr align="right">
-										<td colspan="3">
+										<td colspan="4">
 											<form action="write_board.do" method="post">
 												<input type="hidden" name="pname" value="${PList}">
 												<input type="hidden" name="pcode" value="9">
 												<input type="hidden" name="ID" value="dawn7778">
-												<input type="submit" value="문의하기" class="primary-btn">
+												<input type="submit" value="공지작성" class="primary-btn">
 											</form>
 										</td>
 									</tr>
 								</tbody>
 							</table>
-						</div>
-					</div>
-
+					
+					
 				</div>
+				
+				
 			</div>
 		</div>
 	</section>
