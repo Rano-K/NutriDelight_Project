@@ -25,6 +25,7 @@ import com.javalec.bbs.command.NDProductInsertCommand_OKH;
 import com.javalec.bbs.command.NDProductListCommand_KMS;
 import com.javalec.bbs.command.NDProductSearchCommand_OKH;
 import com.javalec.bbs.command.NDProductUpdateCommand_OKH;
+import com.javalec.bbs.command.NDSearchNoticeCommand_KMJ;
 import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
 import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
@@ -202,7 +203,12 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "board.do";
 			break;
-
+		// 공지사항 작성
+		case "/notice.do":
+			command = new NDSearchNoticeCommand_KMJ();
+			command.execute(request, response);
+			viewPage = "shop-notice.jsp";
+			break;
 		/*
 		 * Admin 구역
 		 */

@@ -89,52 +89,32 @@ function printName()  {
 					<table class="table">
 								<thead>
 									<tr>
-										<th scope="col">#</th>
-										<th scope="col">First</th>
-										<th scope="col">Last</th>
-										<th scope="col">Handle</th>
+										<th scope="col">no</th>
+										<th scope="col">글쓴이</th>
+										<th scope="col">제목</th>
+										<th scope="col">날짜</th>
 									</tr>
 								</thead>
 								<tbody>
 								
-								<c:if test="${dto1Size == 0}">
-									<tr align="center">
-										<td>
-											해당 상품에 대한 문의가 없습니다.									
-										</td>
-									</tr>
-								</c:if>
-								
-								<c:forEach items="${QList}" var="dto1" varStatus="status">
+								<c:forEach items="${NList}" var="dto" varStatus="status">
 									
-									
-									<c:if test="${dto1.layer == 1}">
-										<c:set var="count1" value="${count1 + 1}" />
+									<c:set var="count1" value="${count1 + 1}" />
 									<tr>
-										<th scope="row">${count1}</th>
-										<td colspan="2">
-											<table class="table">
-												<tr>
-													<td>
-														<p>${dto1.userid}</p>
-														<p>${PList}</p>
-														<p>음식사진 위치</p>
-														<p>문의 제목 : ${dto1.title}</p>
-														<p>문의 내용 : ${dto1.context}</p>
-													</td>
-													<td align="right">
-														<p>작성일자 : ${dto1.insertdate}</p> 
-														<p>수정일자 : ${dto1.updatedate}</p> 
-														<a href="#" class="primary-btn">답변 작성</a>
-													</td>
-
-												</tr>
-
-												
-											</table>
+										<td>
+											${count1}
+										</td>
+										<td>
+											${dto.id}
+										</td>
+										<td>
+											${dto.title}
+										</td>
+										<td>
+											${dto.updatedate}
 										</td>
 									</tr>
-										</c:if>
+										
 								</c:forEach>
 									
 									<tr align="right">

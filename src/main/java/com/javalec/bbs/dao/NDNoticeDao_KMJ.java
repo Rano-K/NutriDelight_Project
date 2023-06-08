@@ -43,10 +43,10 @@ public class NDNoticeDao_KMJ {
 			while(rs.next()) {
 				/*select * from as count*/
 				String id = rs.getString(1);
-				String title = rs.getString(1);
-				String context = rs.getString(1);
-				String insertdate = rs.getString(1);
-				String updatedate = rs.getString(1);
+				String title = rs.getString(2);
+				String context = rs.getString(3);
+				String insertdate = rs.getString(4);
+				String updatedate = rs.getString(5);
 				
 				NDNoticeDto_KMJ dto = new NDNoticeDto_KMJ(id, title, context, insertdate, updatedate);
 				dtos.add(dto);
