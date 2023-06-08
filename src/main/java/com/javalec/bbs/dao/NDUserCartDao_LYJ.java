@@ -45,7 +45,7 @@ public ArrayList<NDUserCartDto_LYJ> list(String userid) {
 		+ " FROM product"
 		+ " JOIN cart ON product.pcode = cart.pcode"
 		+ " JOIN manage ON product.pcode = manage.pcode"
-		+ " WHERE cart.userid = 'user1234'";
+		+ " WHERE cart.userid = '"+ userid +"'";
 		 preparedStatement = connection.prepareStatement(query);
 	     resultSet = preparedStatement.executeQuery();
 		
