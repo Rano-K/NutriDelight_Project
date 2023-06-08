@@ -35,7 +35,7 @@
                         <div class="header__top__left">
                             <ul>
                                 <li><%session.getAttribute("userid"); %></li>
-                                <li>구독상품 며칠남았는지 표시</li>
+                                <li>구독상품 30일 남았습니다</li>
                             </ul>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                                     <li><a href="productList.do">일반상품구매</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/board.do">고객센터</a></li>
+                            <li><a href="notice.do">고객센터</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -87,7 +87,7 @@
                             <li><a href="heart.do"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="Cart.do"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
-                        <div class="header__cart__price">총금액 <span>금액해야돼</span></div>
+                        <div class="header__cart__price">총금액 <span>32,000</span></div>
                     </div>
                 </div>
     </header>
