@@ -8,7 +8,7 @@ public class NDLoginDto {
 	String userpw;
 	String name;
 	String gender;
-	int age;
+	String age;
 	String telno;
 	String email;
 	String address;
@@ -23,7 +23,7 @@ public class NDLoginDto {
 	}
 
 
-	public NDLoginDto(String userid, String userpw, String name, String gender, int age, String telno, String email, String address,
+	public NDLoginDto(String userid, String userpw, String name, String gender, String age, String telno, String email, String address,
 			String allergy) {
 		super();
 		this.userid = userid;
@@ -37,8 +37,20 @@ public class NDLoginDto {
 		this.allergy = allergy;
 	}
 
-
 	
+	public NDLoginDto(String name, String gender, String age, String telno, String email, String address,
+			String allergy) {
+		super();
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.telno = telno;
+		this.email = email;
+		this.address = address;
+		this.allergy = allergy;
+	}
+
+
 	// Method
 	public String getUserid() {
 		return userid;
@@ -80,12 +92,12 @@ public class NDLoginDto {
 	}
 
 
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
 
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 

@@ -3,6 +3,7 @@ package com.javalec.bbs.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -40,7 +41,7 @@ public class NDUserDao {
 			preparedStatement.setString(2, dto.getUserpw());
 			preparedStatement.setString(3, dto.getName());
 			preparedStatement.setString(4, dto.getGender());
-			preparedStatement.setInt(5, dto.getAge());
+			preparedStatement.setString(5, dto.getAge());
 			preparedStatement.setString(6, dto.getTelno());
 			preparedStatement.setString(7, dto.getAddress());
 			preparedStatement.setString(8, dto.getAllergy());
@@ -173,5 +174,46 @@ public class NDUserDao {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	// 유저 정보 받아 오기
+	public ArrayList<NDLoginDto> userInfo(String userid){
+		ArrayList<NDLoginDto> dtos = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT * FROM user WHERE userid='" + userid + "';";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				String name = resultSet.getString("name");
+				String gender = resultSet.getString("gender");
+				String birthdate = resultSet.getString("birthdate");
+				String telno = resultSet.getString("telno");
+				String address = resultSet.getString("address");
+				String email = resultSet.getString("email");
+				String allergy = resultSet.getString("allergy");
+				
+				NDLoginDto dto = new NDLoginDto(name, gender, birthdate, telno, email, address, allergy);
+				dtos.add(dto);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dtos;
 	}
 }

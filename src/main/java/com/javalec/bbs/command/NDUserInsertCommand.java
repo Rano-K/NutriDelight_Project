@@ -19,7 +19,7 @@ public class NDUserInsertCommand implements NDCommand {
 		String telno = request.getParameter("telno");
 		String address = request.getParameter("address");
 		String email = request.getParameter("email");
-		String allergy = request.getParameter("allergy");
+		String allergy = request.getParameter("allergyCheck");
 		
 		NDLoginDto dto = new NDLoginDto(userid, userpw, name, gender, age, telno, email, address, allergy);
 		NDUserDao dao = new NDUserDao();
@@ -31,5 +31,6 @@ public class NDUserInsertCommand implements NDCommand {
 		} else {
 			request.setAttribute("LOGIN_RESULT", "fail");
 		}
+		System.out.println(result);
 	}
 }

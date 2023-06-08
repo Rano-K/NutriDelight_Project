@@ -155,7 +155,7 @@ public class NDFrontController extends HttpServlet {
 		case "/register.do":
 			command = new NDUserInsertCommand();
 			command.execute(request, response);
-			viewPage = "register.jsp";
+			viewPage = "login.do";
 			break;
 		case "/duplicate.do":
 			// id 찾아서 중복 체크 해야함
