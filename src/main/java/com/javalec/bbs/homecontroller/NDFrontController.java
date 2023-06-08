@@ -30,6 +30,7 @@ import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserInsertCommand;
 import com.javalec.bbs.command.NDUserLoginCommand;
+import com.javalec.bbs.command.NDUserOrdersCommand_LYJ;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 import com.javalec.bbs.command.NDWriteBoardPageCommand_KMJ;
 import com.javalec.bbs.command.NDWriteReviewPageCommand_KMJ;
@@ -122,7 +123,7 @@ public class NDFrontController extends HttpServlet {
 			break;
 			// 주문 정보
 		case "/orders.do":
-			command = new NDUserCartListCommand_LYJ();
+			command = new NDUserOrdersCommand_LYJ();
 			command.execute(request, response);
 			viewPage = "orders.jsp";
 			break;

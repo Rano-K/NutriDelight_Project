@@ -253,7 +253,7 @@
                         <table>
                             <thead>
                                 <tr>
-                               		<th>구매물품 정보</th>
+                               		<th>구매자 정보</th>
                                 </tr>
                                 
                             </thead>
@@ -266,11 +266,9 @@
                             <c:forEach items="${orderslist}" var="dto">  
  							
                                 <tr>
-                                <c:if test="${status.index == 0}">
                         		<td> <input type="hidden" name="name" value="${dto.uname}">${dto.uname} </td>
                                 <td> <input type="hidden" name="telno" value="${dto.telno}">${dto.telno} </td>
                                 <td> <input type="hidden" name="address" value="${dto.address}">${dto.address} </td>
-                                </c:if>
                                 </tr>
                                  
                                  <c:set var="totalPrice" value="${totalPrice + (dto.count * dto.price)}" />
