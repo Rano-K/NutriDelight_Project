@@ -43,7 +43,7 @@
                         <div class="header__top__right">
                             <div class="header__top__right__auth">
                             	<c:if test="${not empty sessionScope.ID}">
-                            		<a href="Logout.do"><i class="fa fa-user">Logout</i></a>
+                            		<a href="logout.do"><i class="fa fa-user">Logout</i></a>
 									<a href="mypage.do"><i class="fa fa-user">MyPage</i></a>
 								    <!-- id session이 있는  처리할 내용 -->
 								</c:if>
