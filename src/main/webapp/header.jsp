@@ -49,7 +49,7 @@
 								</c:if>
 								<c:if test="${empty sessionScope.ID}">
 									<a href="login.do"><i class="fa fa-user">Login</i></a>
-									<a href="register.do"><i class="fa fa-user">Register</i></a>
+									<a href="registerPage.do"><i class="fa fa-user">Register</i></a>
 								    <!-- id session이 없는 경우 처리할 내용 -->
 								</c:if>
                               
