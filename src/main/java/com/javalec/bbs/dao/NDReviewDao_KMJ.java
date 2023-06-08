@@ -111,51 +111,6 @@ public class NDReviewDao_KMJ {
 		return name;
 	}
 	
-	public ArrayList<NDReviewDto_KMJ> QuestionList(int pcode){
-		ArrayList<NDReviewDto_KMJ> dtos = new ArrayList<NDReviewDto_KMJ>();
-		Connection conn_mysql = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		try {
-			conn_mysql = dataSource.getConnection(); //context.xml에 미리 정의해놓은 값을 가져온다
-			String query = "SELECT DISTINCT r.userid, rw.likes, rw.contexts, rw.updatedate, rw.image, r.layer, r.adminid, r.parent " +
-                    		"FROM rwrite rw, review r "+
-                    		"WHERE rw.userid = r.userid and r.pcode = ?";
-                    		
-			ps = conn_mysql.prepareStatement(query);
-			ps.setInt(1, pcode);
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				/*select * from as count*/
-				String userid = rs.getString(1); //번호대신 이렇게 받을 수도 있다.
-				int likes = rs.getInt(2);
-				String contexts = rs.getString(3);
-				String date = rs.getString(4);
-				String image = rs.getString(5);
-				int layer = rs.getInt(6);
-				String adminid = rs.getString(7);
-				int parent = rs.getInt(8);
-				
-				//NDReviewDto_KMJ dto = new NDReviewDto_KMJ(userid, likes, contexts, date, image, layer, adminid, parent);
-				//dtos.add(dto);
-			}
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {//finally는 다시 말하지만 에러가 나든 안나든 무조건 실행되는 구문이다. 이를 통해 연결들을 해제한다.
-			try {
-				if(rs != null) rs.close();
-				if(ps != null) ps.close();
-				if(conn_mysql != null) conn_mysql.close();
-			}catch (Exception e) {
-				e.printStackTrace();		// TODO: handle exception
-			}
-		}
-		
-		return dtos;
-	}// list
 	public int getOrdercode(String userid, int pcode) {
 		int ocode=0;
 		Connection conn_mysql = null;
@@ -205,7 +160,7 @@ public class NDReviewDao_KMJ {
 					"VALUES (?,?,?,?,0,?,?,now())";
 			
 			String query2 = "INSERT INTO review (parent, layer, userid, pcode, insertdate, invalidate) "+
-					"VALUES (?,1,?,?,now(),1)";
+					"VALUES (?,1,?,?,now(),1)"; //원래는 인서트가 두개면 메소드를 나눠야한다...
 			
 			String query1 = "SELECT MAX(seq) from review";
             stmt = conn_mysql.createStatement();

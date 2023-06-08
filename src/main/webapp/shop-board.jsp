@@ -245,36 +245,56 @@ function checkOrder(event) {
 									</tr>
 								</thead>
 								<tbody>
+								
+								<c:if test="${dto1Size == 0}">
+									<tr align="center">
+										<td>
+											해당 상품에 대한 문의가 없습니다.									
+										</td>
+									</tr>
+								</c:if>
+								
+								<c:forEach items="${QList}" var="dto1" varStatus="status">
+									
+									
+									<c:if test="${dto1.layer == 1}">
+										<c:set var="count1" value="${count1 + 1}" />
 									<tr>
-										<th scope="row">1</th>
+										<th scope="row">${count1}</th>
 										<td colspan="2">
 											<table class="table">
 												<tr>
 													<td>
-														<p>작성한 고객 아이디 : Mark</p>
-														<p>클릭한 음식 이름</p>
+														<p>${dto1.userid}</p>
+														<p>${PList}</p>
 														<p>음식사진 위치</p>
-														<p>문의내용</p>
-
+														<p>문의 제목 : ${dto1.title}</p>
+														<p>문의 내용 : ${dto1.context}</p>
 													</td>
 													<td align="right">
-														<p>작성일자 : 23.06.05</p> <a href="#" class="primary-btn">답변
-															작성</a>
+														<p>작성일자 : ${dto1.insertdate}</p> 
+														<p>수정일자 : ${dto1.updatedate}</p> 
+														<a href="#" class="primary-btn">답변 작성</a>
 													</td>
 
 												</tr>
 
-												<tr align="right">
-													<td align="left">
-														<p>댓글 쓴 사람 아이디 : 댓글 내용</p>
-													</td>
-													<td>작성일자 : 23.06.05</td>
-												</tr>
+												
 											</table>
 										</td>
 									</tr>
+										</c:if>
+								</c:forEach>
+									
 									<tr align="right">
-										<td colspan="3"><a href="#" class="primary-btn">문의하기</a></td>
+										<td colspan="3">
+											<form action="write_board.do" method="post">
+												<input type="hidden" name="pname" value="${PList}">
+												<input type="hidden" name="pcode" value="9">
+												<input type="hidden" name="ID" value="dawn7778">
+												<input type="submit" value="문의하기" class="primary-btn">
+											</form>
+										</td>
 									</tr>
 								</tbody>
 							</table>

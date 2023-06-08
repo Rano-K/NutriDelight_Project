@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.bbs.command.NDCommand;
+import com.javalec.bbs.command.NDInsertBoardCommand_KMJ;
 import com.javalec.bbs.command.NDInsertReviewCommand_KMJ;
 import com.javalec.bbs.command.NDLogoutCommand;
 import com.javalec.bbs.command.NDMainAdminCommand_OKH;
@@ -29,6 +30,7 @@ import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserLoginCommand;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
+import com.javalec.bbs.command.NDWriteBoardPageCommand_KMJ;
 import com.javalec.bbs.command.NDWriteReviewPageCommand_KMJ;
 import com.javalec.bbs.command.NDuserCartDeleteCommand;
 
@@ -176,6 +178,18 @@ public class NDFrontController extends HttpServlet {
 		// 리뷰 작성
 		case "/write_review_confirm.do":
 			command = new NDInsertReviewCommand_KMJ();
+			command.execute(request, response);
+			viewPage = "board.do";
+			break;
+		// 문의 작성페이지로 이동
+		case "/write_board.do":
+			command = new NDWriteBoardPageCommand_KMJ();
+			command.execute(request, response);
+			viewPage = "write_board.jsp";
+			break;
+		// 문의 작성
+		case "/write_board_confirm.do":
+			command = new NDInsertBoardCommand_KMJ();
 			command.execute(request, response);
 			viewPage = "board.do";
 			break;
