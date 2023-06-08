@@ -9,60 +9,66 @@
 	const regExpPhone = /^\d{3}-\d{3,4}-\d{4}$/
 	const regExpAddress = /^[가-힣\s]*$/
 	const regExpEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
-//	const regExpAdmin = /^[admin|root|insert|update|revoke|submit|select|delete|create|drop]+*$/
+	const regExpAdmin = /^(?!.*(?:admin|root|insert|update|revoke|submit|select|delete|create|drop))^.*$/
+	const regExpBirth = /^(19[7-9]\d|20[0-9]{2})\.(0[1-9]|1[0-2])\.(0[1-9]|[12]\d|3[01])$/;
 	
-	const id = form.getElementById("userid").value
-	const name = form.getElementById("name").value
-	const passwd1 = form.getElementById("password1").value
-	const passwd2 = form.getElementById("password2").value
-	const phone = form.getElementById("telno").value
-	const address = form.getElementById("address").value
-	const email = form.getElementById("email").value
+	const id = document.getElementById("userid").value
+	const inputid = document.getElementById("inputID").value
+	const idCheck = document.getElementById("idCheck").value
+	const name = document.getElementById("name").value
+	const passwd1 = document.getElementById("password1").value
+	const passwd2 = document.getElementById("password2").value
+	const phone = document.getElementById("telno").value
+	const address = document.getElementById("address").value
+	const email = document.getElementById("email").value
+	const birthdate = document.getElementById("age").value
+	const gender = document.querySelector('input[name="gender"]:checked').value;
+	const allergy = document.getElementById("allergyCheck").value
 	
 	if(!regExpId.test(id)){
 		alert("아이디는 문자로 시작해 주세요.")
-		form.uid.select()
+		//form.uid.select()
 		return
 	}
 	
-//	if(!regExpAdmin.test(id)){
-//		alert("사용이 불가능한 아이디 입니다. 다시 작성해주세요.")
-//		form.uid.select()
-//		return
-//	}
+	if(!regExpAdmin.test(inputid)){
+		alert("사용이 불가능한 아이디 입니다. 다시 작성해주세요.")
+		//form.uid.select()
+		return
+	}
 	
-//	if(form.idDuplication.value != "idCheck"){
-//		alert("아이디 중복체크를 해주세요.")
-//		return	
-//	}
+	if(idCheck.value == 0){
+		alert("아이디 중복체크를 해주세요.")
+		return	
+	}
 	
 	if(!regExpName.test(name)){
 		alert("이름은 한글로만 입력해 주세요.")
-		form.uname.select()
+		//form.uname.select()
 		return
 	}
 	
-	if(!regExpPasswd.test(passwd1)){
-		alert("비밀번호는 영문 또는 숫자로만 입력해 주세요.")
-		form.upasswd1.select()
+	if(passwd1 == "" || passwd2 == ""){
+		alert("비밀번호를 입력해 주세요.")
+		//form.upasswd1.select()
 		return
 	}
 	
-	if(!regExpPasswd.test(passwd2)){
+	if(!regExpPasswd.test(passwd1) || !regExpPasswd.test(passwd2)){
 		alert("비밀번호는 영문 또는 숫자로만 입력해 주세요.")
-		form.upasswd2.select()
+		//form.upasswd1.select()
 		return
 	}
 	
 	if(passwd1 !== passwd2){
 		alert("비밀번호가 일치 하지 않습니다.")
-		form.upasswd2.select()
+		//form.upasswd2.select()
 		return
 	}
 	
 	if(!regExpAddress.test(address)){
 		alert("주소는 한글로만 입력해 주세요.")
-		form.uaddress.select()
+		//form.uaddress.select()
 		return	
 	}
 		
@@ -76,9 +82,19 @@
 		return
 	}
 	
+	if(!regExpBirth.test(birthdate)){
+		alert("생년월일을 확인해주세요.")
+		return
+	}
+	
+	if(allergy.value == 0){
+		alert("알러지 항목을 확인해주세요. 알러지가 없다면 확인만 눌러주세요.")
+		return
+	}
+	
 	alert("환영합니다.")
 	
-	form.submit()
+	window.location.href = "login.do"
 }
 	
 function checkPassword(){
@@ -155,7 +171,7 @@ function checkUser(getResult, getId){
 		window.location.href = "admin_main.do"
 	} else{
 		alert('아이디 혹은 비밀번호가 틀렸습니다. 다시 시도해 주세요.')
-		window.location.href = "logout.do"
+		return;
 	}
 }
 
@@ -165,15 +181,14 @@ function checkid(){
 }
 
 function setStatusVar(varStat){
-	var strvarStat = '"' + varStat + '"';
 	
-	if(strvarStat === "allergyCheck"){
-		$("input[type=hidden][name=allergyCheck]").val("1");
+	if(varStat === "allergyCheck"){
+		document.getElementById("allergyCheck").value = 1;
 	}else{
 		document.getElementById("allergyCheck").value = '0';
 	}
-	if(strvarStat === "idCheck"){
-		$("input[type=hidden][name=idCheck]").val("1");
+	if(varStat === "idCheck"){
+		document.getElementById("idCheck").value = 1;
 	}else{
 		document.getElementById("idCheck").value = '0';
 	}
@@ -181,22 +196,31 @@ function setStatusVar(varStat){
 
 function checkDuplicate() {
 	var id = $("#inputID").val();
+	const btn1 = document.getElementById("modalCheck");
+	btn1.style.display = 'none';
+	document.getElementById("inputID").value = "";
 	
 	if(id == ""){
 		alert("ID를 입력해주세요.")
 		return;
 	}else{
 		$.ajax({
-		    type: "GET",
+		    type: "POST",
 		    url: "duplicateid.jsp", // URL
 		    data: { id : id },
 		    success: function(result) {
+				console.log(result)
 				if (result === 0) {
 					alert("사용 가능한 아이디 입니다.");
+					document.getElementById("userid").value = id;
+					document.getElementById("uid").value = id;
+					btn1.style.display = 'block';
 				} else if(result === 1){
 					alert("이미 존재하는 아이디 입니다.");
+					btn1.style.display = 'none';
 				} else{
 					alert("사용 불가능한 아이디 입니다.");
+					btn1.style.display = 'none';
 				}
 			},
 			error: function(xhr, status, error) {
@@ -204,4 +228,9 @@ function checkDuplicate() {
 			}
 		});
 	}
+}
+
+function isCheckDone(){
+	
+	
 }

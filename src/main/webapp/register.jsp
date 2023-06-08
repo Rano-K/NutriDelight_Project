@@ -42,23 +42,27 @@
                             <form class="user">
                                 <div class="form-group row">
                                 	<div class="col-sm-9 mb-3 mb-sm-0">
+                                		<input type="hidden" id="uid" value="">
                                    		<input type="text" class="form-control form-control-user" id="userid" placeholder="ID" disabled="disabled">
                                    	</div>
                                    	<div class="col-sm-3">
 	                                   	<!-- 사용 가능 확인 터치하여 나왔을 떄 비활성화 처리 해야 함 -->
-	                                   	<input type="hidden" id="idCheck" value="0">
+	                                   	<input type="hidden" id="idCheck" name="idCheck" value="0">
                                    		<a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#idduplicateModal">ID 중복체크</a>
 									</div>
                                	</div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="name" placeholder="Name">
+                                </div>
                                	<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user" id="password1"
                                             placeholder="Password" onkeyup="checkPassword()">
-                                    </div>
+									</div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user" id="password2"
                                             placeholder="Repeat Password" onkeyup="checkPassword()">
-                                    </div>
+									</div>
                                 </div>
                                 <div class="form-group sm">
                                 	<input id="passwordStatus" class="form-control form-control-user" disabled="disabled" placeholder="비밀번호 일치 여부">
@@ -72,27 +76,22 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="address" placeholder="Address" value="api 현재 미적용">
                                 </div>
-                                <div class="form-group">
-	                                <div class="input-group-text col-sm-12">
-	                                    <input type="radio" style="margin-left: 20%" id="male" name="gender" value="male" checked="checked"> 남자
-	                                    <input type="radio" style="margin-left: 30%" id="female" name="gender" value="female"> 여자
-	                                </div>
+                                <div class="form-group sm">
+                                    <input type="text" class="form-control form-control-user" id="age" placeholder="Birthdate ex)2000.01.01">
                                 </div>
+                                <div class="input-group-text col-sm-12">
+                                    <input type="radio" style="margin-left: 20%" id="male" name="gender" value="male" checked="checked"> 남자
+                                    <input type="radio" style="margin-left: 30%" id="female" name="gender" value="female"> 여자
+                             	</div>
+                             	<p></p>
                                 <!-- 알러지 모달 -->
-                                <input type="hidden" id="allergyCheck" value="0">
+                                <input type="hidden" id="allergyCheck" name="allergyCheck" value="0">
                                 <div class="form-group">
                                 	<a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#allergyModal" style="margin-left: auto; margin-right: auto;"> 알러지 체크 하기 </a>
                                 </div>
                                 <hr>
                                 <!-- 회원가입 눌렀을 때  -->
-                                <c:choose>
-	                                <c:when test="${(idcheck eq '1') && (allergyCheck eq '1')}">
-	                                	<a href="register.do" class="btn btn-primary btn-user btn-block"> Register Account </a>
-	                                </c:when>
-	                                <c:otherwise>
-	                                	<a href="#" class="btn btn-secondary btn-user btn-block"> Register Account </a>
-                                	</c:otherwise>
-                                </c:choose>
+                               	<a href="#" class="btn btn-primary btn-user btn-block" onclick="checkMember()"> Register Account </a>
                                 <hr>
                                 <a href="#" class="btn btn-kakao btn-user btn-block">
                                 	<i class="fas fa-comment-dots fa-flip-horizontal"></i> Register with Kakao 미적용
@@ -129,10 +128,11 @@
 				<div class="modal-body">
 					<input type="text" class="col-sm-10" placeholder="사용할 ID를 입력 해주세요." id="inputID" name="inputID">
 					<button type="button" onclick="checkDuplicate()" name="dbCheckId">중복체크</button>
+					* 중복 체크를 해야 확인 버튼이 노출 됩니다. *
 				</div>
 				<div class="modal-footer">
 					<!-- 여기서 위에 찾은 값이 사용 가능 할 때 확인 버튼 활성화 및 변수 저장하여 위에서 account 버튼 활성화때 이용 -->
-					<button class="btn btn-primary" type="button" onclick="setStatusVar('idCheck')">확인</button>
+					<button class="btn btn-primary" id="modalCheck" style="display: none" type="button" onclick="setStatusVar('idCheck')" data-dismiss="modal">확인</button>
 				</div>
 			</div>
 		</div>
@@ -156,8 +156,7 @@
 					</c:forEach>
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-primary" type="button"
-						onclick="setStatusVar('allergyCheck')">확인</button>
+					<button class="btn btn-primary" type="button" onclick="setStatusVar('allergyCheck')" data-dismiss="modal">확인</button>
 				</div>
 			</div>
 		</div>
