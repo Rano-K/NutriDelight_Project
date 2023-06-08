@@ -120,6 +120,12 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "cart.do";
 			break;
+			// 주문 정보
+		case "/orders.do":
+			command = new NDUserCartListCommand_LYJ();
+			command.execute(request, response);
+			viewPage = "orders.jsp";
+			break;
 
 		// 고객센터 버튼 클릭시 ---------------------------민재야 만들어줘
 
@@ -195,6 +201,7 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "board.do";
 			break;
+
 		/*
 		 * Admin 구역
 		 */
