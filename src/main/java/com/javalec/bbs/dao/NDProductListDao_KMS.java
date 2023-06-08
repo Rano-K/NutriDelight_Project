@@ -46,7 +46,7 @@ public class NDProductListDao_KMS implements NDCommand {
 
 	
 	//productList에서 pcode, name, price, photo를 들고 온다.
-	public ArrayList<NDProductListDto_KMS> TakeAll(String pcode, String name, int price, String photo) {
+	public ArrayList<NDProductListDto_KMS> TakeAll() {
 		ArrayList<NDProductListDto_KMS> dtos = new ArrayList<NDProductListDto_KMS>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -55,16 +55,15 @@ public class NDProductListDao_KMS implements NDCommand {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select p,pcode, p.pname, m.price, p.photo from product p, manage m "
-					+"where p.pcode = m.pcode and m.invalidate='1'";			
+			String query = "select p.pcode, p.name, m.price, p.photo from product as p, manage as m where p.pcode = m.pcode and m.invalidate='1';";			
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
-				pcode = resultSet.getString("pcode");
-				name = resultSet.getString("name");
-				price = resultSet.getInt("price");
-				photo = resultSet.getString("photo");
+				String pcode = resultSet.getString("pcode");
+				String name = resultSet.getString("name");
+				int price = resultSet.getInt("price");
+				String photo = resultSet.getString("photo");
 				
 				NDProductListDto_KMS dto = new NDProductListDto_KMS(pcode, name, price, photo);
 				dtos.add(dto);

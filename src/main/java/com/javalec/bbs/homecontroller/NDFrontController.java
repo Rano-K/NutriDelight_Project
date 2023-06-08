@@ -28,7 +28,9 @@ import com.javalec.bbs.command.NDProductUpdateCommand_OKH;
 import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
 import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
+import com.javalec.bbs.command.NDUserInsertCommand;
 import com.javalec.bbs.command.NDUserLoginCommand;
+import com.javalec.bbs.command.NDUserOrdersCommand_LYJ;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 import com.javalec.bbs.command.NDWriteBoardPageCommand_KMJ;
 import com.javalec.bbs.command.NDWriteReviewPageCommand_KMJ;
@@ -119,6 +121,12 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "cart.do";
 			break;
+			// 주문 정보
+		case "/orders.do":
+			command = new NDUserOrdersCommand_LYJ();
+			command.execute(request, response);
+			viewPage = "orders.jsp";
+			break;
 
 		// 고객센터 버튼 클릭시 ---------------------------민재야 만들어줘
 
@@ -145,7 +153,8 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "register.jsp";
 			break;
 		case "/register.do":
-
+			command = new NDUserInsertCommand();
+			command.execute(request, response);
 			viewPage = "register.jsp";
 			break;
 		case "/duplicate.do":
@@ -193,6 +202,7 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "board.do";
 			break;
+
 		/*
 		 * Admin 구역
 		 */
