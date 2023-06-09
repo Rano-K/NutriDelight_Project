@@ -40,17 +40,34 @@
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
                             <form class="user">
-                                <div class="form-group row">
-                                	<div class="col-sm-9 mb-3 mb-sm-0">
-                                		<input type="hidden" id="uid" value="">
-                                   		<input type="text" class="form-control form-control-user" id="userid" placeholder="ID" disabled="disabled">
-                                   	</div>
-                                   	<div class="col-sm-3">
-	                                   	<!-- 사용 가능 확인 터치하여 나왔을 떄 비활성화 처리 해야 함 -->
-	                                   	<input type="hidden" id="idCheck" name="idCheck" value="0">
-                                   		<a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#idduplicateModal">ID 중복체크</a>
-									</div>
-                               	</div>
+                            	<c:choose>
+                               		<c:when test="${not empty param.userid}">
+	                                <div class="form-group row">
+	                                	<div class="col-sm-9 mb-3 mb-sm-0">
+	                                		<input type="hidden" id="uid" value="${param.userid}">
+	                                   		<input type="text" class="form-control form-control-user" id="userid" placeholder="ID" disabled="disabled" value="${param.userid}">
+	                                   	</div>
+	                                   	<div class="col-sm-3">
+		                                   	<!-- 사용 가능 확인 터치하여 나왔을 떄 비활성화 처리 해야 함 -->
+		                                   	<input type="hidden" id="idCheck" name="idCheck" value="1">
+	                                   		<a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#idduplicateModal">ID 중복체크</a>
+										</div>
+	                               	</div>
+                               		</c:when>
+                               		<c:otherwise>
+                               		<div class="form-group row">
+	                                	<div class="col-sm-9 mb-3 mb-sm-0">
+	                                		<input type="hidden" id="uid" value="">
+	                                   		<input type="text" class="form-control form-control-user" id="userid" placeholder="ID" disabled="disabled">
+	                                   	</div>
+	                                   	<div class="col-sm-3">
+		                                   	<!-- 사용 가능 확인 터치하여 나왔을 떄 비활성화 처리 해야 함 -->
+		                                   	<input type="hidden" id="idCheck" name="idCheck" value="0">
+	                                   		<a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#idduplicateModal">ID 중복체크</a>
+										</div>
+	                               	</div>
+                               		</c:otherwise>
+                               	</c:choose>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="name" placeholder="Name">
                                 </div>
@@ -73,8 +90,13 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="email" placeholder="Email">
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="address_kakao" placeholder="Address" readonly="readonly"/>
+                                <div class="form-group row">
+                                	<div class="col-sm-9 mb-3 mb-sm-0">
+                                    	<input type="text" class="form-control form-control-user" id="address_kakao" placeholder="Address" readonly="readonly">
+                                    </div>
+                                    <div class="col-sm-3">
+                                    	<a href="#" id="addressbtn" class="btn btn-primary btn-user btn-block" onclick="addressbtn()">주소 찾기</a>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Detail Address"/>
@@ -93,7 +115,7 @@
                                 	<a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#allergyModal" style="margin-left: auto; margin-right: auto;"> 알러지 체크 하기 </a>
                                 </div>
                                 <hr>
-                                <!-- 회원가입 눌렀을 때  -->
+                                <!--  회원가입 눌렀을 때 -->
                                	<a href="#" class="btn btn-primary btn-user btn-block" onclick="checkMember()"> Register Account </a>
                                 <hr>
                                 <a href="#" class="btn btn-kakao btn-user btn-block">

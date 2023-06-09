@@ -7,18 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javalec.bbs.dao.NDUserDao;
 
 /**
- * Servlet implementation class socialLogin
+ * Servlet implementation class NDUserDuplicate
  */
-@WebServlet("/oauth/kakao/")
-public class socialLogin extends HttpServlet {
+@WebServlet("/kakaoCheck")
+public class NDKakaoUserCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public socialLogin() {
+    public NDKakaoUserCheck() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,13 +29,7 @@ public class socialLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		String viewPage = "/sociallogin.jsp";
-		String jspPath = "http://localhost:8080" + request.getContextPath() +viewPage;
-		
-		String code = request.getParameter("code");
-		
-		response.sendRedirect(jspPath + "?code=" + code);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -42,8 +37,19 @@ public class socialLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String id = request.getParameter("id");
+//		System.out.print("kakao_ id = " + id);
+		
+		NDUserDao dao = new NDUserDao();
+		boolean result = dao.userCheck(id);
+//		System.out.println("result = " + result);
+		String wkResult = result == true ? "1" : "0";
+		
+		
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(wkResult);
+//		System.out.print("wkResult = " + wkResult);
 	}
-	
-	
+
 }

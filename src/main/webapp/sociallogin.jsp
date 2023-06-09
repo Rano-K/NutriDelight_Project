@@ -1,11 +1,14 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>My JSP Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="js/login.js"></script>
 </head>
 <body>
+1
 <%
 	String code = "";
 	String error = "";
@@ -14,12 +17,13 @@
 		code = request.getParameter("code");
 		error = request.getParameter("error");
 		state = request.getParameter("state");
+		out.print(code);
 		
 		if(code != null){ %>
 		<script>
 			const kakao_url = "https://kauth.kakao.com/oauth/token"
 			const client_id = "ef894ee905a0643b7844daf7341d7569"
-			const redirect_uri = "http://localhost:8080/Season2_Team4_Main/oauth/kakao"
+			const redirect_uri = "http://localhost:8080/Season2_Team4_Main/oauth/kakao/"
 			const code = "<%=code%>"
 			
 			$.ajax({
@@ -37,12 +41,14 @@
 				},
 				success: function(data){
 					console.log(data)
+					kakao_userinfo(data.access_token)
+					
 				},
 				error : function(e){
 					console.log(e)
 				}
 			});
-			window.location.href = "login.do"
+			
 			</script> <%
 		}
 	}catch(Exception e){

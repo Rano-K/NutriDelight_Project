@@ -75,9 +75,9 @@
                                         <a href="#" class="btn btn-kakao btn-user btn-block" onclick="kakao_loginbtn()">
                                             <i class="fas fa-comment-dots fa-flip-horizontal"></i> Login with Kakao
                                         </a>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
+                                        </a> -->
                                     </form>
                                     <hr>
                                     <div class="text-center">
