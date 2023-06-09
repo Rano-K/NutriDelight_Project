@@ -30,7 +30,9 @@ import com.javalec.bbs.command.NDProductListCommand_KMS;
 import com.javalec.bbs.command.NDProductSearchCommand_OKH;
 import com.javalec.bbs.command.NDSearchNoticeCommand_KMJ;
 import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
+import com.javalec.bbs.command.NDSubscribeScheduleCommand_OKH;
 import com.javalec.bbs.command.NDSubscribeSearchCommand_OKH;
+import com.javalec.bbs.command.NDSubscribeUpdateCommand_OKH;
 import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserInsertCommand;
@@ -279,7 +281,7 @@ public class NDFrontController extends HttpServlet {
 
 		// 구독 스케쥴 관리
 		case "/admin_schedulesubscribe.do":
-			command = new NDSubscribeSearchCommand_OKH();
+			command = new NDSubscribeScheduleCommand_OKH();
 			command.execute(request, response);
 			viewPage = "admin_subscribe_schedule.jsp";
 			break;
