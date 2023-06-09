@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javalec.bbs.command.NDBoardDeleteCommand_OKH;
+import com.javalec.bbs.command.NDBoardFindCommand_OKH;
+import com.javalec.bbs.command.NDBoardInsertCommand_OKH;
+import com.javalec.bbs.command.NDBoardSearchCommand_OKH;
 import com.javalec.bbs.command.NDCommand;
 import com.javalec.bbs.command.NDInsertBoardCommand_KMJ;
 import com.javalec.bbs.command.NDInsertReviewCommand_KMJ;
@@ -26,6 +30,7 @@ import com.javalec.bbs.command.NDProductListCommand_KMS;
 import com.javalec.bbs.command.NDProductSearchCommand_OKH;
 import com.javalec.bbs.command.NDSearchNoticeCommand_KMJ;
 import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
+import com.javalec.bbs.command.NDSubscribeSearchCommand_OKH;
 import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserInsertCommand;
@@ -258,6 +263,20 @@ public class NDFrontController extends HttpServlet {
 
 		// 구독 관리
 
+		// 구독 확인
+		case "/admin_searchsubscribe.do":
+			command = new NDSubscribeSearchCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_subscribe.jsp";
+			break;
+
+		// 구독 스케쥴 관리
+		case "/admin_schedulesubscribe.do":
+			command = new NDSubscribeSearchCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_subscribe_schedule.jsp";
+			break;
+
 		// 유저 관리
 
 		// user 확인
@@ -306,6 +325,34 @@ public class NDFrontController extends HttpServlet {
 
 		// 게시판 관리
 
+		// 게시판 확인
+		case "/admin_searchboard.do":
+			command = new NDBoardSearchCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_board.jsp";
+			break;
+			
+		// 상품 입력 및 수정에 데이터 표기
+		case "/admin_findboard.do":
+			command = new NDBoardFindCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_board_insert.jsp";
+			break;
+
+		// 게시판 작성
+		case "/admin_insertboard.do":
+			command = new NDBoardInsertCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_board.jsp";
+			break;
+
+		// 게시판 삭제
+		case "/admin_deleteboard.do":
+			command = new NDBoardDeleteCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_board.jsp";
+			break;
+			
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
