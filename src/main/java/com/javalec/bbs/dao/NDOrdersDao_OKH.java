@@ -269,7 +269,7 @@ public class NDOrdersDao_OKH {
 		return dtos;
 	}
 
-	// 오더관련 모든 정보 불러오기 : searchOrders.do
+	// 하나의 오더코드관련 모든 정보 불러오기 : searchOrders.do
 	public ArrayList<NDOrdersDto_OKH> searchupdate(int ordercode) {
 		ArrayList<NDOrdersDto_OKH> dtos = new ArrayList<NDOrdersDto_OKH>();
 		Connection connection = null;

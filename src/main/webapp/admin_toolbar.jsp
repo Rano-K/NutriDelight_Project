@@ -61,8 +61,8 @@ String ID = (String) sessions.getAttribute("ID");
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
-					<a class="collapse-item" href="utilities-color.html">구독 목록</a> <a
-						class="collapse-item" href="utilities-other.html">구독 일정</a>
+					<a class="collapse-item" href="admin_searchsubscribe.do">구독 목록</a> <a
+						class="collapse-item" href="admin_schedulesubscribe.do">구독 일정</a>
 				</div>
 			</div></li>
 
@@ -99,20 +99,20 @@ String ID = (String) sessions.getAttribute("ID");
 			</div></li>
 
 
-			
+
 		<!-- Nav Item - Tables -->
 		<!-- Nav Item - Tables -->
 		<li class="nav-item"><a class="nav-link collapsed" href="#"
 			data-toggle="collapse" data-target="#collapseBoard"
-			aria-expanded="true" aria-controls="collapseBoard">
-					<i class="fas fa-fw fa-table"></i> <span>게시판 관리</span>
+			aria-expanded="true" aria-controls="collapseBoard"> <i
+				class="fas fa-fw fa-table"></i> <span>게시판 관리</span>
 		</a>
 			<div id="collapseBoard" class="collapse"
 				aria-labelledby="headingPages" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
-					<a class="collapse-item" href="admin_searchproduct.do">게시글 목록</a> <a
-						class="collapse-item" href="admin_product_insert.jsp">게시글 등록</a>
+					<a class="collapse-item" href="admin_searchboard.do">게시글 목록</a> <a
+						class="collapse-item" href="admin_board_insert.jsp">공지사항 등록</a>
 				</div>
 			</div></li>
 
@@ -168,9 +168,8 @@ String ID = (String) sessions.getAttribute("ID");
 									</div>
 								</div>
 								<div>
-									<div class="small text-gray-500">December 12, 2019</div>
-									<span class="font-weight-bold">A new monthly report is
-										ready to download!</span>
+									<div class="small text-gray-500">알람이름</div>
+									<span class="font-weight-bold">알람다운로드</span>
 								</div>
 							</a> <a class="dropdown-item text-center small text-gray-500"
 								href="#">Show All Alerts</a>

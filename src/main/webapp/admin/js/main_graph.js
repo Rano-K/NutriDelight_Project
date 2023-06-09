@@ -35,7 +35,7 @@ function dataConnect(dataSales, subscribeSales, ordersSales) {
 		]);
 
 		var options = {
-			 chartArea: { width: '100%', height: '90%' }
+			 chartArea: { width: '100%', height: '90%' },
 		};
 
 		var chart = new google.visualization.PieChart(document

@@ -283,7 +283,13 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "admin_subscribe_schedule.jsp";
 			break;
-
+			
+		//	구독 배송 확인	
+		case "/admin_updatesubscribe.do":
+			command = new NDSubscribeUpdateCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_schedulesubscribe.do";
+			break;
 		// 유저 관리
 
 		// user 확인
