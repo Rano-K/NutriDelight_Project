@@ -7,7 +7,9 @@ public class NDUserOrdersDto_LYJ {
 	int ordercode;
 	String userid;
 	String pcode;
-	
+	String photo;
+	String name;
+	String email;
 	
 	Timestamp orderdate;
 	Timestamp refunddate;
@@ -21,6 +23,8 @@ public class NDUserOrdersDto_LYJ {
 	int price;
 	String count;
 	
+	
+	
 	public NDUserOrdersDto_LYJ() {
 		// TODO Auto-generated constructor stub
 	}
@@ -28,6 +32,51 @@ public class NDUserOrdersDto_LYJ {
 	
 	
 	
+
+
+
+
+	public NDUserOrdersDto_LYJ(String name, String telno, String address, String email) {
+		super();
+		this.name = name;
+		this.telno = telno;
+		this.address = address;
+		this.email = email;
+	}
+
+
+
+
+
+
+
+
+	public NDUserOrdersDto_LYJ(String pcode, String name, String photo,  int price) {
+		super();
+		this.pcode = pcode;
+		this.name = name;
+		this.photo = photo;
+		this.price = price;
+	}
+
+
+
+
+
+/*
+
+
+	public NDUserOrdersDto_LYJ(String userid1, String uname, String telno, String address) {
+		super();
+		this.userid1 = userid1;
+		this.uname = uname;
+		this.telno = telno;
+		this.address = address;
+	}
+
+
+*/
+
 
 
 
@@ -41,6 +90,72 @@ public class NDUserOrdersDto_LYJ {
 		this.pname = pname;
 		this.price = price;
 		this.count = count;
+	}
+
+
+
+
+
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+
+
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+
+
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+
+
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+
+
+
+
+
+	public String getPhoto() {
+		return photo;
+	}
+
+
+
+
+
+
+
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 

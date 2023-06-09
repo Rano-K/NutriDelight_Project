@@ -21,6 +21,14 @@ public class NDProductListDto_KMS {
 		this.price = price;
 		this.photo = photo;
 	}
+	
+	
+
+
+	public NDProductListDto_KMS(String photo) {
+		super();
+		this.photo = photo;
+	}
 
 
 	public String getPcode() {

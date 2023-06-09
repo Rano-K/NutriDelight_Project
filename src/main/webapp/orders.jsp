@@ -26,8 +26,38 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    
+		
+			
+			<style>
+			.row {
+			  display: flex;
+			  justify-content: flex-start;
+			}
+			
+			.table1 {
+			  margin-left: 100px;
+			}
+			</style>
+    
 </head>
-
+<%
+	String result = (String)request.getAttribute("result");
+	String loginCheck = (String)session.getAttribute("login");
+	System.out.print(result);
+%>
+<script>
+function checkResult(event) {
+    var sendResult = '<%=result %>';
+    
+    if (sendResult === 'false'){
+    	alert("주문에 실패했습니다.");
+    	event.preventDefault(); // 폼 제출 이벤트 중지
+    }else {
+    	alert("주문이 완료되었습니다.");
+    }
+}
+</script>
 <body>
     <!-- Page Preloder -->
     <!-- <div id="preloder">
@@ -90,6 +120,10 @@
         </div>
     </div> -->
     <!-- Humberger End -->
+    
+    <%@ include file="header.jsp"%>
+    
+    
 
     <!-- Header Section Begin -->
     <header class="header">
@@ -245,40 +279,36 @@
 
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
+	    	<%
+			String userid = (String)session.getAttribute("login"); 
+			%>
+		
                 <div class="row">
                 	<div class="col-lg-12">
-                	 <form id="deleteForm" action="orders.do" method="get">
-                    <div class="shoping__cart__table">
-                        
-                        <table>
-                            <thead>
-                                <tr>
-                               		<th>구매자 정보</th>
-                                </tr>
-                                
-                            </thead>
-                            <tbody>
-                          
-                            
-                            <c:set var="totalPrice" value="0" />
-                            
-                            
-                            <c:forEach items="${orderslist}" var="dto">  
- 							
-                                <tr>
-                        		<td> <input type="hidden" name="name" value="${dto.uname}">${dto.uname} </td>
-                                <td> <input type="hidden" name="telno" value="${dto.telno}">${dto.telno} </td>
-                                <td> <input type="hidden" name="address" value="${dto.address}">${dto.address} </td>
-                                </tr>
-                                 
-                                 <c:set var="totalPrice" value="${totalPrice + (dto.count * dto.price)}" />
-                                
-                               </c:forEach>
-                            
-                            </tbody>
-                        </table>
-                    </div>
-                    </form> 
+                	 <form action="orderSend.do" method="post">
+						<input type="hidden" name="userid" value="<%=userid %>">
+						<input type="hidden" name="pcode" value="${info.pcode}">
+						<input type="hidden" name="qty" value="${num}">
+						<table class="table1">
+
+							
+							<tr>
+								<td colspan="3">
+									<div class="product-info">
+									
+										<p>수령인 : ${uInfo.name}</p>
+										<p>수령인 전화번호 : ${uInfo.telno}</p>
+										<p>배송지 : <input type="text" name="address" value="${uInfo.address}"></p>
+										<p>이메일 : ${uInfo.email}</p>
+										<p>품목명 : ${info.name}</p>
+										<p>가격 : ${info.price}</p>
+										<p>수량 : ${num}</p>	
+																												
+									</div>
+								</td>
+							</tr>
+					</table>
+				  </form>
                 </div>
             </div>
        
@@ -294,10 +324,11 @@
                     <div class="shoping__checkout">
                         <h5>카트 총 상품가격</h5>
                         <ul>
-                            <li>총 상품가격 <span>${totalPrice}&#8361;</span></li>
-                            <li>총 주문가격 <span>${totalPrice}&#8361;</span></li>
+                        <li>총 상품가격 : <fmt:formatNumber value="${info.price * num}" type="number" pattern="#,##0" />원</li>
+                        <li>총주문가격 : <fmt:formatNumber value="${info.price * num}" type="number" pattern="#,##0" />원</li>
                         </ul>
-                        <a href="#" class="primary-btn" onclick="window.location.href='orders.jsp'">결제하기</a>
+                        <a href="#" class="primary-btn" onclick="checkResult(event)">결제하기</a>
+                        
                     </div>
                 </div>
             </div>
@@ -307,56 +338,9 @@
 
 
     <!-- Footer Section Begin -->
-    <footer class="footer spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/featured/로고.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li>서울특별시 강남구 역삼동 831-3 한국빌딩-4층</li>
-                            <li>Phone: 010-8274-2496</li>
-                            <li>Email: minsoo0704@naver.com</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                    <div class="footer__widget">
-                       <!--  <h6>Useful Links</h6>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                        </ul> -->
-                    </div>
-                </div>
-          
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved<!-- <i class="fa fa-heart" aria-hidden="true"></i> --><!--  by <a href="https://colorlib.com" target="_blank">Colorlib --><!-- /a -->
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                       <!--  <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    
+  	<%@ include file="footer.jsp"%>
+   
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->

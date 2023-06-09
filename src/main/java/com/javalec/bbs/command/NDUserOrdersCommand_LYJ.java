@@ -1,6 +1,5 @@
 package com.javalec.bbs.command;
 
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,11 +15,23 @@ public class NDUserOrdersCommand_LYJ implements NDCommand {
 		// TODO Auto-generated method stub
 
 		HttpSession session = request.getSession();
+		String pcode = request.getParameter("pcode");
+		String count = request.getParameter("count");
 		String userid = (String) session.getAttribute("ID");
-		
+	
 		NDUserOrdersDao_LYJ ndUserOrdersDao_LYJ = new NDUserOrdersDao_LYJ();
-		ArrayList<NDUserOrdersDto_LYJ> ndUserOrdersDto_LYJs = ndUserOrdersDao_LYJ.orderslist(userid);
-		session.setAttribute("orderslist", ndUserOrdersDto_LYJs);
+		NDUserOrdersDto_LYJ dto = ndUserOrdersDao_LYJ.productInfo(pcode);
+		NDUserOrdersDto_LYJ dto1 =ndUserOrdersDao_LYJ.userInfo(userid);
+			
+		request.setAttribute("uInfo", dto1);
+		request.setAttribute("info", dto);
+		request.setAttribute("num", count);
+		
+		
+		// ArrayList<NDUserOrdersDto_LYJ> ndUserOrdersDto_LYJs = ndUserOrdersDao_LYJ.orderslist(userid);
+		// session.setAttribute("orderslist", ndUserOrdersDto_LYJs);
+	
+	
 		
 	}
 

@@ -18,9 +18,28 @@
 <!-- Custom styles for this template -->
 <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 <!-- Custom styles for this page -->
-<link 	href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"	rel="stylesheet">
+<link
+	href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"
+	rel="stylesheet">
 <!-- sweetalret2 https://wooncloud.com/12 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="admin/vendor/jquery/jquery.min.js"></script>
+<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.min.js"></script>
+
+<!-- DataTables library -->
+<script
+	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<!--get attribute from java  -->
+<%
+ArrayList<ArrayList<String>> dataSet = (ArrayList<ArrayList<String>>) request.getAttribute("dataSet");
+%>
 </head>
 
 <body id="page-top">
@@ -51,44 +70,40 @@
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
-
-	<!-- Bootstrap core JavaScript-->
-	<script src="admin/vendor/jquery/jquery.min.js"></script>
-	<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="admin/js/sb-admin-2.min.js"></script>
-
-	<!-- DataTables library -->
-	<script	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-	<%
-	ArrayList<ArrayList<String>> dataSet = (ArrayList<ArrayList<String>>) request.getAttribute("dataSet");
-	%>
 	<script>
-    var dataSet = <%=dataSet%>;
+		var dataSet =
+	<%=dataSet%>
+		;
 
-    $(document).ready(function () {
-        var table = $('#user').DataTable({
-            data: dataSet,
-            columns: [
-                { title: 'ID' },
-                { title: '이름' },
-                { title: '성별' },
-                { title: '나이' },
-                { title: '전화 번호' },
-                { title: '주소' },
-                { title: '이메일' },
-                { title: '총 구매액' },
-                { title: '알러지 정보' },
-                { title: '가입날짜' },
-                { title: '회원상태' }
-            ]
-        });
+		$(document).ready(function() {
+			var table = $('#user').DataTable({
+				data : dataSet,
+				columns : [ {
+					title : 'ID'
+				}, {
+					title : '이름'
+				}, {
+					title : '성별'
+				}, {
+					title : '나이'
+				}, {
+					title : '전화 번호'
+				}, {
+					title : '주소'
+				}, {
+					title : '이메일'
+				}, {
+					title : '총 구매액'
+				}, {
+					title : '알러지 정보'
+				}, {
+					title : '가입날짜'
+				}, {
+					title : '회원상태'
+				} ]
+			});
 
-        });
-</script>
+		});
+	</script>
 </body>
 </html>
