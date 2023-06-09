@@ -135,7 +135,7 @@
 						        var currentPage = 1;
 						        var itemsPerPage = 3;
 						        var totalPages= 2;
-						        const id = document.getElementById("id").value
+						       
 						        // 초기 페이지 표시
 						        displayPage();
 						
@@ -168,7 +168,6 @@
 						                data: {
 						                    page: currentPage,
 						                    itemsPerPage: itemsPerPage
-						                    id : $("#id").value();
 						                },
 						                dataType: "json",
 						                success: function(data) {
