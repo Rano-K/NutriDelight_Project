@@ -74,7 +74,10 @@
                                     <input type="text" class="form-control form-control-user" id="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="address" placeholder="Address" value="api 현재 미적용">
+                                    <input type="text" class="form-control form-control-user" id="address_kakao" placeholder="Address" readonly="readonly"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Detail Address"/>
                                 </div>
                                 <div class="form-group sm">
                                     <input type="text" class="form-control form-control-user" id="age" placeholder="Birthdate ex)2000.01.01">
@@ -176,34 +179,8 @@
     <!-- Custom scripts for all pages-->
     <script src="admin/js/sb-admin-2.min.js"></script>
     <script src="admin/vendor/jquery/jquery.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-    	function checkTest() {
-    		const param =  {
-    			id: "test234"
-    		}
-    	
-    		console.log(typeof param);
-    		console.log(param);
-    		let jsonObj = JSON.stringify(param);
-    		console.log(typeof jsonObj);
-    		console.log(jsonObj);
-    		
-    		$.ajax({
-			    type: "POST",
-			    url: "test.login", // URL 세이브 좆ㄱ타
-			    // contentType:"application/json",
-			    dataType:"json",
-			    data: jsonObj,
-			    success: function(result) {
-					console.log(result)
-				},
-				error: function(xhr, status, error) {
-				    console.log("에러 발생: " + error); // 오류 메시지 출력
-				}
-			});
-    	}
-    </script>
 
 </body>
 

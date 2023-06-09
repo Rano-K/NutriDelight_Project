@@ -7,7 +7,6 @@
 	const regExpName = /^[가-힣]*$/
 	const regExpPasswd = /^[0-9|a-z|A-Z]*$/
 	const regExpPhone = /^\d{3}-\d{3,4}-\d{4}$/
-	const regExpAddress = /^[가-힣\s]*$/
 	const regExpEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
 	const regExpAdmin = /^(?!.*(?:admin|root|insert|update|revoke|submit|select|delete|create|drop))^.*$/
 	const regExpBirth = /^(19[7-9]\d|20[0-9]{2})\.(0[1-9]|1[0-2])\.(0[1-9]|[12]\d|3[01])$/;
@@ -19,7 +18,7 @@
 	const passwd1 = document.getElementById("password1").value
 	const passwd2 = document.getElementById("password2").value
 	const phone = document.getElementById("telno").value
-	const address = document.getElementById("address").value
+	const address = document.getElementById("address_detail").value
 	const email = document.getElementById("email").value
 	const birthdate = document.getElementById("age").value
 	const gender = document.querySelector('input[name="gender"]:checked').value;
@@ -43,19 +42,19 @@
 	}
 	
 	if(!regExpName.test(name)){
-		alert("이름은 한글로만 입력해 주세요.")
+		alert("이름은 한글로만 입력해주세요.")
 		//form.uname.select()
 		return
 	}
 	
 	if(passwd1 == "" || passwd2 == ""){
-		alert("비밀번호를 입력해 주세요.")
+		alert("비밀번호를 입력해주세요.")
 		//form.upasswd1.select()
 		return
 	}
 	
 	if(!regExpPasswd.test(passwd1) || !regExpPasswd.test(passwd2)){
-		alert("비밀번호는 영문 또는 숫자로만 입력해 주세요.")
+		alert("비밀번호는 영문 또는 숫자로만 입력해주세요.")
 		//form.upasswd1.select()
 		return
 	}
@@ -66,8 +65,8 @@
 		return
 	}
 	
-	if(!regExpAddress.test(address)){
-		alert("주소는 한글로만 입력해 주세요.")
+	if(address == ""){
+		alert("상세 주소를 입력해주세요.")
 		//form.uaddress.select()
 		return	
 	}
@@ -94,7 +93,7 @@
 	
 	alert("환영합니다.")
 	
-	window.location.href = "login.do"
+	window.location.href = "register.do"
 }
 	
 function checkPassword(){
@@ -231,6 +230,62 @@ function checkDuplicate() {
 }
 
 function isCheckDone(){
+	$.ajax({
+		url:'https://dapi.kakao.com/v2/local/search/address.json?query='+encodeURIComponent('숭의동'),
+		type:'GET',
+		headers: {'Authorization' : 'KakaoAK ef894ee905a0643b7844daf7341d7569'},
+		success:function(data){
+				console.log(data);
+			},
+			error : function(e){
+				console.log(e);
+			}
+	});
 	
+}
+
+window.onload = function(){
+	document.getElementById("address_kakao").addEventListener("click", function(){
+		// kakao map
+		new daum.Postcode({
+			oncomplete: function(data){ 
+				// 주소 선택시 세팅
+				document.getElementById("address_kakao").value = data.address;
+				document.querySelector("input[name=address_detail]").focus();
+			}
+		}).open();
+	});
+}
+
+function kakao_loginbtn(){
+	var openBlankwindow = window.open("about:blank")
+	openBlankwindow.location.href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ef894ee905a0643b7844daf7341d7569&redirect_uri=http://localhost:8080/Season2_Team4_Main/oauth/kakao/"
+}
+
+function kakao_login(){
+	const kakao_url = "https://kauth.kakao.com/oauth/token"
+	const client_id = "ef894ee905a0643b7844daf7341d7569"
+	const redirect_uri = "http://localhost:8080/Season2_Team4_Main/oauth/kakao"
+	const code = ""
 	
+	$.ajax({
+		url: kakao_url,
+		type: 'POST',
+		dataType: 'json',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+		},
+		data: {
+			grant_type: 'authorization_code',
+			client_id: client_id,
+			redirect_uri: redirect_uri,
+			code: code
+		},
+		success: function(data){
+			console.log(data)
+		},
+		error : function(e){
+			console.log(e)
+		}
+	});
 }
