@@ -19,6 +19,16 @@
 <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 <!-- sweetalret2 https://wooncloud.com/12 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="admin/vendor/jquery/jquery.min.js"></script>
+<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.min.js"></script>
 <body id="page-top">
 	<%@ include file="admin_toolbar.jsp"%>
 	<!-- Begin Page Content -->
@@ -36,23 +46,26 @@
 				<form action="admin_updateorders_checked.do" class="user"
 					method="get">
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">주문
+						<div class="col-sm-4 mb-3 mb-sm-0">
+							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">주문
 								코드</h6>
 						</div>
 						<div class="col-sm-6">
-							<input style="text-align: left" type="password"
+						</div>
+						<div class="col-sm-2">
+							<input style="text-align: center" type="password"
 								class="form-control form-control-user"
 								id="exampleRepeatPassword"
 								placeholder="${dtoOrders[0].ordercode}" disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">유저
+						<div class="col-sm-4 mb-3 mb-sm-0">
+							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">유저
 								아이디</h6>
 						</div>
-						<div class="col-sm-6">
+						
+						<div class="col-sm-8">
 							<input style="text-align: left" type="password"
 								class="form-control form-control-user"
 								id="exampleRepeatPassword" placeholder="${dtoOrders[0].userid}"
@@ -60,11 +73,11 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">제품
+						<div class="col-sm-4 mb-3 mb-sm-0">
+							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">제품
 								코드</h6>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-8">
 							<input style="text-align: left" type="password"
 								class="form-control form-control-user"
 								id="exampleRepeatPassword" placeholder="${dtoOrders[0].pcode}"
@@ -72,11 +85,11 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">배송
+						<div class="col-sm-4 mb-3 mb-sm-0">
+							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">배송
 								주소</h6>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-8">
 							<input style="text-align: left" type="password"
 								class="form-control form-control-user"
 								id="exampleRepeatPassword" placeholder="${dtoOrders[0].address}"
@@ -84,11 +97,11 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">주문
+						<div class="col-sm-4 mb-3 mb-sm-0">
+							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">주문
 								수량</h6>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-8">
 							<input style="text-align: left" type="password"
 								class="form-control form-control-user"
 								id="exampleRepeatPassword" placeholder="${dtoOrders[0].count}"
@@ -96,10 +109,10 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">재고량</h6>
+						<div class="col-sm-4 mb-3 mb-sm-0">
+							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">재고량</h6>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-8">
 							<input style="text-align: left" type="password"
 								class="form-control form-control-user"
 								id="exampleRepeatPassword" placeholder="${Stock}"
@@ -107,11 +120,11 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">주문
+						<div class="col-sm-4 mb-3 mb-sm-0">
+							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">주문
 								날짜</h6>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-8">
 							<input style="text-align: left" type="password"
 								class="form-control form-control-user"
 								id="exampleRepeatPassword"
@@ -119,11 +132,11 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">환불
+						<div class="col-sm-4 mb-3 mb-sm-0">
+							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">환불
 								날짜</h6>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-8">
 							<input style="text-align: left" type="password"
 								class="form-control form-control-user"
 								id="exampleRepeatPassword" placeholder="${Refunddate}"
@@ -131,11 +144,11 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<h6 class="m-3 font-weight-bold text-primary order-code-label">배송
+						<div class="col-sm-4 mb-3 mb-sm-0">
+							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">배송
 								날짜</h6>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-8">
 							<input style="text-align: left" type="password"
 								class="form-control form-control-user"
 								id="exampleRepeatPassword" placeholder="${Deliverydate}"
@@ -144,37 +157,26 @@
 					</div>
 					<hr>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-4">
 							<a id="confirmRefund" class="btn btn-google btn-user btn-block">
 								환불 확인</a>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-4">
 							<a id="confirmDelivery"
 								class="btn btn-facebook btn-user btn-block"> 배송 확인</a>
 						</div>
-
+						<div class="col-sm-1"></div>
 					</div>
 				</form>
 			</div>
 		</div>
-
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fas fa-angle-up"></i></a>
 	</div>
 	<!-- /.container-fluid -->
-
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top"> <i
-		class="fas fa-angle-up"></i></a>
-
-	<!-- Bootstrap core JavaScript-->
-	<script src="admin/vendor/jquery/jquery.min.js"></script>
-	<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="admin/js/sb-admin-2.min.js"></script>
-
 
 	<!-- modal  -->
 	<script>

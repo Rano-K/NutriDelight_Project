@@ -24,7 +24,6 @@ import com.javalec.bbs.command.NDProductFindCommand_OKH;
 import com.javalec.bbs.command.NDProductInsertCommand_OKH;
 import com.javalec.bbs.command.NDProductListCommand_KMS;
 import com.javalec.bbs.command.NDProductSearchCommand_OKH;
-import com.javalec.bbs.command.NDProductUpdateCommand_OKH;
 import com.javalec.bbs.command.NDSearchNoticeCommand_KMJ;
 import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
 import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
@@ -122,7 +121,7 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "cart.do";
 			break;
-			// 주문 정보
+		// 주문 정보
 		case "/orders.do":
 			command = new NDUserOrdersCommand_LYJ();
 			command.execute(request, response);
@@ -209,6 +208,7 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "shop-notice.jsp";
 			break;
+
 		/*
 		 * Admin 구역
 		 */
@@ -290,25 +290,18 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "admin_product_insert.jsp";
 			break;
 
-		// 상품 입력
+		// 상품 수정 및 입력
 		case "/admin_insertproduct.do":
 			command = new NDProductInsertCommand_OKH();
 			command.execute(request, response);
-			viewPage = "admin_product.jsp";
-			break;
-			
-		// 상품 수정
-		case "/admin_updateproduct.do":
-			command = new NDProductUpdateCommand_OKH();
-			command.execute(request, response);
-			viewPage = "admin_product.jsp";
+			viewPage = "admin_searchproduct.do";
 			break;
 
 		// 상품 입력 및 수정
 		case "/admin_deleteproduct.do":
 			command = new NDProductDeleteCommand_OKH();
 			command.execute(request, response);
-			viewPage = "admin_product.jsp";
+			viewPage = "admin_searchproduct.do";
 			break;
 
 		// 게시판 관리
@@ -316,7 +309,7 @@ public class NDFrontController extends HttpServlet {
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
-		
+
 	}
 
 }// END
