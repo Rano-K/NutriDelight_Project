@@ -271,14 +271,7 @@ function checkOrder(event) {
 														<p>문의 제목 : ${dto1.title}</p>
 														<p>문의 내용 : ${dto1.context}</p>
 													</td>
-													<td align="right">
-														<p>작성일자 : ${dto1.insertdate}</p> 
-														<p>수정일자 : ${dto1.updatedate}</p> 
-														<a href="#" class="primary-btn">답변 작성</a>
-													</td>
-
 												</tr>
-
 												
 											</table>
 										</td>

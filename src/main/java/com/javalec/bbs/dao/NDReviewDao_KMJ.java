@@ -160,7 +160,7 @@ public class NDReviewDao_KMJ {
 					"VALUES (?,?,?,?,0,?,?,now())";
 			
 			String query2 = "INSERT INTO review (parent, layer, userid, pcode, insertdate, invalidate) "+
-					"VALUES (?,1,?,?,now(),1)"; //원래는 인서트가 두개면 메소드를 나눠야한다...
+					"VALUES (?,1,?,?,now(),1)"; //원래는 인서트가 두개면 메소드를 나눠야한다.
 			
 			String query1 = "SELECT MAX(seq) from review";
             stmt = conn_mysql.createStatement();

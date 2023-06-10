@@ -33,6 +33,16 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
+
+<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.slicknav.js"></script>
+	<script src="js/mixitup.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>
+	
+	
 </head>
 
 <body>
@@ -79,8 +89,7 @@
                             </div> -->
 						</div>
 					</div>
-					
-					<table class="table table-striped" style="text-align:center;">
+							<table class="table table-striped" style="text-align:center;">
 						
 								<thead>
 									<tr>
@@ -115,7 +124,8 @@
 									
 								
 								</tbody>
-							</table>
+							</table> 
+					
 							<div align="right">
 									<form action="write_board.do" method="post">
 										<input type="hidden" name="pname" value="${PList}">
@@ -124,18 +134,14 @@
 										<input type="submit" value="공지작성" class="primary-btn">
 									</form>
 							</div>
-							<div id="pagination">
-						        <button id="prevButton" disabled>Previous</button>
-						        <button id="nextButton">Next</button>
-						    </div>
-						    <div id="display"></div>
-						    <div id="pageLinks"></div>
+							 <script src="js/jquery-3.7.0.min.js"></script>
 							<script>
+								
 						        // 페이지 관련 변수 초기화
 						        var currentPage = 1;
 						        var itemsPerPage = 3;
-						        var totalPages= 2;
-						       
+						        var totalPages;
+						        var dataInput;
 						        // 초기 페이지 표시
 						        displayPage();
 						
@@ -158,17 +164,13 @@
 						                displayPage();
 						            }
 						        }
-						
+							
 						        // 페이지 표시
 						        function displayPage() {
 						            // AJAX 요청
 						            $.ajax({
-						                url: "shop-notice.jsp", // 데이터를 불러올 URL
-						                type: "POST",
-						                data: {
-						                    page: currentPage,
-						                    itemsPerPage: itemsPerPage
-						                },
+						                url: "http://localhost:8080/Season2_Team4_Main/notice.do", // 데이터를 불러올 URL
+						                type: "GET",
 						                dataType: "json",
 						                success: function(data) {
 						                    // 데이터 표시
@@ -178,19 +180,19 @@
 						                    });
 						                    displayText = displayText.slice(0, -2); // 마지막 쉼표와 공백 제거
 						                    $("#display").text(displayText);
+						                    alert("연결은 됐다 임마.");
 						                },
 						                error: function() {
 						                    alert("데이터를 불러오는 데 실패했습니다.");
 						                }
 						            });
-						
+									
 						            // 전체 페이지 수 업데이트
 						            $.ajax({
-						                url: "shop-notice.jsp", // 전체 페이지 수를 불러올 URL
-						                type: "POST",
-						                dataType: "json",
+						                url: "http://localhost:8080/Season2_Team4_Main/notice.do", // 전체 페이지 수를 불러올 URL
+						                type: "GET",
 						                success: function(data) {
-						                    totalPages = data.totalPages;
+						                    totalPages = xhr.getResponseHeader("totalPages");
 						
 						                    // 페이지 버튼 활성화/비활성화
 						                    $("#prevButton").prop("disabled", currentPage === 1);
@@ -220,7 +222,19 @@
 						            });
 						        }
 						    </script>
-				</div>
+						    
+							<div id="pagination">
+						        <button id="prevButton" disabled>Previous</button>
+						        <button id="nextButton">Next</button>
+						    </div>
+						    <div id="display">
+						    
+						    
+						    
+						    </div>
+						    <div id="pageLinks"></div>
+						   
+					</div>
 				
 				
 			</div>
@@ -239,14 +253,8 @@
 	<!-- Footer Section End -->
 	
 	<!-- Js Plugins -->
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<script src="js/jquery.slicknav.js"></script>
-	<script src="js/mixitup.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/main.js"></script>
+	
+	
 
 </body>
 
