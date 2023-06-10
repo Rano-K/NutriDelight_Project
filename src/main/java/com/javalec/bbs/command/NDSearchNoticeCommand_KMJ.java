@@ -1,15 +1,11 @@
 package com.javalec.bbs.command;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import com.google.gson.Gson;
 import com.javalec.bbs.dao.NDNoticeDao_KMJ;
 import com.javalec.bbs.dto.NDNoticeDto_KMJ;
 
@@ -23,10 +19,12 @@ public class NDSearchNoticeCommand_KMJ implements NDCommand {
 		ArrayList<NDNoticeDto_KMJ> dtos = dao.noticeList();
 		
 		
-		
-//		String pageStr = (String)request.getParameter("page");
-		String pageStr = "1";
-		System.out.println("page 값 : "+pageStr);
+		String pageStr="1";
+		String paramCheck = (String)request.getParameter("page");	
+		System.out.println("page 값 : "+paramCheck);
+		if(paramCheck!="null") {
+			pageStr = paramCheck;	
+		}
 //		String itemsPerPageStr = (String)request.getParameter("itemsPerPage");
 		String itemsPerPageStr = "3";
 
@@ -38,27 +36,13 @@ public class NDSearchNoticeCommand_KMJ implements NDCommand {
 		int startIndex = (currentPage - 1) * itemsPerPage ;
         int endIndex = Math.min(startIndex + itemsPerPage, dtos.size());
 		
-        ArrayList<NDNoticeDto_KMJ> currentPageItems = new ArrayList<>(dtos.subList(currentPage, endIndex));
+        ArrayList<NDNoticeDto_KMJ> currentPageItems = new ArrayList<>(dtos.subList(startIndex, endIndex));
         
 		request.setAttribute("NList", currentPageItems);
-		request.setAttribute("totalPages", Math.ceil(dtos.size()/3));
+		request.setAttribute("totalPages", Math.ceil((double)dtos.size()/3));
 		
 	}
 	
-	
-	
-	public static String readBody(HttpServletRequest request) throws IOException {
-        BufferedReader input = new BufferedReader(new InputStreamReader(request.getInputStream()));
-        StringBuilder builder = new StringBuilder();
-        String buffer;
-        while ((buffer = input.readLine()) != null) {
-            if (builder.length() > 0) {
-                builder.append("\n");
-            }
-            builder.append(buffer);
-        }
-        return builder.toString();
-	}
 	
 	
 

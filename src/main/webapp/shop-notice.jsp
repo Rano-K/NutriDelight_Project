@@ -18,6 +18,21 @@
 	    .jb-th-1{
 	    	width : 200px;
 	    }
+	    a:link {
+		  color : black;
+		}
+		a:visited {
+		  color : black;
+		}
+		a:hover {
+		  color : black;
+		}
+		a:active {
+		  color : black;
+		}
+		.btn{
+			background-color:white;
+		}
 </style>
 <!-- Google Font -->
 <link
@@ -125,7 +140,14 @@
 								
 								</tbody>
 							</table> 
-					
+							<div id="pagination">
+						        <button id="prevButton" disabled>Previous</button>
+						        <c:forEach begin = "1" end = "${totalPages}" var="i">
+						    		<a href="notice.do?page=${i}"><input type="button" name = "pageButton" class = "btn" value="${i}"></a>
+						    	</c:forEach>
+						        <button id="nextButton">Next</button>
+						    </div>
+						    
 							<div align="right">
 									<form action="write_board.do" method="post">
 										<input type="hidden" name="pname" value="${PList}">
@@ -164,7 +186,9 @@
 						                displayPage();
 						            }
 						        }
-							
+								
+						        
+						        
 						        // 페이지 표시
 						        function displayPage() {
 						            // AJAX 요청
@@ -223,16 +247,7 @@
 						        }
 						    </script>
 						    
-							<div id="pagination">
-						        <button id="prevButton" disabled>Previous</button>
-						        <button id="nextButton">Next</button>
-						    </div>
-						    <div id="display">
-						    
-						    
-						    
-						    </div>
-						    <div id="pageLinks"></div>
+							
 						   
 					</div>
 				
