@@ -88,7 +88,7 @@ ArrayList<String> dataSetSubscribe = (ArrayList<String>) request.getAttribute("d
 document.addEventListener('DOMContentLoaded', function() {
 	var calendarEl = document.getElementById('calendar');
 	var calendar = new FullCalendar.Calendar(calendarEl, {
-		
+
 		themeSystem: 'bootstrap',
 		locale: 'ko',
 
@@ -105,8 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		editable: true,
 
 		dayMaxEvents: true, // allow "more" link when too many events
-		events: ${dataSetSubscribe},
-		
+		events: ${ dataSetSubscribe },
 		eventClick: function(arg) {
 			var eventTitle = arg.event.title;
 			var eventStart = arg.event.start;
@@ -115,30 +114,46 @@ document.addEventListener('DOMContentLoaded', function() {
 			var eventPname = arg.event.extendedProps.pname;
 			var eventAddress = arg.event.extendedProps.address;
 
-			if (arg.event.backgroundColor === '#000000') {
-				Swal.fire({
-					text: "이미 배송 완료 처리되었습니다.",
-					icon: "error",
-					buttonsStyling: false,
-					confirmButtonText: "확인",
-					customClass: {
-						confirmButton: "btn btn-primary",
-					}
-				});
-			} else {
-				Swal.fire({
-					html: eventUname + "의 " + eventPname + "를<br> " + eventAddress + "(으)로<br> 배송 확인 처리 하시겠습니까?",
-					icon: "warning",
-					showCancelButton: true,
-					buttonsStyling: false,
-					confirmButtonText: "네, 배송 완료 처리하겠습니다!",
-					cancelButtonText: "아니요, 아직 도착 안하였습니다.",
-					customClass: {
-						confirmButton: "btn btn-primary",
-						cancelButton: "btn btn-active-light"
-					}
-				}).then(function(result) {
-					if (result.value) {
+			var today = new Date();
+			today.setHours(0, 0, 0, 0);
+
+			var eventStartDate = new Date(eventStart);
+			eventStartDate.setHours(0, 0, 0, 0);
+
+			Swal.fire({
+				html: eventUname + "의 " + eventPname + "를<br> " + eventAddress + "(으)로<br> 배송 확인 처리 하시겠습니까?",
+				icon: "warning",
+				showCancelButton: true,
+				buttonsStyling: false,
+				confirmButtonText: "네, 배송 완료 처리하겠습니다!",
+				cancelButtonText: "아니요, 아직 도착 안하였습니다.",
+				customClass: {
+					confirmButton: "btn btn-primary",
+					cancelButton: "btn btn-active-light"
+				}
+			}).then(function(result) {
+				if (result.value) {
+					if (arg.event.backgroundColor === '#000000') {
+						Swal.fire({
+							text: "이미 배송 완료 처리되었습니다.",
+							icon: "error",
+							buttonsStyling: false,
+							confirmButtonText: "확인",
+							customClass: {
+								confirmButton: "btn btn-primary",
+							}
+						});
+					} else if (eventStartDate > today) {
+						Swal.fire({
+							text: "이 날은 배송 완료 처리할수 없습니다.",
+							icon: "error",
+							buttonsStyling: false,
+							confirmButtonText: "확인",
+							customClass: {
+								confirmButton: "btn btn-primary",
+							}
+						});
+					} else {
 						arg.event.setProp('backgroundColor', '#000000');
 						Swal.fire({
 							text: "배송 처리되었습니다.",
@@ -150,26 +165,29 @@ document.addEventListener('DOMContentLoaded', function() {
 							}
 						});
 						// 배송 처리
-						var url = 'admin_updatesubscribe.do?plcode=?' + eventPlcode;
+						var url = 'admin_updatesubscribe.do?plcode=' + eventPlcode;
 						window.location.href = url;
-					} else if (result.dismiss === "cancel") {
-						Swal.fire({
-							text: "취소되었습니다.",
-							icon: "error",
-							buttonsStyling: false,
-							confirmButtonText: "알겠습니다!",
-							customClass: {
-								confirmButton: "btn btn-primary",
-							}
-						});
 					}
-				});
-			}
+				} else if (result.dismiss === "cancel") {
+					Swal.fire({
+						text: "취소되었습니다.",
+						icon: "error",
+						buttonsStyling: false,
+						confirmButtonText: "알겠습니다!",
+						customClass: {
+							confirmButton: "btn btn-primary",
+						}
+					});
+				}
+			});
+
 		}
+
 	});
 
 	calendar.render();
-});
+}); 
+
 
 </script>
 </html>

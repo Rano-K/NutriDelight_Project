@@ -44,140 +44,167 @@
 			</div>
 			<div class="card-body">
 				<form action="admin_updateorders_checked.do" class="user"
-					method="get">
-					<div class="form-group row">
-						<div class="col-sm-4 mb-3 mb-sm-0">
-							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">주문
-								코드</h6>
+					method="post">
+					<div class="table-responsive">
+						<br />
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<h6 style="text-align: center"
+									class="m-3 font-weight-bold text-secondary order-code-label">주문
+									코드</h6>
+							</div>
+							<div class="col-lg-8">
+								<input style="text-align: left" type="password"
+									class="form-control form-control-user"
+									id="exampleRepeatPassword"
+									placeholder="${dtoOrders[0].ordercode}" disabled="disabled">
+							</div>
 						</div>
-						<div class="col-sm-6">
+						<br />
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<h6 style="text-align: center"
+									class="m-3 font-weight-bold text-secondary order-code-label">유저
+									아이디</h6>
+							</div>
+							<div class="col-lg-8">
+								<input style="text-align: left" type="password"
+									class="form-control form-control-user"
+									id="exampleRepeatPassword" placeholder="${dtoOrders[0].userid}"
+									disabled="disabled">
+							</div>
 						</div>
-						<div class="col-sm-2">
-							<input style="text-align: center" type="password"
-								class="form-control form-control-user"
-								id="exampleRepeatPassword"
-								placeholder="${dtoOrders[0].ordercode}" disabled="disabled">
+						<br />
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<h6 style="text-align: center"
+									class="m-3 font-weight-bold text-secondary order-code-label">제품
+									코드</h6>
+							</div>
+							<div class="col-lg-8">
+								<input style="text-align: left" type="password"
+									class="form-control form-control-user"
+									id="exampleRepeatPassword" placeholder="${dtoOrders[0].pcode}"
+									disabled="disabled">
+							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-4 mb-3 mb-sm-0">
-							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">유저
-								아이디</h6>
+						<br />
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<h6 style="text-align: center"
+									class="m-3 font-weight-bold text-secondary order-code-label">배송
+									주소</h6>
+							</div>
+							<div class="col-lg-8">
+								<input style="text-align: left" type="password"
+									class="form-control form-control-user"
+									id="exampleRepeatPassword"
+									placeholder="${dtoOrders[0].address}" disabled="disabled">
+							</div>
 						</div>
-						
-						<div class="col-sm-8">
-							<input style="text-align: left" type="password"
-								class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${dtoOrders[0].userid}"
-								disabled="disabled">
+						<br />
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<h6 style="text-align: center"
+									class="m-3 font-weight-bold text-secondary order-code-label">주문
+									수량</h6>
+							</div>
+							<div class="col-lg-8">
+								<input style="text-align: left" type="password"
+									class="form-control form-control-user"
+									id="exampleRepeatPassword" placeholder="${dtoOrders[0].count}"
+									disabled="disabled">
+							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-4 mb-3 mb-sm-0">
-							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">제품
-								코드</h6>
+						<br />
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<h6 style="text-align: center"
+									class="m-3 font-weight-bold text-secondary order-code-label">재고량</h6>
+							</div>
+							<div class="col-lg-8">
+								<input style="text-align: left" type="password"
+									class="form-control form-control-user"
+									id="exampleRepeatPassword" placeholder="${Stock}"
+									disabled="disabled">
+							</div>
 						</div>
-						<div class="col-sm-8">
-							<input style="text-align: left" type="password"
-								class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${dtoOrders[0].pcode}"
-								disabled="disabled">
+						<br />
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<h6 style="text-align: center"
+									class="m-3 font-weight-bold text-secondary order-code-label">주문
+									날짜</h6>
+							</div>
+							<div class="col-lg-8">
+								<input style="text-align: left" type="password"
+									class="form-control form-control-user"
+									id="exampleRepeatPassword"
+									placeholder="${dtoOrders[0].orderdate}" disabled="disabled">
+							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-4 mb-3 mb-sm-0">
-							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">배송
-								주소</h6>
+						<br />
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<h6 style="text-align: center"
+									class="m-3 font-weight-bold text-secondary order-code-label">환불
+									날짜</h6>
+							</div>
+							<div class="col-lg-8">
+								<input style="text-align: left" type="password"
+									class="form-control form-control-user"
+									id="exampleRepeatPassword" placeholder="${Refunddate}"
+									disabled="disabled">
+							</div>
 						</div>
-						<div class="col-sm-8">
-							<input style="text-align: left" type="password"
-								class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${dtoOrders[0].address}"
-								disabled="disabled">
+						<br />
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<h6 style="text-align: center"
+									class="m-3 font-weight-bold text-secondary order-code-label">배송
+									날짜</h6>
+							</div>
+							<div class="col-lg-8">
+								<input style="text-align: left" type="password"
+									class="form-control form-control-user"
+									id="exampleRepeatPassword" placeholder="${Deliverydate}"
+									disabled="disabled">
+							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-4 mb-3 mb-sm-0">
-							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">주문
-								수량</h6>
+						<hr>
+						<div class="form-group row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-4">
+								<a id="confirmRefund" class="btn btn-google btn-user btn-block">
+									환불 확인</a>
+							</div>
+							<div class="col-sm-2"></div>
+							<div class="col-sm-4">
+								<a id="confirmDelivery"
+									class="btn btn-facebook btn-user btn-block"> 배송 확인</a>
+							</div>
+							<div class="col-sm-1"></div>
 						</div>
-						<div class="col-sm-8">
-							<input style="text-align: left" type="password"
-								class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${dtoOrders[0].count}"
-								disabled="disabled">
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-4 mb-3 mb-sm-0">
-							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">재고량</h6>
-						</div>
-						<div class="col-sm-8">
-							<input style="text-align: left" type="password"
-								class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${Stock}"
-								disabled="disabled">
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-4 mb-3 mb-sm-0">
-							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">주문
-								날짜</h6>
-						</div>
-						<div class="col-sm-8">
-							<input style="text-align: left" type="password"
-								class="form-control form-control-user"
-								id="exampleRepeatPassword"
-								placeholder="${dtoOrders[0].orderdate}" disabled="disabled">
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-4 mb-3 mb-sm-0">
-							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">환불
-								날짜</h6>
-						</div>
-						<div class="col-sm-8">
-							<input style="text-align: left" type="password"
-								class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${Refunddate}"
-								disabled="disabled">
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-4 mb-3 mb-sm-0">
-							<h6 style="text-align: center" class="m-3 font-weight-bold text-secondary order-code-label">배송
-								날짜</h6>
-						</div>
-						<div class="col-sm-8">
-							<input style="text-align: left" type="password"
-								class="form-control form-control-user"
-								id="exampleRepeatPassword" placeholder="${Deliverydate}"
-								disabled="disabled">
-						</div>
-					</div>
-					<hr>
-					<div class="form-group row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-4">
-							<a id="confirmRefund" class="btn btn-google btn-user btn-block">
-								환불 확인</a>
-						</div>
-						<div class="col-sm-2"></div>
-						<div class="col-sm-4">
-							<a id="confirmDelivery"
-								class="btn btn-facebook btn-user btn-block"> 배송 확인</a>
-						</div>
-						<div class="col-sm-1"></div>
 					</div>
 				</form>
 			</div>
 		</div>
-		<!-- Scroll to Top Button-->
-		<a class="scroll-to-top rounded" href="#page-top"> <i
-			class="fas fa-angle-up"></i></a>
+
 	</div>
 	<!-- /.container-fluid -->
 
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i></a>
 	<!-- modal  -->
 	<script>
         $("#confirmRefund").click(function () {

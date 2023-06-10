@@ -38,11 +38,12 @@ function dataConnect(dataSetSubscribe) {
 				{ title: '구독 일정 보기' },
 				{ title: '마지막 배송 일자' },
 				{ title: '오늘 배송 품목' },
-				{ title: 'plcode'}
+				{ title: 'plcode' }
 			],
 			columnDefs: [
 				{
-					targets: [7], // 감추고자 하는 열의 인덱스
+
+					targets: [4, 7], // 감추고자 하는 열의 인덱스
 					visible: false // 열을 감춤
 				}
 			]
