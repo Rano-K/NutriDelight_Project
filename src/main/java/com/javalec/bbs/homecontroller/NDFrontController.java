@@ -331,7 +331,7 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "admin_searchproduct.do";
 			break;
 
-		// 상품 입력 및 수정
+		// 상품 삭제
 		case "/admin_deleteproduct.do":
 			command = new NDProductDeleteCommand_OKH();
 			command.execute(request, response);

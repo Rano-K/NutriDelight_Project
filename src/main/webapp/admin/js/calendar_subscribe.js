@@ -1,83 +1,54 @@
 /**
  * 
  */
-function dataConnect(datasetSubscribe) {
-	let dataSubscribe = datasetSubscribe;
-	document.addEventListener('DOMContentLoaded', function() {
-		var calendarEl = document.getElementById('calendar');
-		var calendar = new FullCalendar.Calendar(calendarEl, {
-			// Tool Bar 목록 document : https://fullcalendar.io/docs/toolbar
-			themeSystem: 'bootstrap',
-			locale: 'ko',
+document.addEventListener('DOMContentLoaded', function() {
+	var calendarEl = document.getElementById('calendar');
+	var calendar = new FullCalendar.Calendar(calendarEl, {
 
-			headerToolbar: {
-				left: 'prevYear,prev,next,nextYear today',
-				center: 'title',
-				right: 'dayGridMonth,dayGridWeek,dayGridDay'
-			},
+		themeSystem: 'bootstrap',
+		locale: 'ko',
 
-			selectable: true,
-			selectMirror: true,
+		headerToolbar: {
+			left: 'prevYear,prev,next,nextYear today',
+			center: 'title',
+			right: 'dayGridMonth,dayGridWeek,dayGridDay'
+		},
 
-			navLinks: true, // can click day/week names to navigate views
-			editable: true,
+		selectable: true,
+		selectMirror: true,
 
-			select: function(arg) {
+		navLinks: true, // can click day/week names to navigate views
+		editable: true,
+
+
+		dayMaxEvents: true, // allow "more" link when too many events
+		events: dataSetSubscribe,
+		eventClick: function(arg) {
+			if (arg.event.backgroundColor === '#000000') {
 				Swal.fire({
-					html: "<div class='mb-7'>Create new event?</div><div class='fw-bold mb-5'>Event Name:</div><input type='text' class='form-control' name='event_name' />",
-					icon: "info",
-					showCancelButton: true,
+					text: "이미 배송 완료 처리된 이벤트입니다.",
+					icon: "error",
 					buttonsStyling: false,
-					confirmButtonText: "Yes, create it!",
-					cancelButtonText: "No, return",
+					confirmButtonText: "확인",
 					customClass: {
 						confirmButton: "btn btn-primary",
-						cancelButton: "btn btn-active-light"
-					}
-				}).then(function(result) {
-					if (result.value) {
-						var title = document.querySelector("input[name=;event_name']").value;
-						if (title) {
-							calendar.addEvent({
-								title: title,
-								start: arg.start,
-								end: arg.end,
-								allDay: arg.allDay
-							})
-						}
-						calendar.unselect()
-					} else if (result.dismiss === "cancel") {
-						Swal.fire({
-							text: "Event creation was declined!.",
-							icon: "error",
-							buttonsStyling: false,
-							confirmButtonText: "Ok, got it!",
-							customClass: {
-								confirmButton: "btn btn-primary",
-							}
-						});
 					}
 				});
-			},
-
-			// Delete event
-			eventClick: function(arg) {
-
-
+			} else {
 				Swal.fire({
-					text: "Are you sure you want to delete this event?",
+					text: "\n배송 확인 처리 하시겠습니까?",
 					icon: "warning",
 					showCancelButton: true,
 					buttonsStyling: false,
-					confirmButtonText: "Yes, delete it!",
-					cancelButtonText: "No, return",
+					confirmButtonText: "네,배송 완료 처리하겠습니다!",
+					cancelButtonText: "아니요, 아직 도착 안하였습니다.",
 					customClass: {
 						confirmButton: "btn btn-primary",
 						cancelButton: "btn btn-active-light"
 					}
 				}).then(function(result) {
 					if (result.value) {
-						arg.event.remove()
+						arg.event.setProp('backgroundColor', '#000000');
 					} else if (result.dismiss === "cancel") {
 						Swal.fire({
 							text: "Event was not deleted!.",
@@ -90,12 +61,10 @@ function dataConnect(datasetSubscribe) {
 						});
 					}
 				});
-			},
-			dayMaxEvents: true, // allow "more" link when too many events
-			events: dataSubscribe
-		});
-
-		calendar.render();
+			}
+		}
 	});
-}
+
+	calendar.render();
+});
 

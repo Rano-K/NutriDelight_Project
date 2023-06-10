@@ -52,6 +52,7 @@ public class NDSubscribeSearchCommand_OKH implements NDCommand {
 				} else {
 					row.add("'" + ShippingTmwdto.getName() + "'");
 				}
+				row.add("'" + Integer.toString(PlanDeliverydatedto.getPlcode()) + "'");
 
 				dataSetSubscribe.add(row);
 			}

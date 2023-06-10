@@ -7,6 +7,14 @@ public class NDSubscribeDto_OKH {
 	int scode;
 	String userid;
 	Timestamp subscribedate;
+	
+	Timestamp plandate;
+	int delivery;
+	String uname;
+	String pname;
+	String address;
+	int plcode;
+	
 
 	// Constructor
 	public NDSubscribeDto_OKH() {
@@ -19,8 +27,65 @@ public class NDSubscribeDto_OKH {
 		this.userid = userid;
 		this.subscribedate = subscribedate;
 	}
-
+	
+	
+	
 	//	Method G/S
+
+	public NDSubscribeDto_OKH(int plcode, String userid, int scode, Timestamp plandate, int delivery, String uname, String pname,
+			String address) {
+		super();
+		this.plcode = plcode;
+		this.userid = userid;
+		this.scode = scode;
+		this.plandate = plandate;
+		this.delivery = delivery;
+		this.uname = uname;
+		this.pname = pname;
+		this.address = address;
+	}
+
+	public Timestamp getPlandate() {
+		return plandate;
+	}
+
+	public void setPlandate(Timestamp plandate) {
+		this.plandate = plandate;
+	}
+
+	public int getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(int delivery) {
+		this.delivery = delivery;
+	}
+
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
 	public int getScode() {
 		return scode;
 	}
@@ -35,6 +100,14 @@ public class NDSubscribeDto_OKH {
 
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+
+	public int getPlcode() {
+		return plcode;
+	}
+
+	public void setPlcode(int plcode) {
+		this.plcode = plcode;
 	}
 
 	public Timestamp getSubscribedate() {
