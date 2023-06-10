@@ -20,12 +20,11 @@ public class NDUserLoginCommand implements NDCommand {
 		
 		NDUserDao dao = new NDUserDao();
 		boolean temp = dao.isAdmin(userid);
-		System.out.println("temp = " + temp);
 		if(temp) {
-			System.out.println("admin");
+			System.out.println("admin login");
 			result = dao.loginCheck(userid, userpw, "admin");
 		} else {
-			System.out.println("user");
+			System.out.println("user login");
 			result = dao.loginCheck(userid, userpw, "user");
 		}
 		

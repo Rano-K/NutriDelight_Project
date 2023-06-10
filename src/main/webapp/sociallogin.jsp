@@ -8,7 +8,6 @@
     <script src="js/login.js"></script>
 </head>
 <body>
-1
 <%
 	String code = "";
 	String error = "";
@@ -17,7 +16,7 @@
 		code = request.getParameter("code");
 		error = request.getParameter("error");
 		state = request.getParameter("state");
-		out.print(code);
+		//out.print(code);
 		
 		if(code != null){ %>
 		<script>
@@ -40,7 +39,7 @@
 					code: code
 				},
 				success: function(data){
-					console.log(data)
+					//console.log(data)
 					kakao_userinfo(data.access_token)
 					
 				},

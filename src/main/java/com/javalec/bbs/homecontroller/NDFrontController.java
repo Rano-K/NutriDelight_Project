@@ -16,6 +16,7 @@ import com.javalec.bbs.command.NDBoardSearchCommand_OKH;
 import com.javalec.bbs.command.NDCommand;
 import com.javalec.bbs.command.NDInsertBoardCommand_KMJ;
 import com.javalec.bbs.command.NDInsertReviewCommand_KMJ;
+import com.javalec.bbs.command.NDKakaoLoginCommand;
 import com.javalec.bbs.command.NDLogoutCommand;
 import com.javalec.bbs.command.NDMainAdminCommand_OKH;
 import com.javalec.bbs.command.NDMainCommand_KMS;
@@ -156,6 +157,11 @@ public class NDFrontController extends HttpServlet {
 		// header-top : 로그인안했을 때 : id_session값이 없을 때
 		case "/login.do":
 			viewPage = "login.jsp";
+			break;
+		case "/kakaoLogin.do":
+			command = new NDKakaoLoginCommand();
+			command.execute(request, response);
+			viewPage = "login.do";
 			break;
 		case "/loginCheck.do":
 			command = new NDUserLoginCommand();

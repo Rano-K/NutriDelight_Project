@@ -19,18 +19,10 @@ public class NDUserInsertCommand implements NDCommand {
 		String telno = request.getParameter("telno");
 		String address = request.getParameter("address_kakao") + " " + request.getParameter("address_detail");
 		String email = request.getParameter("email");
-		String allergy = request.getParameter("allergyCheck");
+		String allergy = request.getParameter("allergy");
 		
 		NDLoginDto dto = new NDLoginDto(userid, userpw, name, gender, age, telno, email, address, allergy);
 		NDUserDao dao = new NDUserDao();
-		boolean result = dao.userCheck(userid);
-
-		if(result) {
-			result = dao.userInsert(dto);
-			request.setAttribute("LOGIN_RESULT", result);
-		} else {
-			request.setAttribute("LOGIN_RESULT", "fail");
-		}
-		System.out.println(result);
+		dao.userInsert(dto);
 	}
 }
