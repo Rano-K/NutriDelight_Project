@@ -56,11 +56,11 @@ public ArrayList<NDUserCartDto_LYJ> list(String userid) {
 			String pcode = resultSet.getString("pcode");	
 			String photo = resultSet.getString("photo");	
 			String name = resultSet.getString("name");		
-			int price = resultSet.getInt("price");
 			String count= resultSet.getString("count");	
+			int price = resultSet.getInt("price");
 		
 
-			NDUserCartDto_LYJ ndUserCartDto_LYJ = new NDUserCartDto_LYJ(userid1, seq, pcode, photo, name, price, count);
+			NDUserCartDto_LYJ ndUserCartDto_LYJ = new NDUserCartDto_LYJ(userid1, seq, pcode, photo, name, count, price);
 			ndUserCartDto_LYJs.add(ndUserCartDto_LYJ);	         
 	         
 		}

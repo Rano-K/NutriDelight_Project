@@ -190,15 +190,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                 <form id="deleteForm" action="cartdelete.do" method="get">
+                 <form id="deleteForm" action="cartdelete.do" method="post">
                     <div class="shoping__cart__table">
                         <table>
                             <thead>
                                 <tr>
+                                	<th></th>
                                		<th>상품사진</th>
                                     <th >상품명</th>
-                                    <th>가격</th>
                                     <th>수량</th>
+                                    <th>가격</th>
                                     <th>총가격</th>
                                
                                 </tr>
@@ -212,10 +213,13 @@
                    				<input type="hidden" name="seq" value="${dto.seq}">
                       			<input type="hidden" name="pcode" value="${dto.pcode}">
                                 <tr>
+                                 <td class="center-align" style="text-align: center;">
+                           			 <input type="checkbox" name="pcode" value="${dto.pcode}">
+                      			 </td>
                                 <td ><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
                         		<td ><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
-                        		<td ><input type="hidden" name="count" value="${dto.count}">${dto.count}&#8361;</td>
-                        		<td ><input type="hidden" name="price" value="${dto.price}">${dto.price}</td>
+                        		<td ><input type="hidden" name="count" value="${dto.price}">${dto.price}</td>
+                        		<td ><input type="hidden" name="price" value="${dto.count}">${dto.count}&#8361;</td>
                         		<td ><input type="hidden" name="count" value="${dto.count}">${dto.count * dto.price}&#8361;</td>
                         		
                                 <td class="shoping__cart__item__close"><span class="icon_close" onclick="location.href='cartdelete.do?seq=${dto.seq}'">
@@ -225,32 +229,87 @@
                                  
                                  <c:set var="totalPrice" value="${totalPrice + (dto.count * dto.price)}" />
                                 
+                                
+                                  
+										
+								
+                                
                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
+                      <button type="submit" onclick="submitForm('orders.do')">결제페이지로</button>
                     </form> 
+                    		<script>
+										function submitForm(action) {
+										  var checkboxes = document.getElementsByName('pcode');
+										  var selectedPcodes = [];
+										  
+										  for (var i = 0; i < checkboxes.length; i++) {
+										    if (checkboxes[i].checked) {
+										      selectedPcodes.push(checkboxes[i].value);
+										    }
+										  }
+										  
+										  var form = document.getElementById('deleteForm');
+										  form.action = action + '?pcode=' + selectedPcodes.join(',');
+										  form.submit();
+										}
+										</script>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='index.html'">메인페이지</a>
+                    
+                        <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='main.do'">메인페이지</a>
                     </div>
                 </div>
           
                 <div class="col-lg-12">
+                <form action="ordes.do" method="post">
                     <div class="shoping__checkout">
+                    
+                    	<input type="hidden" name="userid" value="${dto.userid1}">
+                    	<input type="hidden" name="count" value="${dto.count}">
+                    	
                         <h5>카트 총 상품가격</h5>
                         <ul>
                             <li>총 상품가격 <span>${totalPrice}&#8361;</span></li>
                             <li>총 주문가격 <span>${totalPrice}&#8361;</span></li>
                         </ul>
-                        <a href="#" class="primary-btn" href="orders.jsp?userid=${dto.userid1}" onclick="window.location.href='orders.do'">결제페이지로 이동</a>
+                        
+                        
+                   <button type="submit" onclick="submitForm('orders.do')">결제페이지로</button>
+
+
+						
+						
                     </div>
+               
+                    </form>
+                    
+                        		<script>
+										function submitForm(action) {
+										  var checkboxes = document.getElementsByName('pcode');
+										  var selectedPcodes = [];
+										  
+										  for (var i = 0; i < checkboxes.length; i++) {
+										    if (checkboxes[i].checked) {
+										      selectedPcodes.push(checkboxes[i].value);
+										    }
+										  }
+										  
+										  var form = document.getElementById('deleteForm');
+										  form.action = action + '?pcode=' + selectedPcodes.join(',');
+										  form.submit();
+										}
+										</script>
+										
+                </div>
                 </div>
             </div>
-        </div>
+       
     </section>
     <!-- Shoping Cart Section End -->
 

@@ -42,15 +42,14 @@
     
 </head>
 <%
-	String result = (String)request.getAttribute("result");
+	String result = (String)request.getAttribute("list");
 	String loginCheck = (String)session.getAttribute("login");
-	System.out.print(result);
 %>
 <script>
 function checkResult(event) {
-    var sendResult = '<%=result %>';
+    var sendResult = <%=result %>;
     
-    if (sendResult === 'false'){
+    if (sendResult === false){
     	alert("주문에 실패했습니다.");
     	event.preventDefault(); // 폼 제출 이벤트 중지
     }else {
@@ -285,14 +284,15 @@ function checkResult(event) {
 		
                 <div class="row">
                 	<div class="col-lg-12">
-                	 <form action="orderSend.do" method="post">
+                	 <form action="orders.do" method="post">
 						<input type="hidden" name="userid" value="<%=userid %>">
 						<input type="hidden" name="pcode" value="${info.pcode}">
-						<input type="hidden" name="qty" value="${num}">
+						<input type="hidden" name="count" value="${num}">
 						<table class="table1">
 
 							
 							<tr>
+							
 								<td colspan="3">
 									<div class="product-info">
 									
@@ -300,6 +300,7 @@ function checkResult(event) {
 										<p>수령인 전화번호 : ${uInfo.telno}</p>
 										<p>배송지 : <input type="text" name="address" value="${uInfo.address}"></p>
 										<p>이메일 : ${uInfo.email}</p>
+										<img src="${info.photo}" alt="Product">
 										<p>품목명 : ${info.name}</p>
 										<p>가격 : ${info.price}</p>
 										<p>수량 : ${num}</p>	
@@ -315,7 +316,7 @@ function checkResult(event) {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='index.html'">메인페이지</a>
+                        <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='main.do'">메인페이지</a>
                     </div>
                 </div>
           
@@ -327,7 +328,7 @@ function checkResult(event) {
                         <li>총 상품가격 : <fmt:formatNumber value="${info.price * num}" type="number" pattern="#,##0" />원</li>
                         <li>총주문가격 : <fmt:formatNumber value="${info.price * num}" type="number" pattern="#,##0" />원</li>
                         </ul>
-                        <a href="#" class="primary-btn" onclick="checkResult(event)">결제하기</a>
+                        <a class="primary-btn" onclick="window.location.href='insertorders.do'">결제하기</a>
                         
                     </div>
                 </div>

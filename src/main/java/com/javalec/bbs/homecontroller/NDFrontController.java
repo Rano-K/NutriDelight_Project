@@ -36,9 +36,9 @@ import com.javalec.bbs.command.NDSubscribeUpdateCommand_OKH;
 import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserInsertCommand;
-import com.javalec.bbs.command.NDUserInsertOrdersCommand_LYJ;
 import com.javalec.bbs.command.NDUserLoginCommand;
 import com.javalec.bbs.command.NDUserOrdersCommand_LYJ;
+import com.javalec.bbs.command.NDUserOrdersInsertCommand_LYJ;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 import com.javalec.bbs.command.NDWriteBoardPageCommand_KMJ;
 import com.javalec.bbs.command.NDWriteReviewPageCommand_KMJ;
@@ -137,7 +137,7 @@ public class NDFrontController extends HttpServlet {
 			break;
 		// 결제 하기	
 		case "/insertorders.do":
-			command = new NDUserInsertOrdersCommand_LYJ();
+			command = new NDUserOrdersInsertCommand_LYJ();
 			command.execute(request, response);
 			viewPage = "orders.jsp";
 			break;
