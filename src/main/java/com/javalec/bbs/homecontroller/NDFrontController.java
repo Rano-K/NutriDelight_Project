@@ -14,6 +14,7 @@ import com.javalec.bbs.command.NDBoardFindCommand_OKH;
 import com.javalec.bbs.command.NDBoardInsertCommand_OKH;
 import com.javalec.bbs.command.NDBoardSearchCommand_OKH;
 import com.javalec.bbs.command.NDCommand;
+import com.javalec.bbs.command.NDHeaderCountCommand;
 import com.javalec.bbs.command.NDInsertBoardCommand_KMJ;
 import com.javalec.bbs.command.NDInsertReviewCommand_KMJ;
 import com.javalec.bbs.command.NDKakaoLoginCommand;
@@ -101,6 +102,7 @@ public class NDFrontController extends HttpServlet {
 		 */
 		// Home button 클릭시
 		case "/main.do":
+			command = new NDHeaderCountCommand();
 			command = new NDMainCommand_KMS();
 			command.execute(request, response);
 			viewPage = "index.jsp";
