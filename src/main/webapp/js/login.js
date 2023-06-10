@@ -7,10 +7,9 @@
 	const regExpName = /^[가-힣]*$/
 	const regExpPasswd = /^[0-9|a-z|A-Z]*$/
 	const regExpPhone = /^\d{3}-\d{3,4}-\d{4}$/
-	const regExpAddress = /^[가-힣\s]*$/
 	const regExpEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
 	const regExpAdmin = /^(?!.*(?:admin|root|insert|update|revoke|submit|select|delete|create|drop))^.*$/
-	const regExpBirth = /^(19[7-9]\d|20[0-9]{2})\.(0[1-9]|1[0-2])\.(0[1-9]|[12]\d|3[01])$/;
+	const regExpBirth = /^(19[4-9]\d|20[0-9]{2})\.(0[1-9]|1[0-2])\.(0[1-9]|[12]\d|3[01])$/;
 	
 	const id = document.getElementById("userid").value
 	const inputid = document.getElementById("inputID").value
@@ -19,7 +18,7 @@
 	const passwd1 = document.getElementById("password1").value
 	const passwd2 = document.getElementById("password2").value
 	const phone = document.getElementById("telno").value
-	const address = document.getElementById("address").value
+	const address = document.getElementById("address_detail").value
 	const email = document.getElementById("email").value
 	const birthdate = document.getElementById("age").value
 	const gender = document.querySelector('input[name="gender"]:checked').value;
@@ -43,19 +42,19 @@
 	}
 	
 	if(!regExpName.test(name)){
-		alert("이름은 한글로만 입력해 주세요.")
+		alert("이름은 한글로만 입력해주세요.")
 		//form.uname.select()
 		return
 	}
 	
 	if(passwd1 == "" || passwd2 == ""){
-		alert("비밀번호를 입력해 주세요.")
+		alert("비밀번호를 입력해주세요.")
 		//form.upasswd1.select()
 		return
 	}
 	
 	if(!regExpPasswd.test(passwd1) || !regExpPasswd.test(passwd2)){
-		alert("비밀번호는 영문 또는 숫자로만 입력해 주세요.")
+		alert("비밀번호는 영문 또는 숫자로만 입력해주세요.")
 		//form.upasswd1.select()
 		return
 	}
@@ -66,8 +65,8 @@
 		return
 	}
 	
-	if(!regExpAddress.test(address)){
-		alert("주소는 한글로만 입력해 주세요.")
+	if(address == ""){
+		alert("상세 주소를 입력해주세요.")
 		//form.uaddress.select()
 		return	
 	}
@@ -94,14 +93,14 @@
 	
 	alert("환영합니다.")
 	
-	window.location.href = "login.do"
+	window.location.href = "register.do"
 }
-	
+
 function checkPassword(){
 	var password1 = document.getElementById("password1").value
 	var password2 = document.getElementById("password2").value
 	
-	if(password1 === password2){
+	if((password1 === password2) && password1 !== ""){
 		document.getElementById("passwordStatus").value = "비밀번호 일치";
 		document.getElementById("passwordStatus").style.color = "BLUE";
 	} else{
@@ -123,15 +122,6 @@ function checkWho(){
 		alert("환영합니다." + document.loginfn.loginuid.value + "님")
 		return
 	}
-}
-
-function doKakaoLogin() {
-	const url = 'https://kauth.kakao.com/oauth/authorize?client_id=' +
-		process.env.VUE_APP_KAKAO_JS_KEY +
-		'&redirect_uri=' +
-		process.env.VUE_APP_KAKAO_REDIRECT_URL +
-		'&response_type=code&' +
-		'scope=account_email birthday gender profile_nickname profile_image'
 }
 
 function setIdpw(){
@@ -175,10 +165,7 @@ function checkUser(getResult, getId){
 	}
 }
 
-function checkid(){
-	
-	
-}
+
 
 function setStatusVar(varStat){
 	
@@ -230,7 +217,120 @@ function checkDuplicate() {
 	}
 }
 
-function isCheckDone(){
+function addressbtn(){
+	// kakao map
+	new daum.Postcode({
+		oncomplete: function(data){ 
+			// 주소 선택시 세팅
+			document.getElementById("address_kakao").value = data.address;
+			document.querySelector("input[id=address_detail]").focus();
+		}
+	}).open();
+}
+
+function kakao_loginbtn(){
+	window.location.href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ef894ee905a0643b7844daf7341d7569&redirect_uri=http://localhost:8080/Season2_Team4_Main/oauth/kakao/"
+}
+
+/*function kakao_login(){
+	const kakao_url = "https://kauth.kakao.com/oauth/token"
+	const client_id = "ef894ee905a0643b7844daf7341d7569"
+	const redirect_uri = "http://localhost:8080/Season2_Team4_Main/oauth/kakao"
+	const code = ""
 	
+	$.ajax({
+		url: kakao_url,
+		type: 'POST',
+		dataType: 'json',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+		},
+		data: {
+			grant_type: 'authorization_code',
+			client_id: client_id,
+			redirect_uri: redirect_uri,
+			code: code
+		},
+		success: function(data){
+			console.log(data)
+		},
+		error : function(e){
+			console.log(e)
+		}
+	});
+}*/
+
+/*function kakao_logout(ACCESS_TOKEN){
+	const kakao_url = "https://kapi.kakao.com/v1/user/logout"
 	
+	$.ajax({
+		url: kakao_url,
+		type: 'POST',
+		dataType: 'json',
+		headers: {
+			Authorization: 'Bearer ${ACCESS_TOKEN}'
+		},
+		success: function(data){
+			console.log(data)
+		},
+		error : function(e){
+			console.log(e)
+		}
+	});
+}*/
+
+
+/*	property_keys
+kakao_account.profile	카카오계정의 프로필 소유 여부, 실시간 닉네임과 프로필 사진 URL
+kakao_account.name	카카오계정의 이름 소유 여부, 이름 값
+kakao_account.email	카카오계정의 이메일 소유 여부, 이메일 값, 이메일 인증 여부, 이메일 유효 여부
+kakao_account.age_range	카카오계정의 연령대 소유 여부, 연령대 값
+kakao_account.birthday	카카오계정의 생일 소유 여부, 생일 값
+kakao_account.gender	카카오계정의 성별 소유 여부, 성별 값
+*/
+
+function kakao_userinfo(INPUT_TOKEN){
+	const kakao_url = "https://kapi.kakao.com/v2/user/me"
+	const ACCESS_TOKEN = INPUT_TOKEN
+
+	$.ajax({
+		url: kakao_url,
+		type: 'POST',
+		dataType: 'json',
+		headers: {
+			'Authorization': 'Bearer ' + ACCESS_TOKEN,
+			'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+		},
+		success: function(data){
+			console.log(data)
+			console.log(data.kakao_account.email)
+			checkid(data.kakao_account.email)
+		},
+		error : function(e){
+			console.log(e)
+			window.location.href = "registerPage.do"
+		}
+	});
+}
+
+function checkid(id){
+	console.log('js id = ' + id)
+	$.ajax({
+	    type: "POST",
+	    url: "kakaoCheck", // URL
+	    data: { id : id },
+	    success: function(result) {
+			console.log('js result = ' + result)
+			if (result === 1) {
+				console.log(result)
+				
+				//setIdpw()
+			} else{
+				window.location.href = "registerPage.do?userid=" + id
+			}
+		},
+		error: function(xhr, status, error) {
+		    console.log("에러 발생: " + error); // 오류 메시지 출력
+		}
+	});
 }

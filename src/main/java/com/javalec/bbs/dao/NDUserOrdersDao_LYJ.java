@@ -70,7 +70,7 @@ public class NDUserOrdersDao_LYJ {
 	
 	
 	
-	public NDUserOrdersDto_LYJ userInfo(String uid){
+	public NDUserOrdersDto_LYJ userInfo(String userid){
 		NDUserOrdersDto_LYJ dto1 = new NDUserOrdersDto_LYJ();
 		Connection conn_mysql = null;
 		PreparedStatement ps = null;
@@ -80,7 +80,7 @@ public class NDUserOrdersDao_LYJ {
 			conn_mysql = dataSource.getConnection(); 
 			String query = "SELECT name, telno, address, email from user where userid = ?";
 			ps = conn_mysql.prepareStatement(query);
-			ps.setString(1, uid);
+			ps.setString(1, userid);
 			rs = ps.executeQuery();
 			
 			if(rs.next()) { 

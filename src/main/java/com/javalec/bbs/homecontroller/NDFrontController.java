@@ -30,13 +30,15 @@ import com.javalec.bbs.command.NDProductListCommand_KMS;
 import com.javalec.bbs.command.NDProductSearchCommand_OKH;
 import com.javalec.bbs.command.NDSearchNoticeCommand_KMJ;
 import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
+import com.javalec.bbs.command.NDSubscribeScheduleCommand_OKH;
 import com.javalec.bbs.command.NDSubscribeSearchCommand_OKH;
+import com.javalec.bbs.command.NDSubscribeUpdateCommand_OKH;
 import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserInsertCommand;
-import com.javalec.bbs.command.NDUserInsertOrdersCommand_LYJ;
 import com.javalec.bbs.command.NDUserLoginCommand;
 import com.javalec.bbs.command.NDUserOrdersCommand_LYJ;
+import com.javalec.bbs.command.NDUserOrdersInsertCommand_LYJ;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 import com.javalec.bbs.command.NDWriteBoardPageCommand_KMJ;
 import com.javalec.bbs.command.NDWriteReviewPageCommand_KMJ;
@@ -135,7 +137,7 @@ public class NDFrontController extends HttpServlet {
 			break;
 		// 결제 하기	
 		case "/insertorders.do":
-			command = new NDUserInsertOrdersCommand_LYJ();
+			command = new NDUserOrdersInsertCommand_LYJ();
 			command.execute(request, response);
 			viewPage = "orders.jsp";
 			break;
@@ -279,11 +281,17 @@ public class NDFrontController extends HttpServlet {
 
 		// 구독 스케쥴 관리
 		case "/admin_schedulesubscribe.do":
-			command = new NDSubscribeSearchCommand_OKH();
+			command = new NDSubscribeScheduleCommand_OKH();
 			command.execute(request, response);
 			viewPage = "admin_subscribe_schedule.jsp";
 			break;
-
+			
+		//	구독 배송 확인	
+		case "/admin_updatesubscribe.do":
+			command = new NDSubscribeUpdateCommand_OKH();
+			command.execute(request, response);
+			viewPage = "admin_schedulesubscribe.do";
+			break;
 		// 유저 관리
 
 		// user 확인

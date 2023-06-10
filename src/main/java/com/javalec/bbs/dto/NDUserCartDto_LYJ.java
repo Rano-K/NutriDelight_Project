@@ -18,7 +18,7 @@ public class NDUserCartDto_LYJ {
 
 	
 	
-	public NDUserCartDto_LYJ(String userid1, int seq, String pcode, String photo, String name, int count, String price) {
+	public NDUserCartDto_LYJ(String userid1, int seq, String pcode, String photo, String name, String price, int count) {
 		super();
 		this.userid1 = userid1;
 		this.seq = seq;

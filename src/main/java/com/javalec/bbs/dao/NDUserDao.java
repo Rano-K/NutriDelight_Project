@@ -33,7 +33,7 @@ public class NDUserDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "INSERT INTO user (userid, userpw, name, gender, age, telno, address, email, allergy, insertdate, invalidate)"
+			String query = "INSERT INTO user (userid, userpw, name, gender, birthdate, telno, address, email, allergy, insertdate, invalidate)"
 					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, now(), 1)";
 			preparedStatement = connection.prepareStatement(query);
 				
@@ -44,7 +44,8 @@ public class NDUserDao {
 			preparedStatement.setString(5, dto.getAge());
 			preparedStatement.setString(6, dto.getTelno());
 			preparedStatement.setString(7, dto.getAddress());
-			preparedStatement.setString(8, dto.getAllergy());
+			preparedStatement.setString(8, dto.getEmail());
+			preparedStatement.setString(9, dto.getAllergy());
 			
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
@@ -149,7 +150,7 @@ public class NDUserDao {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		boolean result = true;
+		boolean result;
 		String uid = "";
 		
 		try {
@@ -162,9 +163,15 @@ public class NDUserDao {
 				uid = resultSet.getString(1);
 			}
 			
-			return userid.equals(uid) ? true : false;
+//			System.out.println("dao userid = " + userid + " uid = " + uid);
+			if(userid.equals(uid)) {
+				return true;
+			}else {
+				return false;
+			}
 		} catch (Exception e) {
-			return result;
+			// 유저가 없을때도 여기로 체크
+			return false;
 		} finally {
 			try {
 				if(resultSet != null) resultSet.close();
