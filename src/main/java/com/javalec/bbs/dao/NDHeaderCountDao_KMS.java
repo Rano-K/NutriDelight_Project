@@ -6,20 +6,10 @@ import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import com.javalec.bbs.command.NDCommand;
-import com.javalec.bbs.dto.NDHeaderCountDto_KMS;
 
-public class NDHeaderCountDao_KMS implements NDCommand {
-
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
-	}
+public class NDHeaderCountDao_KMS  {
 	
 	DataSource dataSource;
 	public NDHeaderCountDao_KMS() {
