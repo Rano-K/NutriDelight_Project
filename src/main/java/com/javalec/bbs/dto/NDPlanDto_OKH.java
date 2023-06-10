@@ -28,8 +28,9 @@ public class NDPlanDto_OKH {
 		this.delivery = delivery;
 	}
 
-	public NDPlanDto_OKH(Timestamp deliverydate) {
+	public NDPlanDto_OKH(int plcode, Timestamp deliverydate) {
 		super();
+		this.plcode = plcode;
 		this.deliverydate = deliverydate;
 	}
 

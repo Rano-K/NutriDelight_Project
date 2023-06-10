@@ -37,7 +37,14 @@ function dataConnect(dataSetSubscribe) {
 				{ title: '구독 종료 일자' },
 				{ title: '구독 일정 보기' },
 				{ title: '마지막 배송 일자' },
-				{ title: '오늘 배송 품목' }
+				{ title: '오늘 배송 품목' },
+				{ title: 'plcode'}
+			],
+			columnDefs: [
+				{
+					targets: [7], // 감추고자 하는 열의 인덱스
+					visible: false // 열을 감춤
+				}
 			]
 		});
 
@@ -45,7 +52,7 @@ function dataConnect(dataSetSubscribe) {
 		// 행 클릭 이벤트 처리
 		$('#subscribe tbody').on('click', 'tr', function() {
 			var rowData = table.row(this).data();
-			var scode = rowData[0];
+			var plcode = rowData[7];
 			var deliverydate = rowData[5];
 
 
@@ -55,7 +62,7 @@ function dataConnect(dataSetSubscribe) {
 					title: '금일 배송 작업은 끝났습니다.'
 				})
 			} else {
-				var url = 'admin_checksubscribe.do?scode=' + scode;
+				var url = 'admin_updatesubscribe.do?plcode=' + plcode;
 				// 페이지 이동
 				window.location.href = url;
 
