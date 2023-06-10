@@ -139,7 +139,7 @@
 											<div class="modal-body">
 												<c:set var="enumValues" value="<%=AllergyList.values()%>"/>
 							                    	<c:forEach items="${enumValues}" var="enumValue">
-														<input type="checkbox" id="allergy" value="${enumValue}" name="allergy">
+														<input type="checkbox" id="allergy" value="${enumValue.label()}" name="allergy">
 														${enumValue.label()} <br/>
 												</c:forEach>
 											</div>
