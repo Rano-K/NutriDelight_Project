@@ -37,6 +37,7 @@
 						<li data-filter=".oranges">일반상품</li>
 						<li data-filter=".fresh-meat">가장 많이 찜한상품</li>
 						<li data-filter=".vegetables">md추천상품</li>
+						<li data-filter=".vegetables">저칼로리상품</li>
 					</ul>
 				</div>
 			</div>
