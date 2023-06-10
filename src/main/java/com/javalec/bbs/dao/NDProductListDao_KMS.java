@@ -55,7 +55,7 @@ public class NDProductListDao_KMS implements NDCommand {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select p.pcode, p.name, m.price, p.photo from product as p, manage as m where p.pcode = m.pcode and m.invalidate='1';";			
+			String query = "SELECT p.pcode, p.name, m.price, p.photo FROM product as p, manage as m WHERE p.pcode = m.pcode AND m.invalidate='1';";			
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			

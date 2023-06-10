@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		<div class="row featured__filter">
-			<c:forEach items="${TakeAll}" var="dto" begin="1" end="8">
+			<c:forEach items="${TakeAll}" var="dto" begin="0" end="29">
 				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
 					<div class="featured__item">
 						<div class="featured__item__pic set-bg" data-setbg="${dto.photo}">
