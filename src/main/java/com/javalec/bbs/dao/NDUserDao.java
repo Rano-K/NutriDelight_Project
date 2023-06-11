@@ -205,7 +205,7 @@ public class NDUserDao {
 				String email = resultSet.getString("email");
 				String allergy = resultSet.getString("allergy");
 				
-				NDLoginDto dto = new NDLoginDto(name, gender, birthdate, telno, email, address, allergy);
+				NDLoginDto dto = new NDLoginDto(name, gender, birthdate.substring(0, 10).replaceAll("-", "."), telno, email, address, allergy);
 				dtos.add(dto);
 			}
 			

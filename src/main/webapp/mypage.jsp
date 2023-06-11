@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/login.js"></script>
+    
 </head>
 
 <body>
@@ -67,7 +68,7 @@
 	    				<div class="form-group">
 	    					<label for="placholder"> </label>
 	    					<br/>
-	    					<input type="submit" class="btn btn-primary" value="확인">
+	    					<a href="#" class="btn btn-primary" onclick="chkpw('${sessionScope.ID}')">확인</a>
 	    				</div>
 	    			</div>
 	    		</div>
@@ -84,35 +85,9 @@
   	<%@ include file="footer.jsp"%>
     <!-- Footer Section End -->
 	
-	<!-- Modal section Begin -->
-	<!-- ID Duplicate Modal -->
-    <div class="modal fade" id="idduplicateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">아이디 중복 확인</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<input type="text" class="col-sm-10" placeholder="사용할 ID를 입력 해주세요." id="inputID" name="inputID">
-					<button type="button" onclick="checkDuplicate()" name="dbCheckId">중복체크</button>
-					* 중복 체크를 해야 확인 버튼이 노출 됩니다. *
-				</div>
-				<div class="modal-footer">
-					<!-- 여기서 위에 찾은 값이 사용 가능 할 때 확인 버튼 활성화 및 변수 저장하여 위에서 account 버튼 활성화때 이용 -->
-					<button class="btn btn-primary" id="modalCheck" style="display: none" type="button" onclick="setStatusVar('idCheck')" data-dismiss="modal">확인</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal section End -->
-	
-	
-	
     <!-- Js Plugins -->
+    <script src="js/jquery-3.7.0.min.js"></script>
+    
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>

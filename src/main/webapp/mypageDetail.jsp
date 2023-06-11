@@ -13,11 +13,21 @@
 <body>
 	<%@ include file="header.jsp"%>
 	<div class="container">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
+		<div class="row">
+		    <div class="col-lg-3 col-md-5">
+		        <div class="sidebar">
+		            <div class="sidebar__item">
+		                <h4>Mypage</h4>
+		                <ul>
+		                    <li><a href="#">상세정보</a></li>
+		                    <li><a href="#">장바구니</a></li>
+		                    <li><a href="#">구매내역</a></li>
+		                </ul>
+		            </div>
+		        </div>
+		    </div>
+            
                 <!-- Nested Row within Card Body -->
-                <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
@@ -25,12 +35,8 @@
                             </div>
                             <form class="user" action="userinfoupdate.do" method="get" name="user">
 							<c:forEach items="${userinfo}" var="user">
-                            	<div class="form-group row">
-	                               	<div class="col-sm-12 mb-3 mb-sm-0">
-	                               		<input type="hidden" id="idCheck" name="idCheck" value="1">
-	                               		<input type="hidden" id="uid" value="${sessionScope.ID}">
-	                                	<input type="text" class="form-control form-control-user" name="userid" id="userid" placeholder="ID" readonly="readonly" value="${sessionScope.ID}">
-	                                </div>
+                            	<div class="form-group">
+                                	<input type="text" class="form-control form-control-user" name="userid" id="userid" placeholder="ID" readonly="readonly" value="${sessionScope.ID}">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="name" placeholder="Name" name="name" value="${user.name}">
@@ -50,10 +56,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Detail Address" name="address_detail" value="${user.address}">
+                                    <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Address" name="address_detail" value="${user.address}">
                                 </div>
                                 <div class="form-group sm">
-                                    <input type="text" class="form-control form-control-user" id="age" placeholder="Birthdate ex)2000.01.01" name="age" value="${user.age}">
+                                    <input type="text" class="form-control form-control-user" id="age" placeholder="Birthdate ex)2000.01.01" name="age" onkeyup="formatBirthdate(this)" value="${user.age}">
                                 </div>
                                 <div class="form-group sm">
                                     <input type="text" class="form-control form-control-user" name="gender" value="${user.gender}" readonly="readonly">
@@ -68,7 +74,7 @@
 							</c:forEach>
                             </form>
                             <!--  회원가입 눌렀을 때 -->
-                           	<a href="#" class="btn btn-primary btn-user btn-block" onclick="checkMember()"> 수정 </a>
+                           	<a href="#" class="btn btn-primary btn-user btn-block" onclick="updateMember()"> 수정 </a>
                             <hr>
 							<input type="hidden">
                                 <!-- allergy Modal -->
@@ -85,7 +91,7 @@
 											<div class="modal-body">
 												<c:set var="enumValues" value="<%=AllergyList.values()%>"/>
 							                    	<c:forEach items="${enumValues}" var="enumValue">
-														<input type="checkbox" id="allergy" value="${enumValue.label()}" name="allergy">
+														<input type="checkbox" id="allergy" value="'${enumValue.label()}'" name="allergy">
 														${enumValue.label()} <br/>
 													</c:forEach>
 											</div>
@@ -101,8 +107,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 	<%@ include file="footer.jsp"%>
 	
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

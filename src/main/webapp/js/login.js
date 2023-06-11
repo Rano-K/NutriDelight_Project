@@ -11,7 +11,7 @@
 	const regExpAdmin = /^(?!.*(?:admin|root|insert|update|revoke|submit|select|delete|create|drop))^.*$/
 	const regExpBirth = /^(19[4-9]\d|20[0-9]{2})\.(0[1-9]|1[0-2])\.(0[1-9]|[12]\d|3[01])$/;
 	
-	var form = document.user
+	const form = document.user
 	const id = document.getElementById("userid").value
 	const inputid = document.getElementById("inputID").value
 	const idCheck = document.getElementById("idCheck").value
@@ -224,6 +224,7 @@ function addressbtn(){
 		oncomplete: function(data){ 
 			// 주소 선택시 세팅
 			document.getElementById("address_kakao").value = data.address;
+			document.getElementById("address_detail").value = data.address;
 			document.querySelector("input[id=address_detail]").focus();
 		}
 	}).open();
@@ -315,7 +316,6 @@ function kakao_userinfo(INPUT_TOKEN){
 }
 
 function checkid(id){
-	console.log('js id = ' + id)
 	$.ajax({
 	    type: "POST",
 	    url: "kakaoCheck", // URL
@@ -336,4 +336,77 @@ function checkid(id){
 		    console.log("에러 발생: " + error); // 오류 메시지 출력
 		}
 	});
+}
+
+function chkpw(id){
+	var password = document.getElementById('password').value
+	console.log(password)
+	$.ajax({
+	    type: "POST",
+	    url: "NDUserCheck", // URL
+	    data: { id : id },
+	    success: function(result) {
+			console.log('js result = ' + result)
+			if (result === String(password)) {
+				window.location.href = "mypageDetail.do"
+			} else{
+				alert("비밀번호가 틀렸습니다.")
+			}
+		},
+		error: function(xhr, status, error) {
+		    console.log("에러 발생: " + error); // 오류 메시지 출력
+		}
+	});
+}
+
+function updateMember() {
+	const regExpName = /^[가-힣]*$/
+	const regExpPhone = /^\d{3}-\d{3,4}-\d{4}$/
+	const regExpEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
+	const regExpBirth = /^(19[4-9]\d|20[0-9]{2})\.(0[1-9]|1[0-2])\.(0[1-9]|[12]\d|3[01])$/;
+	
+	const form = document.user
+	const id = document.getElementById("userid").value
+	const name = document.getElementById("name").value
+	const phone = document.getElementById("telno").value
+	const address = document.getElementById("address_detail").value
+	const email = document.getElementById("email").value
+	const birthdate = document.getElementById("age").value
+	const allergy = document.getElementById("allergyCheck").value
+	console.log(1)
+	
+	if(!regExpName.test(name)){
+		alert("이름은 한글로만 입력해주세요.")
+		return
+	}
+	
+	if(address == ""){
+		alert("상세 주소를 입력해주세요.")
+		return	
+	}
+		
+	if(!regExpPhone.test(phone)){
+		alert("연락처 입력을 확인해주세요.")
+		return
+	}
+	
+	if(!regExpEmail.test(email)){
+		alert("이메일 입력을 확인해주세요.")
+		return
+	}
+	
+	if(!regExpBirth.test(birthdate)){
+		alert("생년월일을 확인해주세요.")
+		return
+	}
+	
+	alert("정보가 수정되었습니다.")
+	
+	form.submit()
+}
+
+function formatBirthdate(input) {
+  var value = input.value.replace(/\D/g, ''); // 숫자 이외의 문자 제거
+  var formattedValue = value.replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3'); // 형식 적용
+  input.value = formattedValue;
 }
