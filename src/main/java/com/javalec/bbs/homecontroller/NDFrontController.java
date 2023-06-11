@@ -29,6 +29,7 @@ import com.javalec.bbs.command.NDProductDeleteCommand_OKH;
 import com.javalec.bbs.command.NDProductFindCommand_OKH;
 import com.javalec.bbs.command.NDProductInsertCommand_OKH;
 import com.javalec.bbs.command.NDProductListCommand_KMS;
+import com.javalec.bbs.command.NDProductListSendCommand_KMS;
 import com.javalec.bbs.command.NDProductSearchCommand_OKH;
 import com.javalec.bbs.command.NDSearchNoticeCommand_KMJ;
 import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
@@ -118,6 +119,11 @@ public class NDFrontController extends HttpServlet {
 			command = new NDProductListCommand_KMS();
 			command.execute(request, response);
 			viewPage = "productList.jsp";
+			break;
+		case "productInfromSend.do":
+			command = new NDProductListSendCommand_KMS();
+			command.execute(request, response);
+			viewPage = "board.do";
 			break;
 		// 찜버튼 클릭시
 		case "heart.do":
