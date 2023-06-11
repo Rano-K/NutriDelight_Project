@@ -32,20 +32,7 @@
     
 	<!-- UserPage Section Begin -->
 	<section class="product spad">
-	<div class="container">
-		<div class="row">
-		    <div class="col-lg-3 col-md-5">
-		        <div class="sidebar">
-		            <div class="sidebar__item">
-		                <h4>Mypage</h4>
-		                <ul>
-		                    <li><a href="mypage.do">상세정보</a></li>
-		                    <li><a href="cart.do">장바구니</a></li>
-		                    <li><a href="orders.do">구매내역</a></li>
-		                </ul>
-		            </div>
-		        </div>
-		    </div>
+	<%@include file="userSidebar.jsp" %>
 		    
 		    <div class="col-lg-9 col-md-7">
 		    	<div class="filter__item">

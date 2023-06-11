@@ -12,20 +12,7 @@
 </head>
 <body>
 	<%@ include file="header.jsp"%>
-	<div class="container">
-		<div class="row">
-		    <div class="col-lg-3 col-md-5">
-		        <div class="sidebar">
-		            <div class="sidebar__item">
-		                <h4>Mypage</h4>
-		                <ul>
-		                    <li><a href="mypage.do"><b>상세정보</b></a></li>
-		                    <li><a href="cart.do">장바구니</a></li>
-		                    <li><a href="orders.do">구매내역</a></li>
-		                </ul>
-		            </div>
-		        </div>
-		    </div>
+	<%@include file="userSidebar.jsp" %>
 		    
             <!-- Nested Row within Card Body -->
             <div class="col-lg-7">
