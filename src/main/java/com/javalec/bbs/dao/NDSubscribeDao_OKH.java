@@ -38,7 +38,7 @@ public class NDSubscribeDao_OKH {
 		try {
 			connection = dataSource.getConnection();
 			statement = connection.createStatement();
-			String query = "SELECT SUM(s.scode) AS subscribeSales" + " FROM subscribe s"
+			String query = "SELECT COUNT(s.scode) AS subscribeSales" + " FROM subscribe s"
 					+ " WHERE YEAR(s.subscribedate) = YEAR(CURRENT_DATE())"
 					+ " AND MONTH(s.subscribedate) = MONTH(CURRENT_DATE())";
 

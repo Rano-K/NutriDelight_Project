@@ -14,8 +14,10 @@ import com.javalec.bbs.command.NDBoardFindCommand_OKH;
 import com.javalec.bbs.command.NDBoardInsertCommand_OKH;
 import com.javalec.bbs.command.NDBoardSearchCommand_OKH;
 import com.javalec.bbs.command.NDCommand;
+import com.javalec.bbs.command.NDHeaderCountCommand;
 import com.javalec.bbs.command.NDInsertBoardCommand_KMJ;
 import com.javalec.bbs.command.NDInsertReviewCommand_KMJ;
+import com.javalec.bbs.command.NDKakaoLoginCommand;
 import com.javalec.bbs.command.NDLogoutCommand;
 import com.javalec.bbs.command.NDMainAdminCommand_OKH;
 import com.javalec.bbs.command.NDMainCommand_KMS;
@@ -40,6 +42,7 @@ import com.javalec.bbs.command.NDUserLoginCommand;
 import com.javalec.bbs.command.NDUserOrdersCommand_LYJ;
 import com.javalec.bbs.command.NDUserOrdersInsertCommand_LYJ;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
+import com.javalec.bbs.command.NDUserSelectCommand;
 import com.javalec.bbs.command.NDWriteBoardPageCommand_KMJ;
 import com.javalec.bbs.command.NDWriteReviewPageCommand_KMJ;
 import com.javalec.bbs.command.NDuserCartDeleteCommand;
@@ -100,6 +103,8 @@ public class NDFrontController extends HttpServlet {
 		 */
 		// Home button 클릭시
 		case "/main.do":
+			command = new NDHeaderCountCommand();
+			command.execute(request, response);
 			command = new NDMainCommand_KMS();
 			command.execute(request, response);
 			viewPage = "index.jsp";
@@ -144,6 +149,10 @@ public class NDFrontController extends HttpServlet {
 
 		// 고객센터 버튼 클릭시 ---------------------------민재야 만들어줘
 
+			
+		/*
+		 * User 영역 
+		 */
 		// header-top : 로그인했을 때 : id_session값이 있을 때
 		case "/logout.do":
 			command = new NDLogoutCommand();
@@ -151,11 +160,18 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "main.do";
 			break;
 		case "/mypage.do":
+			command = new NDUserSelectCommand();
+			command.execute(request, response);
 			viewPage = "myPage.jsp";
 			break;
 		// header-top : 로그인안했을 때 : id_session값이 없을 때
 		case "/login.do":
 			viewPage = "login.jsp";
+			break;
+		case "/kakaoLogin.do":
+			command = new NDKakaoLoginCommand();
+			command.execute(request, response);
+			viewPage = "login.do";
 			break;
 		case "/loginCheck.do":
 			command = new NDUserLoginCommand();

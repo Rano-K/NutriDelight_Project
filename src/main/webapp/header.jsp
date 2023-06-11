@@ -69,9 +69,9 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="/main.do">Home</a></li>
+                            <li class="active"><a href="main.do">Home</a></li>
                             <!-- <li><a href="./shop-grid.html">체험단</a></li> -->
-                            <li><a href="#">상품구매</a>
+                            <li><a href="productList.do">상품구매</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="subscribe.do">구독상품구매</a></li>
                                     <li><a href="productList.do">일반상품구매</a></li>
@@ -84,10 +84,10 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="heart.do"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="Cart.do"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="heart.do"><i class="fa fa-heart"></i> <span>${requestScope.heartCount}</span></a></li>
+                            <li><a href="Cart.do"><i class="fa fa-shopping-bag"></i> <span>${requestScope.cartCount}</span></a></li>
                         </ul>
-                        <div class="header__cart__price">총금액 <span>32,000</span></div>
+                        <div class="header__cart__price">총금액 <span>${requestScope.cartTotalPrice}</span></div>
                     </div>
                 </div>
     </header>

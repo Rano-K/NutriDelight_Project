@@ -42,14 +42,14 @@
     
 </head>
 <%
-	String result = (String)request.getAttribute("list");
-	String loginCheck = (String)session.getAttribute("login");
+	Boolean result = (Boolean) request.getAttribute("list");
 %>
+
 <script>
 function checkResult(event) {
-    var sendResult = <%=result %>;
+    var sendResult = '<%=result %>';
     
-    if (sendResult === false){
+    if (sendResult === 'false'){
     	alert("주문에 실패했습니다.");
     	event.preventDefault(); // 폼 제출 이벤트 중지
     }else {
@@ -57,6 +57,7 @@ function checkResult(event) {
     }
 }
 </script>
+
 <body>
     <!-- Page Preloder -->
     <!-- <div id="preloder">
@@ -278,14 +279,13 @@ function checkResult(event) {
 
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
-	    	<%
-			String userid = (String)session.getAttribute("login"); 
-			%>
-		
+	    		<%
+					String login = (String)session.getAttribute("ID"); 
+				%>
                 <div class="row">
                 	<div class="col-lg-12">
-                	 <form action="orders.do" method="post">
-						<input type="hidden" name="userid" value="<%=userid %>">
+                	<form action="insertorders.do" method="post">
+						<input type="hidden" name="userid" value="<%= login %>">
 						<input type="hidden" name="pcode" value="${info.pcode}">
 						<input type="hidden" name="count" value="${num}">
 						<table class="table1">
@@ -302,13 +302,15 @@ function checkResult(event) {
 										<p>이메일 : ${uInfo.email}</p>
 										<img src="${info.photo}" alt="Product">
 										<p>품목명 : ${info.name}</p>
-										<p>가격 : ${info.price}</p>
 										<p>수량 : ${num}</p>	
+										<p>가격 : ${info.price * num}</p>
 																												
 									</div>
 								</td>
 							</tr>
 					</table>
+					<button type="submit" onclick="submitForm('insertorders.do')">결제하기</button>
+					
 				  </form>
                 </div>
             </div>
@@ -328,8 +330,8 @@ function checkResult(event) {
                         <li>총 상품가격 : <fmt:formatNumber value="${info.price * num}" type="number" pattern="#,##0" />원</li>
                         <li>총주문가격 : <fmt:formatNumber value="${info.price * num}" type="number" pattern="#,##0" />원</li>
                         </ul>
+                       
                         <a class="primary-btn" onclick="window.location.href='insertorders.do'">결제하기</a>
-                        
                     </div>
                 </div>
             </div>

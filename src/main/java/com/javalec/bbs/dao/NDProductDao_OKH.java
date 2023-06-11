@@ -159,8 +159,8 @@ public class NDProductDao_OKH {
 	}
 
 	// 데이터 입력 하기 : admin_insertproduct.do
-	public void insertProduct(String name, String category, String rice, String cook1, String cook2,
-			String cook3, String soup, String photo) {
+	public void insertProduct(String name, String category, String rice, String cook1, String cook2, String cook3,
+			String soup, String photo) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -233,5 +233,38 @@ public class NDProductDao_OKH {
 				e2.printStackTrace();
 			}
 		}
+	}
+
+	// pcode로 name 알아내기
+	public String getPname(String pcode) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String name = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT name FROM product WHERE pcode = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, pcode);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				name = resultSet.getString("name");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return name;
 	}
 }

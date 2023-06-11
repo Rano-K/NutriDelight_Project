@@ -48,8 +48,14 @@ public class NDUserOrdersDao_LYJ {
 				String photo = rs.getString(2);
 				int price = rs.getInt(3);
 				
+				
+				
 				dto = new NDUserOrdersDto_LYJ(pcode, name, photo, price);
+				
+			
 			}
+			
+		
 		
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -133,6 +139,7 @@ public class NDUserOrdersDao_LYJ {
 			
 			ps.executeUpdate();
 			
+		
 		
 			
 		}catch (Exception e) {

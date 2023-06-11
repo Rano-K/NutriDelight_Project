@@ -11,6 +11,7 @@
 	const regExpAdmin = /^(?!.*(?:admin|root|insert|update|revoke|submit|select|delete|create|drop))^.*$/
 	const regExpBirth = /^(19[4-9]\d|20[0-9]{2})\.(0[1-9]|1[0-2])\.(0[1-9]|[12]\d|3[01])$/;
 	
+	var form = document.user
 	const id = document.getElementById("userid").value
 	const inputid = document.getElementById("inputID").value
 	const idCheck = document.getElementById("idCheck").value
@@ -93,7 +94,7 @@
 	
 	alert("환영합니다.")
 	
-	window.location.href = "register.do"
+	form.submit()
 }
 
 function checkPassword(){
@@ -302,8 +303,8 @@ function kakao_userinfo(INPUT_TOKEN){
 			'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
 		},
 		success: function(data){
-			console.log(data)
-			console.log(data.kakao_account.email)
+			/*console.log(data)
+			console.log(data.kakao_account.email)*/
 			checkid(data.kakao_account.email)
 		},
 		error : function(e){
@@ -320,10 +321,12 @@ function checkid(id){
 	    url: "kakaoCheck", // URL
 	    data: { id : id },
 	    success: function(result) {
-			console.log('js result = ' + result)
+			//console.log('js result = ' + result)
 			if (result === 1) {
-				console.log(result)
+				//console.log(result)
 				
+				// 이 부분에 로그인완료로 보내고 세션에 로그인 ID 올려야 함
+				window.location.href = "kakaoLogin.do?userid=" + id
 				//setIdpw()
 			} else{
 				window.location.href = "registerPage.do?userid=" + id

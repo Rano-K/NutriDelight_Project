@@ -39,13 +39,13 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" action="register.do" method="get" name="user">
                             	<c:choose>
                                		<c:when test="${not empty param.userid}">
 	                                <div class="form-group row">
 	                                	<div class="col-sm-9 mb-3 mb-sm-0">
 	                                		<input type="hidden" id="uid" value="${param.userid}">
-	                                   		<input type="text" class="form-control form-control-user" id="userid" placeholder="ID" disabled="disabled" value="${param.userid}">
+	                                   		<input type="text" class="form-control form-control-user" name="userid" id="userid" placeholder="ID" readonly="readonly" value="${param.userid}">
 	                                   	</div>
 	                                   	<div class="col-sm-3">
 		                                   	<!-- 사용 가능 확인 터치하여 나왔을 떄 비활성화 처리 해야 함 -->
@@ -58,7 +58,7 @@
                                		<div class="form-group row">
 	                                	<div class="col-sm-9 mb-3 mb-sm-0">
 	                                		<input type="hidden" id="uid" value="">
-	                                   		<input type="text" class="form-control form-control-user" id="userid" placeholder="ID" disabled="disabled">
+	                                   		<input type="text" class="form-control form-control-user" name="userid" id="userid" placeholder="ID" readonly="readonly">
 	                                   	</div>
 	                                   	<div class="col-sm-3">
 		                                   	<!-- 사용 가능 확인 터치하여 나왔을 떄 비활성화 처리 해야 함 -->
@@ -69,12 +69,12 @@
                                		</c:otherwise>
                                	</c:choose>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="name" placeholder="Name">
+                                    <input type="text" class="form-control form-control-user" id="name" placeholder="Name" name="name">
                                 </div>
                                	<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user" id="password1"
-                                            placeholder="Password" onkeyup="checkPassword()">
+                                            placeholder="Password" onkeyup="checkPassword()" name="userpw">
 									</div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user" id="password2"
@@ -85,28 +85,28 @@
                                 	<input id="passwordStatus" class="form-control form-control-user" disabled="disabled" placeholder="비밀번호 일치 여부">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="telno" placeholder="Phone Number (ex 010-0000-0000)">
+                                    <input type="text" class="form-control form-control-user" id="telno" placeholder="Phone Number (ex 010-0000-0000)" name="telno">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="email" placeholder="Email">
+                                    <input type="text" class="form-control form-control-user" id="email" placeholder="Email" name="email">
                                 </div>
                                 <div class="form-group row">
                                 	<div class="col-sm-9 mb-3 mb-sm-0">
-                                    	<input type="text" class="form-control form-control-user" id="address_kakao" placeholder="Address" readonly="readonly">
+                                    	<input type="text" class="form-control form-control-user" id="address_kakao" placeholder="Address" readonly="readonly" name="address_kakao">
                                     </div>
                                     <div class="col-sm-3">
                                     	<a href="#" id="addressbtn" class="btn btn-primary btn-user btn-block" onclick="addressbtn()">주소 찾기</a>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Detail Address"/>
+                                    <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Detail Address" name="address_detail">
                                 </div>
                                 <div class="form-group sm">
-                                    <input type="text" class="form-control form-control-user" id="age" placeholder="Birthdate ex)2000.01.01">
+                                    <input type="text" class="form-control form-control-user" id="age" placeholder="Birthdate ex)2000.01.01" name="age">
                                 </div>
                                 <div class="input-group-text col-sm-12">
-                                    <input type="radio" style="margin-left: 20%" id="male" name="gender" value="male" checked="checked"> 남자
-                                    <input type="radio" style="margin-left: 30%" id="female" name="gender" value="female"> 여자
+                                    <input type="radio" style="margin-left: 20%" id="male" name="gender" value="남자" checked="checked"> 남자
+                                    <input type="radio" style="margin-left: 30%" id="female" name="gender" value="여자"> 여자
                              	</div>
                              	<p></p>
                                 <!-- 알러지 모달 -->
@@ -118,12 +118,37 @@
                                 <!--  회원가입 눌렀을 때 -->
                                	<a href="#" class="btn btn-primary btn-user btn-block" onclick="checkMember()"> Register Account </a>
                                 <hr>
-                                <a href="#" class="btn btn-kakao btn-user btn-block">
+                                <!-- <a href="#" class="btn btn-kakao btn-user btn-block">
                                 	<i class="fas fa-comment-dots fa-flip-horizontal"></i> Register with Kakao 미적용
                                 </a>
                                 <a href="#" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google 미적용
-                                </a>
+                                </a> -->
+                                <input type="hidden">
+                                <!-- allergy Modal -->
+							    <div class="modal fade" id="allergyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">알러지 선택하기</h5>
+												<button class="close" type="button" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">×</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<c:set var="enumValues" value="<%=AllergyList.values()%>"/>
+							                    	<c:forEach items="${enumValues}" var="enumValue">
+														<input type="checkbox" id="allergy" value="${enumValue.label()}" name="allergy">
+														${enumValue.label()} <br/>
+												</c:forEach>
+											</div>
+											<div class="modal-footer">
+												<button class="btn btn-primary" type="button" onclick="setStatusVar('allergyCheck')" data-dismiss="modal">확인</button>
+											</div>
+										</div>
+									</div>
+								</div>
                             </form>
                             <hr>
                             <div class="text-center">
@@ -155,10 +180,6 @@
 					<button type="button" onclick="checkDuplicate()" name="dbCheckId">중복체크</button>
 					* 중복 체크를 해야 확인 버튼이 노출 됩니다. *
 				</div>
-				<div class="modal-body">
-					<button type="button" onclick="checkTest()" >TEST</button>
-					* 중복 체크를 해야 확인 버튼이 노출 됩니다. *
-				</div>
 				<div class="modal-footer">
 					<!-- 여기서 위에 찾은 값이 사용 가능 할 때 확인 버튼 활성화 및 변수 저장하여 위에서 account 버튼 활성화때 이용 -->
 					<button class="btn btn-primary" id="modalCheck" style="display: none" type="button" onclick="setStatusVar('idCheck')" data-dismiss="modal">확인</button>
@@ -166,30 +187,7 @@
 			</div>
 		</div>
 	</div>
-    <!-- allergy Modal -->
-    <div class="modal fade" id="allergyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">알러지 선택하기</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<c:set var="enumValues" value="<%=AllergyList.values()%>"/>
-                    	<c:forEach items="${enumValues}" var="enumValue">
-							<input type="checkbox" id="allergy" value="${enumValue}">
-							${enumValue.label()} <br/>
-					</c:forEach>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-primary" type="button" onclick="setStatusVar('allergyCheck')" data-dismiss="modal">확인</button>
-				</div>
-			</div>
-		</div>
-	</div>
+    
 
     <!-- Bootstrap core JavaScript-->
     <script src="admin/vendor/jquery/jquery.min.js"></script>

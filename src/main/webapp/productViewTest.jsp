@@ -37,12 +37,13 @@
 						<li data-filter=".oranges">일반상품</li>
 						<li data-filter=".fresh-meat">가장 많이 찜한상품</li>
 						<li data-filter=".vegetables">md추천상품</li>
+						<li data-filter=".vegetables">저칼로리상품</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="row featured__filter">
-			<c:forEach items="${TakeAll}" var="dto" begin="1" end="8">
+			<c:forEach items="${TakeAll}" var="dto" begin="0" end="29">
 				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
 					<div class="featured__item">
 						<div class="featured__item__pic set-bg" data-setbg="${dto.photo}">

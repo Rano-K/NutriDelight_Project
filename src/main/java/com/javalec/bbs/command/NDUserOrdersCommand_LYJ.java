@@ -18,9 +18,6 @@ public class NDUserOrdersCommand_LYJ implements NDCommand {
 		String pcode = request.getParameter("pcode");
 		String count = request.getParameter("count");
 		String userid = (String) session.getAttribute("ID");
-	
-	
-		System.out.println(count);
 		
 		NDUserOrdersDao_LYJ ndUserOrdersDao_LYJ = new NDUserOrdersDao_LYJ();
 		NDUserOrdersDto_LYJ dto = ndUserOrdersDao_LYJ.productInfo(pcode);
