@@ -40,6 +40,7 @@ import com.javalec.bbs.command.NDUserCartListCommand_LYJ;
 import com.javalec.bbs.command.NDUserGraphCommand_OKH;
 import com.javalec.bbs.command.NDUserInsertCommand;
 import com.javalec.bbs.command.NDUserLoginCommand;
+import com.javalec.bbs.command.NDUserOrderedInfoCommand;
 import com.javalec.bbs.command.NDUserOrdersCommand_LYJ;
 import com.javalec.bbs.command.NDUserOrdersInsertCommand_LYJ;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
@@ -206,6 +207,11 @@ public class NDFrontController extends HttpServlet {
 		case "/duplicate.do":
 			// id 찾아서 중복 체크 해야함
 			viewPage = "idDupleCheck.jsp";
+			break;
+		case "/userorderinfo.do":
+			command = new NDUserOrderedInfoCommand();
+			command.execute(request, response);
+			viewPage = "userPurchaseinfo.jsp";
 			break;
 
 		// 게시판 및 상품정보

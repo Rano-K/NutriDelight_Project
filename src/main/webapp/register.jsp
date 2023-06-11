@@ -39,7 +39,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" action="register.do" method="get" name="user">
+                            <form class="user" action="register.do" method="post" name="user">
                             	<c:choose>
                                		<c:when test="${not empty param.userid}">
 	                                <div class="form-group row">

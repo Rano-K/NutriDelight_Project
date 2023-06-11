@@ -3,6 +3,7 @@ package com.javalec.bbs.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -10,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.javalec.bbs.dto.NDLoginDto;
+import com.javalec.bbs.dto.NDUserOrdersDto;
 
 
 public class NDUserDao {
@@ -292,4 +294,55 @@ public class NDUserDao {
 		}
 		
 	}
+	
+	// 유저의 구매내역 가져오기
+	public ArrayList<NDUserOrdersDto> mypageUserOrderinfo(String userid) {
+		ArrayList<NDUserOrdersDto> dtos = new ArrayList<NDUserOrdersDto>();
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String querydata = "SELECT o.ordercode, pr.photo, pr.name, o.count, m.price, o.orderdate, o.deliverydate, o.refunddate "
+					+ "FROM user u "
+					+ "JOIN orders o ON u.userid = o.userid "
+					+ "JOIN product pr ON o.pcode = pr.pcode "
+					+ "JOIN manage m ON pr.pcode = m.pcode "
+					+ "WHERE u.userid = ?;";
+			preparedStatement = connection.prepareStatement(querydata);
+			preparedStatement.setString(1, userid);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				int ordercode = resultSet.getInt(1);
+				String photo = resultSet.getString(2);
+				String name = resultSet.getString(3);
+				int count = resultSet.getInt(4);
+				int price = resultSet.getInt(5);
+				Timestamp orderdate = resultSet.getTimestamp(6);
+				Timestamp deliverydate = resultSet.getTimestamp(7);
+				Timestamp refunddate = resultSet.getTimestamp(8);
+				
+				NDUserOrdersDto dto = new NDUserOrdersDto(ordercode, count, orderdate, refunddate, deliverydate, photo, name, price);
+				dtos.add(dto);
+			}
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	}
+	
 }
