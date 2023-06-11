@@ -116,18 +116,18 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "subscribe.jsp";
 			break;
 		// 일반상품구매 버튼 클릭시 ->product 목록 페이지로 이동
-		case "productList.do":
+		case "/productList.do":
 			command = new NDProductListCommand_KMS();
 			command.execute(request, response);
 			viewPage = "productList.jsp";
 			break;
-		case "productInformSend.do":
+		case "/productInformSend.do":
 			command = new NDProductListSendCommand_KMS();
 			command.execute(request, response);
 			viewPage = "board.do";
 			break;
 		// 찜버튼 클릭시
-		case "heart.do":
+		case "/heart.do":
 			viewPage = "heart.jsp";
 			// 카트
 		case "/cart.do":
@@ -209,14 +209,6 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "idDupleCheck.jsp";
 			break;
 
-		/*
-		 * productList구역
-		 */
-		case "/productList.do":
-			command = new NDProductListCommand_KMS();
-			command.execute(request, response);
-			viewPage = "productList.jsp";
-			break;
 		// 게시판 및 상품정보
 
 		// 리뷰 불러오기
