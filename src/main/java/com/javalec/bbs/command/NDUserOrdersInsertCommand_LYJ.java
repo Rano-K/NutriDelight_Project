@@ -15,12 +15,6 @@ public class NDUserOrdersInsertCommand_LYJ implements NDCommand {
 		String count = request.getParameter("count");
 		String address = request.getParameter("address");
 		
-		System.out.println(userid);
-		System.out.println(pcode);
-		System.out.println(count);
-		
-		
-		
 		NDUserOrdersDao_LYJ ndUserOrdersDao_LYJ = new NDUserOrdersDao_LYJ();
 		boolean list = ndUserOrdersDao_LYJ.insertOrder(userid, pcode, count, address);
 		
