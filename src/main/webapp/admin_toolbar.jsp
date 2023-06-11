@@ -102,7 +102,7 @@ String ID = (String) sessions.getAttribute("ID");
 
 		<!-- Nav Item - Tables -->
 		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link collapsed" href="#"
+		<li class="nav-item"><a class="nav-link collapsed" href="admin_searchboard.do"
 			data-toggle="collapse" data-target="#collapseBoard"
 			aria-expanded="true" aria-controls="collapseBoard"> <i
 				class="fas fa-fw fa-table"></i> <span>게시판 관리</span>
@@ -111,8 +111,7 @@ String ID = (String) sessions.getAttribute("ID");
 				aria-labelledby="headingPages" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
-					<a class="collapse-item" href="admin_searchboard.do">게시글 목록</a> <a
-						class="collapse-item" href="admin_board_insert.jsp">공지사항 등록</a>
+					<a class="collapse-item" href="admin_searchboard.do">게시글 목록</a> 
 				</div>
 			</div></li>
 

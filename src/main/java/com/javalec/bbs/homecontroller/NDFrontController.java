@@ -147,7 +147,7 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "orders.jsp";
 			break;
-		// 결제 하기	
+		// 결제 하기
 		case "/insertorders.do":
 			command = new NDUserOrdersInsertCommand_LYJ();
 			command.execute(request, response);
@@ -156,9 +156,8 @@ public class NDFrontController extends HttpServlet {
 
 		// 고객센터 버튼 클릭시 ---------------------------민재야 만들어줘
 
-			
 		/*
-		 * User 영역 
+		 * User 영역
 		 */
 		// header-top : 로그인했을 때 : id_session값이 있을 때
 		case "/logout.do":
@@ -310,8 +309,8 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "admin_subscribe_schedule.jsp";
 			break;
-			
-		//	구독 배송 확인	
+
+		// 구독 배송 확인
 		case "/admin_updatesubscribe.do":
 			command = new NDSubscribeUpdateCommand_OKH();
 			command.execute(request, response);
@@ -371,28 +370,28 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "admin_board.jsp";
 			break;
-			
+
 		// 상품 입력 및 수정에 데이터 표기
 		case "/admin_modifyboard.do":
 			command = new NDBoardModifyCommand_OKH();
 			command.execute(request, response);
-			viewPage = "admin_board.jsp";
+			viewPage = "admin_searchboard.do";
 			break;
 
 		// 게시판 작성
 		case "/admin_insertboard.do":
 			command = new NDBoardInsertCommand_OKH();
 			command.execute(request, response);
-			viewPage = "admin_board.jsp";
+			viewPage = "admin_searchboard.do";
 			break;
 
 		// 게시판 삭제
 		case "/admin_deleteboard.do":
 			command = new NDBoardDeleteCommand_OKH();
 			command.execute(request, response);
-			viewPage = "admin_board.jsp";
+			viewPage = "admin_searchboard.do";
 			break;
-			
+
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

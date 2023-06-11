@@ -72,4 +72,145 @@ public class NDNoticeDao_OKH {
 
 		return dtos;
 	}
+
+	// 글 작성하기
+	public void insertBoard(int seq, String adminid, String title, String context) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String insertBoardQuery = "INSERT INTO notice (seq, adminid, insertdate, invalidate)"
+					+ " VALUES (?, ?, now(), 1)";
+			String insertBReplyQuery = "INSERT INTO nwrite (seq, adminid, title, context, updatedate) "
+					+ " VALUES (?, ?, ?, ?, now())";
+			PreparedStatement boardStatement = connection.prepareStatement(insertBoardQuery);
+			PreparedStatement bReplyStatement = connection.prepareStatement(insertBReplyQuery);
+
+			boardStatement.setInt(1, seq+1);
+			boardStatement.setString(2, adminid);
+
+			bReplyStatement.setInt(1, seq+1);
+			bReplyStatement.setString(2, adminid);
+			bReplyStatement.setString(3, title);
+			bReplyStatement.setString(4, context);
+			boardStatement.executeUpdate();
+			bReplyStatement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+
+	// seq값 가져오기
+	public int searchBoardseq() {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int newseq = 0;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT MAX(seq) AS seq FROM notice";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				newseq = resultSet.getInt("seq") + 1;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return newseq;
+	}
+
+	// 수정하기
+	public void modifyBoard(int seq, String adminid, String title, String context) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE nwrite SET title = ?, adminid = ?, context = ?, updatedate = now() WHERE seq = ?";
+
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.setString(1, title);
+			preparedStatement.setString(2, adminid);
+			preparedStatement.setString(3, context);
+			preparedStatement.setInt(4, seq);
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+
+	// 삭제하기
+	public void deleteBoard(int seq) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE notice SET invalidate = 0 WHERE seq = ?";
+
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.setInt(1, seq);
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
 }
