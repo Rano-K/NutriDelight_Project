@@ -17,7 +17,7 @@ public class NDUserInsertCommand implements NDCommand {
 		String gender = request.getParameter("gender");
 		String age = request.getParameter("age");
 		String telno = request.getParameter("telno");
-		String address = request.getParameter("address_kakao") + " " + request.getParameter("address_detail");
+		String address = request.getParameter("address_detail");
 		String email = request.getParameter("email");
 		String allergy = request.getParameter("allergy");
 		
