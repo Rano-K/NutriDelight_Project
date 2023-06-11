@@ -19,9 +19,14 @@ public class NDHeaderCountCommand implements NDCommand {
 		int countHeart = dao_KMS.heartCount(userid);
 		int cartCount = dao_KMS.cartCount(userid);
 		int cartTotalPrice = dao_KMS.cartTotalPrice(userid);
-		request.setAttribute("heartCount", countHeart);
-        request.setAttribute("cartCount", cartCount);
-        request.setAttribute("cartTotalPrice", cartTotalPrice);
+		/*
+		 * System.out.println("heartCount=" + countHeart);
+		 * System.out.println("cartCount=" + cartCount);
+		 * System.out.println("cartTotalPrice=" + cartTotalPrice);
+		 */
+		session.setAttribute("heartCount", countHeart);
+        session.setAttribute("cartCount", cartCount);
+        session.setAttribute("cartTotalPrice", cartTotalPrice);
 
 	}
 
