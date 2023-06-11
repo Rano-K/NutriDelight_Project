@@ -104,6 +104,7 @@ public class NDFrontController extends HttpServlet {
 		// Home button 클릭시
 		case "/main.do":
 			command = new NDHeaderCountCommand();
+			command.execute(request, response);
 			command = new NDMainCommand_KMS();
 			command.execute(request, response);
 			viewPage = "index.jsp";
