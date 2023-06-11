@@ -10,10 +10,15 @@ public class NDUserOrdersInsertCommand_LYJ implements NDCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String userid = request.getParameter("ID");
+		String userid = request.getParameter("userid");
 		String pcode = request.getParameter("pcode");
 		String count = request.getParameter("count");
 		String address = request.getParameter("address");
+		
+		System.out.println(userid);
+		System.out.println(pcode);
+		System.out.println(count);
+		
 		
 		
 		NDUserOrdersDao_LYJ ndUserOrdersDao_LYJ = new NDUserOrdersDao_LYJ();

@@ -8,28 +8,25 @@ public class NDUserCartDto_LYJ {
 	String pcode;
 	String photo;
 	String name;
-	int count;
-	String price;
-
+	int price;
+	String count;
 	
 	public NDUserCartDto_LYJ() {
 		// TODO Auto-generated constructor stub
 	}
 
 	
-	
-	public NDUserCartDto_LYJ(String userid1, int seq, String pcode, String photo, String name, String price, int count) {
-		super();
-		this.userid1 = userid1;
-		this.seq = seq;
-		this.pcode = pcode;
-		this.photo = photo;
-		this.name = name;
-		this.price = price;
-		this.count = count;
+
+	public NDUserCartDto_LYJ(String userid1, int seq, String pcode, String photo, String name, int price, String count ) {
+	    super();
+	    this.userid1 = userid1;
+	    this.seq = seq;
+	    this.pcode = pcode;
+	    this.photo = photo;
+	    this.name = name;
+	    this.price = price;
+	    this.count = count;
 	}
-
-
 
 	public String getUserid1() {
 		return userid1;
@@ -67,11 +64,11 @@ public class NDUserCartDto_LYJ {
 		this.pcode = pcode;
 	}
 
-	public int getCount() {
+	public String getCount() {
 		return count;
 	}
 
-	public void setCount(int count) {
+	public void setCount(String count) {
 		this.count = count;
 	}
 
@@ -91,11 +88,11 @@ public class NDUserCartDto_LYJ {
 		this.photo = photo;
 	}
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	

@@ -212,15 +212,20 @@
                    				<input type="hidden" name="userid" value="${dto.userid1}">
                    				<input type="hidden" name="seq" value="${dto.seq}">
                       			<input type="hidden" name="pcode" value="${dto.pcode}">
+                      			<input type="hidden" name="count" value="${dto.count}">
                                 <tr>
                                  <td class="center-align" style="text-align: center;">
-                           			 <input type="checkbox" name="pcode" value="${dto.pcode}">
+                           			<input type="checkbox" name="pcode" value="${dto.pcode}" data-count="${dto.count}">
+                           			
+
                       			 </td>
                                 <td ><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
                         		<td ><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
-                        		<td ><input type="hidden" name="count" value="${dto.price}">${dto.price}</td>
-                        		<td ><input type="hidden" name="price" value="${dto.count}">${dto.count}&#8361;</td>
-                        		<td ><input type="hidden" name="count" value="${dto.count}">${dto.count * dto.price}&#8361;</td>
+								<td >${dto.count}</td>
+								<td ><input type="hidden" name="price" value="${dto.price}">${dto.price}&#8361;</td>
+								<td ><input type="hidden" name="totalPrice" value="${dto.count * dto.price}">${dto.count * dto.price}&#8361;</td>
+
+								                        		
                         		
                                 <td class="shoping__cart__item__close"><span class="icon_close" onclick="location.href='cartdelete.do?seq=${dto.seq}'">
                                 </span></td>
@@ -228,34 +233,38 @@
                                 </tr>
                                  
                                  <c:set var="totalPrice" value="${totalPrice + (dto.count * dto.price)}" />
-                                
-                                
-                                  
-										
-								
-                                
+                          
                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                      <button type="submit" onclick="submitForm('orders.do')">결제페이지로</button>
+                      <button type="button" onclick="submitForm('orders.do')">결제페이지로</button>
                     </form> 
-                    		<script>
-										function submitForm(action) {
-										  var checkboxes = document.getElementsByName('pcode');
-										  var selectedPcodes = [];
-										  
-										  for (var i = 0; i < checkboxes.length; i++) {
-										    if (checkboxes[i].checked) {
-										      selectedPcodes.push(checkboxes[i].value);
-										    }
-										  }
-										  
-										  var form = document.getElementById('deleteForm');
-										  form.action = action + '?pcode=' + selectedPcodes.join(',');
-										  form.submit();
-										}
-										</script>
+                    	<script>
+function submitForm(action) {
+	function submitForm(action) {
+	    var checkboxes = document.getElementsByName('pcode');
+	    var selectedPcode = null;
+	    var selectedCount = null;
+
+	    for (var i = 0; i < checkboxes.length; i++) {
+	        if (checkboxes[i].checked) {
+	            selectedPcode = checkboxes[i].value;
+	            selectedCount = checkboxes[i].getAttribute('data-count');
+	            break; // 첫 번째로 선택된 체크박스만 처리하고 종료
+	        }
+	    }
+
+	    if (selectedPcode && selectedCount) {
+	        var form = document.getElementById('deleteForm');
+	        form.action = action + '?pcode=' + selectedPcode + '&count=' + selectedCount;
+	        form.submit();
+	    } else {
+	        // 선택된 체크박스가 없을 때 처리할 내용
+	    }
+	}
+}
+</script>
                 </div>
             </div>
             <div class="row">

@@ -19,6 +19,7 @@ public class NDUserCartListCommand_LYJ implements NDCommand {
 		HttpSession session = request.getSession();
 		String userid = (String) session.getAttribute("ID");
 		
+		
 		NDUserCartDao_LYJ sUserCartDao_LYJ = new NDUserCartDao_LYJ();
 		ArrayList<NDUserCartDto_LYJ> sUserCartDto_LYJ = sUserCartDao_LYJ.list(userid);
 		session.setAttribute("list", sUserCartDto_LYJ);
