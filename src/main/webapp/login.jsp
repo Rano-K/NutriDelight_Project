@@ -34,7 +34,7 @@
 			checkUser(getResult, getId);
 		</script>
 	</c:if>
-
+	
     <div class="container">
 
         <!-- Outer Row -->

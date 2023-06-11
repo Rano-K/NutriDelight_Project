@@ -37,7 +37,7 @@ public class NDReviewDao_KMJ {
 		
 		try {
 			conn_mysql = dataSource.getConnection(); //context.xml에 미리 정의해놓은 값을 가져온다
-			String query = "SELECT DISTINCT r.userid, rw.likes, rw.contexts, r.insertdate, rw.updatedate, rw.image, r.parent, r.layer " +
+			String query = "SELECT DISTINCT r.userid, rw.likes, rw.context, r.insertdate, rw.updatedate, rw.image, r.parent, r.layer " +
                     		"FROM rwrite rw, review r "+
                     		"WHERE rw.userid = r.userid and rw.pcode = r.pcode and rw.seq = r.seq and r.pcode = ? and r.invalidate = 1";
                     		
@@ -206,3 +206,5 @@ public class NDReviewDao_KMJ {
 	}// list
 	
 }
+
+

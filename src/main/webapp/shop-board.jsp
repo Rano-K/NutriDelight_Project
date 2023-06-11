@@ -53,11 +53,9 @@ function checkOrder(event) {
     }
 }
 </script>
+
 <body>
 	<%@ include file="header.jsp"%>
-	
-	<%-- <%String userid = (String) session.getAttribute("ID"); %> --%>
-	
 	
 	<!-- Hero Section Begin -->
 	<section class="hero">
@@ -102,7 +100,7 @@ function checkOrder(event) {
 						<div class="hero__text">
 							<table>
 								<tr>
-									<td><img src="admin/img/admin_img.png" alt="Product 3"></td>
+									<td><img src="admin/img/admin_img.png" alt="Product 3">${sessionScope.login}+${sessionScope.ID}</td>
 									<td><span>Product Info</span>
 										<p>
 										<h6>${PList}</h6>
