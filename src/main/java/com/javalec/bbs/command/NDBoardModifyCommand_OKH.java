@@ -3,7 +3,7 @@ package com.javalec.bbs.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class NDBoardFindCommand_OKH implements NDCommand {
+public class NDBoardModifyCommand_OKH implements NDCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

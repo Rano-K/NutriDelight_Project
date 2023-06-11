@@ -15,6 +15,8 @@ public class NDOrdersSearchCommand_OKH implements NDCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
 		// DAO

@@ -53,7 +53,9 @@ ArrayList<ArrayList<String>> dataSetNotice = (ArrayList<ArrayList<String>>) requ
 		var sessionId = '<%=session.getAttribute("ID")%>';
 
 		dataConnect(dataSetBoard, dataSetReview, dataSetNotice, sessionId);
+		
 	});
+	
 </script>
 
 </head>
@@ -108,15 +110,13 @@ ArrayList<ArrayList<String>> dataSetNotice = (ArrayList<ArrayList<String>>) requ
 	</div>
 	<!-- /.container-fluid -->
 
-	<button id="edit-post-btn" class="btn btn-primary mt-3">게시글 수정</button>
-
 	<!-- 게시글 작성 모달 -->
 	<div id="post-modal" class="modal fade" tabindex="-1" role="dialog"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">게시글 작성</h5>
+					<h5 class="modal-title">게시글 수정 및 작성</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -124,14 +124,19 @@ ArrayList<ArrayList<String>> dataSetNotice = (ArrayList<ArrayList<String>>) requ
 				</div>
 				<div class="modal-body">
 					<form id="post-form">
+							<label for="title">제목</label> <input type="text"
+								class="form-control" id="title" required> 
+								<input type="hidden" id="post-seq" value=""> 
+								<input type="hidden" id="post-parent" value="">
+								<input type="hidden" id="post-layer" value="">
+							    <input type="hidden" id="post-pcode" value="">
+							<label for="content">내용</label>
+							<input type="text"
+								class="form-control" id="content" required> 
+								<!--왜 값이 안보이는지 모르겠음 -->
 						<div class="form-group">
-							<label for="post-title">제목</label> <input type="text"
-								class="form-control" id="post-title" required>
-						</div>
-						<div class="form-group">
-							<label for="post-content-input">내용</label>
-							<textarea class="form-control" id="post-content-input" rows="5"
-								required></textarea>
+							<label for="image">사진</label> <img
+								id="image" src=" " alt="이미지 없음">
 						</div>
 					</form>
 				</div>
@@ -150,38 +155,59 @@ ArrayList<ArrayList<String>> dataSetNotice = (ArrayList<ArrayList<String>>) requ
 <!-- modal -->
 <script>
 	$(document).ready(function() {
-		// 게시글 보기 페이지
-		$('#post-view-page').show();
 		$('#post-modal').modal('hide');
-
-		// 게시글 수정 버튼 클릭 시
-		$('#edit-post-btn').click(function() {
-			// 게시글 내용 가져오기 (예시로 임의의 내용 사용)
-			var postContent = '게시글 내용';
-
-			// 게시글 내용 표시
-			$('#post-content').text(postContent);
-
-			// 게시글 보기 화면 숨기고 모달 열기
-			$('#post-view-page').hide();
-			$('#post-modal').modal('show');
-		});
-
+		
 		// 게시글 저장 버튼 클릭 시
 		$('#save-post-btn').click(function() {
 			// 게시글 제목과 내용 가져오기
-			var postTitle = $('#post-title').val();
-			var postContentInput = $('#post-content-input').val();
+			var postSeq = $('#post-seq').val();
+			var postParent = $('#post-parent').val();
+			var postLayer = $('#post-layer').val();
+			var postPcode = $('#post-pcode').val();
+			var posttitle = $('#title').val();
+			var postcontent = $('#content').val();
+			var postimg = $('#image').attr('src');
 
 			// 게시글 저장 로직 추가 (여기서는 예시로 콘솔에 출력)
-			console.log('게시글 제목:', postTitle);
-			console.log('게시글 내용:', postContentInput);
+			$.ajax({
+				url: "admin_findproduct.do",
+				type: 'post',
+				data: {
+					Seq: postSeq,
+					Parent: postParent,
+					Layer: postLayer,
+					Pcode: postPcode,
+					title: posttitle,
+					content: postcontent,
+					img: postimg
+
+				},
+				success: function(data) {
+
+				},
+				error: function() {
+					alert("error");
+				}
+			});
 
 			// 모달 닫기
 			$('#post-modal').modal('hide');
-			// 게시글 보기 화면 보여주기
-			$('#post-view-page').show();
+			window.location.href = "admin_findproduct.do";
 		});
+		
+		
+		 
+
+	    // 모달 닫힐 때 입력 필드 초기화
+	    $('#post-modal').on('hidden.bs.modal', function () {
+	        $('#post-form')[0].reset();
+	        $('#image').attr('src', '');
+	    });
+
+	    // "Close" 버튼 클릭 시 모달 닫기
+	    $('#post-modal .modal-header button.close').click(function() {
+	        $('#post-modal').modal('hide');
+	    });
 	});
 </script>
 <script>

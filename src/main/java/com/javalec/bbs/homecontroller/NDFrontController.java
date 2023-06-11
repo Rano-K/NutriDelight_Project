@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.bbs.command.NDBoardDeleteCommand_OKH;
-import com.javalec.bbs.command.NDBoardFindCommand_OKH;
+import com.javalec.bbs.command.NDBoardModifyCommand_OKH;
 import com.javalec.bbs.command.NDBoardInsertCommand_OKH;
 import com.javalec.bbs.command.NDBoardSearchCommand_OKH;
 import com.javalec.bbs.command.NDCommand;
@@ -364,10 +364,10 @@ public class NDFrontController extends HttpServlet {
 			break;
 			
 		// 상품 입력 및 수정에 데이터 표기
-		case "/admin_findboard.do":
-			command = new NDBoardFindCommand_OKH();
+		case "/admin_modifyboard.do":
+			command = new NDBoardModifyCommand_OKH();
 			command.execute(request, response);
-			viewPage = "admin_board_insert.jsp";
+			viewPage = "admin_board.jsp";
 			break;
 
 		// 게시판 작성
