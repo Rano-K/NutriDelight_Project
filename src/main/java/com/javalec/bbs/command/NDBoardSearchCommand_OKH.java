@@ -128,7 +128,6 @@ public class NDBoardSearchCommand_OKH implements NDCommand {
 						+ (reviewDto.getRrupdatedate() != null ? dateFormat.format(reviewDto.getRrupdatedate()) : "")
 						+ "'");
 			}
-
 			dataSetReview.add(row);
 		}
 
