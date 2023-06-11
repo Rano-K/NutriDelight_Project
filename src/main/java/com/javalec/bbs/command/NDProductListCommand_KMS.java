@@ -20,6 +20,8 @@ public class NDProductListCommand_KMS implements NDCommand {
 		ArrayList<NDProductListDto_KMS> dao_KMS1 = dao_KMS.TakeAll(); 
 		request.setAttribute("TakeAll", dao_KMS1);
 		
+		
+		
 	}
 	
 	

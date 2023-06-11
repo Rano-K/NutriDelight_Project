@@ -54,7 +54,11 @@
 						</div>
 						<div class="featured__item__text">
 							<h6>
-								<input type="hidden" name="name" value ="${dto.name}"><a href="#">${dto.name}</a>
+								<input type="hidden" name="name" value ="${dto.name}"><a href="#"></a>
+								<a href="productInformSend.do?pcode=${dto.pcode}">${dto.name}</a> 
+								<input type="hidden" name ="pcode" value ="${dto.pcode}">
+								<input type="hidden" name ="photo" value ="${dto.photo}">
+								
 							</h6>
 							<h5><input type="hidden" name="price" value ="${dto.price}">가격: ${dto.price}</h5>
 						</div>
