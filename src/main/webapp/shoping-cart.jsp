@@ -60,12 +60,10 @@
                    				<input type="hidden" name="userid" value="${dto.userid1}">
                    				<input type="hidden" name="seq" value="${dto.seq}">
                       			<input type="hidden" name="pcode" value="${dto.pcode}">
-                      			<input type="hidden" name="count" value="${dto.count}">
+                      			<input type="hidden" id="count" name="count" value="${dto.count}">
                                 <tr>
                                  <td class="center-align" style="text-align: center;">
-                           			<input type="checkbox" name="pcode" value="${dto.pcode}" data-count="${dto.count}">
-                           			
-
+                           			<input type="checkbox" name="pcode" value="${dto.pcode}" data-count="${dto.count}">${dto.count}
                       			 </td>
                                 <td ><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
                         		<td ><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
@@ -85,34 +83,9 @@
                                </c:forEach>
                             </tbody>
                         </table>
-                    </div>
-                      <button type="button" onclick="submitForm('orders.do')">결제페이지로</button>
+                    	</div>
+                      
                     </form> 
-                    	<script>
-function submitForm(action) {
-	function submitForm(action) {
-	    var checkboxes = document.getElementsByName('pcode');
-	    var selectedPcode = null;
-	    var selectedCount = null;
-
-	    for (var i = 0; i < checkboxes.length; i++) {
-	        if (checkboxes[i].checked) {
-	            selectedPcode = checkboxes[i].value;
-	            selectedCount = checkboxes[i].getAttribute('data-count');
-	            break; // 첫 번째로 선택된 체크박스만 처리하고 종료
-	        }
-	    }
-
-	    if (selectedPcode && selectedCount) {
-	        var form = document.getElementById('deleteForm');
-	        form.action = action + '?pcode=' + selectedPcode + '&count=' + selectedCount;
-	        form.submit();
-	    } else {
-	        // 선택된 체크박스가 없을 때 처리할 내용
-	    }
-	}
-}
-</script>
                 </div>
             </div>
             <div class="row">
@@ -122,54 +95,52 @@ function submitForm(action) {
                         <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='main.do'">메인페이지</a>
                     </div>
                 </div>
-          
                 <div class="col-lg-12">
-                <form action="ordes.do" method="post">
+                <form action="orders.do" method="post">
                     <div class="shoping__checkout">
-                    
-                    	<input type="hidden" name="userid" value="${dto.userid1}">
-                    	<input type="hidden" name="count" value="${dto.count}">
-                    	
                         <h5>카트 총 상품가격</h5>
                         <ul>
                             <li>총 상품가격 <span>${totalPrice}&#8361;</span></li>
                             <li>총 주문가격 <span>${totalPrice}&#8361;</span></li>
-                        </ul>
-                        
-                        
-                   <button type="submit" onclick="submitForm('orders.do')">결제페이지로</button>
-
-
-						
-						
+                        </ul>   
+                   	<button type="button" onclick="submitForm('orders.do')">결제페이지로</button>
                     </div>
-               
-                    </form>
-                    
-                        		<script>
-										function submitForm(action) {
-										  var checkboxes = document.getElementsByName('pcode');
-										  var selectedPcodes = [];
-										  
-										  for (var i = 0; i < checkboxes.length; i++) {
-										    if (checkboxes[i].checked) {
-										      selectedPcodes.push(checkboxes[i].value);
-										    }
-										  }
-										  
-										  var form = document.getElementById('deleteForm');
-										  form.action = action + '?pcode=' + selectedPcodes.join(',');
-										  form.submit();
-										}
-										</script>
-										
+                    </form>				
                 </div>
-                </div>
-            </div>
-       
+			</div>
+		</div>
     </section>
     <!-- Shoping Cart Section End -->
-
+<script>
+function submitForm(action) {
+	  // 체크된 체크박스 요소들을 선택합니다.
+	  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+	  
+	  // 선택된 체크박스들을 반복하며 정보를 저장할 객체를 생성합니다.
+	  var data = [];
+	  checkboxes.forEach(function(checkbox) {
+	    // 필요한 정보들을 추출하여 객체에 저장합니다.
+	    var item = {
+	      pcode: checkbox.value,
+	      count: checkbox.dataset.count
+	    };
+	    
+	    // 객체를 배열에 추가합니다.
+	    data.push(item);
+	  });
+	  
+	  // 저장한 정보를 문자열로 변환하여 쿼리스트링 형식으로 만듭니다.
+	  var queryString = '';
+	  data.forEach(function(item, index) {
+	    var prefix = (index === 0) ? '?' : '&';
+	    queryString += prefix + 'pcode=' + encodeURIComponent(item.pcode);
+	    queryString += '&count=' + encodeURIComponent(item.count);
+	  });
+	  
+	  // 최종적으로 orders.do로 이동합니다.
+	  window.location.href = action + queryString;
+	}
+</script>
 
     <!-- Footer Section Begin -->
    

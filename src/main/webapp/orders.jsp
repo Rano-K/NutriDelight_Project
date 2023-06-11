@@ -89,7 +89,7 @@ function checkResult(event) {
                 	<form action="insertorders.do" method="post">
 						<input type="hidden" name="userid" value="<%= login %>">
 						<input type="hidden" name="pcode" value="${info.pcode}">
-						<input type="hidden" name="count" value="${num}">
+						<input type="hidden" id="count" name="count" value="${num}">
 						<table class="table1">
 
 							
