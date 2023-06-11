@@ -34,82 +34,74 @@
 	
 		
     <!-- Shoping Cart Section Begin -->
-    <section class="shoping-cart spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                 <form id="deleteForm" action="cartdelete.do" method="post">
+    <!-- Shoping Cart Section Begin -->
+<section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form id="deleteForm" action="cartdelete.do" method="post">
                     <div class="shoping__cart__table">
                         <table>
                             <thead>
                                 <tr>
-                                	<th></th>
-                               		<th>상품사진</th>
-                                    <th >상품명</th>
+                                    <th></th>
+                                    <th>상품사진</th>
+                                    <th>상품명</th>
                                     <th>수량</th>
                                     <th>가격</th>
                                     <th>총가격</th>
-                               
                                 </tr>
                             </thead>
                             <tbody>
-                            
-                            <c:set var="totalPrice" value="0" />
-                            
-                              <c:forEach items="${list}" var="dto">
-                   				<input type="hidden" name="userid" value="${dto.userid1}">
-                   				<input type="hidden" name="seq" value="${dto.seq}">
-                      			<input type="hidden" name="pcode" value="${dto.pcode}">
-                      			<input type="hidden" id="count" name="count" value="${dto.count}">
-                                <tr>
-                                 <td class="center-align" style="text-align: center;">
-                           			<input type="checkbox" name="pcode" value="${dto.pcode}" data-count="${dto.count}">${dto.count}
-                      			 </td>
-                                <td ><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
-                        		<td ><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
-								<td >${dto.count}</td>
-								<td ><input type="hidden" name="price" value="${dto.price}">${dto.price}&#8361;</td>
-								<td ><input type="hidden" name="totalPrice" value="${dto.count * dto.price}">${dto.count * dto.price}&#8361;</td>
-
-								                        		
-                        		
-                                <td class="shoping__cart__item__close"><span class="icon_close" onclick="location.href='cartdelete.do?seq=${dto.seq}'">
-                                </span></td>
-                                
-                                </tr>
-                                 
-                                 <c:set var="totalPrice" value="${totalPrice + (dto.count * dto.price)}" />
-                          
-                               </c:forEach>
+                                <c:set var="totalPrice" value="0" />
+                                <c:forEach items="${list}" var="dto">
+                                    <input type="hidden" name="userid" value="${dto.userid1}">
+                                    <input type="hidden" name="seq" value="${dto.seq}">
+                                    <input type="hidden" name="pcode" value="${dto.pcode}">
+                                    <input type="hidden" id="count" name="count" value="${dto.count}">
+                                    <tr>
+                                        <td class="center-align" style="text-align: center;">
+                                            <input type="checkbox" name="pcode" value="${dto.pcode}" data-count="${dto.count}">
+                                        </td>
+                                        <td><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
+                                        <td><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
+                                        <td>${dto.count}</td>
+                                        <td><input type="hidden" name="price" value="${dto.price}">${dto.price}&#8361;</td>
+                                        <td><input type="hidden" name="totalPrice" value="${dto.count * dto.price}">${dto.count * dto.price}&#8361;</td>
+                                        <td class="shoping__cart__item__close">
+                                            <span class="icon_close" onclick="location.href='cartdelete.do?seq=${dto.seq}'"></span>
+                                        </td>
+                                    </tr>
+                                    <c:set var="totalPrice" value="${totalPrice + (dto.count * dto.price)}" />
+                                </c:forEach>
                             </tbody>
                         </table>
-                    	</div>
-                      
-                    </form> 
+                    </div>
+                </form> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__btns">
+                    <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='main.do'">메인페이지</a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping__cart__btns">
-                    
-                        <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='main.do'">메인페이지</a>
-                    </div>
-                </div>
-                <div class="col-lg-12">
+            <div class="col-lg-12">
                 <form action="orders.do" method="post">
                     <div class="shoping__checkout">
                         <h5>카트 총 상품가격</h5>
                         <ul>
                             <li>총 상품가격 <span>${totalPrice}&#8361;</span></li>
                             <li>총 주문가격 <span>${totalPrice}&#8361;</span></li>
-                        </ul>   
-                   	<button type="button" onclick="submitForm('orders.do')">결제페이지로</button>
+                        </ul>
+                        <a href="#" class="primary-btn" onclick="submitForm('orders.do')">결제페이지로</a>
                     </div>
-                    </form>				
-                </div>
-			</div>
-		</div>
-    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Shoping Cart Section End -->
 <script>
 function submitForm(action) {
