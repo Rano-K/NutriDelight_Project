@@ -79,7 +79,7 @@ public class NDHeaderCountDao_KMS  {
 		
 		try {
 			connection = dataSource.getConnection();
-			query = "SELECT SUM(count) AS total_count FROM cart WHERE userid = ?";
+			query = "SELECT count(pcode) AS total_count FROM cart WHERE userid = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, userid);
 			resultSet = preparedStatement.executeQuery();
@@ -117,7 +117,7 @@ public class NDHeaderCountDao_KMS  {
 		
 		try {
 			connection = dataSource.getConnection();
-			query = "SELECT SUM(m.price * c.count) AS total_price" + " FROM cart AS c"
+			query = "SELECT SUM(m.price * c.count) AS total_price" + " FROM cart AS c "
                     + "JOIN product AS p ON c.pcode = p.pcode" + " JOIN manage AS m ON p.pcode = m.pcode"
                     + " WHERE c.userid = ?";
 			preparedStatement = connection.prepareStatement(query);
