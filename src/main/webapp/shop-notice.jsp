@@ -30,8 +30,13 @@
 		a:active {
 		  color : black;
 		}
-		.btn{
+		.btn-1{
 			background-color:white;
+			border: none;
+		}
+		.btn-2{
+			background-color:white;
+			border-color:black;
 		}
 </style>
 <!-- Google Font -->
@@ -111,7 +116,8 @@
 										<th scope="col">no</th>
 										<th scope="col">글쓴이</th>
 										<th scope="col">제목</th>
-										<th class="jb-th-1" scope="col">날짜</th>
+										<th class="jb-th-1" scope="col">등록날짜</th>
+										<th class="jb-th-1" scope="col">수정날짜</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -121,14 +127,23 @@
 									<c:set var="count1" value="${count1 + 1}" />
 									<tr>
 										<td>
-											${count1}
+											${dto.noticeCount}
 										</td>
 										<td>
 											${dto.id}
 											<input type="hidden" name = "" id = "id" value="${dto.id}">
 										</td>
 										<td>
-											${dto.title}
+											
+												
+												<a href = "shop-noticeView.jsp?ID=${dto.id}&count=${dto.noticeCount}&title=${dto.title}&context=${dto.context}&insertdate=${insertdate}&updatedate=${updatedate}">
+													${dto.title}
+												</a>
+												
+											
+										</td>
+										<td>
+											${dto.insertdate}
 										</td>
 										<td>
 											${dto.updatedate}
@@ -136,31 +151,35 @@
 									</tr>
 										
 								</c:forEach>
-									
+								
 								
 								</tbody>
 							</table> 
 							<div id="pagination">
 						        <button id="prevButton" disabled>Previous</button>
 						        <c:forEach begin = "1" end = "${totalPages}" var="i">
-						    		<a href="notice.do?page=${i}"><input type="button" name = "pageButton" class = "btn" value="${i}"></a>
+						        	<c:if test = "${param.page == i}"><input type="button" name = "pageButton" class = "btn-1" value="${i}" disabled="disabled"></c:if>
+						    		<c:if test = "${param.page != i}"><a href="notice.do?page=${i}"><input type="button" name = "pageButton" class = "btn-2" value="${i}"></a></c:if>
 						    	</c:forEach>
 						        <button id="nextButton">Next</button>
 						    </div>
 						    
 							<div align="right">
-									<form action="write_board.do" method="post">
-										<input type="hidden" name="pname" value="${PList}">
-										<input type="hidden" name="pcode" value="9">
-										<input type="hidden" name="ID" value="dawn7778">
-										<input type="submit" value="공지작성" class="primary-btn">
-									</form>
+								<c:if test="${sessionScope.ID!=null}">
+									<c:if test="${sessionScope.login=='admin'}">
+										<form action="write_notice.do" method="post">
+											<input type="hidden" name="pname" value="${PList}">
+											<input type="hidden" name="ID" value="${sessionScope.ID}">
+											<input type="submit" value="공지작성" class="primary-btn">
+										</form>
+									</c:if>
+								</c:if>
 							</div>
 							 <script src="js/jquery-3.7.0.min.js"></script>
 							<script>
 								
 						        // 페이지 관련 변수 초기화
-						        var currentPage = 1;
+						        var currentPage = ${page};
 						        var itemsPerPage = 3;
 						        var totalPages;
 						        var dataInput;
@@ -189,62 +208,62 @@
 								
 						        
 						        
-						        // 페이지 표시
-						        function displayPage() {
-						            // AJAX 요청
-						            $.ajax({
-						                url: "http://localhost:8080/Season2_Team4_Main/notice.do", // 데이터를 불러올 URL
-						                type: "GET",
-						                dataType: "json",
-						                success: function(data) {
-						                    // 데이터 표시
-						                    var displayText = "";
-						                    data.forEach(function(item) {
-						                        displayText += item + ", ";
-						                    });
-						                    displayText = displayText.slice(0, -2); // 마지막 쉼표와 공백 제거
-						                    $("#display").text(displayText);
-						                    alert("연결은 됐다 임마.");
-						                },
-						                error: function() {
-						                    alert("데이터를 불러오는 데 실패했습니다.");
-						                }
-						            });
+// 						        // 페이지 표시
+// 						        function displayPage() {
+// 						            // AJAX 요청
+// 						            $.ajax({
+// 						                url: "http://localhost:8080/Season2_Team4_Main/notice.do", // 데이터를 불러올 URL
+// 						                type: "GET",
+// 						                dataType: "json",
+// 						                success: function(data) {
+// 						                    // 데이터 표시
+// 						                    var displayText = "";
+// 						                    data.forEach(function(item) {
+// 						                        displayText += item + ", ";
+// 						                    });
+// 						                    displayText = displayText.slice(0, -2); // 마지막 쉼표와 공백 제거
+// 						                    $("#display").text(displayText);
+// 						                    alert("연결은 됐다 임마.");
+// 						                },
+// 						                error: function() {
+// 						                    alert("데이터를 불러오는 데 실패했습니다.");
+// 						                }
+// 						            });
 									
-						            // 전체 페이지 수 업데이트
-						            $.ajax({
-						                url: "http://localhost:8080/Season2_Team4_Main/notice.do", // 전체 페이지 수를 불러올 URL
-						                type: "GET",
-						                success: function(data) {
-						                    totalPages = xhr.getResponseHeader("totalPages");
+// 						            // 전체 페이지 수 업데이트
+// 						            $.ajax({
+// 						                url: "http://localhost:8080/Season2_Team4_Main/notice.do", // 전체 페이지 수를 불러올 URL
+// 						                type: "GET",
+// 						                success: function(data) {
+// 						                    totalPages = xhr.getResponseHeader("totalPages");
 						
-						                    // 페이지 버튼 활성화/비활성화
-						                    $("#prevButton").prop("disabled", currentPage === 1);
-						                    $("#nextButton").prop("disabled", currentPage === totalPages);
+// 						                    // 페이지 버튼 활성화/비활성화
+// 						                    $("#prevButton").prop("disabled", currentPage === 1);
+// 						                    $("#nextButton").prop("disabled", currentPage === totalPages);
 						
-						                    // 페이지 링크 표시
-						                    var pageLinks = "";
-						                    for (var i = 1; i <= totalPages; i++) {
-						                        if (i === currentPage) {
-						                            pageLinks += i + " ";
-						                        } else {
-						                            pageLinks += "<a href='#' class='pageLink' data-page='" + i + "'>" + i + "</a> ";
-						                        }
-						                    }
-						                    $("#pageLinks").html(pageLinks);
+// 						                    // 페이지 링크 표시
+// 						                    var pageLinks = "";
+// 						                    for (var i = 1; i <= totalPages; i++) {
+// 						                        if (i === currentPage) {
+// 						                            pageLinks += i + " ";
+// 						                        } else {
+// 						                            pageLinks += "<a href='#' class='pageLink' data-page='" + i + "'>" + i + "</a> ";
+// 						                        }
+// 						                    }
+// 						                    $("#pageLinks").html(pageLinks);
 						
-						                    // 페이지 링크 클릭 이벤트 리스너 등록
-						                    $(".pageLink").on("click", function() {
-						                        var page = $(this).data("page");
-						                        currentPage = page;
-						                        displayPage();
-						                    });
-						                },
-						                error: function() {
-						                    alert("전체 페이지 수를 불러오는 데 실패했습니다.");
-						                }
-						            });
-						        }
+// 						                    // 페이지 링크 클릭 이벤트 리스너 등록
+// 						                    $(".pageLink").on("click", function() {
+// 						                        var page = $(this).data("page");
+// 						                        currentPage = page;
+// 						                        displayPage();
+// 						                    });
+// 						                },
+// 						                error: function() {
+// 						                    alert("전체 페이지 수를 불러오는 데 실패했습니다.");
+// 						                }
+// 						            });
+// 						        }
 						    </script>
 						    
 							

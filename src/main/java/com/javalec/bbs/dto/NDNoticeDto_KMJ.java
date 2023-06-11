@@ -6,14 +6,19 @@ public class NDNoticeDto_KMJ {
 	String context;
 	String insertdate;
 	String updatedate;
+	int noticeCount;
 	
+	
+
+
 	public NDNoticeDto_KMJ() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	public NDNoticeDto_KMJ(String id, String title, String context, String insertdate, String updatedate) {
+	public NDNoticeDto_KMJ(int noticeCount, String id, String title, String context, String insertdate, String updatedate) {
 		super();
+		this.noticeCount = noticeCount;
 		this.id = id;
 		this.title = title;
 		this.context = context;
@@ -51,5 +56,11 @@ public class NDNoticeDto_KMJ {
 	}
 	public void setUpdatedate(String updatedate) {
 		this.updatedate = updatedate;
+	}
+	public int getNoticeCount() {
+		return noticeCount;
+	}
+	public void setNoticeCount(int noticeCount) {
+		this.noticeCount = noticeCount;
 	}
 }

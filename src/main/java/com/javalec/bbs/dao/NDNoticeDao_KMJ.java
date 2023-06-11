@@ -10,7 +10,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.javalec.bbs.dto.NDNoticeDto_KMJ;
-import com.javalec.bbs.dto.NDNoticeDto_KMJ;
 
 public class NDNoticeDao_KMJ {
 	
@@ -35,11 +34,11 @@ public class NDNoticeDao_KMJ {
 			conn_mysql = dataSource.getConnection(); //context.xml에 미리 정의해놓은 값을 가져온다
 			String query = "SELECT n.adminid, nw.title, nw.context, n.insertdate, nw.updatedate " +
                     		"FROM nwrite nw, notice n "+
-                    		"WHERE nw.adminid = n.adminid and invalidate=1 and nw.seq=n.seq";
+                    		"WHERE nw.adminid = n.adminid and invalidate=1 and nw.seq=n.seq order by n.insertdate desc";
                     		
 			ps = conn_mysql.prepareStatement(query);
 			rs = ps.executeQuery();
-			
+			int noticeCount = 0;
 			while(rs.next()) {
 				/*select * from as count*/
 				String id = rs.getString(1);
@@ -48,7 +47,9 @@ public class NDNoticeDao_KMJ {
 				String insertdate = rs.getString(4);
 				String updatedate = rs.getString(5);
 				
-				NDNoticeDto_KMJ dto = new NDNoticeDto_KMJ(id, title, context, insertdate, updatedate);
+				noticeCount++;
+				
+				NDNoticeDto_KMJ dto = new NDNoticeDto_KMJ(noticeCount, id, title, context, insertdate, updatedate);
 				dtos.add(dto);
 			}
 			
