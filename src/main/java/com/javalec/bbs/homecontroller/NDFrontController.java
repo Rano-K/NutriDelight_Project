@@ -42,6 +42,7 @@ import com.javalec.bbs.command.NDUserLoginCommand;
 import com.javalec.bbs.command.NDUserOrdersCommand_LYJ;
 import com.javalec.bbs.command.NDUserOrdersInsertCommand_LYJ;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
+import com.javalec.bbs.command.NDUserSelectCommand;
 import com.javalec.bbs.command.NDWriteBoardPageCommand_KMJ;
 import com.javalec.bbs.command.NDWriteReviewPageCommand_KMJ;
 import com.javalec.bbs.command.NDuserCartDeleteCommand;
@@ -147,6 +148,10 @@ public class NDFrontController extends HttpServlet {
 
 		// 고객센터 버튼 클릭시 ---------------------------민재야 만들어줘
 
+			
+		/*
+		 * User 영역 
+		 */
 		// header-top : 로그인했을 때 : id_session값이 있을 때
 		case "/logout.do":
 			command = new NDLogoutCommand();
@@ -154,6 +159,8 @@ public class NDFrontController extends HttpServlet {
 			viewPage = "main.do";
 			break;
 		case "/mypage.do":
+			command = new NDUserSelectCommand();
+			command.execute(request, response);
 			viewPage = "myPage.jsp";
 			break;
 		// header-top : 로그인안했을 때 : id_session값이 없을 때
