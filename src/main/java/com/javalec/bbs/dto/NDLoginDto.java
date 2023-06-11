@@ -22,6 +22,19 @@ public class NDLoginDto {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+	public NDLoginDto(String name, String age, String telno, String email, String address, String allergy) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.telno = telno;
+		this.email = email;
+		this.address = address;
+		this.allergy = allergy;
+	}
+
+
 
 	public NDLoginDto(String userid, String userpw, String name, String gender, String age, String telno, String email, String address,
 			String allergy) {

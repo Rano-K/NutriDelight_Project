@@ -118,12 +118,6 @@
                                 <!--  회원가입 눌렀을 때 -->
                                	<a href="#" class="btn btn-primary btn-user btn-block" onclick="checkMember()"> Register Account </a>
                                 <hr>
-                                <!-- <a href="#" class="btn btn-kakao btn-user btn-block">
-                                	<i class="fas fa-comment-dots fa-flip-horizontal"></i> Register with Kakao 미적용
-                                </a>
-                                <a href="#" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google 미적용
-                                </a> -->
                                 <input type="hidden">
                                 <!-- allergy Modal -->
 							    <div class="modal fade" id="allergyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

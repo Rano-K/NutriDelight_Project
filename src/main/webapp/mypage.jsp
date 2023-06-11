@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="js/jquery-3.7.0.min.js"></script>
 </head>
 
 <body>
@@ -32,100 +33,51 @@
 	<section class="product spad">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3 col-md-5">
-				<div class="sidebar">
-					<div class="sidebar__item">
-						<h4>Mypage</h4>
-						<ul>
-							<li><a href="#">상세정보</a></li>
-							<li><a href="#">장바구니</a></li>
-							<li><a href="#">구매내역</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-9 col-md-7">
-				<div class="filter__item">
-					<div class="row">
-						<div class="form-group">
-							<h5>본인 확인을 위해 비밀번호를 입력하세요.</h5>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="password">비밀번호</label>
-								<input type="password" class="form-control" id="password" name="password" required>
-							</div>
-						</div>
-
-						<div class="col-md-6">
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#personalInfoModal">확인</button>
-						</div>
-					</div>
-					<div class="modal fade" id="personalInfoModal" tabindex="-1" role="dialog" aria-labelledby="personalInfoModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="personalInfoModalLabel">개인 상세정보</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<form action="/update-profile" method="post">
-										<div class="form-group">
-											<label for="name">이름</label>
-											<input type="text" class="form-control" id="name" name="name" value="유저의 이름" required>
-										</div>
-										<div class="form-group">
-											<label for="password">비밀번호</label>
-											<input type="password" class="form-control" id="password" name="password" value="유저의 비밀번호" required disabled>
-										</div>
-										<div class="form-group">
-											<label for="gender">성별</label>
-											<input type="text" class="form-control" id="gender" name="gender" value="유저의 성별" required disabled>
-										</div>
-										<div class="form-group">
-											<label for="age">나이</label>
-											<input type="text" class="form-control" id="age" name="age" value="유저의 나이" required disabled>
-										</div>
-										<div class="form-group">
-											<label for="phone">전화번호</label>
-											<input type="text" class="form-control" id="phone" name="phone" value="유저의 전화번호" required>
-										</div>
-										<div class="form-group">
-											<label for="address">주소</label>
-											<input type="text" class="form-control" id="address" name="address" value="유저의 주소" required>
-										</div>
-										<div class="form-group">
-											<label for="email">이메일</label>
-											<input type="email" class="form-control" id="email" name="email" value="유저의 이메일" required>
-										</div>
-										<div class="form-group">
-											<label for="allergy">알레르기 정보</label>
-											<textarea class="form-control" id="allergy" name="allergy" rows="3" required disabled>유저의 알레르기 정보</textarea>
-										</div>
-										<button type="submit" class="btn btn-primary">수정</button>
-									</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		    <div class="col-lg-3 col-md-5">
+		        <div class="sidebar">
+		            <div class="sidebar__item">
+		                <h4>Mypage</h4>
+		                <ul>
+		                    <li><a href="#">상세정보</a></li>
+		                    <li><a href="#">장바구니</a></li>
+		                    <li><a href="#">구매내역</a></li>
+		                </ul>
+		            </div>
+		        </div>
+		    </div>
+		    
+		    <div class="col-lg-9 col-md-7">
+		    	<div class="filter__item">
+		    		<div class="row">
+		    			<div class="form-group">
+		    				<h5>본인 확인을 위해 비밀번호를 입력하세요.</h5>
+		    			</div>
+		    		</div>
+		    	</div>
+		    	<form action="mypageDetail.do" method="post">
+	    		<div class="row">
+	    			<div class="col-md-6">
+	    				<div class="form-group">
+	    					<label for="password">비밀번호</label>
+	    					<input type="password" class="form-control" id="password" name="password" required>
+	    				</div>
+	    			</div>
+	    			
+	    			<div class="col-md-6">
+	    				<div class="form-group">
+	    					<label for="placholder"> </label>
+	    					<br/>
+	    					<input type="submit" class="btn btn-primary" value="확인">
+	    				</div>
+	    			</div>
+	    		</div>
+	    		</form>
+	    	</div>
+	    </div>
+	</div>
 	</section>
 
-
 	<!-- UserPage Section End -->
-
-	
-			
-	
 	
 	
     <!-- Footer Section Begin -->

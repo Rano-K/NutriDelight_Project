@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
+import com.javalec.bbs.dao.NDUserDao;
 
 /**
  * Servlet implementation class NDUserCheck
@@ -35,7 +39,15 @@ public class NDUserCheck extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		System.out.println(1);
+		HttpSession session = request.getSession();
+		String userid = (String) session.getAttribute("ID");
+		NDUserDao dao = new NDUserDao();
+		String userpw = dao.mypageUserinfoCheck(userid);
+		
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(userpw);
 	}
 
 }

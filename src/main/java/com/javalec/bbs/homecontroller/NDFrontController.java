@@ -44,6 +44,7 @@ import com.javalec.bbs.command.NDUserOrdersCommand_LYJ;
 import com.javalec.bbs.command.NDUserOrdersInsertCommand_LYJ;
 import com.javalec.bbs.command.NDUserSearchCommand_OKH;
 import com.javalec.bbs.command.NDUserSelectCommand;
+import com.javalec.bbs.command.NDUserUpdateCommand;
 import com.javalec.bbs.command.NDWriteBoardPageCommand_KMJ;
 import com.javalec.bbs.command.NDWriteReviewPageCommand_KMJ;
 import com.javalec.bbs.command.NDuserCartDeleteCommand;
@@ -172,6 +173,11 @@ public class NDFrontController extends HttpServlet {
 			break;
 		case "/mypageDetail.do":
 			command = new NDUserSelectCommand();
+			command.execute(request, response);
+			viewPage = "mypageDetail.jsp";
+			break;
+		case "/userinfoupdate.do":
+			command = new NDUserUpdateCommand();
 			command.execute(request, response);
 			viewPage = "mypageDetail.jsp";
 			break;

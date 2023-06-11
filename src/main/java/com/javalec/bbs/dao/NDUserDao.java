@@ -185,7 +185,7 @@ public class NDUserDao {
 	
 	// 유저 정보 받아 오기
 	public ArrayList<NDLoginDto> userInfo(String userid){
-		ArrayList<NDLoginDto> dtos = null;
+		ArrayList<NDLoginDto> dtos = new ArrayList<NDLoginDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -222,5 +222,74 @@ public class NDUserDao {
 		}
 		
 		return dtos;
+	}
+	
+	// mypage user 정보
+	public String mypageUserinfoCheck(String userid) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String result = "";
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT userpw FROM user WHERE userid='" + userid + "';";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				String userpw = resultSet.getString("userpw");
+				result = userpw;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = "false";
+		} finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+	
+	// 유저 정보 변경
+	public void myPageUpdate(NDLoginDto dto, String id){//수정클릭시 작동
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String queryUpdate = "update user set name = ?, telno = ?, address = ?, email = ?, allergy = ? where userid =?";
+			preparedStatement = connection.prepareStatement(queryUpdate);
+			
+			preparedStatement.setString(1, dto.getName());
+			preparedStatement.setString(2, dto.getTelno());
+			preparedStatement.setString(3, dto.getAddress());
+			preparedStatement.setString(4, dto.getEmail());
+			preparedStatement.setString(5, dto.getAllergy());
+			preparedStatement.setString(6, id);
+			
+			preparedStatement.executeUpdate();
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }
