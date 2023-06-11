@@ -84,10 +84,10 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="heart.do"><i class="fa fa-heart"></i> <span>${requestScope.heartCount}</span></a></li>
-                            <li><a href="Cart.do"><i class="fa fa-shopping-bag"></i> <span>${requestScope.cartCount}</span></a></li>
+                            <li><a href="heart.do"><i class="fa fa-heart"></i> <span>${sessionScope.heartCount}</span></a></li>
+                            <li><a href="cart.do"><i class="fa fa-shopping-bag"></i> <span>${sessionScope.cartCount}</span></a></li>
                         </ul>
-                        <div class="header__cart__price">총금액 <span>${requestScope.cartTotalPrice}</span></div>
+                        <div class="header__cart__price">총금액 <span>${sessionScope.cartTotalPrice}</span></div>
                     </div>
                 </div>
     </header>
