@@ -340,13 +340,11 @@ function checkid(id){
 
 function chkpw(id){
 	var password = document.getElementById('password').value
-	console.log(password)
 	$.ajax({
 	    type: "POST",
 	    url: "NDUserCheck", // URL
 	    data: { id : id },
 	    success: function(result) {
-			console.log('js result = ' + result)
 			if (result === String(password)) {
 				window.location.href = "mypageDetail.do"
 			} else{

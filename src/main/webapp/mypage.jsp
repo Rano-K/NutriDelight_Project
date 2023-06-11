@@ -39,9 +39,9 @@
 		            <div class="sidebar__item">
 		                <h4>Mypage</h4>
 		                <ul>
-		                    <li><a href="#">상세정보</a></li>
-		                    <li><a href="#">장바구니</a></li>
-		                    <li><a href="#">구매내역</a></li>
+		                    <li><a href="mypage.do">상세정보</a></li>
+		                    <li><a href="cart.do">장바구니</a></li>
+		                    <li><a href="orders.do">구매내역</a></li>
 		                </ul>
 		            </div>
 		        </div>
