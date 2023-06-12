@@ -152,64 +152,6 @@ ArrayList<ArrayList<String>> dataSetNotice = (ArrayList<ArrayList<String>>) requ
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
 </body>
-<!-- modal -->
-<script>
-	$(document).ready(function() {
-		$('#post-modal').modal('hide');
-		
-		// 게시글 저장 버튼 클릭 시
-		$('#save-post-btn').click(function() {
-			// 게시글 제목과 내용 가져오기
-			var postSeq = $('#post-seq').val();
-			var postParent = $('#post-parent').val();
-			var postLayer = $('#post-layer').val();
-			var postPcode = $('#post-pcode').val();
-			var posttitle = $('#title').val();
-			var postcontent = $('#content').val();
-			var postimg = $('#image').attr('src');
-
-			// 게시글 저장 로직 추가 (여기서는 예시로 콘솔에 출력)
-			$.ajax({
-				url: "admin_findproduct.do",
-				type: 'post',
-				data: {
-					Seq: postSeq,
-					Parent: postParent,
-					Layer: postLayer,
-					Pcode: postPcode,
-					title: posttitle,
-					content: postcontent,
-					img: postimg
-
-				},
-				success: function(data) {
-
-				},
-				error: function() {
-					alert("error");
-				}
-			});
-
-			// 모달 닫기
-			$('#post-modal').modal('hide');
-			window.location.href = "admin_findproduct.do";
-		});
-		
-		
-		 
-
-	    // 모달 닫힐 때 입력 필드 초기화
-	    $('#post-modal').on('hidden.bs.modal', function () {
-	        $('#post-form')[0].reset();
-	        $('#image').attr('src', '');
-	    });
-
-	    // "Close" 버튼 클릭 시 모달 닫기
-	    $('#post-modal .modal-header button.close').click(function() {
-	        $('#post-modal').modal('hide');
-	    });
-	});
-</script>
 <script>
 	window.addEventListener('DOMContentLoaded', function() {
 		// 초기 설정

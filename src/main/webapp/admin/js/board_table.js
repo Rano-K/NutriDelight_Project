@@ -32,7 +32,11 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 				{ title: '글 제목' }, // 8
 				{ title: '글 내용' }, // 9
 				{ title: '글 이미지' }, // 10
-				{ title: '글 업데이트 일자' } // 11
+				{ title: '글 업데이트 일자'} , // 11
+				{ title: '제품코드' } // 12
+			],
+			"order": [
+				[7, 'desc'], [1,'asc'],[2,'asc']
 			],
 			columnDefs: [{
 				targets: [1, 2, 3, 8, 9, 10], // 감추고자 하는 열의 인덱스
@@ -98,7 +102,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 									replySeq: rowData[0],
 									replyParent: rowData[1],
 									replyLayer: rowData[2],
-									replyPcode: rowData[5],
+									replyPcode: rowData[12],
 									replyTitle: replyTitle,
 									replyContent: replyContent
 								};
@@ -248,12 +252,15 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 					{ title: '글 등록 여부' },		//7
 					{ title: '글 내용' },			//8
 					{ title: '글 이미지' },		//9
-					{ title: '글 업데이트 일자' }	//10
+					{ title: '글 업데이트 일자'} ,	//10
+					{ title: 'pcode' }	//11
 
+				], "order": [
+					[7, 'desc'],[1,'asc'],[2,'asc']
 				],
 				columnDefs: [
 					{
-						targets: [1, 2, 3, 8, 9], // 감추고자 하는 열의 인덱스
+						targets: [1, 2, 3, 8, 9,11], // 감추고자 하는 열의 인덱스
 						visible: false // 열을 감춤
 					}
 				]
@@ -313,7 +320,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 										replySelect: '2',
 										replyParent: rowData[1],
 										replyLayer: rowData[2],
-										replyPcode: rowData[5],
+										replyPcode: rowData[11],
 										replySeq: rowData[0],
 										replyContent: replyContent
 									};
@@ -458,7 +465,9 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 					{ title: '글 내용' },			// 5
 					{ title: '글 업데이트 일자' }	// 6
 
-				],
+				],"order": [
+				[3, 'desc']
+			],
 				columnDefs: [
 					{
 						targets: [5], // 감추고자 하는 열의 인덱스

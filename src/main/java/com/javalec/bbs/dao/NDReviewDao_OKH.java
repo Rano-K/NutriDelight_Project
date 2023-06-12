@@ -100,8 +100,8 @@ public class NDReviewDao_OKH {
 			boardStatement.setInt(1, seq);
 			boardStatement.setInt(2, parent);
 			boardStatement.setInt(3, (layer + 1));
-			boardStatement.setString(5, pcode);
-			boardStatement.setString(6, adminid);
+			boardStatement.setString(4, pcode);
+			boardStatement.setString(5, adminid);
 
 			bReplyStatement.setInt(1, seq);
 			bReplyStatement.setString(2, adminid);

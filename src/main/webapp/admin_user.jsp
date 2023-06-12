@@ -33,10 +33,20 @@
 <!-- DataTables library -->
 <script
 	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="admin/js/user_table.js"></script>
 <!--get attribute from java  -->
 <%
-ArrayList<ArrayList<String>> dataSet = (ArrayList<ArrayList<String>>) request.getAttribute("dataSet");
+ArrayList<ArrayList<String>> dataSetUser = (ArrayList<ArrayList<String>>) request.getAttribute("dataSet");
 %>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var dataSetUser =
+<%=dataSetUser%>
+	;
+
+		dataConnect(dataSetUser);
+	});
+</script>
 </head>
 
 <body id="page-top">
@@ -67,41 +77,7 @@ ArrayList<ArrayList<String>> dataSet = (ArrayList<ArrayList<String>>) request.ge
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
-	<script>
-		var dataSet =
-	<%=dataSet%>
-		;
 
-		$(document).ready(function() {
-			var table = $('#user').DataTable({
-				data : dataSet,
-				columns : [ {
-					title : 'ID'
-				}, {
-					title : '이름'
-				}, {
-					title : '성별'
-				}, {
-					title : '나이'
-				}, {
-					title : '전화 번호'
-				}, {
-					title : '주소'
-				}, {
-					title : '이메일'
-				}, {
-					title : '총 구매액'
-				}, {
-					title : '알러지 정보'
-				}, {
-					title : '가입날짜'
-				}, {
-					title : '회원상태'
-				} ]
-			});
-
-		});
-	</script>
 </body>
 <!-- Custom scripts for all pages-->
 <script src="admin/js/sb-admin-2.js"></script>
