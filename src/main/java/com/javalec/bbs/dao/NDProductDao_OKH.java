@@ -205,7 +205,7 @@ public class NDProductDao_OKH {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "UPDATE product SET name = ?, category = ?, cook1 = ?, cook2 = ?, cook3 = ?, "
+			String query = "UPDATE product SET name = ?, category = ?, rice = ?, cook1 = ?, cook2 = ?, cook3 = ?, "
 					+ " soup = ?, photo = ? WHERE pcode = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, name);

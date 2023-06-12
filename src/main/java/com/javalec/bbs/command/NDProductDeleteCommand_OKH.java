@@ -18,7 +18,7 @@ public class NDProductDeleteCommand_OKH implements NDCommand {
 		NDManageDao_OKH manageDao = new NDManageDao_OKH();
 		if (invalidate == 1) {
 			manageDao.deleteProduct(pcode);
-		} else {
+		} else if(invalidate == 0){
 			manageDao.recoverProduct(pcode);
 		}
 	}
