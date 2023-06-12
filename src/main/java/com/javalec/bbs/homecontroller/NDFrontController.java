@@ -223,6 +223,11 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "userPurchaseinfo.jsp";
 			break;
+		case "/usersubscribe.do":
+			command = new NDSubscribeSearchCommand_OKH();
+			command.execute(request, response);
+			viewPage = "userSubscribe.jsp";
+			break;
 
 		// 게시판 및 상품정보
 
