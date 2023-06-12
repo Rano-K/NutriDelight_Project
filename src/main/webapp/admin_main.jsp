@@ -58,6 +58,9 @@ String ordersSales = (String) request.getAttribute("ordersSales");
 	;
 		dataConnect(dataSales, subscribeSales, ordersSales);
 	});
+	function redirectToURL(url) {
+	    window.location.href = url;
+	}
 </script>
 </head>
 
@@ -117,9 +120,9 @@ String ordersSales = (String) request.getAttribute("ordersSales");
 			</div>
 
 			<!-- Earnings (Monthly) Card Example -->
-			<div class="col-xl-3 col-md-6 mb-4">
+			<div class="col-xl-3 col-md-6 mb-4" >
 				<div class="card border-left-info shadow h-100 py-2">
-					<div class="card-body">
+					<div class="card-body" onclick="redirectToURL('admin_searchorders.do')">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
 								<div
@@ -149,7 +152,7 @@ String ordersSales = (String) request.getAttribute("ordersSales");
 			<!-- Pending Requests Card Example -->
 			<div class="col-xl-3 col-md-6 mb-4">
 				<div class="card border-left-warning shadow h-100 py-2">
-					<div class="card-body">
+					<div class="card-body" onclick="redirectToURL('admin_searchsubscribe.do')">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
 								<div
