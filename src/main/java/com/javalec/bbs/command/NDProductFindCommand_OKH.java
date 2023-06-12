@@ -59,6 +59,7 @@ public class NDProductFindCommand_OKH implements NDCommand {
 		request.setAttribute("photo", dtoProduct.get(0).getPhoto());
 		request.setAttribute("stock", dtoManage.get(0).getStock());
 		request.setAttribute("price", dtoManage.get(0).getPrice());
+		request.setAttribute("calories", dtoProduct.get(0).getCalories());
 		request.setAttribute("insertdate", conditionInsert);
 		request.setAttribute("updatedate", conditionUpdate);
 		request.setAttribute("invalidate", dtoManage.get(0).getInvalidate());

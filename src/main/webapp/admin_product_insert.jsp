@@ -35,14 +35,6 @@
 	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <!--  -->
 <script type="text/javascript">
-$(document).ready(function() {
-	var invalidate =
-${invalidate }
-;
-
-	dataConnect(dataSetOrders);
-});
-
 function openFileUploader() {
 	// 파일 업로드 창을 열기 위해 fileUploader 요소를 클릭합니다.
 	document.getElementById('fileUploader').click();
@@ -63,12 +55,16 @@ function handleFileSelect(event) {
 	document.getElementById('photo').value = file.name;
 	document.getElementById('photoname').placeholder = fileName;
 }
-</script>
-<script type="text/javascript">
 
 </script>
+<script src="admin/js/product_regex.js"></script>
+<script type="text/javascript">
+$("#confirmInsert").on("click", function(e){
+    e.preventDefault();
+  checkRegex(); // 정규식 검사 함수 실행
+});
+</script>
 <!-- regex -->
-<!-- <script src="admin/js/product_regex.js"></script> -->
 </head>
 
 <body id="page-top">
@@ -86,7 +82,7 @@ function handleFileSelect(event) {
 				<h6 class="m-0 font-weight-bold text-primary">상품 등록</h6>
 			</div>
 			<div class="card-body">
-				<form action="admin_insertproduct.do" class="user" method="post"
+				<form action="admin_insertproduct.do" class="product" method="post"
 					enctype="multipart/form-data" id="product">
 					<div class="table-responsive">
 						<br />
@@ -257,6 +253,20 @@ function handleFileSelect(event) {
 							<div class="col-lg-1"></div>
 							<div class="col-lg-2">
 								<h6 style="text-align: right"
+									class="m-3 font-weight-bold text-secondary order-code-label">칼로리</h6>
+							</div>
+							<div class="col-lg-8">
+								<input style="text-align: left" type="text" name="calories"
+									class="form-control form-control-user" id="calories"
+									placeholder="칼로리를 정해주세요."
+									value="${calories != null ? calories : '' }">
+							</div>
+						</div>
+						<br />
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<h6 style="text-align: right"
 									class="m-3 font-weight-bold text-secondary order-code-label">등록일자</h6>
 							</div>
 							<div class="col-lg-8">
@@ -321,32 +331,9 @@ function handleFileSelect(event) {
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
 	<!-- modal  -->
-	<script>
-		 $("#confirmInsert").click(function () {
-			 event.preventDefault(); 
-            Swal.fire({
-                title: '수정 및 입력 확인',
-                text: '수정 및 입력하시겠습니까?',
-                icon: 'warning',
-                showCancelButton: true,
-                showCloseButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: '승인',
-                cancelButtonText: '취소'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                    	'승인',
-                        '수정 및 입력 처리 되었습니다.',
-                        'success'
-                    ).then(() => {
-                        $("#product").submit();
-                    });
-                }
-            })
-        });
 
+	<script>
+		
         $("#confirmDelete").click(function () {
             Swal.fire({
                 title: '삭제 및 복구 확인',
@@ -361,7 +348,7 @@ function handleFileSelect(event) {
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire(
-                    '승인'
+                    '승인',
                      '삭제 및 복구 처리되었습니다.',
                     'success'
                     ).then(() => {
@@ -370,9 +357,9 @@ function handleFileSelect(event) {
                  }
             })
         });
-</script>
-<!-- Custom scripts for all pages-->
-<script src="admin/js/sb-admin-2.js"></script>
+	</script>
+	<!-- Custom scripts for all pages-->
+	<script src="admin/js/sb-admin-2.js"></script>
 
 </body>
 </html>
