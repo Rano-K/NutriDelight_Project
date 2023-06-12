@@ -23,15 +23,18 @@ function dataConnect(dataSetOrders) {
 		var table = $('#orders').DataTable({
 			data: dataSet,
 			columns: [
-				{ title: '주문번호' },
-				{ title: '주문 id' },
-				{ title: '상품 코드' },
-				{ title: '배송 주소' },
-				{ title: '주문 갯수' },
-				{ title: '재고' },
-				{ title: '주문날짜' },
-				{ title: '환불날짜' },
-				{ title: '배송날짜' }
+				{ title: '주문번호', className: 'one-line' },
+				{ title: '주문 id', className: 'one-line' },
+				{ title: '상품 코드', className: 'one-line' },
+				{ title: '배송 주소', className: 'one-line' },
+				{ title: '주문 갯수', className: 'one-line' },
+				{ title: '재고', className: 'one-line' },
+				{ title: '주문날짜', className: 'one-line' },
+				{ title: '환불날짜', className: 'one-line' },
+				{ title: '배송날짜', className: 'one-line' }
+			],
+			"order": [
+				[7, 'desc'],[8, 'desc']
 			]
 		});
 

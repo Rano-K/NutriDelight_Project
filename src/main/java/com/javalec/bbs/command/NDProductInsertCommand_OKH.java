@@ -16,8 +16,9 @@ public class NDProductInsertCommand_OKH implements NDCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			// Fields
-			String directory = request.getServletContext().getRealPath("/admin/img");
-			String directorysub = "admin/img/";
+			
+			String directory = request.getServletContext().getRealPath("/img");
+			String directorysub = "img/";
 			int maxSize = 1024 * 1024 * 100;
 			String encoding = "UTF-8";
 			MultipartRequest multipartRequest = new MultipartRequest(request, directory, maxSize, encoding,

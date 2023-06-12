@@ -31,7 +31,8 @@ public class NDProductFindCommand_OKH implements NDCommand {
 		Timestamp updatedate = dtoManage.get(0).getUpdatedate();
 		
 		String photo = dtoProduct.get(0).getPhoto();
-		photo.replaceAll("admin/im","");
+		photo.substring(4);
+		System.out.println("photo"+photo);
 
 		String conditionInsert = "";
 		if (insertdate == null) {
