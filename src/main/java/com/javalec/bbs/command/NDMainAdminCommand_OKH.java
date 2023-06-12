@@ -22,17 +22,17 @@ public class NDMainAdminCommand_OKH implements NDCommand {
 
 		// DTO
 		// 매출액(월간) 가져오기
-		String monthSales = formatter.format(orderDao.searchmonthSales());
-		//	매출액(연간) 가져오기
-		String yearSales = formatter.format(orderDao.searchyearSalessolo());
-		//	남은 주문 처리 비율 가져오기
+		String monthSales = formatter
+				.format(orderDao.searchmonthSales() + (subscribeDao.searchsubscribeSalessolo() * 140000));
+		// 매출액(연간) 가져오기
+		String yearSales = formatter.format(orderDao.searchyearSalessolo() + (subscribeDao.searchsubscribeSalessolo() * 140000));
+		// 남은 주문 처리 비율 가져오기
 		int count = orderDao.searchordersHowmany();
 		int toDo = orderDao.searchtodo();
-		String percenttodo = formatter.format((100-((double)toDo/count)*100));
-		//	이번달 구독갯수
+		String percenttodo = formatter.format((100 - ((double) toDo / count) * 100));
+		// 이번달 구독갯수
 		String subscribeSales = formatter.format(subscribeDao.searchsubscribeSalessolo());
 
-		
 		// 매출액그래프 가져오기
 		ArrayList<NDOrdersDto_OKH> dtoOrders = orderDao.searchyearsales();
 
@@ -48,7 +48,7 @@ public class NDMainAdminCommand_OKH implements NDCommand {
 			row.add(Integer.toString(ordersDto.getTotalsales()));
 			dataSales.add(row);
 		}
-		
+
 		// SetParam
 		request.setAttribute("monthSales", monthSales);
 		request.setAttribute("yearSales", yearSales);
