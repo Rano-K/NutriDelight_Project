@@ -6,6 +6,7 @@ public class MainDto {
 	String name;//product 테이블
 	int price;//manage 테이블
 	String photo;
+	String calories;
 	
 	
 	//constructor
@@ -14,12 +15,13 @@ public class MainDto {
 	}
 
 
-	public MainDto(String pcode, String name, int price, String photo) {
+	public MainDto(String pcode, String name, int price, String photo, String calories) {
 		super();
 		this.pcode = pcode;
 		this.name = name;
 		this.price = price;
 		this.photo = photo;
+		this.calories = calories;
 	}
 
 
@@ -59,6 +61,16 @@ public class MainDto {
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+
+
+	public String getCalories() {
+		return calories;
+	}
+
+
+	public void setCalories(String calories) {
+		this.calories = calories;
 	}
 
 	

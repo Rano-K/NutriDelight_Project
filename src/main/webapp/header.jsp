@@ -35,7 +35,14 @@
                         <div class="header__top__left">
                             <ul>
                                 <li><%session.getAttribute("userid"); %></li>
-                                <li>구독상품 30일 남았습니다</li>
+                                <li>
+                                	<c:if test="${not empty sessionScope.remainDate}">
+                                	구독상품 <%session.getAttribute("remainDate"); %>남았습니다
+                                	</c:if>
+                                	<c:if test="${empty sessionScope.remainDate}">
+                                	                                	
+                                	</c:if>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -84,10 +91,12 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="heart.do"><i class="fa fa-heart"></i> <span>${sessionScope.heartCount}</span></a></li>
-                            <li><a href="cart.do"><i class="fa fa-shopping-bag"></i> <span>${sessionScope.cartCount}</span></a></li>
+                            <li><a href="heart.do"><i class="fa fa-heart"></i> 
+                            <span>${sessionScope.heartCount}</span></a></li>
+                            <li><a href="cart.do"><i class="fa fa-shopping-bag"></i> 
+                            <span>${sessionScope.cartCount }</span></a></li>
                         </ul>
-                        <div class="header__cart__price">총금액 <span>${sessionScope.cartTotalPrice}</span></div>
+                        <div class="header__cart__price">총금액 <span>${sessionScope.cartTotalPrice}</span>원</div>
                     </div>
                 </div>
     </header>
