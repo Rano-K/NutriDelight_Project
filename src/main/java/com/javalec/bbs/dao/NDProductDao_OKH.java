@@ -89,8 +89,9 @@ public class NDProductDao_OKH {
 				String soup = resultSet.getString("soup");
 				String photo = resultSet.getString("photo");
 				Timestamp insertdate = resultSet.getTimestamp("insertdate");
+				int calories = resultSet.getInt("calories");
 				NDProductDto_OKH dto = new NDProductDto_OKH(pcode, name, category, rice, cook1, cook2, cook3, soup,
-						photo, insertdate);
+						photo, insertdate, calories);
 				dtos.add(dto);
 
 			}
@@ -136,8 +137,9 @@ public class NDProductDao_OKH {
 				String soup = resultSet.getString("soup");
 				String photo = resultSet.getString("photo");
 				Timestamp insertdate = resultSet.getTimestamp("insertdate");
+				int calories = resultSet.getInt("calories");
 				NDProductDto_OKH dto = new NDProductDto_OKH(pcode, name, category, rice, cook1, cook2, cook3, soup,
-						photo, insertdate);
+						photo, insertdate,calories);
 				dtos.add(dto);
 
 			}
@@ -160,15 +162,15 @@ public class NDProductDao_OKH {
 
 	// 데이터 입력 하기 : admin_insertproduct.do
 	public void insertProduct(String name, String category, String rice, String cook1, String cook2, String cook3,
-			String soup, String photo) {
+			String soup, String photo, int calories) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "INSERT INTO product (pcode, name, category, rice, cook1, cook2, cook3, soup, photo, insertdate)"
-					+ " SELECT IFNULL(MAX(CAST(pcode AS UNSIGNED)), 0) + 1, ?, ?, ?, ?, ?, ?, ?, ?, NOW() FROM product";
+			String query = "INSERT INTO product (pcode, name, category, rice, cook1, cook2, cook3, soup, photo, insertdate, calories)"
+					+ " SELECT IFNULL(MAX(CAST(pcode AS UNSIGNED)), 0) + 1, ?, ?, ?, ?, ?, ?, ?, ?, NOW(),? FROM product";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, category);
@@ -178,6 +180,7 @@ public class NDProductDao_OKH {
 			preparedStatement.setString(6, cook3);
 			preparedStatement.setString(7, soup);
 			preparedStatement.setString(8, photo);
+			preparedStatement.setInt(9, calories);
 			preparedStatement.executeUpdate();
 
 		} catch (Exception e) {
@@ -198,7 +201,7 @@ public class NDProductDao_OKH {
 
 	// 데이터 입력 하기 : admin_updateproduct.do
 	public void updateProduct(String pcode, String name, String category, String rice, String cook1, String cook2,
-			String cook3, String soup, String photo) {
+			String cook3, String soup, String photo, int calories) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -206,7 +209,7 @@ public class NDProductDao_OKH {
 		try {
 			connection = dataSource.getConnection();
 			String query = "UPDATE product SET name = ?, category = ?, rice = ?, cook1 = ?, cook2 = ?, cook3 = ?, "
-					+ " soup = ?, photo = ? WHERE pcode = ?";
+					+ " soup = ?, photo = ?, calories = ? WHERE pcode = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, category);
@@ -216,7 +219,8 @@ public class NDProductDao_OKH {
 			preparedStatement.setString(6, cook3);
 			preparedStatement.setString(7, soup);
 			preparedStatement.setString(8, photo);
-			preparedStatement.setString(9, pcode);
+			preparedStatement.setInt(9, calories);
+			preparedStatement.setString(10, pcode);
 			preparedStatement.executeUpdate();
 
 		} catch (Exception e) {

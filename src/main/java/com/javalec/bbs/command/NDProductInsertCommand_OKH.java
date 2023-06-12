@@ -54,19 +54,18 @@ public class NDProductInsertCommand_OKH implements NDCommand {
 			}
 
 			int stock = Integer.parseInt(multipartRequest.getParameter("stock"));
-			System.out.println("stock" + stock);
 			int price = Integer.parseInt(multipartRequest.getParameter("price"));
-			System.out.println("price" + price);
+			int calories = Integer.parseInt(multipartRequest.getParameter("calories"));
 
 			String filePath = directorysub + fileRealName; // 파일 경로 생성
 			// DAO
 			NDProductDao_OKH productDao = new NDProductDao_OKH();
 			NDManageDao_OKH manageDao = new NDManageDao_OKH();
 			if (pcode.equals("입력을 누르시면 자동 완성됩니다.")) {
-				productDao.insertProduct(name, category, rice, cook1, cook2, cook3, soup, filePath);
+				productDao.insertProduct(name, category, rice, cook1, cook2, cook3, soup, filePath,calories);
 				manageDao.insertProduct(adminid, stock, price);
 			} else {
-				productDao.updateProduct(pcode, name, category, rice, cook1, cook2, cook3, soup, filePath);
+				productDao.updateProduct(pcode, name, category, rice, cook1, cook2, cook3, soup, filePath,calories);
 				manageDao.updateProduct(adminid, pcode, stock, price);
 			}
 

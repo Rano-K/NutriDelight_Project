@@ -14,6 +14,7 @@ public class NDProductDto_OKH {
 	String soup;
 	String photo;
 	Timestamp insertdate;
+	int calories;
 
 	int totalorders;
 	
@@ -23,7 +24,7 @@ public class NDProductDto_OKH {
 	}
 
 	public NDProductDto_OKH(String pcode, String name, String category, String rice, String cook1, String cook2,
-			String cook3, String soup, String photo, Timestamp insertdate) {
+			String cook3, String soup, String photo, Timestamp insertdate, int calories) {
 		super();
 		this.pcode = pcode;
 		this.name = name;
@@ -35,6 +36,7 @@ public class NDProductDto_OKH {
 		this.soup = soup;
 		this.photo = photo;
 		this.insertdate = insertdate;
+		this.calories = calories;
 	}
 
 	public NDProductDto_OKH(String name, int totalorders) {
@@ -131,6 +133,14 @@ public class NDProductDto_OKH {
 
 	public void setTotalorders(int totalorders) {
 		this.totalorders = totalorders;
+	}
+
+	public int getCalories() {
+		return calories;
+	}
+
+	public void setCalories(int calories) {
+		this.calories = calories;
 	}
 	
 
