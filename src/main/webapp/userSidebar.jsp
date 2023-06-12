@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <div class="container">
 		<div class="row">
-		    <div class="col-lg-3 col-md-5">
+		    <div class="col-lg-2 col-md-3">
 		        <div class="sidebar">
 		            <div class="sidebar__item">
 		                <h4>Mypage</h4>

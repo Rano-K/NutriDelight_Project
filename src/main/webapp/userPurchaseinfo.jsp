@@ -27,43 +27,54 @@
 </head>
 <body>
 	<%@ include file="header.jsp"%>
+	<%@ include file="userSidebar.jsp" %>
 	<!-- Shoping Cart Section Begin -->
-	<section class="shoping-cart spad">
+	<!-- <section class="shoping-cart spad">
 	    <div class="container">
-	        <div class="row">
-	            <div class="col-lg-12">
+	        <div class="row"> -->
+	            <div class="col-lg-10 col-md-11">
                     <div class="shoping__cart__table">
                         <table>
                             <thead>
-                                <tr>
-                                    <th>상품사진</th>
-                                    <th>상품명</th>
-                                    <th>수량</th>
-                                    <th>가격</th>
-                                    <th>구매일자</th>
-                                    <th>배송상태</th>
-                                    <th>환불신청</th>
-                                    <th>리뷰작성</th>
+                                <tr class="">
+                                    <th><p>상품사진</p></th>
+                                    <th><p>상품명</p></th>
+                                    <th><p>수량</p></th>
+                                    <th><p>가격</p></th>
+                                    <th><p>구매일자</p></th>
+                                    <th><p>배송상태</p></th>
+                                    <th><p>환불신청</p></th>
+                                    <th><p>리뷰작성</p></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <c:set var="totalPrice" value="0" />
                                 <c:forEach items="${USERORDERLIST}" var="dto">
 	                                <input type="hidden" name="userid" value="${sessionScope.ID}">
-                                    <input type="hidden" name="ordercode" value="${dto.ordercode}">
+                                    <input type="hidden" id="ordercode" name="ordercode" value="${dto.ordercode}">
                                     <input type="hidden" name="pcode" value="${dto.pcode}">
-                                    <tr>
-                                        <td><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
-                                        <td><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
-                                        <td><input type="hidden" id="count" name="count" value="${dto.count}">${dto.count}</td>
-                                        <td><input type="hidden" name="totalPrice" value="${dto.count * dto.price}">${dto.count * dto.price}&#8361;</td>
-                                        <td><input type="hidden" name="orderdate" value="${dto.orderdate}">${dto.orderdate}</td>
+                                    <input type="hidden" name="photo">
+                                    <input type="hidden" name="name" value="${dto.name}">
+                                    <input type="hidden" name="count" value="${dto.count}">
+                                    <input type="hidden" name="totalPrice" value="${dto.count * dto.price}">
+                                    <input type="hidden" name="orderdate" value="${dto.orderdate}">
+                                    <input type="hidden" name="delivery" value="${dto.deliverydate}">
+                                    <input type="hidden" name="refund" value="${dto.refunddate}">
+                                    <input type="hidden" name="writeReview" value="">
+                                    <tr class="order-row" data-delivery-date="${dto.deliverydate}">
+                                        <td><img src="${dto.photo}" alt="Product" width="50%"></td>
+                                        <td>${dto.name}</td>
+                                        <td>${dto.count}</td>
+                                        <td>${dto.count * dto.price}&#8361;</td>
+                                        <td>${dto.orderdate}</td>
                                         <!-- 현재시간과 비교하여 배송 준비중, 배송 중, 배송 완료 처리 -->
-                                     	<td><input type="hidden" name="delivery" value="${dto.deliverydate}">${dto.deliverydate}</td>
+                                     	<td class="delivery-status">${dto.deliverydate}</td>
                                      	<!-- 환불 신청을 하지 않았다면 환불신청 버튼 노출, 환불신청을 하였다면 환불 신청 완료 -->
-                                        <td><input type="hidden" name="refund" value="${dto.refunddate}">${dto.refunddate}</td>
+                                        <td class="refund-status">
+                                        <a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#refunmodal">${dto.refunddate}</a>
+                                        </td>
                                         <!-- 리뷰 작성하는 버튼 -->
-                                        <td><input type="hidden" name="writeReview" value="">리뷰버튼위치</td>
+                                        <td>리뷰버튼위치</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -73,7 +84,89 @@
 	        </div>
 		</div>
 	</section>
+	<!-- ID Duplicate Modal -->
+    <div class="modal fade" id="refunmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">환불신청</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					정말 환불 하시겠습니까?
+				</div>
+				<div class="modal-footer">
+					<!-- 여기서 위에 찾은 값이 사용 가능 할 때 확인 버튼 활성화 및 변수 저장하여 위에서 account 버튼 활성화때 이용 -->
+					<button class="btn btn-primary" id="modalCheck" type="button" onclick="refundRequest()" data-dismiss="modal">확인</button>
+					<button class="btn btn-primary" type="button" data-dismiss="modal">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+function processDeliveryStatus() {
+    var orders = document.getElementsByClassName("order-row");
 
+    for (var i = 0; i < orders.length; i++) {
+        var deliveryDate = orders[i].getAttribute("data-delivery-date");
+        var refundDate = orders[i].getAttribute("data-refund-date");
+        var now = new Date();
+        var statusElement = orders[i].querySelector(".delivery-status");
+        var refundElement = orders[i].querySelector(".refund-status");
+        
+
+        if (deliveryDate) {
+            var deliveryDateTime = new Date(deliveryDate);
+
+            if (deliveryDateTime < now) {
+                statusElement.textContent = "배송 완료";
+            } else {
+                statusElement.textContent = "배송 중";
+            }
+        } else {
+            statusElement.textContent = "배송 전";
+        }
+        
+        if(refundDate){
+        	refundElement.textContent = "환불 신청 완료";
+        	refundButton.disable = true;
+        }else{
+        	refundElement.textContent = "환불 신청";
+        	})
+        }
+    }
+}
+
+function refundRequest(){
+    $.ajax({
+	    type: "POST",
+	    url: "NDRefund", // URL
+	    data: { orderCode : orderCode },
+	    success: function(result) {
+			console.log(result)
+			if (Number(result) == Number(0)) {
+				alert("환불 신청 완료 되었습니다.");
+				document.getElementById("").disable = true;
+				document.getElementById("uid").value = id;
+				btn1.style.display = 'block';
+			}else{
+				alert("환불 신청 실패 하였습니다. 다시 시도해주세요.");
+			}
+			
+		},
+		error: function(xhr, status, error) {
+		    console.log("에러 발생: " + error); // 오류 메시지 출력
+		}
+	});
+}
+
+// 페이지 로드 후 배송 상태 처리 실행
+window.addEventListener("load", function() {
+    processDeliveryStatus();
+});
+</script>
 	
 	<!-- Footer Section Begin -->
    	<%@ include file="footer.jsp"%>
