@@ -61,6 +61,7 @@
 								
 							</h6>
 							<h5><input type="hidden" name="price" value ="${dto.price}">가격: ${dto.price}</h5>
+							<h5><input type="hidden" name="calories" value ="${dto.calories}">칼로리: ${dto.calories}</h5>
 						</div>
 					</div>
 				</div>

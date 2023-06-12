@@ -55,7 +55,7 @@ public class NDProductListDao_KMS implements NDCommand {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT p.pcode, p.name, m.price, p.photo FROM product as p, manage as m WHERE p.pcode = m.pcode AND m.invalidate='1';";			
+			String query = "SELECT p.pcode, p.name, m.price, p.photo, p.calories FROM product as p, manage as m WHERE p.pcode = m.pcode AND m.invalidate='1';";			
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -64,8 +64,9 @@ public class NDProductListDao_KMS implements NDCommand {
 				String name = resultSet.getString("name");
 				int price = resultSet.getInt("price");
 				String photo = resultSet.getString("photo");
+				String calories = resultSet.getString("calories");
 				
-				NDProductListDto_KMS dto = new NDProductListDto_KMS(pcode, name, price, photo);
+				NDProductListDto_KMS dto = new NDProductListDto_KMS(pcode, name, price, photo, calories);
 				dtos.add(dto);
 						
 			}
