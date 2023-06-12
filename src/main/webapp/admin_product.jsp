@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>상품 목록</title>
+<title>상품 목록 - 관리자 페이지 Nutri delights</title>
 <!-- Custom fonts for this template -->
 <link href="admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
@@ -29,9 +29,6 @@
 
 <!-- Core plugin JavaScript-->
 <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="admin/js/sb-admin-2.min.js"></script>
 
 <!-- DataTables library -->
 <script
@@ -62,12 +59,12 @@ ArrayList<ArrayList<String>> dataSetProduct = (ArrayList<ArrayList<String>>) req
 	<div class="container-fluid">
 
 		<!-- Page Heading -->
-		<h1 class="h3 mb-2 text-gray-800">구매목록</h1>
-		<p class="mb-4">구매목록을 확인해주세요.</p>
+		<h1 class="h3 mb-2 text-gray-800">상품 목록</h1>
+		<p class="mb-4">상품 목록을 확인해주세요.</p>
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">주문 현황</h6>
+				<h6 class="m-0 font-weight-bold text-primary">상품 목록</h6>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -84,4 +81,6 @@ ArrayList<ArrayList<String>> dataSetProduct = (ArrayList<ArrayList<String>>) req
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
 </body>
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.js"></script>
 </html>

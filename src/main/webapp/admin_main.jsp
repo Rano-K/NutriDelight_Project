@@ -11,7 +11,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>관리자 메인페이지</title>
+<title>Dashboard - 관리자 페이지 Nutri delights</title>
 
 <!-- Custom fonts for this template -->
 <link href="admin/vendor/fontawesome-free/css/all.min.css"
@@ -30,9 +30,6 @@
 <!-- Core plugin JavaScript-->
 <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="admin/js/sb-admin-2.min.js"></script>
-
 <!--Google chart  -->
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="admin/js/main_graph.js"></script>
@@ -43,24 +40,24 @@
 <!--get attribute from java  -->
 <%
 ArrayList<ArrayList<String>> dataSales = (ArrayList<ArrayList<String>>) request.getAttribute("dataSales");
-String monthSales = (String)request.getAttribute("monthSales");
-String subscribeSales = (String)request.getAttribute("subscribeSales");
-String ordersSales = (String)request.getAttribute("ordersSales");
+String monthSales = (String) request.getAttribute("monthSales");
+String subscribeSales = (String) request.getAttribute("subscribeSales");
+String ordersSales = (String) request.getAttribute("ordersSales");
 %>
 
 <script type="text/javascript">
-$(document).ready(function() {
-	var dataSales =
+	$(document).ready(function() {
+		var dataSales =
 <%=dataSales%>
-;
-	var subscribeSales =
+	;
+		var subscribeSales =
 <%=subscribeSales%>
-;
-	var ordersSales =
+	;
+		var ordersSales =
 <%=ordersSales%>
-;
-	dataConnect(dataSales,subscribeSales,ordersSales);
-});
+	;
+		dataConnect(dataSales, subscribeSales, ordersSales);
+	});
 </script>
 </head>
 
@@ -88,7 +85,8 @@ $(document).ready(function() {
 								<div
 									class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 									매출액 (월간))</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">₩ ${monthSales }</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">₩
+									${monthSales }</div>
 							</div>
 							<div class="col-auto">
 								<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -107,7 +105,8 @@ $(document).ready(function() {
 								<div
 									class="text-xs font-weight-bold text-success text-uppercase mb-1">
 									매출액 (연간)</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">₩ ${yearSales }</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">₩
+									${yearSales }</div>
 							</div>
 							<div class="col-auto">
 								<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -133,8 +132,8 @@ $(document).ready(function() {
 									<div class="col">
 										<div class="progress progress-sm mr-2">
 											<div class="progress-bar bg-info" role="progressbar"
-												style="width: ${percenttodo }%" aria-valuenow="50" aria-valuemin="0"
-												aria-valuemax="100"></div>
+												style="width: ${percenttodo }%" aria-valuenow="50"
+												aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
 									</div>
 								</div>
@@ -156,7 +155,8 @@ $(document).ready(function() {
 								<div
 									class="text-xs font-weight-bold text-warning text-uppercase mb-1">
 									이번달 구독 수</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">${subscribeSales } 건</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">${subscribeSales }
+									건</div>
 							</div>
 							<div class="col-auto">
 								<i class="fas fa-user fa-2x text-gray-300"></i>
@@ -178,28 +178,12 @@ $(document).ready(function() {
 					<div
 						class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">매출액 그래프</h6>
-						<div class="dropdown no-arrow">
-							<a class="dropdown-toggle" href="#" role="button"
-								id="dropdownMenuLink" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false"> <i
-								class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-							</a>
-							<div
-								class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-								aria-labelledby="dropdownMenuLink">
-								<div class="dropdown-header">Dropdown Header:</div>
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Another action</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						</div>
 					</div>
 					<!-- Card Body -->
 					<div class="card-body">
 						<div class="chart-area">
-						<!-- Google 차트 -->
-						<div id="barchart" style="height: 300px;"></div>
+							<!-- Google 차트 -->
+							<div id="barchart" style="height: 300px;"></div>
 						</div>
 					</div>
 				</div>
@@ -212,27 +196,11 @@ $(document).ready(function() {
 					<div
 						class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">매출 비율(이번달)</h6>
-						<div class="dropdown no-arrow">
-							<a class="dropdown-toggle" href="#" role="button"
-								id="dropdownMenuLink" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false"> <i
-								class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-							</a>
-							<div
-								class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-								aria-labelledby="dropdownMenuLink">
-								<div class="dropdown-header">Dropdown Header:</div>
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Another action</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						</div>
 					</div>
 					<!-- Card Body -->
 					<div class="card-body">
 						<div class="chart-pie pt-4 pb-2">
-						<div id="pieChart" style="width: 100%;"></div>
+							<div id="pieChart" style="width: 100%;"></div>
 						</div>
 					</div>
 				</div>
@@ -250,5 +218,6 @@ $(document).ready(function() {
 		class="fas fa-angle-up"></i>
 	</a>
 </body>
-
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.js"></script>
 </html>

@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>유저 그래프</title>
+<title>유저 성향 그래프 - 관리자 페이지 Nutri delights</title>
 <!-- Custom fonts for this template -->
 <link href="admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
@@ -26,8 +26,7 @@
 <!-- Core plugin JavaScript-->
 <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="admin/js/sb-admin-2.min.js"></script>
+
 
 <!--Google chart  -->
 <script src="https://www.gstatic.com/charts/loader.js"></script>
@@ -62,7 +61,7 @@ ArrayList<ArrayList<String>> dataSetInsert = (ArrayList<ArrayList<String>>) requ
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
 		<!-- Page Heading -->
-		<h1 class="h3 mb-2 text-gray-800">유저 성향 그래프 확인</h1>
+		<h1 class="h3 mb-2 text-gray-800">유저 성향 그래프</h1>
 		<!-- 1열 -->
 		<div class="row">
 			<div class="col-lg-6">
@@ -108,4 +107,6 @@ ArrayList<ArrayList<String>> dataSetInsert = (ArrayList<ArrayList<String>>) requ
 		class="fas fa-angle-up"></i></a>
 
 </body>
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.js"></script>
 </html>
