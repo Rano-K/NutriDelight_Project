@@ -316,9 +316,10 @@ function handleFileSelect(event) {
 			 event.preventDefault(); 
             Swal.fire({
                 title: '수정 및 입력 확인',
-                text: '누르시면, 되돌릴 수 없습니다.',
+                text: '수정 및 입력하시겠습니까?',
                 icon: 'warning',
                 showCancelButton: true,
+                showCloseButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: '승인',
@@ -326,6 +327,7 @@ function handleFileSelect(event) {
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire(
+                    	'승인',
                         '수정 및 입력 처리 되었습니다.',
                         'success'
                     ).then(() => {
@@ -336,12 +338,12 @@ function handleFileSelect(event) {
         });
 
         $("#confirmDelete").click(function () {
-        		
             Swal.fire({
                 title: '삭제 및 복구 확인',
                 text: '누르시면, 되돌릴 수 없습니다.',
                 icon: 'warning',
                 showCancelButton: true,
+                showCloseButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: '승인',
@@ -349,6 +351,7 @@ function handleFileSelect(event) {
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire(
+                    '승인'
                      '삭제 및 복구 처리되었습니다.',
                     'success'
                     ).then(() => {

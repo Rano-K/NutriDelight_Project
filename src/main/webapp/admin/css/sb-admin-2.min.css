@@ -12217,6 +12217,47 @@ form.user .btn-user {
     box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .5)
 }
 
+.btn-facebook {
+    color: #fff;
+    background-color: #4267B2;
+    border-color: #fff
+}
+
+.btn-facebook:hover {
+    color: #fff;
+    background-color: #4267B2;
+    border-color: #e6e6e6
+}
+
+.btn-facebook.focus,
+.btn-facebook:focus {
+    color: #fff;
+    background-color: #4267B2;
+    border-color: #e6e6e6;
+    box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .5)
+}
+
+.btn-facebook.disabled,
+.btn-facebook:disabled {
+    color: #fff;
+    background-color: #4267B2;
+    border-color: #fff
+}
+
+.btn-facebook:not(:disabled):not(.disabled).active,
+.btn-facebook:not(:disabled):not(.disabled):active,
+.show>.btn-kakao.dropdown-toggle {
+    color: #fff;
+    background-color: #4267B2 ;
+    border-color: #dfdfdf
+}
+
+.btn-facebook:not(:disabled):not(.disabled).active:focus,
+.btn-facebook:not(:disabled):not(.disabled):active:focus,
+.show>.btn-facebook.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .5)
+}
+
 .error {
     color: #5a5c69;
     font-size: 7rem;

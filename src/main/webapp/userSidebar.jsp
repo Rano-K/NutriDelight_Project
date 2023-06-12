@@ -10,7 +10,7 @@
 		                <ul>
 		                    <li><a href="mypage.do"><b>상세정보</b></a></li>
 		                    <li><a href="cart.do">장바구니</a></li>
-		                    <li><a href="orders.do">구매내역</a></li>
+		                    <li><a href="userorderinfo.do">구매내역</a></li>
 		                </ul>
 		            </div>
 		        </div>
