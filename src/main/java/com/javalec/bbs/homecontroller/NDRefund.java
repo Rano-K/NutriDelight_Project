@@ -48,7 +48,7 @@ public class NDRefund extends HttpServlet {
 			result = 1;
 		}
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(result);
+		response.getWriter().write(result + "");
 	}
 
 }
