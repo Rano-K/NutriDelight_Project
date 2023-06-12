@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>주문목록</title>
+<title>유저 목록 - 관리자 페이지 Nutri delights</title>
 <!-- Custom fonts for this template -->
 <link href="admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
@@ -29,9 +29,6 @@
 
 <!-- Core plugin JavaScript-->
 <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="admin/js/sb-admin-2.min.js"></script>
 
 <!-- DataTables library -->
 <script
@@ -106,4 +103,6 @@ ArrayList<ArrayList<String>> dataSet = (ArrayList<ArrayList<String>>) request.ge
 		});
 	</script>
 </body>
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.js"></script>
 </html>

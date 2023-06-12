@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>상품등록</title>
+<title>상품 등록 - 관리자 페이지 Nutri delights</title>
 <!-- Custom fonts for this template -->
 <link href="admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
@@ -30,35 +30,22 @@
 <!-- Core plugin JavaScript-->
 <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="admin/js/sb-admin-2.min.js"></script>
-
 <!-- DataTables library -->
 <script
 	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <!--  -->
 <script type="text/javascript">
-function openFileUploader() {
-	  // 파일 업로드 창을 열기 위해 fileUploader 요소를 클릭합니다.
-	  document.getElementById('fileUploader').click();
-	}
-function handleFileSelect(event) {
-	  var file = event.target.files[0];
-	  
-	  // FileReader 객체를 사용하여 이미지 파일을 읽습니다.
-	  var reader = new FileReader();
-	  reader.onload = function(e) {
-	    // 이미지 파일의 데이터를 가져와서 이미지 미리보기를 업데이트합니다.
-	    document.getElementById('imagePreview').src = e.target.result;
-	  };
-	  reader.readAsDataURL(file);
-	  // 선택한 파일의 정보를 가져옵니다.
-	  
-	  document.getElementById('photo').value = file.name;
-	  document.getElementById('photoname').placeholder = fileName;
-	}
+$(document).ready(function() {
+	var invalidate =
+${invalidate }
+;
 
+	dataConnect(dataSetOrders);
+});
 </script>
+</script>
+<!-- regex -->
+<script src="admin/js/product_regex.js"></script>
 </head>
 
 <body id="page-top">
@@ -361,7 +348,8 @@ function handleFileSelect(event) {
             })
         });
 </script>
-
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.js"></script>
 
 </body>
 </html>

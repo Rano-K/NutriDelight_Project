@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>주문 업데이트</title>
+<title>주문 업데이트 - 관리자 페이지 Nutri delights</title>
 <!-- Custom fonts for this template -->
 <link href="admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
@@ -27,8 +27,6 @@
 <!-- Core plugin JavaScript-->
 <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="admin/js/sb-admin-2.min.js"></script>
 <body id="page-top">
 	<%@ include file="admin_toolbar.jsp"%>
 	<!-- Begin Page Content -->
@@ -36,11 +34,11 @@
 
 		<!-- Page Heading -->
 		<h1 class="h3 mb-2 text-gray-800">주문 업데이트</h1>
-		<p class="mb-4">주문목록을 확인해주시고, 업데이트해주세요.</p>
+		<p class="mb-4">주문 상세 내역을 확인 후, 업데이트해주세요.</p>
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">주문 목록 업데이트</h6>
+				<h6 class="m-0 font-weight-bold text-primary">주문 상세 업데이트</h6>
 			</div>
 			<div class="card-body">
 				<form action="admin_updateorders_checked.do" class="user"
@@ -253,5 +251,7 @@
             })
         });
 </script>
+<!-- Custom scripts for all pages-->
+<script src="admin/js/sb-admin-2.js"></script>
 </body>
 </html>
