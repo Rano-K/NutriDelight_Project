@@ -37,7 +37,7 @@
                                 <li><%session.getAttribute("userid"); %></li>
                                 <li>
                                 	<c:if test="${not empty sessionScope.remainDate}">
-                                	구독상품 <%session.getAttribute("remainDate"); %>남았습니다
+                                	구독상품 ${sessionScope.remainDate}일 남았습니다
                                 	</c:if>
                                 	<c:if test="${empty sessionScope.remainDate}">
                                 	                                	

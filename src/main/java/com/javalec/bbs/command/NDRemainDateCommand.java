@@ -19,7 +19,7 @@ public class NDRemainDateCommand implements NDCommand {
 		String userid = (String) session.getAttribute("ID");
 		
 		NDRemainDateDao_KMS dao_KMS = new NDRemainDateDao_KMS();
-		Timestamp remainDate = dao_KMS.remainDate(userid);
+		String remainDate = dao_KMS.remainDate(userid);
 		
 		session.setAttribute("remainDate", remainDate);
 	}

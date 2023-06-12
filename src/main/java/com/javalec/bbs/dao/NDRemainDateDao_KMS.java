@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 
@@ -26,12 +28,48 @@ public class NDRemainDateDao_KMS {
 	}
 	
 	
-	
-	public Timestamp remainDate(String userid) {
+	/*
+	 * public Timestamp remainDate(String userid) { Connection connection = null;
+	 * PreparedStatement preparedStatement = null; ResultSet resultSet = null;
+	 * Timestamp remainDate = null;
+	 * 
+	 * try { connection = dataSource.getConnection(); String query =
+	 * "SELECT subscribedate FROM subscribe WHERE userid = ?"; preparedStatement =
+	 * connection.prepareStatement(query); preparedStatement.setString(1, userid);
+	 * resultSet = preparedStatement.executeQuery();
+	 * 
+	 * if (resultSet.next()) { Timestamp subscribeDate =
+	 * resultSet.getTimestamp("subscribedate");
+	 * 
+	 * // endDate 계산: subscribeDate + 30일 LocalDateTime subscribeDateTime =
+	 * subscribeDate.toLocalDateTime(); LocalDateTime endDate =
+	 * subscribeDateTime.plusDays(30); Timestamp endDateTimestamp =
+	 * Timestamp.valueOf(endDate);
+	 * 
+	 * 
+	 * // 현재 날짜와 endDateTimestamp 간의 차이 계산 LocalDateTime currentDateTime =
+	 * LocalDateTime.now(); Period period =
+	 * Period.between(currentDateTime.toLocalDate(), endDate.toLocalDate()); int
+	 * remainingDays = period.getDays();
+	 * 
+	 * 
+	 * // remainDate 계산: endDate - 현재 시간 + 남은 일 수 LocalDateTime remainDateTime =
+	 * endDate.plusDays(remainingDays); remainDate =
+	 * Timestamp.valueOf(remainDateTime);
+	 * 
+	 * } } catch (Exception e) { e.printStackTrace(); } finally { try { if
+	 * (resultSet != null) resultSet.close(); if (preparedStatement != null)
+	 * preparedStatement.close(); if (connection != null) connection.close(); }
+	 * catch (Exception e) { e.printStackTrace(); } }
+	 * 
+	 * return remainDate; }
+	 */
+
+	public String remainDate(String userid) {
 	    Connection connection = null;
 	    PreparedStatement preparedStatement = null;
 	    ResultSet resultSet = null;
-	    Timestamp remainDate = null;
+	    String remainDate = null;
 
 	    try {
 	        connection = dataSource.getConnection();
@@ -45,17 +83,15 @@ public class NDRemainDateDao_KMS {
 
 	            // endDate 계산: subscribeDate + 30일
 	            LocalDateTime subscribeDateTime = subscribeDate.toLocalDateTime();
-	            LocalDateTime endDate = subscribeDateTime.plusDays(30).withHour(0).withMinute(0).withSecond(0).withNano(0);
-	            Timestamp endDateTimestamp = Timestamp.valueOf(endDate);
+	            LocalDateTime endDate = subscribeDateTime.plusDays(30);
 
-	            // 현재 날짜와 endDateTimestamp 간의 차이 계산
-	            LocalDateTime currentDateTime = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
-	            Period period = Period.between(currentDateTime.toLocalDate(), endDate.toLocalDate());
-	            int remainingDays = period.getDays();
+	            // 현재 날짜와 endDate 간의 차이 계산
+	            LocalDate currentDate = LocalDate.now();
+	            LocalDate endDateDate = endDate.toLocalDate();
+	            Duration duration = Duration.between(currentDate.atStartOfDay(), endDateDate.atStartOfDay());
+	            long remainingDays = duration.toDays();
 
-	            // remainDate 계산: endDate - 현재 시간 + 남은 일 수
-	            LocalDateTime remainDateTime = endDate.plusDays(remainingDays);
-	            remainDate = Timestamp.valueOf(remainDateTime);
+	            remainDate = String.valueOf(remainingDays);
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
