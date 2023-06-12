@@ -305,7 +305,7 @@ public class NDUserDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String querydata = "SELECT o.ordercode, pr.photo, pr.name, o.count, m.price, o.orderdate, o.deliverydate, o.refunddate "
+			String querydata = "SELECT o.ordercode, pr.photo, pr.name, o.count, m.price, o.orderdate, o.deliverydate, o.refunddate, pr.pcode "
 					+ "FROM user u "
 					+ "JOIN orders o ON u.userid = o.userid "
 					+ "JOIN product pr ON o.pcode = pr.pcode "
@@ -324,8 +324,9 @@ public class NDUserDao {
 				Timestamp orderdate = resultSet.getTimestamp(6);
 				Timestamp deliverydate = resultSet.getTimestamp(7);
 				Timestamp refunddate = resultSet.getTimestamp(8);
+				String pcode = resultSet.getString(9);
 				
-				NDUserOrdersDto dto = new NDUserOrdersDto(ordercode, count, orderdate, refunddate, deliverydate, photo, name, price);
+				NDUserOrdersDto dto = new NDUserOrdersDto(ordercode, count, orderdate, refunddate, deliverydate, photo, name, price, pcode);
 				dtos.add(dto);
 			}
 			

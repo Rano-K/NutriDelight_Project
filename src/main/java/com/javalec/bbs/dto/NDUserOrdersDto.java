@@ -38,7 +38,7 @@ public class NDUserOrdersDto {
 
 
 	public NDUserOrdersDto(int ordercode, int count, Timestamp orderdate, Timestamp refunddate, Timestamp deliverydate,
-			String photo, String name, int price) {
+			String photo, String name, int price, String pcode) {
 		super();
 		this.ordercode = ordercode;
 		this.count = count;
@@ -48,6 +48,7 @@ public class NDUserOrdersDto {
 		this.photo = photo;
 		this.name = name;
 		this.price = price;
+		this.pcode = pcode;
 	}
 
 	
