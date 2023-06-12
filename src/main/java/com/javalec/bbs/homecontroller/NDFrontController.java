@@ -31,6 +31,7 @@ import com.javalec.bbs.command.NDProductInsertCommand_OKH;
 import com.javalec.bbs.command.NDProductListCommand_KMS;
 import com.javalec.bbs.command.NDProductListSendCommand_KMS;
 import com.javalec.bbs.command.NDProductSearchCommand_OKH;
+import com.javalec.bbs.command.NDRemainDateCommand;
 import com.javalec.bbs.command.NDSearchNoticeCommand_KMJ;
 import com.javalec.bbs.command.NDSearchReviewCommand_KMJ;
 import com.javalec.bbs.command.NDSubscribeScheduleCommand_OKH;
@@ -107,6 +108,8 @@ public class NDFrontController extends HttpServlet {
 		// Home button 클릭시
 		case "/main.do":
 			command = new NDHeaderCountCommand();
+			command.execute(request, response);
+			command = new NDRemainDateCommand();
 			command.execute(request, response);
 			command = new NDMainCommand_KMS();
 			command.execute(request, response);
