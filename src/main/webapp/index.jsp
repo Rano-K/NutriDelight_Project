@@ -91,7 +91,7 @@
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form">
-							<form action="#">
+							<form action="searchAction.do" method="GET">
 <!-- 								<div class="hero__search__categories">
 									All Categories
 									<div class="dropdown-menu">
@@ -105,8 +105,12 @@
 									<span class="arrow_carrot-down"></span>
 
 								</div>
+								<form action="searchAction.do" method="GET">
+    <input type="text" name="name" placeholder="What do you need?">
+    <button type="submit" class="site-btn">SEARCH</button>
+</form>
  -->
-								<input type="text" placeholder="What do yo u need?">
+								<input type="text" name = "name" placeholder="What do yo u need?">
 								<button type="submit" class="site-btn">SEARCH</button>
 							</form>
 
@@ -188,7 +192,7 @@
         </div>
     </div> -->
 	<!-- Banner End -->
-	<%@ include file="productViewTest.jsp"%>
+	<%@ include file="productView.jsp"%>
 	<!-- Latest Product Section Begin -->
 	<!-- <section class="latest-product spad">
         <div class="container">
