@@ -3,7 +3,9 @@ package com.javalec.bbs.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 // mport java.util.ArrayList;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -122,7 +124,7 @@ public class NDUserOrdersDao_LYJ {
 	
 	
 	
-	public boolean insertOrder(String userid, String pcode, String count, String address) {
+	public boolean insertOrder(String userid, String pcode, int count, String address) {
 		Connection conn_mysql = null;
 		PreparedStatement ps = null;
 	
@@ -134,7 +136,7 @@ public class NDUserOrdersDao_LYJ {
 			
 			ps.setString(1, userid);
 			ps.setString(2, pcode);
-			ps.setString(3, count);
+			ps.setInt(3, count);
 			ps.setString(4, address);
 			
 			ps.executeUpdate();
@@ -157,6 +159,55 @@ public class NDUserOrdersDao_LYJ {
 		
 		return true;
 	}
+
+	public ArrayList<NDUserOrdersDto_LYJ> cartOrders(String pcode) {
+		// TODO Auto-generated method stub
+		ArrayList<NDUserOrdersDto_LYJ> dtos = new ArrayList<NDUserOrdersDto_LYJ>();
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+
+		try {
+			connection = dataSource.getConnection();
+			String querydata = "SELECT pr.photo, pr.name, c.count, m.price "
+					+ "FROM user u "
+					+ "JOIN cart c ON u.userid = c.userid "
+					+ "JOIN product pr ON c.pcode = pr.pcode "
+					+ "JOIN manage m ON pr.pcode = m.pcode "
+					+ "WHERE pr.pcode = ?;";
+			preparedStatement = connection.prepareStatement(querydata);
+			preparedStatement.setString(1, pcode);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				String name = resultSet.getString(1);
+				String photo = resultSet.getString(2);
+				int price = resultSet.getInt(3);
+				String count = resultSet.getString(4);
+			
+				
+				NDUserOrdersDto_LYJ dto = new NDUserOrdersDto_LYJ(name, photo, price, count);
+				dtos.add(dto);
+			}
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	}
+		
 	
 	
 	

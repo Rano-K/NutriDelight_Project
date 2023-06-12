@@ -162,7 +162,7 @@ public class NDFrontController extends HttpServlet {
 		case "/insertorders.do":
 			command = new NDUserOrdersInsertCommand_LYJ();
 			command.execute(request, response);
-			viewPage = "orders.jsp";
+			viewPage = "ordersFinish.jsp";
 			break;
 
 		// 고객센터 버튼 클릭시 ---------------------------민재야 만들어줘

@@ -25,6 +25,21 @@ public class NDUserOrdersDto_LYJ {
 
 
 
+	public NDUserOrdersDto_LYJ(String name, String photo, int price, String count) {
+		super();
+		this.name = name;
+		this.photo = photo;
+		this.price = price;
+		this.count = count;
+	}
+
+
+
+
+
+
+
+
 	public NDUserOrdersDto_LYJ(String name, String telno, String address, String email) {
 		super();
 		this.name = name;
@@ -142,6 +157,14 @@ public class NDUserOrdersDto_LYJ {
 		this.price = price;
 	}
 
+
+
+
+
+
+
+
+	
 
 
 	
