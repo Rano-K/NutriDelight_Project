@@ -220,10 +220,12 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire(
+                    	'환불 처리 완료!',
                         '환불 처리되었습니다.',
                         'success'
-                    )
+                    ).then(() => {
                       window.location.href= "admin_updateorders_checked.do?ordercode=${dtoOrders[0].ordercode}&insertmode=1";
+                    });
                 }
             })
         });
@@ -241,11 +243,13 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire(
+                    		'배송 처리 완료!',
                      '배송이 완료처리되었습니다.',
                     'success'
-                    )
+                    ).then(() => {
                     window.location.href="admin_updateorders_checked.do?ordercode=${dtoOrders[0].ordercode}&insertmode=2";
-                }
+                    });
+               }
             })
         });
 </script>
