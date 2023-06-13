@@ -89,9 +89,9 @@
                     <div class="shoping__checkout">
                         <h5>카트 총 상품가격</h5>
                         <ul>
-                            <li>총 상품가격 <span id="totalPriceDisplay">${totalPrice}₩</span></li>
-                            <li>총 주문가격 <span>${totalPrice}₩</span></li>
-                        </ul>
+                            <li>총 주문가격 <span id="totalPriceDisplay">${totalPrice}₩</span></li>
+                            <li>총 상품가격 <span>${totalPrice}₩</span></li>
+                        </ul>    
                         <a href="#" class="primary-btn" onclick="submitForm('orders.do')">결제페이지로</a>
                     </div>
                 </form>
