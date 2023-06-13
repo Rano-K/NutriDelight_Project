@@ -29,6 +29,34 @@
 <section class="featured spad">
 	<div class="container">
 		<div class="row">
+		<div class="col-lg-12">
+		<div class="row">
+		<c:forEach items="${searchAction}" var="dto" begin="0" end="29">
+				<div class="col-lg-3 col-md-4 col-sm-6 mix">
+					<div class="featured__item">
+						<div class="featured__item__pic set-bg" data-setbg="${dto.photo}">
+							<ul class="featured__item__pic__hover">
+								<li><a href="heart.do"><i class="fa fa-heart"></i></a></li>
+								<li><a href="#" onclick="NDCartInsertFn(${dto.pcode})"><i class="fa fa-shopping-cart"></i></a></li>
+							</ul>
+						</div>
+						<div class="featured__item__text">
+							<h6>
+								<input type="hidden" name="name" value ="${dto.name}"><a href="#"></a>
+								<a href="productInformSend.do?pcode=${dto.pcode}">${dto.name}</a> 
+								<input type="hidden" name ="pcode" value ="${dto.pcode}">
+								<input type="hidden" name ="photo" value ="${dto.photo}">
+								
+							</h6>
+							<h5><input type="hidden" name="price" value ="${dto.price}">가격: ${dto.price}</h5>
+							<h5><input type="hidden" name="calories" value ="${dto.calories}">칼로리: ${dto.calories}</h5>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+			</div>
+			</div>
+		
 			<div class="col-lg-12">
 				<div class="section-title">
 					<h2>한끼 식사</h2>
