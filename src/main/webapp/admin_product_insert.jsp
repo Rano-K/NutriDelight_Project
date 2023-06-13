@@ -314,8 +314,8 @@ $("#confirmInsert").on("click", function(e){
 							</div>
 							<div class="col-sm-2"></div>
 							<div class="col-sm-4">
-								<a id="confirmDelete" class="btn btn-google btn-user btn-block">삭제
-									및 복구</a>
+								<a id="confirmDelete" class="btn btn-google btn-user btn-block">
+									삭제 및 복구</a>
 							</div>
 							<div class="col-sm-1"></div>
 						</div>
@@ -323,74 +323,41 @@ $("#confirmInsert").on("click", function(e){
 				</form>
 			</div>
 		</div>
+
 	</div>
 	<!-- /.container-fluid -->
+
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
 	<!-- modal  -->
+
 	<script>
-	document.getElementById("confirmInsert").addEventListener("click", function() {
-	    Swal.fire({
-	        title: '수정 및 입력 확인',
-	        text: '수정 및 입력하시겠습니까?',
-	        icon: 'warning',
-	        showCancelButton: true,
-	        showCloseButton: true,
-	        confirmButtonColor: '#3085d6',
-	        cancelButtonColor: '#d33',
-	        confirmButtonText: '승인',
-	        cancelButtonText: '취소',
-	        allowOutsideClick: false,
-	        allowEscapeKey: false
-	    }).then((result) => {
-	        if (result.isConfirmed) {
-	            const form = document.getElementById("product");
-	            Swal.fire({
-	                title: '승인',
-	                text: '수정 및 입력 처리되었습니다.',
-	                icon: 'success',
-	                confirmButtonText: '확인',
-	                confirmButtonColor: '#3085d6',
-	                allowOutsideClick: false,
-	                allowEscapeKey: false
-	            }).then(() => {
-	                form.submit();
-	            });
-	        }
-	    });
-	});
-
-	document.getElementById("confirmDelete").addEventListener("click", function() {
-	    Swal.fire({
-	        title: '삭제 및 복구 확인',
-	        text: '누르시면, 되돌릴 수 없습니다.',
-	        icon: 'warning',
-	        showCancelButton: true,
-	        showCloseButton: true,
-	        confirmButtonColor: '#3085d6',
-	        cancelButtonColor: '#d33',
-	        confirmButtonText: '승인',
-	        cancelButtonText: '취소'
-	    }).then((result) => {
-	        if (result.isConfirmed) {
-	            Swal.fire({
-	                title: '승인',
-	                text: '삭제 및 복구 처리되었습니다.',
-	                icon: 'success',
-	                confirmButtonText: '확인',
-	                confirmButtonColor: '#3085d6',
-	                allowOutsideClick: false,
-	                allowEscapeKey: false
-	            }).then(() => {
-	                window.location.href = "admin_deleteproduct.do?invalidate=${invalidate}&pcode=${pcode}";
-	            });
-	        }
-	    });
-	});
-
-</script>
-
+		
+        $("#confirmDelete").click(function () {
+            Swal.fire({
+                title: '삭제 및 복구 확인',
+                text: '누르시면, 되돌릴 수 없습니다.',
+                icon: 'warning',
+                showCancelButton: true,
+                showCloseButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '승인',
+                cancelButtonText: '취소'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                    '승인',
+                     '삭제 및 복구 처리되었습니다.',
+                    'success'
+                    ).then(() => {
+                    window.location.href="admin_deleteproduct.do?invalidate="+${invalidate}+"&pcode="+${pcode};
+                    });
+                 }
+            })
+        });
+	</script>
 	<!-- Custom scripts for all pages-->
 	<script src="admin/js/sb-admin-2.js"></script>
 
