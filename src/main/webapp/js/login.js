@@ -409,8 +409,9 @@ function formatBirthdate(input) {
   input.value = formattedValue;
 }
 
-function cartInsertFn(){
-	var pcode = document.getElementById("pcode").value();
+function cartInsertFn(pcode){
+	//var pcode = document.getElementById("pcode").value();
+	console.log(pcode);
 	$.ajax({
 	    type: "POST",
 	    url: "NDCartInsert", // URL
@@ -419,7 +420,7 @@ function cartInsertFn(){
 			console.log(result)
 			if (Number(result) == Number(0)) {
 				alert("장바구니에 추가하였습니다.");
-				window.onload();
+				window.location.reload();
 			} else if(Number(result) == Number(2)){
 				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
 				window.location.href = "login.do";

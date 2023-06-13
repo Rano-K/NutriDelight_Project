@@ -52,8 +52,7 @@ public class NDCartInsert extends HttpServlet {
 		NDUserDao dao = new NDUserDao();
 		
 		try {
-			dao.userCartIn(pcode, userid);
-			result = 0;
+			result = dao.userCartIn(pcode, userid);
 		} catch (Exception e) {
 			result = 1;
 		}
