@@ -1,6 +1,5 @@
 <%@page import="com.javalec.bbs.dao.NDProductListDao_KMS"%>
 <%@page import="java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -92,8 +91,7 @@
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form">
-							<form action="searchActionProductList.do" method="GET">
-							
+							<form action="searchAction.do" method="GET">
 <!-- 								<div class="hero__search__categories">
 									All Categories
 									<div class="dropdown-menu">
@@ -107,22 +105,18 @@
 									<span class="arrow_carrot-down"></span>
 
 								</div>
+								<form action="searchAction.do" method="GET">
+    <input type="text" name="name" placeholder="What do you need?">
+    <button type="submit" class="site-btn">SEARCH</button>
+</form>
  -->
 								<input type="text" name = "name" placeholder="What do yo u need?">
 								<button type="submit" class="site-btn">SEARCH</button>
-								<% String name = request.getParameter("name");
-								 System.out.print("name:" + name);
-								%>
 							</form>
 
 						</div>
 					</div>
-					<div>
-					
-					
-					</div>
-					
-					<div class="hero__item set-bg" data-setbg="http://okrie.kro.kr:25567/images/banner.jpg">
+					<div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
 						<div class="hero__text">
 							<div>
 

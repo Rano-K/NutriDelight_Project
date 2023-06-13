@@ -82,8 +82,8 @@
 							<i class="fa fa-bars"></i> <span>제품목록</span>
 						</div>
 						<ul>
-							<li><a href="productList.do">한끼대용상품</a></li>
-							<li><a href="subscribe.do">구독상품</a></li>
+							<li><a href="#">한끼대용상품</a></li>
+							<li><a href="#">구독상품</a></li>
 						</ul>
 					</div>
 				</div>
@@ -91,11 +91,11 @@
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form">
-							<form action="searchActionProductList.do" method="get">
-								<!-- <div class="hero__search__categories">
+							<form action="#">
+								<div class="hero__search__categories">
 									All Categories <span class="arrow_carrot-down"></span>
-								</div> -->
-								<input type="text" name ="name" placeholder="What do yo u need?">
+								</div>
+								<input type="text" placeholder="What do yo u need?">
 								<button type="submit" class="site-btn">SEARCH</button>
 							</form>
 						</div>

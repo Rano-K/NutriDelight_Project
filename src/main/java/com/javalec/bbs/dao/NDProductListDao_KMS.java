@@ -88,11 +88,6 @@ public class NDProductListDao_KMS implements NDCommand {
 		return dtos;
 	}//TakeAll END
 
-	/*
-	 * public String basic() {
-	 * 
-	 * }
-	 */
 	
 	//productList에서 pcode, name, price, photo를 들고 온다.
 	public ArrayList<NDProductListDto_KMS> TakeSelect(String pcode) {
