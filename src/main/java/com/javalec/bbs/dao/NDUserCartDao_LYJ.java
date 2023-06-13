@@ -59,7 +59,6 @@ public ArrayList<NDUserCartDto_LYJ> list(String userid) {
 			int price = resultSet.getInt("price");
 			String count= resultSet.getString("count");	
 		
-			System.out.println(count);
 	
 
 			NDUserCartDto_LYJ ndUserCartDto_LYJ = new NDUserCartDto_LYJ(userid1, seq, pcode, photo, name, price, count);

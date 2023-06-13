@@ -62,7 +62,7 @@
                                     <input type="hidden" name="refund" value="${dto.refunddate}">
                                     <input type="hidden" name="writeReview" value="">
                                     <tr class="order-row" data-delivery-date="${dto.deliverydate}" data-refund-date="${dto.refunddate}">
-                                        <td><img src="${dto.photo}" alt="Product" width="50%"></td>
+                                        <td><a href="productInformSend.do?pcode=${dto.pcode}"><img src="${dto.photo}" alt="Product" width="50%"></a></td>
                                         <td>${dto.name}</td>
                                         <td>${dto.count}</td>
                                         <td>${dto.count * dto.price}&#8361;</td>
@@ -74,7 +74,9 @@
                                         	<a href="#" class="btn btn-primary btn-user btn-block refund_btn" data-toggle="modal" data-target="#refundmodal" data-ordercode="${dto.ordercode}" onclick="openRefundModal(this)">${dto.refunddate}</a>
                                         </td>
                                         <!-- 리뷰 작성하는 버튼 -->
-                                        <td>리뷰버튼위치</td>
+                                        <td>
+                                        <a href="productInformSend.do?pcode=${dto.pcode}" class="btn btn-primary btn-user btn-block">제품<br/>페이지</a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
