@@ -9,6 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.javalec.bbs.dto.NDProductListDto_KMS;
 import com.javalec.bbs.dto.NDSearchActionDto_KMS;
 
 public class NDSearchActionDao_KMS {
@@ -30,61 +31,56 @@ public class NDSearchActionDao_KMS {
 	 * select로 product 에 있는 name, category, rice, cook1, cook2, cook3, soup을 검색한다.
 	 */
 	
-	public ArrayList<NDSearchActionDto_KMS> searchAction(String name, String category, String rice, String cook1, String cook2, String cook3, String soup) {
-	    ArrayList<NDSearchActionDto_KMS> dtos = new ArrayList<NDSearchActionDto_KMS>();
+	public ArrayList<NDProductListDto_KMS> searchAction(String name) {
+	    ArrayList<NDProductListDto_KMS> dtos = new ArrayList<NDProductListDto_KMS>();
 	    Connection connection = null;
 	    PreparedStatement preparedStatement = null;
 	    ResultSet resultSet = null;
-
+	    System.out.println();
 	    try {
 	        connection = dataSource.getConnection();
-	        String searchActionQuery = "SELECT * FROM product WHERE ";
-
-	        if (name != null) {
-	            searchActionQuery += "name LIKE '%" + name + "%' AND ";
-	        }
-
-	        if (category != null) {
-	            searchActionQuery += "category LIKE '%" + category + "%' AND ";
-	        }
-
-	        if (rice != null) {
-	            searchActionQuery += "rice LIKE '%" + rice + "%' AND ";
-	        }
-
-	        if (cook1 != null) {
-	            searchActionQuery += "cook1 LIKE '%" + cook1 + "%' AND ";
-	        }
-
-	        if (cook2 != null) {
-	            searchActionQuery += "cook2 LIKE '%" + cook2 + "%' AND ";
-	        }
-
-	        if (cook3 != null) {
-	            searchActionQuery += "cook3 LIKE '%" + cook3 + "%' AND ";
-	        }
-
-	        if (soup != null) {
-	            searchActionQuery += "soup LIKE '%" + soup + "%' AND ";
-	        }
-
-	        if (searchActionQuery.endsWith("AND ")) {
-	            searchActionQuery = searchActionQuery.substring(0, searchActionQuery.length() - 4);
-	        }
-
+	        String searchActionQuery = "SELECT * FROM product p, manage m WHERE p.pcode = m.pcode and name LIKE ?";
 	        preparedStatement = connection.prepareStatement(searchActionQuery);
+	        preparedStatement.setString(1, "%" +name+ "%");
+			/*
+			 * if (name != null) { searchActionQuery += "name LIKE '%" + name + "%' AND "; }
+			 * 
+			 * if (category != null) { searchActionQuery += "category LIKE '%" + category +
+			 * "%' AND "; }
+			 * 
+			 * if (rice != null) { searchActionQuery += "rice LIKE '%" + rice + "%' AND "; }
+			 * 
+			 * if (cook1 != null) { searchActionQuery += "cook1 LIKE '%" + cook1 +
+			 * "%' AND "; }
+			 * 
+			 * if (cook2 != null) { searchActionQuery += "cook2 LIKE '%" + cook2 +
+			 * "%' AND "; }
+			 * 
+			 * if (cook3 != null) { searchActionQuery += "cook3 LIKE '%" + cook3 +
+			 * "%' AND "; }
+			 * 
+			 * if (soup != null) { searchActionQuery += "soup LIKE '%" + soup + "%' AND "; }
+			 * 
+			 * if (searchActionQuery.endsWith("AND ")) { searchActionQuery =
+			 * searchActionQuery.substring(0, searchActionQuery.length() - 4); }
+			 */
 	        resultSet = preparedStatement.executeQuery();
 
 	        while (resultSet.next()) {
 	            String resultName = resultSet.getString("name");
-	            String resultCategory = resultSet.getString("category");
-	            String resultRice = resultSet.getString("rice");
-	            String resultCook1 = resultSet.getString("cook1");
-	            String resultCook2 = resultSet.getString("cook2");
-	            String resultCook3 = resultSet.getString("cook3");
-	            String resultSoup = resultSet.getString("soup");
-
-	            NDSearchActionDto_KMS dto = new NDSearchActionDto_KMS(resultName, resultCategory, resultRice, resultCook1, resultCook2, resultCook3, resultSoup);
+	            String resultPhoto = resultSet.getString("photo");
+	            String resultPcode = resultSet.getString("pcode");
+	            int resultPrice = resultSet.getInt("price");
+	            String resultCalories = resultSet.getString("calories");
+				/*
+				 * String resultCategory = resultSet.getString("category"); String resultRice =
+				 * resultSet.getString("rice"); String resultCook1 =
+				 * resultSet.getString("cook1"); String resultCook2 =
+				 * resultSet.getString("cook2"); String resultCook3 =
+				 * resultSet.getString("cook3"); String resultSoup =
+				 * resultSet.getString("soup");
+				 */
+	            NDProductListDto_KMS dto = new NDProductListDto_KMS(resultPcode, resultName, resultPrice, resultPhoto, resultCalories);/*, resultCategory, resultRice, resultCook1, resultCook2, resultCook3, resultSoup*/
 	            dtos.add(dto);
 	        }
 
