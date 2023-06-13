@@ -116,12 +116,19 @@ public class NDFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "index.jsp";
 			break;
+			
 		// 상품 검색
 		case "/searchAction.do":
 			command = new NDSearchActionCommand_KMS();
 			command.execute(request, response);
 			viewPage ="main.do";
 			break;
+		case "/searchActionProductList.do":
+			command = new NDSearchActionCommand_KMS();
+			command.execute(request, response);
+			viewPage ="productList.do";
+			break;
+		
 		// 구독상품 버튼 클릭시
 		case "/subscribe.do":
 			viewPage = "subscribe.jsp";
