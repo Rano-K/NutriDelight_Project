@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
+<script src="js/login.js"></script>
 </head>
 <script>
 // $(function(){
@@ -100,24 +101,26 @@ function checkOrder(event) {
 						<div class="hero__text">
 							<table>
 								<tr>
-									<td><img src="admin/img/admin_img.png" alt="Product 3">${sessionScope.login}+${sessionScope.ID}</td>
+									<td><img src="http://okrie.kro.kr:25567/images/main/product/test1.jpg" alt="Product 3"></td>
 									<td><span>Product Info</span>
 										<p>
-										<h6>${PList}</h6>
+										<h6>불고기세트</h6>
 										</p>
 										<p>
-										<h4>가격 : 받아올 가격</h4>
+										<h4>가격 : 7000 </h4>
 										</p>
-										<p>칼로리 : 받아올 칼로리</p>
-										<p>알러지 정보</p>
+										<p>칼로리 : 250 </p>
 
 										<div class="quantity">
 											수량 : 
 											<div class="pro-qty">
-												<input type="text" name="qty" value="1">
+												<input type="text" id="qty" name="qty" value="1">
 											</div>
-											<a href="#" class="primary-btn">Buy Now</a> <a href="#"
-												class="primary-btn">Add Cart</a>
+											<script>
+												var qty = document.getElementById("qty").value;
+											</script>
+											<a href="orders.do?pcode=10&count=2" class="primary-btn">Buy Now</a> 
+											<a href="#" class="primary-btn" onclick="cartInsertFn(10)">Add Cart</a>
 										</div></td>
 								</tr>
 							</table>

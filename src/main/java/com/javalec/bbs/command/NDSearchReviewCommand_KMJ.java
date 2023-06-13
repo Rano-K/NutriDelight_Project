@@ -25,10 +25,6 @@ public class NDSearchReviewCommand_KMJ implements NDCommand {
 		ArrayList<NDQuestionDto_KMJ> dtos1 = dao1.QuestionList(pcode);
 		int ocode = dao.getOrdercode(userid, pcode);
 		
-		
-		System.out.println("dtos 크기"+dtos.size());
-		System.out.println("dtos1 내용"+dtos1.size());
-		
 		String name = dao.productList(pcode);
 		request.setAttribute("RList", dtos);
 		request.setAttribute("QList", dtos1);
