@@ -160,10 +160,11 @@ document.addEventListener('DOMContentLoaded', function() {
 							customClass: {
 								confirmButton: "btn btn-primary",
 							}
+						}).then(() => {
+							// 배송 처리
+							var url = 'admin_updatesubscribe.do?plcode=' + eventPlcode;
+							window.location.href = url;
 						});
-						// 배송 처리
-						var url = 'admin_updatesubscribe.do?plcode=' + eventPlcode;
-						window.location.href = url;
 					}
 				} else if (result.dismiss === "cancel") {
 					Swal.fire({
@@ -177,13 +178,12 @@ document.addEventListener('DOMContentLoaded', function() {
 					});
 				}
 			});
-
 		}
-
 	});
 
 	calendar.render();
-}); 
+});
+
 </script>
 <!-- Custom scripts for all pages-->
 <script src="admin/js/sb-admin-2.js"></script>

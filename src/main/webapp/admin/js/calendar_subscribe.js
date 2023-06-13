@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				});
 			} else {
 				Swal.fire({
-					text: "\n배송 확인 처리 하시겠습니까?",
+					text: "배송 확인 처리 하시겠습니까?",
 					icon: "warning",
 					showCancelButton: true,
 					buttonsStyling: false,
