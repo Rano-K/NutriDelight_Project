@@ -346,4 +346,34 @@ public class NDUserDao {
 		return dtos;
 	}
 	
+	public int userCartIn(String pcode, String userid) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		if(userid == null || userid.equals("")) {
+			return 2;
+		}
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "INSERT INTO cart (userid, pcode, count) VALUES(?, ?, 1)";
+			preparedStatement = connection.prepareStatement(query);
+				
+			preparedStatement.setString(1, userid);
+			preparedStatement.setString(2, pcode);
+			
+			preparedStatement.executeUpdate();
+			
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 1;
+		} finally {
+			try {
+				if (preparedStatement != null) preparedStatement.close();
+				if (connection != null)	connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
 }

@@ -408,3 +408,27 @@ function formatBirthdate(input) {
   var formattedValue = value.replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3'); // 형식 적용
   input.value = formattedValue;
 }
+
+function cartInsertFn(){
+	var pcode = document.getElementById("pcode").value();
+	$.ajax({
+	    type: "POST",
+	    url: "NDCartInsert", // URL
+	    data: { pcode : pcode },
+	    success: function(result) {
+			console.log(result)
+			if (Number(result) == Number(0)) {
+				alert("장바구니에 추가하였습니다.");
+				window.onload();
+			} else if(Number(result) == Number(2)){
+				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+				window.location.href = "login.do";
+			} else{
+				alert("장바구니에 추가하지 못했습니다.");
+			}
+		},
+		error: function(xhr, status, error) {
+		    console.log("에러 발생: " + error); // 오류 메시지 출력
+		}
+	});
+}
