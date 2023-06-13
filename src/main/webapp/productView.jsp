@@ -22,20 +22,51 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <script src="js/login.js"></script>
 </head>
+<script>
+	function selectAllFilter() {
+		document.getElementById("allFilter").classList.add("active");
+	}
+</script>
 <body>
 <!-- Featured Section Begin -->
 <section class="featured spad">
 	<div class="container">
 		<div class="row">
+		<div class="col-lg-12">
+		<div class="row featured__filter">
+		<c:forEach items="${searchAction}" var="dto" begin="0" end="29">
+				<div class="col-lg-3 col-md-4 col-sm-6 mix">
+					<div class="featured__item">
+						<div class="featured__item__pic set-bg" data-setbg="${dto.photo}">
+							<ul class="featured__item__pic__hover">
+								<li><a href="heart.do"><i class="fa fa-heart"></i></a></li>
+								<li><a href="#" onclick="NDCartInsertFn(${dto.pcode})"><i class="fa fa-shopping-cart"></i></a></li>
+							</ul>
+						</div>
+						<div class="featured__item__text">
+							<h6>
+								<input type="hidden" name="name" value ="${dto.name}"><a href="#"></a>
+								<a href="productInformSend.do?pcode=${dto.pcode}">${dto.name}</a> 
+								<input type="hidden" name ="pcode" value ="${dto.pcode}">
+								<input type="hidden" name ="photo" value ="${dto.photo}">
+								
+							</h6>
+							<h5><input type="hidden" name="price" value ="${dto.price}">가격: ${dto.price}</h5>
+							<h5><input type="hidden" name="calories" value ="${dto.calories}">칼로리: ${dto.calories}</h5>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+			</div>
+			</div>
 			<div class="col-lg-12">
 				<div class="section-title">
 					<h2>한끼 식사</h2>
 				</div>
 				<div class="featured__controls">
 					<ul>
-						<li class="active" data-filter="*">All</li>
+						<li id="allFilter" class="active" data-filter="*">All</li>
 						<li data-filter=".mostheart">가장 많이 찜한상품</li>
 						<li data-filter=".mostpurchase">md추천상품</li>
 						<li data-filter=".lowcal">저칼로리상품</li>
@@ -43,6 +74,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="row featured__filter">
 		<% String[] filtername = {"mostheart", "mostpurchase", "lowcal"}; %>
 			<c:forEach items="${TakeAll}" var="dto" begin="0" end="29">
@@ -52,7 +84,7 @@
 						<div class="featured__item__pic set-bg" data-setbg="${dto.photo}">
 							<ul class="featured__item__pic__hover">
 								<li><a href="heart.do"><i class="fa fa-heart"></i></a></li>
-								<li><a href="#" onclick="cartInsertFn(${dto.pcode})"><i class="fa fa-shopping-cart"></i></a></li>
+								<li><a href="cart.do"><i class="fa fa-shopping-cart"></i></a></li>
 							</ul>
 						</div>
 						<div class="featured__item__text">

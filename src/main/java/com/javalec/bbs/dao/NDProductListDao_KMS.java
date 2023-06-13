@@ -88,6 +88,11 @@ public class NDProductListDao_KMS implements NDCommand {
 		return dtos;
 	}//TakeAll END
 
+	/*
+	 * public String basic() {
+	 * 
+	 * }
+	 */
 	
 
 
